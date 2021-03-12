@@ -1,6 +1,8 @@
 package tr.edu.iztech.teamstech.user;
 
-public abstract class User {
+import tr.edu.iztech.teamstech.entity.Entity;
+
+public abstract class User extends Entity {
     private final int id;
     private final String username;
     private final String email;
