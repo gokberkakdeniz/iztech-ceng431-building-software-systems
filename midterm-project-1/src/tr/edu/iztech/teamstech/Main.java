@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        FileIO<User> csvio = new CsvIO<User>(new File("./userList.csv"), User.class);
+        FileIO<User> csvio = new CsvIO<>(new File("./userList.csv"), User.class);
         User user = csvio.read(5);
         System.out.println(user.userType);
         System.out.println(user.userName);
