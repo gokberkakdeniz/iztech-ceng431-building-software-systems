@@ -1,7 +1,9 @@
 package tr.edu.iztech.teamstech.team;
 
+import tr.edu.iztech.teamstech.entity.EntityDirector;
+
 public class PrivateChannel extends Channel {
-    public PrivateChannel(int id, String name) {
-        super(id, name);
+    public PrivateChannel(EntityDirector director, int id, String name) {
+        super(director, id, name);
     }
 }
