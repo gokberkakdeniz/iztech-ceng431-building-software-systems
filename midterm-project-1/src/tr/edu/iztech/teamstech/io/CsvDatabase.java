@@ -1,4 +1,4 @@
-package tr.edu.iztech.teamstech.fileio;
+package tr.edu.iztech.teamstech.io;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
