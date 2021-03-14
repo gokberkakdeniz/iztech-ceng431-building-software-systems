@@ -4,21 +4,23 @@ import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
 
 public abstract class Channel extends Entity {
-    private final int id;
-    private final String name;
+    private String name;
+    private String meetingTime;
+    private String teamId;
 
-    public Channel(EntityDirector director, int id, String name) {
+    public Channel(EntityDirector director, String name, String meetingTime, String teamId) {
         super(director);
 
-        this.id = id;
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
+        this.meetingTime = meetingTime;
+        this.teamId = teamId;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getMeetingTime() {
+        return meetingTime;
     }
 }
