@@ -7,7 +7,7 @@ import tr.edu.iztech.teamstech.user.User;
 public interface EntityDirector {
     void register(Entity entity);
 
-    boolean addTeam(Team team);
+    boolean addTeam(String teamId, String name, String defaultMeetingTime);
     void removeTeam(Team team);
     boolean updateTeam(User actor);
     boolean findTeam(String name);

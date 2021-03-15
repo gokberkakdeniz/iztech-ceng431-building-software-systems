@@ -2,6 +2,7 @@ package tr.edu.iztech.teamstech.entity;
 
 import tr.edu.iztech.teamstech.data.DataInitializer;
 import tr.edu.iztech.teamstech.team.Channel;
+import tr.edu.iztech.teamstech.team.StandardChannel;
 import tr.edu.iztech.teamstech.team.Team;
 import tr.edu.iztech.teamstech.user.User;
 
@@ -37,7 +38,15 @@ public class TestDirector implements EntityDirector {
     }
 
     @Override
-    public boolean addTeam(Team team) {
+    public boolean addTeam(String teamId, String name, String defaultMeetingTime) {
+        Team team = new Team(this, teamId, name);
+        register(team);
+
+        Channel defaultChannel = new StandardChannel(this, "Default", defaultMeetingTime, teamId);
+        register(defaultChannel);
+
+        currentUser.addToTeam(teamId);
+
         return false;
     }
 

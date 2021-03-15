@@ -2,6 +2,9 @@ package tr.edu.iztech.teamstech.user;
 
 import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
+import tr.edu.iztech.teamstech.team.Channel;
+import tr.edu.iztech.teamstech.team.StandardChannel;
+import tr.edu.iztech.teamstech.team.Team;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,5 +40,14 @@ public abstract class User extends Entity {
 
     public boolean authorize(String email, String password) {
         return this.password.equals(password) && this.email.equals(email);
+    }
+
+    public void addTeam(String teamId, String name, String defaultMeetingTime) {
+        director.addTeam(teamId, name, defaultMeetingTime);
+    }
+
+    public void addToTeam(String teamId) {
+        // TODO: check if exists
+        teamIds.add(teamId);
     }
 }
