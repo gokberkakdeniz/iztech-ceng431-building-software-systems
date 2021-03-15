@@ -1,5 +1,6 @@
 package tr.edu.iztech.teamstech.entity;
 
+import tr.edu.iztech.teamstech.data.DataInitializer;
 import tr.edu.iztech.teamstech.team.Channel;
 import tr.edu.iztech.teamstech.team.Team;
 import tr.edu.iztech.teamstech.user.User;
@@ -12,10 +13,11 @@ public class TestDirector implements EntityDirector {
     private final List<User> users;
     private final List<Channel> channels;
 
-    public TestDirector() {
+    public TestDirector(DataInitializer dataInitializer) throws Exception {
         this.teams = new LinkedList<>();
         this.users = new LinkedList<>();
         this.channels = new LinkedList<>();
+        dataInitializer.init(this);
     }
 
     @Override
@@ -87,5 +89,10 @@ public class TestDirector implements EntityDirector {
     @Override
     public boolean updateMeetingDate(User actor, Channel channel) {
         return false;
+    }
+
+    @Override
+    public User login(String email, String password) {
+        return null;
     }
 }

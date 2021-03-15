@@ -24,4 +24,6 @@ public interface EntityDirector {
 
     boolean updateMeetingDate(User actor, Channel channel);
 
+    User login(String email, String password);
+
 }
