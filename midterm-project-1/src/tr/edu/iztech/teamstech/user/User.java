@@ -35,7 +35,7 @@ public abstract class User extends Entity {
         return email;
     }
 
-    public boolean checkPassword(String password) {
-        return this.password.equals(password);
+    public boolean authorize(String email, String password) {
+        return this.password.equals(password) && this.email.equals(email);
     }
 }

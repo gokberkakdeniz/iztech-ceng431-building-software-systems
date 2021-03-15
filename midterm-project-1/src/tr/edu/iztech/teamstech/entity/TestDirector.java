@@ -98,6 +98,12 @@ public class TestDirector implements EntityDirector {
 
     @Override
     public boolean login(String email, String password) {
+        for (User user: users) {
+            if(user.authorize(email, password)) {
+                currentUser = user;
+                return true;
+            }
+        }
         return false;
     }
 }

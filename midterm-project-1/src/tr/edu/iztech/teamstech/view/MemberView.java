@@ -1,17 +1,24 @@
 package tr.edu.iztech.teamstech.view;
 
+import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.io.KeyboardReader;
 
 public class MemberView extends View {
+    public MemberView(EntityDirector director) {
+        super(director);
+    }
+
     @Override
     public boolean show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
                     "Add a member", "Remove a member", "Update a member", "Find a member"
-            }, true);
+            });
             options.printOptions();
             int choice = keyboardReader.promptInteger("Please enter a number between 1-3", options.getPredicate());
             switch (choice) {
+                case 0:
+                    return false;
                 case 1:
                     if (addMember())
                         return true;

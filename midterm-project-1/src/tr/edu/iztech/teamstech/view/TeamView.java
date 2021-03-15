@@ -1,17 +1,25 @@
 package tr.edu.iztech.teamstech.view;
 
+import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.io.KeyboardReader;
 
 public class TeamView extends View{
+
+    public TeamView(EntityDirector director) {
+        super(director);
+    }
+
     @Override
     public boolean show() {
         while(true) {
         KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[] {
             "Add a team", "Remove a team", "Update a team"
-        }, true);
+        });
         options.printOptions();
-        int choice = keyboardReader.promptInteger("Please enter a number between 1-3", options.getPredicate());
+        int choice = keyboardReader.promptInteger("Please enter a number between 0-3", options.getPredicate());
         switch (choice) {
+            case 0:
+                return false;
             case 1:
                 if(add())
                     return true;
@@ -43,25 +51,28 @@ public class TeamView extends View{
     }
 
     private boolean update() {
-        KeyboardReader.Options options = new KeyboardReader.Options("CCCWhat you like to do?", new String[] {
-                "Meeting Channel", "Member",
-        }, true);
-        options.printOptions();
-        int choice = keyboardReader.promptInteger("Please enter a number between 1-2", options.getPredicate());
-        switch (choice) {
-            case 1:
-                MeetingView meeting = new MeetingView();
-                meeting.bindKeyboardReader(keyboardReader);
-                if(meeting.show())
-                    return true;
-                break;
-            case 2:
-                MemberView member = new MemberView();
-                member.bindKeyboardReader(keyboardReader);
-                if(member.show())
-                    return true;
-                break;
+        while (true) {
+            KeyboardReader.Options options = new KeyboardReader.Options("CCCWhat you like to do?", new String[] {
+                    "Meeting Channel", "Member",
+            });
+            options.printOptions();
+            int choice = keyboardReader.promptInteger("Please enter a number between 1-2", options.getPredicate());
+            switch (choice) {
+                case 0:
+                    return false;
+                case 1:
+                    MeetingView meeting = new MeetingView(director);
+                    meeting.bindKeyboardReader(keyboardReader);
+                    if(meeting.show())
+                        return true;
+                    break;
+                case 2:
+                    MemberView member = new MemberView(director);
+                    member.bindKeyboardReader(keyboardReader);
+                    if(member.show())
+                        return true;
+                    break;
+            }
         }
-        return true;
     }
 }
