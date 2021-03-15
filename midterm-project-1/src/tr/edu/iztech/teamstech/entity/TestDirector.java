@@ -12,11 +12,16 @@ public class TestDirector implements EntityDirector {
     private final List<Team> teams;
     private final List<User> users;
     private final List<Channel> channels;
+    private User currentUser;
 
-    public TestDirector(DataInitializer dataInitializer) throws Exception {
+    public TestDirector() {
         this.teams = new LinkedList<>();
         this.users = new LinkedList<>();
         this.channels = new LinkedList<>();
+    }
+
+    public TestDirector(DataInitializer dataInitializer) throws Exception {
+        this();
         dataInitializer.init(this);
     }
 
@@ -32,13 +37,13 @@ public class TestDirector implements EntityDirector {
     }
 
     @Override
-    public boolean addTeam(User actor, Team team) {
+    public boolean addTeam(Team team) {
         return false;
     }
 
     @Override
-    public boolean removeTeam(User actor, Team team) {
-        return false;
+    public void removeTeam(Team team) {
+
     }
 
     @Override
@@ -47,52 +52,52 @@ public class TestDirector implements EntityDirector {
     }
 
     @Override
-    public boolean findTeam(User actor, String name) {
+    public boolean findTeam(String name) {
         return false;
     }
 
     @Override
-    public boolean addChannel(User actor, Channel channel, Team team) {
+    public boolean addChannel(Channel channel, Team team) {
         return false;
     }
 
     @Override
-    public boolean removeChannel(User actor, Channel team) {
+    public boolean removeChannel(Channel team) {
         return false;
     }
 
     @Override
-    public boolean findChannel(User actor, String name) {
+    public boolean findChannel(String name) {
         return false;
     }
 
     @Override
-    public boolean addMember(User actor, User user, Channel channel) {
+    public boolean addMember(User user, Channel channel) {
         return false;
     }
 
     @Override
-    public boolean addMember(User actor, User user, Team channel) {
+    public boolean addMember(User user, Team channel) {
         return false;
     }
 
     @Override
-    public boolean removeMember(User actor, User user, Channel channel) {
+    public boolean removeMember(User user, Channel channel) {
         return false;
     }
 
     @Override
-    public boolean removeMember(User actor, User user, Team channel) {
+    public boolean removeMember(User user, Team channel) {
         return false;
     }
 
     @Override
-    public boolean updateMeetingDate(User actor, Channel channel) {
+    public boolean updateMeetingDate(Channel channel) {
         return false;
     }
 
     @Override
-    public User login(String email, String password) {
-        return null;
+    public boolean login(String email, String password) {
+        return false;
     }
 }
