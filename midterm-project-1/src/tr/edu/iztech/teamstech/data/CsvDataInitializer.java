@@ -80,7 +80,7 @@ public class CsvDataInitializer extends DataInitializer {
                     ? randomIds.remove(new Random().nextInt(randomIds.size()))
                     : Integer.parseInt(args[3]);
             String email = args[4].equals("")
-                    ? username.replaceAll(" ", "") + "@" + domain
+                    ? username.replaceAll(" ", "").toLowerCase(Locale.ENGLISH) + "@" + domain
                     : args[4];
             String password = args[5].equals("")
                     ? UUID.randomUUID().toString().substring(0, 4)
