@@ -2,6 +2,7 @@ package tr.edu.iztech.teamstech.team;
 
 import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
+import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.user.User;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.Set;
 public class Team extends Entity {
     private final String id;
     private final String name;
-    private final Set<String> teamOwnerIds;
+    private final Set<Integer> teamOwnerIds;
 
     public Team(EntityDirector director, String id, String name) {
         super(director);
@@ -29,7 +30,7 @@ public class Team extends Entity {
         return name;
     }
 
-    public void remove() {
+    public void remove() throws UnauthorizedUserOperationException {
         director.removeTeam(this);
     }
 
@@ -37,27 +38,27 @@ public class Team extends Entity {
         return director.findChannels(channel -> channel.getTeamId().equals(getId()));
     }
 
-    public List<String> getTeamOwnerIds() {
+    public List<Integer> getTeamOwnerIds() {
         return new ArrayList<>(teamOwnerIds);
     }
 
     public void addMember(User user) {
-        director.addMember(user, this);
+        director.addMember(this, user);
     }
 
-    public void removeMember(User user) {
-        director.removeMember(user, this);
+    public void removeMember(User user) throws UnauthorizedUserOperationException {
+        director.removeMember(this, user);
     }
 
-    public void addTeamOwner(String userId) {
+    public void addTeamOwner(int userId) {
         teamOwnerIds.add(userId);
     }
 
-    public void removeTeamOwner(String userId) {
+    public void removeTeamOwner(int userId) {
         teamOwnerIds.add(userId);
     }
 
-    public void createChannel(String name, String meetingTime) {
-        director.addChannel(name, meetingTime, this);
+    public Channel createChannel(String name, String meetingTime) throws UnauthorizedUserOperationException {
+        return director.createChannel(this, name, meetingTime);
     }
 }

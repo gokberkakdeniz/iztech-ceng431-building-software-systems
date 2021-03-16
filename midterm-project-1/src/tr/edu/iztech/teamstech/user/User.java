@@ -2,10 +2,10 @@ package tr.edu.iztech.teamstech.user;
 
 import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
-import tr.edu.iztech.teamstech.team.Channel;
-import tr.edu.iztech.teamstech.team.StandardChannel;
+import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.team.Team;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public abstract class User extends Entity {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.teamIds = Arrays.asList(teamIds);
+        this.teamIds = new ArrayList<>(Arrays.asList(teamIds));
     }
 
     public int getId() {
@@ -42,12 +42,22 @@ public abstract class User extends Entity {
         return this.password.equals(password) && this.email.equals(email);
     }
 
-    public void addTeam(String teamId, String name, String defaultMeetingTime) {
-        director.addTeam(teamId, name, defaultMeetingTime);
+    public Team createTeam(String teamId, String name, String defaultMeetingTime) throws UnauthorizedUserOperationException {
+        return director.createTeam(this, teamId, name, defaultMeetingTime);
     }
 
     public void addToTeam(String teamId) {
         // TODO: check if exists
         teamIds.add(teamId);
+    }
+
+    public List<Team> getParticipatedTeams()
+    {
+        return director.findTeams(team -> teamIds.contains(team.getId()));
+    }
+
+    public void leaveTeam(String teamId) {
+
+        teamIds.remove(teamId);
     }
 }

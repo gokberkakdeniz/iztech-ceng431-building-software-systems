@@ -2,6 +2,7 @@ package tr.edu.iztech.teamstech.team;
 
 import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
+import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 
 public abstract class Channel extends Entity {
     private final String name;
@@ -33,7 +34,7 @@ public abstract class Channel extends Entity {
         this.meetingTime = meetingTime;
     }
 
-    public void remove() {
+    public void remove() throws UnauthorizedUserOperationException {
         director.removeChannel(this);
     }
 }

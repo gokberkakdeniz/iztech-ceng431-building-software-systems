@@ -1,6 +1,7 @@
 package tr.edu.iztech.teamstech.team;
 
 import tr.edu.iztech.teamstech.entity.EntityDirector;
+import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.user.User;
 
 import java.util.*;
@@ -17,15 +18,13 @@ public class PrivateChannel extends Channel {
         return new ArrayList<>(participantIds);
     }
 
-    public boolean removeParticipant(User user) {
+    public void removeParticipant(User user) throws UnauthorizedUserOperationException {
         participantIds.remove((Integer) user.getId());
-        director.addMember(user, this);
-        return true;
+        director.removeParticipant(this, user);
     }
 
-    public boolean addParticipant(User user) {
+    public void addParticipant(User user) throws UnauthorizedUserOperationException {
         participantIds.add((Integer) user.getId());
-        director.removeMember(user, this);
-        return true;
+        director.addParticipant(this, user);
     }
 }
