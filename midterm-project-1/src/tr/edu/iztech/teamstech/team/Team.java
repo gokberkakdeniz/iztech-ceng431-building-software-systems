@@ -2,16 +2,23 @@ package tr.edu.iztech.teamstech.team;
 
 import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
+import tr.edu.iztech.teamstech.user.User;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Team extends Entity {
     private final String id;
     private final String name;
-    // TODO: add team owner attr
+    private final Set<String> teamOwnerIds;
 
     public Team(EntityDirector director, String id, String name) {
         super(director);
         this.name = name;
         this.id = id;
+        this.teamOwnerIds = new HashSet<>();
     }
 
     public String getId() {
@@ -26,19 +33,31 @@ public class Team extends Entity {
         director.removeTeam(this);
     }
 
-    public void addMember() {
-        // NOTE: uppsss katılımcıları burada mı tutsak?
+    public List<Channel> getChannels() {
+        return director.findChannels(channel -> channel.getTeamId().equals(getId()));
     }
 
-    public void removeMember() {
-        // NOTE: uppsss katılımcıları burada mı tutsak?
+    public List<String> getTeamOwnerIds() {
+        return new ArrayList<>(teamOwnerIds);
     }
 
-    public void addTeamOwner() {
-        // NOTE: uppsss katılımcıları burada mı tutsak?
+    public void addMember(User user) {
+        director.addMember(user, this);
     }
 
-    public void removeTeamOwner() {
-        // NOTE: uppsss katılımcıları burada mı tutsak?
+    public void removeMember(User user) {
+        director.removeMember(user, this);
+    }
+
+    public void addTeamOwner(String userId) {
+        teamOwnerIds.add(userId);
+    }
+
+    public void removeTeamOwner(String userId) {
+        teamOwnerIds.add(userId);
+    }
+
+    public void createChannel(String name, String meetingTime) {
+        director.addChannel(name, meetingTime, this);
     }
 }

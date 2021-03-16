@@ -29,6 +29,7 @@ public abstract class Channel extends Entity {
     }
 
     public void setMeetingTime(String meetingTime) {
+        director.updateMeetingDate(this);
         this.meetingTime = meetingTime;
     }
 

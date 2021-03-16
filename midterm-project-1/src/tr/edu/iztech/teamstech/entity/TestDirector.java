@@ -8,6 +8,8 @@ import tr.edu.iztech.teamstech.user.User;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class TestDirector implements EntityDirector {
     private final List<Team> teams;
@@ -24,6 +26,10 @@ public class TestDirector implements EntityDirector {
     public TestDirector(DataInitializer dataInitializer) throws Exception {
         this();
         dataInitializer.init(this);
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     @Override
@@ -52,32 +58,29 @@ public class TestDirector implements EntityDirector {
 
     @Override
     public void removeTeam(Team team) {
-
+        users.forEach(user -> user.leaveTeam(team.getId()));
+        channels.removeAll(team.getChannels());
+        teams.remove(team);
     }
 
     @Override
-    public boolean updateTeam(User actor) {
-        return false;
+    public List<Team> findTeams(Predicate<Team> predicate) {
+        return teams.stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override
-    public boolean findTeam(String name) {
-        return false;
-    }
-
-    @Override
-    public boolean addChannel(Channel channel, Team team) {
+    public boolean addChannel(String name, String meetingTime, Team team) {
         return false;
     }
 
     @Override
     public boolean removeChannel(Channel team) {
-        return false;
+        return channels.remove(team);
     }
 
     @Override
-    public boolean findChannel(String name) {
-        return false;
+    public List<Channel> findChannels(Predicate<Channel> predicate) {
+        return channels.stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override
@@ -113,6 +116,7 @@ public class TestDirector implements EntityDirector {
                 return true;
             }
         }
+
         return false;
     }
 }
