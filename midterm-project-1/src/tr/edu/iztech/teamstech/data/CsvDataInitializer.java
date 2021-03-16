@@ -76,15 +76,15 @@ public class CsvDataInitializer extends DataInitializer {
                     : "iyte.edu.tr";
             String username = args[1].strip();
 
-            int userId = args[3].equals("")
+            int userId = args[2].equals("")
                     ? randomIds.remove(new Random().nextInt(randomIds.size()))
-                    : Integer.parseInt(args[3]);
-            String email = args[4].equals("")
+                    : Integer.parseInt(args[2]);
+            String email = args[3].equals("")
                     ? username.replaceAll(" ", "").toLowerCase(Locale.ENGLISH) + "@" + domain
-                    : args[4];
-            String password = args[5].equals("")
+                    : args[3];
+            String password = args[4].equals("")
                     ? UUID.randomUUID().toString().substring(0, 4)
-                    : args[5];
+                    : args[4];
             String[] teamIds = Arrays.stream(args)
                     .skip(5)
                     .takeWhile(id -> !id.equals(""))
