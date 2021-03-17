@@ -42,7 +42,7 @@ public class Team extends Entity {
         return new ArrayList<>(teamOwnerIds);
     }
 
-    public void addMember(User user) {
+    public void addMember(User user) throws UnauthorizedUserOperationException {
         director.addMember(this, user);
     }
 
@@ -55,7 +55,7 @@ public class Team extends Entity {
     }
 
     public void removeTeamOwner(int userId) {
-        teamOwnerIds.add(userId);
+        teamOwnerIds.remove(userId);
     }
 
     public Channel createChannel(String name, String meetingTime) throws UnauthorizedUserOperationException {

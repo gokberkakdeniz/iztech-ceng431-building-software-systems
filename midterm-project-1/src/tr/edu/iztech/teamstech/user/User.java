@@ -46,18 +46,18 @@ public abstract class User extends Entity {
         return director.createTeam(this, teamId, name, defaultMeetingTime);
     }
 
-    public void addToTeam(String teamId) {
-        // TODO: check if exists
+    public void joinTeam(String teamId) throws UnauthorizedUserOperationException {
+        director.requestUnsafeMethodExecution();
         teamIds.add(teamId);
+    }
+
+    public void leaveTeam(String teamId) throws UnauthorizedUserOperationException {
+        director.requestUnsafeMethodExecution();
+        teamIds.remove(teamId);
     }
 
     public List<Team> getParticipatedTeams()
     {
         return director.findTeams(team -> teamIds.contains(team.getId()));
-    }
-
-    public void leaveTeam(String teamId) {
-
-        teamIds.remove(teamId);
     }
 }

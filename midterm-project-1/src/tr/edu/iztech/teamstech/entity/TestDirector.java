@@ -6,6 +6,7 @@ import tr.edu.iztech.teamstech.team.Channel;
 import tr.edu.iztech.teamstech.team.PrivateChannel;
 import tr.edu.iztech.teamstech.team.StandardChannel;
 import tr.edu.iztech.teamstech.team.Team;
+import tr.edu.iztech.teamstech.user.Academician;
 import tr.edu.iztech.teamstech.user.Instructor;
 import tr.edu.iztech.teamstech.user.User;
 
@@ -19,11 +20,13 @@ public class TestDirector implements EntityDirector {
     private final List<User> users;
     private final List<Channel> channels;
     private User currentUser;
+    private boolean unsafeMethodsEnabled;
 
     public TestDirector() {
         this.teams = new LinkedList<>();
         this.users = new LinkedList<>();
         this.channels = new LinkedList<>();
+        this.unsafeMethodsEnabled = false;
     }
 
     public TestDirector(DataInitializer dataInitializer) throws Exception {
@@ -58,7 +61,7 @@ public class TestDirector implements EntityDirector {
         register(team);
 
         team.addTeamOwner(currentUser.getId());
-        currentUser.addToTeam(teamId);
+        currentUser.joinTeam(teamId);
 
         Channel defaultChannel = new StandardChannel(this, "Default", defaultMeetingTime, teamId);
         register(defaultChannel);
@@ -71,7 +74,15 @@ public class TestDirector implements EntityDirector {
         if (!team.getTeamOwnerIds().contains(currentUser.getId()))
             throw new UnauthorizedUserOperationException("Only team owners can remove a team.");
 
-        users.forEach(u -> u.leaveTeam(team.getId()));
+        try {
+            enableUnsafeMethods();
+            for (var user : users) {
+                user.leaveTeam(team.getId());
+            }
+        } finally {
+            disableUnsafeMethods();
+        }
+
         channels.removeAll(team.getChannels());
         teams.remove(team);
     }
@@ -124,22 +135,52 @@ public class TestDirector implements EntityDirector {
 
     @Override
     public void updateMeetingDate(Channel sender, String meetingDate) throws UnauthorizedUserOperationException {
-//        if (sender instanceof PrivateChannel && ((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
-//            throw new UnauthorizedUserOperationException("Only channel participants can remove a participant.");
+        if (sender instanceof PrivateChannel
+                && ((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+            throw new UnauthorizedUserOperationException("Only channel participants can update meeting date.");
 
-
+        if (sender instanceof StandardChannel
+                && currentUser instanceof Instructor
+                && teams.stream().anyMatch(t -> t.getId().equals(sender.getTeamId())
+                                                && t.getTeamOwnerIds().contains(currentUser.getId())))
+            throw new UnauthorizedUserOperationException("Only instructor team owners can update meeting date.");
     }
 
 
     @Override
-    public void addMember(Team sender, User user) {
+    public void addMember(Team sender, User user) throws UnauthorizedUserOperationException {
+        if (currentUser.getParticipatedTeams().stream().noneMatch(t->t.getId().equals(sender.getId())))
+            throw new UnauthorizedUserOperationException("Only team members can add a member.");
 
+        if (!(currentUser instanceof Academician))
+            throw new UnauthorizedUserOperationException("Only academicians can add a member.");
+
+        enableUnsafeMethods();
+        user.leaveTeam(sender.getId());
+        disableUnsafeMethods();
     }
 
 
+    @Override
+    public void removeMember(Team sender, User user) throws UnauthorizedUserOperationException {
+        if (currentUser.getParticipatedTeams().stream().noneMatch(t->t.getId().equals(sender.getId())))
+            throw new UnauthorizedUserOperationException("Only team members can remove a member.");
+
+        if (!(currentUser instanceof Academician))
+            throw new UnauthorizedUserOperationException("Only team member academicians can remove a member.");
+
+        enableUnsafeMethods();
+        user.joinTeam(sender.getId());
+        disableUnsafeMethods();
+    }
 
     @Override
-    public void removeMember(Team sender, User user) {
+    public void addTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException {
+
+    }
+
+    @Override
+    public void removeTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException {
 
     }
 
@@ -151,6 +192,19 @@ public class TestDirector implements EntityDirector {
     @Override
     public List<Channel> findChannels(Predicate<Channel> predicate) {
         return channels.stream().filter(predicate).collect(Collectors.toList());
+    }
+
+    public void requestUnsafeMethodExecution() throws UnauthorizedUserOperationException {
+        if (!unsafeMethodsEnabled)
+            throw new UnauthorizedUserOperationException("Unsafe method execution is rejected.");
+    }
+
+    private void enableUnsafeMethods() {
+        unsafeMethodsEnabled = true;
+    }
+
+    private void disableUnsafeMethods() {
+        unsafeMethodsEnabled = false;
     }
 
     @Override
