@@ -105,28 +105,42 @@ public class TestDirector implements EntityDirector {
     }
 
     @Override
-    public void addParticipant(Channel sender, User user) {
+    public void addParticipant(Channel sender, User user) throws UnauthorizedUserOperationException {
+        if (!(sender instanceof PrivateChannel))
+            throw new UnsupportedOperationException("Only private channels have participants.");
+
+        if (((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+            throw new UnauthorizedUserOperationException("Only channel participants can add a participant.");
+    }
+
+    @Override
+    public void removeParticipant(Channel sender, User user) throws UnauthorizedUserOperationException {
+        if (!(sender instanceof PrivateChannel))
+            throw new UnsupportedOperationException("Only members in in private channels can be removed.");
+
+        if (((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+            throw new UnauthorizedUserOperationException("Only channel participants can remove a participant.");
+    }
+
+    @Override
+    public void updateMeetingDate(Channel sender, String meetingDate) throws UnauthorizedUserOperationException {
+//        if (sender instanceof PrivateChannel && ((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+//            throw new UnauthorizedUserOperationException("Only channel participants can remove a participant.");
+
 
     }
+
 
     @Override
     public void addMember(Team sender, User user) {
 
     }
 
-    @Override
-    public void removeParticipant(Channel sender, User user) {
 
-    }
 
     @Override
     public void removeMember(Team sender, User user) {
 
-    }
-
-    @Override
-    public boolean updateMeetingDate(Channel channel) {
-        return false;
     }
 
     @Override

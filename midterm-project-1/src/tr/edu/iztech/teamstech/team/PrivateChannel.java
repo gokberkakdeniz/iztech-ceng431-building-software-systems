@@ -19,11 +19,15 @@ public class PrivateChannel extends Channel {
     }
 
     public void removeParticipant(User user) throws UnauthorizedUserOperationException {
+        director.removeParticipant(this, user);
+
         participantIds.remove((Integer) user.getId());
         director.removeParticipant(this, user);
     }
 
     public void addParticipant(User user) throws UnauthorizedUserOperationException {
+        director.addParticipant(this, user);
+
         participantIds.add((Integer) user.getId());
         director.addParticipant(this, user);
     }

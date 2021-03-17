@@ -14,7 +14,8 @@ public interface EntityDirector {
     Team createTeam(User sender, String teamId, String name, String defaultMeetingTime) throws UnauthorizedUserOperationException;
     Channel createChannel(Team sender, String name, String meetingTime) throws UnauthorizedUserOperationException;
 
-    void addParticipant(Channel sender, User user);
+    void addParticipant(Channel sender, User user) throws UnauthorizedUserOperationException;
+
     void addMember(Team sender, User user);
 
     void removeTeam(Team team) throws UnauthorizedUserOperationException;
@@ -25,7 +26,7 @@ public interface EntityDirector {
     List<Team> findTeams(Predicate<Team> predicate);
     List<Channel> findChannels(Predicate<Channel> predicate);
 
-    boolean updateMeetingDate(Channel channel);
+    void updateMeetingDate(Channel sender, String meetingDate) throws UnauthorizedUserOperationException;
 
     boolean login(String email, String password);
     User getCurrentUser();

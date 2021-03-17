@@ -29,8 +29,8 @@ public abstract class Channel extends Entity {
         return meetingTime;
     }
 
-    public void setMeetingTime(String meetingTime) {
-        director.updateMeetingDate(this);
+    public void setMeetingTime(String meetingTime) throws UnauthorizedUserOperationException {
+        director.updateMeetingDate(this, meetingTime);
         this.meetingTime = meetingTime;
     }
 
