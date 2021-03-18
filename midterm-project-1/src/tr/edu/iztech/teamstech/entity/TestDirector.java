@@ -61,7 +61,10 @@ public class TestDirector implements EntityDirector {
         register(team);
 
         team.addTeamOwner(currentUser.getId());
+
+        enableUnsafeMethods();
         currentUser.joinTeam(teamId);
+        disableUnsafeMethods();
 
         Channel defaultChannel = new StandardChannel(this, "Default", defaultMeetingTime, teamId);
         register(defaultChannel);
