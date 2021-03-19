@@ -1,6 +1,7 @@
 package tr.edu.iztech.teamstech.view;
 
 import tr.edu.iztech.teamstech.entity.EntityDirector;
+import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.io.KeyboardReader;
 
 public class MainView extends View {
@@ -9,7 +10,7 @@ public class MainView extends View {
         this.keyboardReader = new KeyboardReader();
     }
 
-    public boolean show() {
+    public boolean show() throws UnauthorizedUserOperationException {
         AuthorizationView auth = new AuthorizationView(director);
         auth.bindKeyboardReader(keyboardReader);
         TeamView team = new TeamView(director);

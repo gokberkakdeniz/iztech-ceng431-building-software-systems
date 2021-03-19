@@ -16,7 +16,7 @@ public class AuthorizationView extends View{
                 System.out.println("Wrong email or password! please try again!\n");
                 continue;
             }
-            System.out.printf("Welcome %s!\n", email);
+            System.out.printf("Welcome %s!\n\n", email);
             return true;
         }
     }
