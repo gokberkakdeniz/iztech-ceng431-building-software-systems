@@ -41,10 +41,6 @@ public class Team extends Entity {
         return director.findChannels(channel -> channel.getTeamId().equals(getId()));
     }
 
-    public List<Integer> getTeamOwnerIds() {
-        return new ArrayList<>(teamOwnerIds);
-    }
-
     public List<User> getTeamOwners() {
         return new ArrayList<>(director.findUsers(u -> teamOwnerIds.contains(u.getId())));
     }
@@ -88,7 +84,7 @@ public class Team extends Entity {
         return new TeamStatistics(studentCount, instructorCount, teachingAssistantCount);
     }
 
-    private static class TeamStatistics {
+    public static class TeamStatistics {
         public final long studentCount;
         public final long instructorCount;
         public final long teachingAssistantCount;

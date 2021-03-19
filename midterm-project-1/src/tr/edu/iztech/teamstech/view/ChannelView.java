@@ -19,10 +19,10 @@ public class ChannelView extends View {
     }
 
     @Override
-    public boolean show() throws UnauthorizedUserOperationException {
+    public boolean show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
-                    "Add a meeting channel", "Remove a meeting channel", "Add a participant", "Remove a participant", "Update Meeting Day and Time"
+                    "Add a meeting channel", "Remove a meeting channel", "Monitor a meeting channel", "Add a participant", "Remove a participant", "Update Meeting Day and Time"
             });
             options.printOptions();
             int choice = keyboardReader.promptInteger("Please enter a number between 1-5", options.getPredicate());
@@ -39,14 +39,18 @@ public class ChannelView extends View {
                             return true;
                         break;
                     case 3:
-                        if (addParticipant())
+                        if (monitorChannel())
                             return true;
                         break;
                     case 4:
-                        if (removeParticipant())
+                        if (addParticipant())
                             return true;
                         break;
                     case 5:
+                        if (removeParticipant())
+                            return true;
+                        break;
+                    case 6:
                         if (updateMeetingDate())
                             return true;
                         break;
@@ -99,15 +103,34 @@ public class ChannelView extends View {
         return true;
     }
 
-
     private boolean removeChannel() throws UnauthorizedUserOperationException {
         User user = director.getCurrentUser();
         List<Team> participatedTeams = user.getParticipatedTeams();
 
         Channel channel = selectChannel(t -> true);
         if(channel == null) return false;
+
         channel.remove();
         System.out.println("Channel is removed successfully.\n");
+        return true;
+    }
+
+    private boolean monitorChannel() {
+        User user = director.getCurrentUser();
+        List<Team> participatedTeams = user.getParticipatedTeams();
+
+        PrivateChannel channel = (PrivateChannel) selectChannel(t -> t instanceof PrivateChannel);
+        if (channel == null) return false;
+
+        System.out.printf("Name: %s\nMeeting Time: %s\n", channel.getName(), channel.getMeetingTime());
+        List<User> participants = channel.getParticipants();
+
+        System.out.println("Participants:");
+        int i = 0;
+        for(User member: participants) {
+            System.out.printf("%d: %s, %s\n", i, member.getUsername(), member.getClass().getSimpleName());
+            i++;
+        }
         return true;
     }
 

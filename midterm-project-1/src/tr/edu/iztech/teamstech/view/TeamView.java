@@ -15,13 +15,13 @@ public class TeamView extends View {
     }
 
     @Override
-    public boolean show() throws UnauthorizedUserOperationException {
+    public boolean show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
-                    "Add a team", "Remove a team", "Update a team"
+                    "Add a team", "Remove a team", "Update a team", "Print Statistics for team"
             });
             options.printOptions();
-            int choice = keyboardReader.promptInteger("Please enter a number between 0-3", options.getPredicate());
+            int choice = keyboardReader.promptInteger("Please enter a number between 0-4", options.getPredicate());
             try {
                 switch (choice) {
                     case 0:
@@ -38,9 +38,13 @@ public class TeamView extends View {
                         if (update())
                             return true;
                         break;
+                    case 4:
+                        if (printStatistics())
+                            return true;
+                        break;
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -73,7 +77,7 @@ public class TeamView extends View {
                     "Meeting Channel", "Member",
             });
             options.printOptions();
-            int choice = keyboardReader.promptInteger("Please enter a number between 1-2", options.getPredicate());
+            int choice = keyboardReader.promptInteger("Please enter a number between 0-2", options.getPredicate());
             switch (choice) {
                 case 0:
                     return false;
@@ -91,5 +95,20 @@ public class TeamView extends View {
                     break;
             }
         }
+    }
+
+    private boolean printStatistics() {
+        User user = director.getCurrentUser();
+        List<Team> participatedTeams = user.getParticipatedTeams();
+
+        Team selectedTeam = ViewHelper.selectTeam(keyboardReader, participatedTeams);
+        if (selectedTeam == null) return false;
+
+        var stat = selectedTeam.getStatistics();
+
+        System.out.printf("Student Count: %d\n", stat.studentCount);
+        System.out.printf("Instructor Count: %d\n", stat.instructorCount);
+        System.out.printf("Teaching Assistant Count: %d\n\n", stat.teachingAssistantCount);
+        return true;
     }
 }
