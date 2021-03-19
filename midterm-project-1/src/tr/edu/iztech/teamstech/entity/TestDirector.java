@@ -113,7 +113,7 @@ public class TestDirector implements EntityDirector {
         if (!(sender instanceof PrivateChannel))
             throw new UnauthorizedUserOperationException("Only private channels can be removed.");
 
-        if (!((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+        if (!((PrivateChannel) sender).getParticipants().contains(currentUser))
             throw new UnauthorizedUserOperationException("Only private channel participants can remove the channel.");
 
         channels.remove(sender);
@@ -124,7 +124,7 @@ public class TestDirector implements EntityDirector {
         if (!(sender instanceof PrivateChannel))
             throw new UnsupportedOperationException("Only private channels have participants.");
 
-        if (((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+        if (((PrivateChannel) sender).getParticipants().contains(currentUser))
             throw new UnauthorizedUserOperationException("Only channel participants can add a participant.");
     }
 
@@ -133,14 +133,14 @@ public class TestDirector implements EntityDirector {
         if (!(sender instanceof PrivateChannel))
             throw new UnsupportedOperationException("Only members in in private channels can be removed.");
 
-        if (((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+        if (((PrivateChannel) sender).getParticipants().contains(currentUser))
             throw new UnauthorizedUserOperationException("Only channel participants can remove a participant.");
     }
 
     @Override
     public void updateMeetingDate(Channel sender, String meetingDate) throws UnauthorizedUserOperationException {
         if (sender instanceof PrivateChannel
-                && ((PrivateChannel) sender).getParticipantIds().contains(currentUser.getId()))
+                && ((PrivateChannel) sender).getParticipants().contains(currentUser))
             throw new UnauthorizedUserOperationException("Only channel participants can update meeting date.");
 
         if (sender instanceof StandardChannel

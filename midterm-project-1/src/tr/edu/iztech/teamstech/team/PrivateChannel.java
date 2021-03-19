@@ -18,6 +18,10 @@ public class PrivateChannel extends Channel {
         return new ArrayList<>(participantIds);
     }
 
+    public List<User> getParticipants() {
+        return director.findUsers(t->participantIds.contains(t.getId()));
+    }
+
     public void removeParticipant(User user) throws UnauthorizedUserOperationException {
         director.removeParticipant(this, user);
 

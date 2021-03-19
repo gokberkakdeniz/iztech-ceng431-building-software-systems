@@ -127,7 +127,7 @@ public class ChannelView extends View {
         PrivateChannel channel = (PrivateChannel) selectChannel(t -> t instanceof PrivateChannel);
         if(channel == null) return false;
 
-        User user = ViewHelper.selectUser(t -> channel.getParticipantIds().contains(t.getId()), keyboardReader, director);
+        User user = ViewHelper.selectUser(t -> channel.getParticipants().contains(t), keyboardReader, director);
         if(user == null) return false;
 
         channel.removeParticipant(user);
