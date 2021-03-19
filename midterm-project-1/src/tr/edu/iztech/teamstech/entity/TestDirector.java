@@ -150,7 +150,6 @@ public class TestDirector implements EntityDirector {
             throw new UnauthorizedUserOperationException("Only instructor team owners can update meeting date.");
     }
 
-
     @Override
     public void addMember(Team sender, User user) throws UnauthorizedUserOperationException {
         if (currentUser.getParticipatedTeams().stream().noneMatch(t->t.getId().equals(sender.getId())))
