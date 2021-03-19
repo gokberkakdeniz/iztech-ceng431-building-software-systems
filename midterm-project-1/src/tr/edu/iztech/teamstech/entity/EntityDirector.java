@@ -15,8 +15,8 @@ public interface EntityDirector {
     Channel createChannel(Team sender, String name, String meetingTime) throws UnauthorizedUserOperationException;
 
     void addMember(Team sender, User user) throws UnauthorizedUserOperationException;
-    void addParticipant(Channel sender, User user) throws UnauthorizedUserOperationException;
     void addTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException;
+    void addParticipant(Channel sender, User user) throws UnauthorizedUserOperationException;
 
     void removeTeam(Team team) throws UnauthorizedUserOperationException;
     void removeChannel(Channel team) throws UnauthorizedUserOperationException;
@@ -24,7 +24,12 @@ public interface EntityDirector {
     void removeMember( Team sender, User user) throws UnauthorizedUserOperationException;
 
     List<Team> findTeams(Predicate<Team> predicate);
+
     List<Channel> findChannels(Predicate<Channel> predicate);
+    List<Channel> findChannels();
+
+    List<User> findUsers(Predicate<User> predicate);
+    List<User> findUsers();
 
     void updateMeetingDate(Channel sender, String meetingDate) throws UnauthorizedUserOperationException;
 
@@ -32,4 +37,5 @@ public interface EntityDirector {
     User getCurrentUser();
 
     void requestUnsafeMethodExecution() throws UnauthorizedUserOperationException;
+
 }

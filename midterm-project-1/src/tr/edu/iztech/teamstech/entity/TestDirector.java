@@ -10,6 +10,7 @@ import tr.edu.iztech.teamstech.user.Academician;
 import tr.edu.iztech.teamstech.user.Instructor;
 import tr.edu.iztech.teamstech.user.User;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -211,6 +212,22 @@ public class TestDirector implements EntityDirector {
     private void disableUnsafeMethods() {
         unsafeMethodsEnabled = false;
     }
+
+    @Override
+    public List<Channel> findChannels() {
+        return new ArrayList<>(channels);
+    }
+
+    @Override
+    public List<User> findUsers(Predicate<User> predicate) {
+        return users.stream().filter(predicate).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<User> findUsers() {
+        return new ArrayList<>(users);
+    }
+
 
     @Override
     public boolean login(String email, String password) {
