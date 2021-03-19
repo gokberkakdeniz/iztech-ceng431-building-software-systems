@@ -196,6 +196,11 @@ public class TestDirector implements EntityDirector {
     }
 
     @Override
+    public List<Team> findTeams() {
+        return new ArrayList<>(teams);
+    }
+
+    @Override
     public List<Channel> findChannels(Predicate<Channel> predicate) {
         return channels.stream().filter(predicate).collect(Collectors.toList());
     }
@@ -227,7 +232,6 @@ public class TestDirector implements EntityDirector {
     public List<User> findUsers() {
         return new ArrayList<>(users);
     }
-
 
     @Override
     public boolean login(String email, String password) {

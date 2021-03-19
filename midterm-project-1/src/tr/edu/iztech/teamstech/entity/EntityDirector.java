@@ -24,6 +24,7 @@ public interface EntityDirector {
     void removeMember( Team sender, User user) throws UnauthorizedUserOperationException;
 
     List<Team> findTeams(Predicate<Team> predicate);
+    List<Team> findTeams();
 
     List<Channel> findChannels(Predicate<Channel> predicate);
     List<Channel> findChannels();

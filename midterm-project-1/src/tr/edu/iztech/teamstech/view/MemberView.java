@@ -18,7 +18,7 @@ public class MemberView extends View {
     public boolean show() throws UnauthorizedUserOperationException {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
-                    "Add a member", "Remove a member", "Update a member", "Find a member"
+                    "Add a member", "Remove a member", "Update a member as a Team Owner"
             });
             options.printOptions();
             int choice = keyboardReader.promptInteger("Please enter a number between 1-3", options.getPredicate());
@@ -35,10 +35,6 @@ public class MemberView extends View {
                     break;
                 case 3:
                     if (updateMember())
-                        return true;
-                    break;
-                case 4:
-                    if (findMember())
                         return true;
                     break;
             }
@@ -77,15 +73,29 @@ public class MemberView extends View {
         return true;
     }
 
-    private boolean updateMember() {
-        System.out.println("List of members:\n");
-        int choice = keyboardReader.promptInteger("Enter a number to delete member");
-        String userName = keyboardReader.promptString("Enter new username");
+    private boolean updateMember() throws UnauthorizedUserOperationException {
+        User user = director.getCurrentUser();
+        List<Team> participatedTeams = user.getParticipatedTeams();
+
+        Team team = ViewHelper.selectTeam(keyboardReader, participatedTeams);
+        if (team == null) return false;
+
+        List<User> teamMembers = team.getMembers();
+        System.out.println("[#] List of members:");
+        int i = 1;
+        for(User member: teamMembers) {
+            System.out.printf("[%d] %s, %s\n", i, member.getUsername(), member.getClass().getSimpleName());
+            i++;
+        }
+
+        int choice = keyboardReader.promptInteger("Enter a number to promote member as a Team Owner, 0 to quit");
+        if(choice == 0) return false;
+
+        User selectedUser = teamMembers.get(choice-1);
+        director.addTeamOwner(team, selectedUser);
+
+        System.out.printf("%s is now a Team Owner of %s.\n", selectedUser.getUsername(), team.getName());
         return true;
     }
 
-    private boolean findMember() {
-        int choice = keyboardReader.promptInteger("Enter a number to find member");
-        return true;
-    }
 }
