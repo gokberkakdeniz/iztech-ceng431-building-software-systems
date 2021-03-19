@@ -14,10 +14,6 @@ public class PrivateChannel extends Channel {
         this.participantIds = new HashSet<>(Arrays.asList(participantIds));
     }
 
-    public List<Integer> getParticipantIds() {
-        return new ArrayList<>(participantIds);
-    }
-
     public List<User> getParticipants() {
         return director.findUsers(t->participantIds.contains(t.getId()));
     }

@@ -75,7 +75,7 @@ public class TestDirector implements EntityDirector {
 
     @Override
     public void removeTeam(Team team) throws UnauthorizedUserOperationException {
-        if (!team.getTeamOwnerIds().contains(currentUser.getId()))
+        if (team.getTeamOwners().stream().noneMatch(u->currentUser.getId() == u.getId()))
             throw new UnauthorizedUserOperationException("Only team owners can remove a team.");
 
         try {
@@ -146,7 +146,7 @@ public class TestDirector implements EntityDirector {
         if (sender instanceof StandardChannel
                 && currentUser instanceof Instructor
                 && teams.stream().anyMatch(t -> t.getId().equals(sender.getTeamId())
-                                                && t.getTeamOwnerIds().contains(currentUser.getId())))
+                                                && t.getTeamOwners().stream().anyMatch(u -> currentUser.getId() == u.getId())))
             throw new UnauthorizedUserOperationException("Only instructor team owners can update meeting date.");
     }
 
@@ -179,7 +179,7 @@ public class TestDirector implements EntityDirector {
 
     @Override
     public void addTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException {
-        if (!sender.getTeamOwnerIds().contains(currentUser.getId()))
+        if (sender.getTeamOwners().stream().noneMatch(u -> currentUser.getId() == u.getId()))
             throw new UnauthorizedUserOperationException("Only team owners can add a team owner.");
 
         if (!user.getParticipatedTeams().contains(sender))
