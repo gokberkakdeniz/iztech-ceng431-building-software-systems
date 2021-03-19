@@ -60,4 +60,7 @@ public abstract class User extends Entity {
     {
         return director.findTeams(team -> teamIds.contains(team.getId()));
     }
+
+    public List<String> getParticipatedTeamIds() { return teamIds; }
+
 }

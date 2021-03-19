@@ -34,13 +34,13 @@ public class Team extends Entity {
         director.removeTeam(this);
     }
 
-    public List<Channel> getChannels() {
-        return director.findChannels(channel -> channel.getTeamId().equals(getId()));
-    }
+    public List<Channel> getChannels() { return director.findChannels(channel -> channel.getTeamId().equals(getId()));}
 
     public List<Integer> getTeamOwnerIds() {
         return new ArrayList<>(teamOwnerIds);
     }
+
+    public List<User> getMembers() { return director.findUsers(t->t.getParticipatedTeamIds().contains(id)); }
 
     public void addMember(User user) throws UnauthorizedUserOperationException {
         director.addMember(this, user);
