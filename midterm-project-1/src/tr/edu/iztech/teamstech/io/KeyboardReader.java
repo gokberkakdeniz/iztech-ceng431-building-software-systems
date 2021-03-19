@@ -5,6 +5,8 @@ import java.util.function.Predicate;
 
 /**
  * Scanner(System.In) wrapper class with validation support
+ *
+ * NOTE: It's my (Gökberk) code written for CENG-211 in 2019.
  */
 public class KeyboardReader {
     private final Scanner scanner;

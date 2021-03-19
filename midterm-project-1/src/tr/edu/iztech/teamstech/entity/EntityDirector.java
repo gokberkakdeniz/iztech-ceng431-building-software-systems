@@ -22,7 +22,6 @@ public interface EntityDirector {
     void removeChannel(Channel team) throws UnauthorizedUserOperationException;
     void removeParticipant(Channel sender, User user) throws UnauthorizedUserOperationException;
     void removeMember( Team sender, User user) throws UnauthorizedUserOperationException;
-    void removeTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException;
 
     List<Team> findTeams(Predicate<Team> predicate);
     List<Channel> findChannels(Predicate<Channel> predicate);

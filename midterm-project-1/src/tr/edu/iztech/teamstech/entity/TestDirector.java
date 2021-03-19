@@ -60,7 +60,7 @@ public class TestDirector implements EntityDirector {
         Team team = new Team(this, teamId, name);
         register(team);
 
-        team.addTeamOwner(currentUser.getId());
+        team.addTeamOwner(currentUser);
 
         enableUnsafeMethods();
         currentUser.joinTeam(teamId);
@@ -159,7 +159,7 @@ public class TestDirector implements EntityDirector {
             throw new UnauthorizedUserOperationException("Only academicians can add a member.");
 
         enableUnsafeMethods();
-        user.leaveTeam(sender.getId());
+        user.joinTeam(sender.getId());
         disableUnsafeMethods();
     }
 
@@ -173,18 +173,20 @@ public class TestDirector implements EntityDirector {
             throw new UnauthorizedUserOperationException("Only team member academicians can remove a member.");
 
         enableUnsafeMethods();
-        user.joinTeam(sender.getId());
+        user.leaveTeam(sender.getId());
         disableUnsafeMethods();
     }
 
     @Override
     public void addTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException {
+        if (!sender.getTeamOwnerIds().contains(currentUser.getId()))
+            throw new UnauthorizedUserOperationException("Only team owners can add a team owner.");
 
-    }
+        if (!user.getParticipatedTeams().contains(sender))
+            throw new IllegalStateException("Only team members can be team owner.");
 
-    @Override
-    public void removeTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException {
-
+        if (!(user instanceof Instructor))
+            throw new IllegalArgumentException("Only teaching assistants can be added as team owner.");
     }
 
     @Override

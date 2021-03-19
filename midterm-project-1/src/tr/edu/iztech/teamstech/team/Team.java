@@ -50,12 +50,9 @@ public class Team extends Entity {
         director.removeMember(this, user);
     }
 
-    public void addTeamOwner(int userId) {
-        teamOwnerIds.add(userId);
-    }
-
-    public void removeTeamOwner(int userId) {
-        teamOwnerIds.remove(userId);
+    public void addTeamOwner(User user) throws UnauthorizedUserOperationException {
+        director.addTeamOwner(this, user);
+        teamOwnerIds.add(user.getId());
     }
 
     public Channel createChannel(String name, String meetingTime) throws UnauthorizedUserOperationException {
