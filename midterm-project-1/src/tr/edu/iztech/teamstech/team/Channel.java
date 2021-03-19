@@ -21,8 +21,8 @@ public abstract class Channel extends Entity {
         this.teamId = teamId;
     }
 
-    public String getTeamId() {
-        return teamId;
+    public Team getTeam() {
+        return director.findTeams(t -> t.getId().equals(teamId)).get(0);
     }
 
     public String getName() {

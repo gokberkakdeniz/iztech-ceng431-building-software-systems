@@ -38,7 +38,7 @@ public class Team extends Entity {
     }
 
     public List<Channel> getChannels() {
-        return director.findChannels(channel -> channel.getTeamId().equals(getId()));
+        return director.findChannels(channel -> channel.getTeam() == this);
     }
 
     public List<User> getTeamOwners() {
