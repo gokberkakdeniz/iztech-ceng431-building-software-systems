@@ -47,13 +47,17 @@ public class MemberView extends View {
         Team team = ViewHelper.selectTeam(keyboardReader, participatedTeams);
         if (team == null) return false;
 
-        User selectedUser = ViewHelper.selectUser(t -> true, keyboardReader, director);
+        User selectedUser = ViewHelper.selectUser(u -> true, keyboardReader, director);
         if (selectedUser == null) return false;
 
-        team.addMember(selectedUser);
-
-        System.out.println("User is added to the Team successfully.\n");
-        return true;
+        boolean result = team.addMember(selectedUser);
+        if (result) {
+            System.out.println("User is added to the Team successfully.\n");
+            return true;
+        } else {
+            System.out.println("User could not added to the Team.\n");
+            return false;
+        }
     }
 
     private boolean removeMember() throws UnauthorizedUserOperationException {
@@ -63,13 +67,17 @@ public class MemberView extends View {
         Team team = ViewHelper.selectTeam(keyboardReader, participatedTeams);
         if (team == null) return false;
 
-        User selectedUser = ViewHelper.selectUser(t -> team.getMembers().contains(t), keyboardReader, director);
+        User selectedUser = ViewHelper.selectUser(u -> team.getMembers().contains(u), keyboardReader, director);
         if (selectedUser == null) return false;
 
-        team.removeMember(selectedUser);
-
-        System.out.println("User is removed from the Team successfully.\n");
-        return true;
+        boolean result = team.removeMember(selectedUser);
+        if (result) {
+            System.out.println("User is removed from the Team successfully.\n");
+            return true;
+        } else {
+            System.out.println("User is could not removed from the Team.\n");
+            return false;
+        }
     }
 
     private boolean updateMember() throws UnauthorizedUserOperationException {
@@ -91,10 +99,14 @@ public class MemberView extends View {
         if (choice == 0) return false;
 
         User selectedUser = teamMembers.get(choice - 1);
-        director.addTeamOwner(team, selectedUser);
-
-        System.out.printf("%s is now a Team Owner of %s.\n", selectedUser.getUsername(), team.getName());
-        return true;
+        boolean result = team.addTeamOwner(selectedUser);
+        if (result) {
+            System.out.printf("%s is now a Team Owner of %s.\n", selectedUser.getUsername(), team.getName());
+            return true;
+        } else {
+            System.out.println("Team Owner could not added.\n");
+            return false;
+        }
     }
 
 }

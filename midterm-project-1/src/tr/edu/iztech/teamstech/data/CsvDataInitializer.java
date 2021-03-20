@@ -106,8 +106,8 @@ public class CsvDataInitializer extends DataInitializer {
                     .takeWhile(id -> !id.equals(""))
                     .toArray(String[]::new);
 
-            // System.out.printf("%d, %s, %s, %s, %s, ", userId, username, userType, email, password);
-            // System.out.println(Arrays.toString(teamIds));
+             System.out.printf("%d, %s, %s, %s, %s, ", userId, username, userType, email, password);
+             System.out.println(Arrays.toString(teamIds));
 
             User user;
             switch (userType) {

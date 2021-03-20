@@ -54,8 +54,9 @@ public class TeamView extends View {
         String teamId = keyboardReader.promptString("Enter a Team Id");
         String defaultMeetingDayAndTime = keyboardReader.promptString("Enter a Default Meeting Day and Time");
         User user = director.getCurrentUser();
+
         user.createTeam(teamId, teamName, defaultMeetingDayAndTime);
-        System.out.printf("%s team is added.\n\n", teamName);
+        System.out.printf("%s is added.\n\n", teamName);
         return true;
     }
 

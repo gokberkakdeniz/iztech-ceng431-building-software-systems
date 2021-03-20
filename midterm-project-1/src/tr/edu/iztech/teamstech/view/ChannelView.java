@@ -1,5 +1,6 @@
 package tr.edu.iztech.teamstech.view;
 
+import jdk.nio.Channels;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.io.KeyboardReader;
@@ -104,10 +105,7 @@ public class ChannelView extends View {
     }
 
     private boolean removeChannel() throws UnauthorizedUserOperationException {
-        User user = director.getCurrentUser();
-        List<Team> participatedTeams = user.getParticipatedTeams();
-
-        Channel channel = selectChannel(t -> true);
+        Channel channel = selectChannel(c -> true);
         if (channel == null) return false;
 
         channel.remove();
@@ -116,10 +114,7 @@ public class ChannelView extends View {
     }
 
     private boolean monitorChannel() {
-        User user = director.getCurrentUser();
-        List<Team> participatedTeams = user.getParticipatedTeams();
-
-        PrivateChannel channel = (PrivateChannel) selectChannel(t -> t instanceof PrivateChannel);
+        PrivateChannel channel = (PrivateChannel) selectChannel(getPrivateChannelsOfUsersPredicate());
         if (channel == null) return false;
 
         System.out.printf("Name: %s\nMeeting Time: %s\n", channel.getName(), channel.getMeetingTime());
@@ -135,31 +130,41 @@ public class ChannelView extends View {
     }
 
     private boolean addParticipant() throws UnauthorizedUserOperationException {
-        PrivateChannel channel = (PrivateChannel) selectChannel(t -> t instanceof PrivateChannel);
+        PrivateChannel channel = (PrivateChannel) selectChannel(getPrivateChannelsOfUsersPredicate());
         if (channel == null) return false;
 
-        User user = ViewHelper.selectUser(t -> true, keyboardReader, director);
+        User user = ViewHelper.selectUser(u -> true, keyboardReader, director);
         if (user == null) return false;
 
-        channel.addParticipant(user);
-        System.out.println("Participant added successfully.\n");
-        return true;
+        boolean result = channel.addParticipant(user);
+        if (result) {
+            System.out.println("Participant added successfully.\n");
+            return true;
+        } else {
+            System.out.println("Participant could not added.\n");
+            return false;
+        }
     }
 
     private boolean removeParticipant() throws UnauthorizedUserOperationException {
-        PrivateChannel channel = (PrivateChannel) selectChannel(t -> t instanceof PrivateChannel);
+        PrivateChannel channel = (PrivateChannel) selectChannel(getPrivateChannelsOfUsersPredicate());
         if (channel == null) return false;
 
-        User user = ViewHelper.selectUser(t -> channel.getParticipants().contains(t), keyboardReader, director);
+        User user = ViewHelper.selectUser(u -> channel.getParticipants().contains(u), keyboardReader, director);
         if (user == null) return false;
 
-        channel.removeParticipant(user);
-        System.out.println("Participant removed successfully.\n");
-        return true;
+        boolean result = channel.removeParticipant(user);
+        if (result) {
+            System.out.println("Participant removed successfully.\n");
+            return true;
+        } else {
+            System.out.println("Participant could not removed.\n");
+            return false;
+        }
     }
 
     private boolean updateMeetingDate() throws UnauthorizedUserOperationException {
-        Channel channel = selectChannel(t -> true);
+        Channel channel = selectChannel(c -> true);
         if (channel == null) return false;
 
         String newDayAndTime = keyboardReader.promptString("Enter new Day and Time");
@@ -167,5 +172,15 @@ public class ChannelView extends View {
 
         System.out.println("Channel Updated successfully.\n");
         return true;
+    }
+
+    private Predicate<Channel> getPrivateChannelsOfUsersPredicate () {
+        User user = director.getCurrentUser();
+        return new Predicate<Channel>() {
+            @Override
+            public boolean test(Channel c) {
+                return c instanceof PrivateChannel && ((PrivateChannel) c).getParticipants().contains(user);
+            }
+        };
     }
 }
