@@ -15,6 +15,7 @@ public abstract class Channel extends Entity {
 
     public Channel(EntityDirector director, String name, String meetingTime, String teamId) {
         super(director);
+        checkMeetingTimeFormat(meetingTime);
 
         this.name = name;
         this.meetingTime = meetingTime;
@@ -35,16 +36,19 @@ public abstract class Channel extends Entity {
 
     public void setMeetingTime(String meetingTime) throws UnauthorizedUserOperationException {
         director.updateMeetingDate(this, meetingTime);
-
-        try {
-            dateFormat.parse(meetingTime);
-            this.meetingTime = meetingTime;
-        } catch (ParseException e) {
-            throw new IllegalArgumentException("The argument 'meetingTime' must be like 'Monday 09:45 AM'.");
-        }
+        checkMeetingTimeFormat(meetingTime);
+        this.meetingTime = meetingTime;
     }
 
     public void remove() throws UnauthorizedUserOperationException {
         director.removeChannel(this);
+    }
+
+    private void checkMeetingTimeFormat(String string) {
+        try {
+            dateFormat.parse(meetingTime);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("The argument 'meetingTime' must be like 'Monday 09:45 AM'.");
+        }
     }
 }
