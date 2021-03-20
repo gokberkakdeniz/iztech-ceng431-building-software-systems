@@ -45,4 +45,6 @@ public interface EntityDirector {
 
     void requestUnsafeMethodExecution() throws UnauthorizedUserOperationException;
 
+    void save() throws Exception;
+
 }

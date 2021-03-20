@@ -10,7 +10,7 @@ public class MainView extends View {
         this.keyboardReader = new KeyboardReader();
     }
 
-    public boolean show() throws UnauthorizedUserOperationException {
+    public boolean show() throws Exception {
         AuthorizationView auth = new AuthorizationView(director);
         auth.bindKeyboardReader(keyboardReader);
         TeamView team = new TeamView(director);

@@ -300,7 +300,7 @@ public class TeamDirector implements EntityDirector {
         return channel instanceof StandardChannel;
     }
 
-    private void save() throws Exception {
+    public void save() throws Exception {
         dataSaver.save(this);
     }
 }

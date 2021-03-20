@@ -15,8 +15,9 @@ public class TeamView extends View {
     }
 
     @Override
-    public boolean show() {
+    public boolean show() throws Exception {
         while (true) {
+            director.save();
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
                     "Add a team", "Remove a team", "Update a team", "Print Statistics for team"
             });

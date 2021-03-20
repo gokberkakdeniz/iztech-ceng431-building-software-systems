@@ -175,11 +175,6 @@ public class ChannelView extends View {
 
     private Predicate<Channel> getPrivateChannelsOfUsersPredicate() {
         User user = director.getCurrentUser();
-        return new Predicate<Channel>() {
-            @Override
-            public boolean test(Channel c) {
-                return c instanceof PrivateChannel && ((PrivateChannel) c).getParticipants().contains(user);
-            }
-        };
+        return c -> c instanceof PrivateChannel && ((PrivateChannel) c).getParticipants().contains(user);
     }
 }

@@ -1,7 +1,6 @@
 package tr.edu.iztech.teamstech.view;
 
 import tr.edu.iztech.teamstech.entity.EntityDirector;
-import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.io.KeyboardReader;
 
 public abstract class View {
@@ -16,6 +15,6 @@ public abstract class View {
         this.keyboardReader = keyboardReader;
     }
 
-    public abstract boolean show() throws UnauthorizedUserOperationException;
+    public abstract boolean show() throws Exception;
 
 }
