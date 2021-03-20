@@ -45,6 +45,8 @@ public abstract class Channel extends Entity {
     }
 
     private void checkMeetingTimeFormat(String meetingTime) {
+        if (meetingTime.equals("")) return;
+
         try {
             dateFormat.parse(meetingTime);
         } catch (ParseException e) {
