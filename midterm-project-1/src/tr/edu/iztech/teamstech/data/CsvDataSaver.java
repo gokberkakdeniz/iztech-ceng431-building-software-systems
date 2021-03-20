@@ -17,7 +17,7 @@ public class CsvDataSaver extends DataSaver {
     }
 
     private void saveTeamList(EntityDirector director) throws IOException {
-        FileWriter writer = new FileWriter(new File("./teamList_test.csv"));
+        FileWriter writer = new FileWriter(new File("./teamList.csv"));
 
         List<Team> teamList = director.findTeams(v -> true);
         writer.write("Team Name,Team ID,Default Channel,Default Meeting Day and Time,Meeting Channel,Meeting Day and Time,Participant ID,Team Owner ID\n");
@@ -31,7 +31,7 @@ public class CsvDataSaver extends DataSaver {
     }
 
     private void saveUserList(EntityDirector director) throws IOException {
-        FileWriter writer = new FileWriter(new File("./userList_test.csv"));
+        FileWriter writer = new FileWriter(new File("./userList.csv"));
 
         List<User> userList = director.findUsers(v -> true);
         writer.write("User Type,User Name,User ID,Email,Password,Team ID,\n");

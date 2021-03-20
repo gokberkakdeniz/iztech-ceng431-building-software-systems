@@ -1,6 +1,7 @@
 package tr.edu.iztech.teamstech.entity;
 
 import tr.edu.iztech.teamstech.data.DataInitializer;
+import tr.edu.iztech.teamstech.data.DataSaver;
 import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.team.Channel;
 import tr.edu.iztech.teamstech.team.PrivateChannel;
@@ -22,6 +23,7 @@ public class TeamDirector implements EntityDirector {
     private final List<Channel> channels;
     private User currentUser;
     private boolean unsafeMethodsEnabled;
+    private DataSaver dataSaver;
 
     public TeamDirector() {
         this.teams = new LinkedList<>();
@@ -30,8 +32,9 @@ public class TeamDirector implements EntityDirector {
         this.unsafeMethodsEnabled = false;
     }
 
-    public TeamDirector(DataInitializer dataInitializer) throws Exception {
+    public TeamDirector(DataInitializer dataInitializer, DataSaver dataSaver) throws Exception {
         this();
+        this.dataSaver = dataSaver;
 
         try {
             enableUnsafeMethods();
@@ -279,5 +282,9 @@ public class TeamDirector implements EntityDirector {
 
     private boolean isStandardChannel(Channel channel) {
         return channel instanceof StandardChannel;
+    }
+
+    private void save() throws Exception {
+        dataSaver.save(this);
     }
 }

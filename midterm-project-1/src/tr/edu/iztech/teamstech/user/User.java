@@ -65,7 +65,7 @@ public abstract class User extends Entity {
     public String toString() {
         return String.format(
                 "%s,%s,%d,%s,%s,%s",
-                this.getClass().getSimpleName(),
+                this.getClass().getSimpleName().replaceAll("(.)([A-Z])", "$1 $2"),
                 username,
                 id,
                 email,

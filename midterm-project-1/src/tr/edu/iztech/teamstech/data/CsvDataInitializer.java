@@ -19,12 +19,18 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CsvDataInitializer extends DataInitializer {
-    private static final List<Integer> randomIds = IntStream.range(1, 1001).boxed().collect(Collectors.toList());
+    private static final List<Integer> randomIds = IntStream.rangeClosed(1, 1000)
+            .filter(i -> i != 98 && i != 45).boxed().collect(Collectors.toList());
+    private final List<TeamOwnerInitiatorData> teamOwnerInitiatorDataList;
+
+    public CsvDataInitializer() {
+        teamOwnerInitiatorDataList = new LinkedList<>();
+    }
 
     public void init(EntityDirector director) throws Exception {
         initTeamList(director);
         initUserList(director);
-//        initTeamOwners
+        initTeamOwners(director);
     }
 
     private void initTeamList(EntityDirector director) throws FileNotFoundException, UnauthorizedUserOperationException {
@@ -67,11 +73,7 @@ public class CsvDataInitializer extends DataInitializer {
                         .split(",", -1))
                         .map(Integer::parseInt).toArray(Integer[]::new);
 
-                for (int userId : teamOwnerIds) {
-                    User user = director.findUsers(u -> u.getId() == userId).get(0);
-
-                    team.addTeamOwner(user);
-                }
+                teamOwnerInitiatorDataList.add(new TeamOwnerInitiatorData(team, teamOwnerIds));
             }
         }
 
@@ -121,9 +123,9 @@ public class CsvDataInitializer extends DataInitializer {
                     for (Team team : teams) {
                         team.addTeamOwner(user);
                     }
-
                     break;
                 }
+                case "TeachingAssistant":
                 case "Teaching Assistant": {
                     user = new TeachingAssistant(director, userId, username, email, password, teamIds);
                     break;
@@ -137,5 +139,24 @@ public class CsvDataInitializer extends DataInitializer {
         }
 
         userListReader.close();
+    }
+
+    private void initTeamOwners(EntityDirector director) throws UnauthorizedUserOperationException {
+        for (TeamOwnerInitiatorData data : teamOwnerInitiatorDataList) {
+            for (int userId : data.teamOwnerIds) {
+                User user = director.findUsers(u -> u.getId() == userId).get(0);
+                data.team.addTeamOwner(user);
+            }
+        }
+    }
+
+    private static class TeamOwnerInitiatorData {
+        public final Team team;
+        public final Integer[] teamOwnerIds;
+
+        public TeamOwnerInitiatorData(Team team, Integer[] teamOwnerIds) {
+            this.team = team;
+            this.teamOwnerIds = teamOwnerIds;
+        }
     }
 }
