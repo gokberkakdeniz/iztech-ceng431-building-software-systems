@@ -11,27 +11,26 @@ import tr.edu.iztech.teamstech.user.Instructor;
 import tr.edu.iztech.teamstech.user.TeachingAssistant;
 import tr.edu.iztech.teamstech.user.User;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class TestDirector implements EntityDirector {
+public class TeamDirector implements EntityDirector {
     private final List<Team> teams;
     private final List<User> users;
     private final List<Channel> channels;
     private User currentUser;
     private boolean unsafeMethodsEnabled;
 
-    public TestDirector() {
+    public TeamDirector() {
         this.teams = new LinkedList<>();
         this.users = new LinkedList<>();
         this.channels = new LinkedList<>();
         this.unsafeMethodsEnabled = false;
     }
 
-    public TestDirector(DataInitializer dataInitializer) throws Exception {
+    public TeamDirector(DataInitializer dataInitializer) throws Exception {
         this();
         dataInitializer.init(this);
     }
@@ -58,6 +57,9 @@ public class TestDirector implements EntityDirector {
 
         if (!isInstructor(sender))
             throw new UnauthorizedUserOperationException("Only instructors can create a new team.");
+
+        if (isTeamIdUsed(teamId))
+            throw new IllegalStateException("The given team id is used.");
 
         Team team = new Team(this, teamId, name);
         register(team);
@@ -112,10 +114,10 @@ public class TestDirector implements EntityDirector {
     @Override
     public void removeChannel(Channel sender) throws UnauthorizedUserOperationException {
         if (!isPrivateChannel(sender))
-            throw new UnauthorizedUserOperationException("Only private channels can be removed.");
+            throw new UnauthorizedUserOperationException("Only the private channels can be removed.");
 
         if (!isUserParticipantOf(currentUser, (PrivateChannel) sender))
-            throw new UnauthorizedUserOperationException("Only private channel participants can remove the channel.");
+            throw new UnauthorizedUserOperationException("Only the private channel participants can remove the channel.");
 
         channels.remove(sender);
     }
@@ -126,7 +128,7 @@ public class TestDirector implements EntityDirector {
             throw new UnsupportedOperationException("Only private channels have participants.");
 
         if (!isUserParticipantOf(currentUser, (PrivateChannel) sender))
-            throw new UnauthorizedUserOperationException("Only channel participants can add a participant.");
+            throw new UnauthorizedUserOperationException("Only the private channel participants can add a participant.");
     }
 
     @Override
@@ -148,7 +150,7 @@ public class TestDirector implements EntityDirector {
     }
 
     @Override
-    public void addMember(Team sender, User user) throws UnauthorizedUserOperationException {
+    public boolean addMember(Team sender, User user) throws UnauthorizedUserOperationException {
         if (!isUserMemberOf(currentUser, sender))
             throw new UnauthorizedUserOperationException("Only team members can add a member.");
 
@@ -156,13 +158,15 @@ public class TestDirector implements EntityDirector {
             throw new UnauthorizedUserOperationException("Only academicians can add a member.");
 
         enableUnsafeMethods();
-        user.joinTeam(sender.getId());
+        boolean result = user.joinTeam(sender.getId());
         disableUnsafeMethods();
+
+        return result;
     }
 
 
     @Override
-    public void removeMember(Team sender, User user) throws UnauthorizedUserOperationException {
+    public boolean removeMember(Team sender, User user) throws UnauthorizedUserOperationException {
         if (!isUserMemberOf(currentUser, sender))
             throw new UnauthorizedUserOperationException("Only team members can remove a member.");
 
@@ -170,8 +174,10 @@ public class TestDirector implements EntityDirector {
             throw new UnauthorizedUserOperationException("Only team member academicians can remove a member.");
 
         enableUnsafeMethods();
-        user.leaveTeam(sender.getId());
+        boolean result = user.leaveTeam(sender.getId());
         disableUnsafeMethods();
+
+        return result;
     }
 
     @Override
@@ -192,13 +198,13 @@ public class TestDirector implements EntityDirector {
     }
 
     @Override
-    public List<Team> findTeams() {
-        return new ArrayList<>(teams);
+    public List<Channel> findChannels(Predicate<Channel> predicate) {
+        return channels.stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override
-    public List<Channel> findChannels(Predicate<Channel> predicate) {
-        return channels.stream().filter(predicate).collect(Collectors.toList());
+    public List<User> findUsers(Predicate<User> predicate) {
+        return users.stream().filter(predicate).collect(Collectors.toList());
     }
 
     public void requestUnsafeMethodExecution() throws UnauthorizedUserOperationException {
@@ -212,21 +218,6 @@ public class TestDirector implements EntityDirector {
 
     private void disableUnsafeMethods() {
         unsafeMethodsEnabled = false;
-    }
-
-    @Override
-    public List<Channel> findChannels() {
-        return new ArrayList<>(channels);
-    }
-
-    @Override
-    public List<User> findUsers(Predicate<User> predicate) {
-        return users.stream().filter(predicate).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<User> findUsers() {
-        return new ArrayList<>(users);
     }
 
     @Override
@@ -251,6 +242,10 @@ public class TestDirector implements EntityDirector {
 
     private boolean isUserParticipantOf(User user, PrivateChannel channel) {
         return channel.getParticipants().contains(user);
+    }
+
+    private boolean isTeamIdUsed(String teamId) {
+        return teams.stream().anyMatch(t -> t.getId().equals(teamId));
     }
 
     private boolean isTeachingAssistant(User user) {

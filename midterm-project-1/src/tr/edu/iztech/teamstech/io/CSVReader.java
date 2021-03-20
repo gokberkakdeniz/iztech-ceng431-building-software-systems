@@ -24,7 +24,7 @@ public class CSVReader {
         StringBuilder currentCell = new StringBuilder();
 
         boolean doubleQuoth = false;
-        for (char c: line.toCharArray()) {
+        for (char c : line.toCharArray()) {
             if (c == ',') {
                 if (doubleQuoth) {
                     currentCell.append(c);

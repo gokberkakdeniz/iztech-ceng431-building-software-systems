@@ -1,6 +1,5 @@
 package tr.edu.iztech.teamstech.view;
 
-import com.sun.jdi.event.VMDisconnectEvent;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.io.KeyboardReader;
@@ -48,7 +47,7 @@ public class MemberView extends View {
         Team team = ViewHelper.selectTeam(keyboardReader, participatedTeams);
         if (team == null) return false;
 
-        User selectedUser = ViewHelper.selectUser(t->true, keyboardReader, director);
+        User selectedUser = ViewHelper.selectUser(t -> true, keyboardReader, director);
         if (selectedUser == null) return false;
 
         team.addMember(selectedUser);
@@ -64,7 +63,7 @@ public class MemberView extends View {
         Team team = ViewHelper.selectTeam(keyboardReader, participatedTeams);
         if (team == null) return false;
 
-        User selectedUser = ViewHelper.selectUser(t->team.getMembers().contains(t), keyboardReader, director);
+        User selectedUser = ViewHelper.selectUser(t -> team.getMembers().contains(t), keyboardReader, director);
         if (selectedUser == null) return false;
 
         team.removeMember(selectedUser);
@@ -83,15 +82,15 @@ public class MemberView extends View {
         List<User> teamMembers = team.getMembers();
         System.out.println("[#] List of members:");
         int i = 1;
-        for(User member: teamMembers) {
+        for (User member : teamMembers) {
             System.out.printf("[%d] %s, %s\n", i, member.getUsername(), member.getClass().getSimpleName());
             i++;
         }
 
         int choice = keyboardReader.promptInteger("Enter a number to promote member as a Team Owner, 0 to quit");
-        if(choice == 0) return false;
+        if (choice == 0) return false;
 
-        User selectedUser = teamMembers.get(choice-1);
+        User selectedUser = teamMembers.get(choice - 1);
         director.addTeamOwner(team, selectedUser);
 
         System.out.printf("%s is now a Team Owner of %s.\n", selectedUser.getUsername(), team.getName());

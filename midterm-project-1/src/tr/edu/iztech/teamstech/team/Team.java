@@ -8,7 +8,6 @@ import tr.edu.iztech.teamstech.user.Student;
 import tr.edu.iztech.teamstech.user.TeachingAssistant;
 import tr.edu.iztech.teamstech.user.User;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,24 +41,24 @@ public class Team extends Entity {
     }
 
     public List<User> getTeamOwners() {
-        return new ArrayList<>(director.findUsers(u -> teamOwnerIds.contains(u.getId())));
+        return director.findUsers(u -> teamOwnerIds.contains(u.getId()));
     }
 
     public List<User> getMembers() {
-        return director.findUsers(t->t.getParticipatedTeamIds().contains(id));
+        return director.findUsers(u -> u.getParticipatedTeams().contains(this));
     }
 
-    public void addMember(User user) throws UnauthorizedUserOperationException {
-        director.addMember(this, user);
+    public boolean addMember(User user) throws UnauthorizedUserOperationException {
+        return director.addMember(this, user);
     }
 
-    public void removeMember(User user) throws UnauthorizedUserOperationException {
-        director.removeMember(this, user);
+    public boolean removeMember(User user) throws UnauthorizedUserOperationException {
+        return director.removeMember(this, user);
     }
 
-    public void addTeamOwner(User user) throws UnauthorizedUserOperationException {
+    public boolean addTeamOwner(User user) throws UnauthorizedUserOperationException {
         director.addTeamOwner(this, user);
-        teamOwnerIds.add(user.getId());
+        return teamOwnerIds.add(user.getId());
     }
 
     public Channel createChannel(String name, String meetingTime) throws UnauthorizedUserOperationException {
@@ -72,7 +71,7 @@ public class Team extends Entity {
         long instructorCount = 0;
         long teachingAssistantCount = 0;
 
-        for (User member: members) {
+        for (User member : members) {
             if (member instanceof Student)
                 studentCount++;
             else if (member instanceof Instructor)

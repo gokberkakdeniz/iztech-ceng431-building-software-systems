@@ -26,7 +26,7 @@ public class ViewHelper {
                 id -> (id >= 0 && id <= users.size()));
 
         if (choice == 0) return null;
-        return users.get(choice-1);
+        return users.get(choice - 1);
     }
 
     protected static Team selectTeam(KeyboardReader keyboardReader, List<Team> participatedTeams) {
@@ -45,6 +45,6 @@ public class ViewHelper {
                 id -> (id >= 0 && id <= participatedTeams.size()));
 
         if (choice == 0) return null;
-        return participatedTeams.get(choice-1);
+        return participatedTeams.get(choice - 1);
     }
 }

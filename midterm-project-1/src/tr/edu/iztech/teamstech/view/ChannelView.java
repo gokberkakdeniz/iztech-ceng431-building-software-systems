@@ -77,7 +77,7 @@ public class ChannelView extends View {
         System.out.println("[#] Channel list:");
 
         int i = 1;
-        for (Channel channel: channels) {
+        for (Channel channel : channels) {
             System.out.printf("[%d] %s\n", i, channel.getName());
             i++;
         }
@@ -85,7 +85,7 @@ public class ChannelView extends View {
                 id -> (id >= 0 && id <= channels.size()));
 
         if (choice == 0) return null;
-        return channels.get(choice-1);
+        return channels.get(choice - 1);
     }
 
     private boolean addChannel() throws UnauthorizedUserOperationException {
@@ -108,7 +108,7 @@ public class ChannelView extends View {
         List<Team> participatedTeams = user.getParticipatedTeams();
 
         Channel channel = selectChannel(t -> true);
-        if(channel == null) return false;
+        if (channel == null) return false;
 
         channel.remove();
         System.out.println("Channel is removed successfully.\n");
@@ -127,7 +127,7 @@ public class ChannelView extends View {
 
         System.out.println("Participants:");
         int i = 0;
-        for(User member: participants) {
+        for (User member : participants) {
             System.out.printf("%d: %s, %s\n", i, member.getUsername(), member.getClass().getSimpleName());
             i++;
         }
@@ -136,10 +136,10 @@ public class ChannelView extends View {
 
     private boolean addParticipant() throws UnauthorizedUserOperationException {
         PrivateChannel channel = (PrivateChannel) selectChannel(t -> t instanceof PrivateChannel);
-        if(channel == null) return false;
+        if (channel == null) return false;
 
-        User user = ViewHelper.selectUser(t->true,keyboardReader, director);
-        if(user == null) return false;
+        User user = ViewHelper.selectUser(t -> true, keyboardReader, director);
+        if (user == null) return false;
 
         channel.addParticipant(user);
         System.out.println("Participant added successfully.\n");
@@ -148,10 +148,10 @@ public class ChannelView extends View {
 
     private boolean removeParticipant() throws UnauthorizedUserOperationException {
         PrivateChannel channel = (PrivateChannel) selectChannel(t -> t instanceof PrivateChannel);
-        if(channel == null) return false;
+        if (channel == null) return false;
 
         User user = ViewHelper.selectUser(t -> channel.getParticipants().contains(t), keyboardReader, director);
-        if(user == null) return false;
+        if (user == null) return false;
 
         channel.removeParticipant(user);
         System.out.println("Participant removed successfully.\n");
@@ -160,7 +160,7 @@ public class ChannelView extends View {
 
     private boolean updateMeetingDate() throws UnauthorizedUserOperationException {
         Channel channel = selectChannel(t -> true);
-        if(channel == null) return false;
+        if (channel == null) return false;
 
         String newDayAndTime = keyboardReader.promptString("Enter new Day and Time");
         channel.setMeetingTime(newDayAndTime);

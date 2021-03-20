@@ -2,7 +2,7 @@ package tr.edu.iztech.teamstech.view;
 
 import tr.edu.iztech.teamstech.entity.EntityDirector;
 
-public class AuthorizationView extends View{
+public class AuthorizationView extends View {
     public AuthorizationView(EntityDirector director) {
         super(director);
     }
@@ -12,7 +12,7 @@ public class AuthorizationView extends View{
         while (true) {
             String email = keyboardReader.promptString("Please enter email");
             String password = keyboardReader.promptString("Please enter password");
-            if(!director.login(email, password)){
+            if (!director.login(email, password)) {
                 System.out.println("Wrong email or password! please try again!\n");
                 continue;
             }

@@ -4,7 +4,10 @@ import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.user.User;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class PrivateChannel extends Channel {
     private final Set<Integer> participantIds;
@@ -15,18 +18,18 @@ public class PrivateChannel extends Channel {
     }
 
     public List<User> getParticipants() {
-        return director.findUsers(t->participantIds.contains(t.getId()));
+        return director.findUsers(u -> participantIds.contains(u.getId()));
     }
 
-    public void removeParticipant(User user) throws UnauthorizedUserOperationException {
+    public boolean removeParticipant(User user) throws UnauthorizedUserOperationException {
         director.removeParticipant(this, user);
 
-        participantIds.remove((Integer) user.getId());
+        return participantIds.remove((Integer) user.getId());
     }
 
-    public void addParticipant(User user) throws UnauthorizedUserOperationException {
+    public boolean addParticipant(User user) throws UnauthorizedUserOperationException {
         director.addParticipant(this, user);
 
-        participantIds.add((Integer) user.getId());
+        return participantIds.add((Integer) user.getId());
     }
 }

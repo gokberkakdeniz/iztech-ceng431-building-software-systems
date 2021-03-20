@@ -17,8 +17,8 @@ public class MainView extends View {
         team.bindKeyboardReader(keyboardReader);
         boolean isLoggedIn = false;
         while (true) {
-            if(!isLoggedIn) isLoggedIn = auth.show();
-            if(!team.show()) return true;
+            if (!isLoggedIn) isLoggedIn = auth.show();
+            if (!team.show()) return true;
         }
     }
 

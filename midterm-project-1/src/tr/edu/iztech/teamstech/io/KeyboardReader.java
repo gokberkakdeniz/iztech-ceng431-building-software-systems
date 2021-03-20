@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 /**
  * Scanner(System.In) wrapper class with validation support
- *
+ * <p>
  * NOTE: It's my (Gökberk) code written for CENG-211 in 2019.
  */
 public class KeyboardReader {
@@ -42,7 +42,7 @@ public class KeyboardReader {
      * promptInteger with validation
      *
      * @param promptMessage a message to show user
-     * @param predicate checks if input is valid or not
+     * @param predicate     checks if input is valid or not
      * @return input value
      */
     public Integer promptInteger(String promptMessage, Predicate<Integer> predicate) {
@@ -64,7 +64,7 @@ public class KeyboardReader {
      * promptDouble with validation
      *
      * @param promptMessage a message to show user
-     * @param predicate checks if input is valid or not
+     * @param predicate     checks if input is valid or not
      * @return input value
      */
     public Double promptDouble(String promptMessage, Predicate<Double> predicate) {
@@ -85,7 +85,7 @@ public class KeyboardReader {
      * promptString with validation
      *
      * @param promptMessage a message to show user
-     * @param predicate checks if input is valid or not
+     * @param predicate     checks if input is valid or not
      * @return input value
      */
     public String promptString(String promptMessage, Predicate<String> predicate) {
@@ -111,9 +111,10 @@ public class KeyboardReader {
                 parsed = parsable.parse(line);
 
                 if (predicate.test(parsed)) isValid = true;
+            } catch (NumberFormatException ignored) {
+            } catch (Exception e) {
+                isValid = true;
             }
-            catch (NumberFormatException ignored) {}
-            catch (Exception e) { isValid = true; }
 
             if (!isValid) printPrompt(promptMessage);
         }
@@ -138,18 +139,17 @@ public class KeyboardReader {
         private final boolean noBack;
 
         /**
-         *
-         * @param header option title
+         * @param header  option title
          * @param options options
          */
         public Options(String header, String[] options) {
             this(header, options, false);
         }
+
         /**
-         *
-         * @param header option title
+         * @param header  option title
          * @param options options
-         * @param noBack add zero numbered options to go back or no
+         * @param noBack  add zero numbered options to go back or no
          */
         public Options(String header, String[] options, boolean noBack) {
             this.options = options;
@@ -163,13 +163,14 @@ public class KeyboardReader {
         public void printOptions() {
             System.out.println("[#] " + header + ":");
             for (int i = 0; i < options.length; i++) {
-                System.out.printf("[%d] %s\n", i+1, options[i]);
+                System.out.printf("[%d] %s\n", i + 1, options[i]);
             }
             if (!noBack) System.out.println("[0] Go back");
         }
 
         /**
          * generates predicate for prompt methods
+         *
          * @return predicate
          */
         public Predicate<Integer> getPredicate() {
