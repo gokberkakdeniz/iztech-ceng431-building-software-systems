@@ -24,6 +24,7 @@ public class CsvDataInitializer extends DataInitializer {
     public void init(EntityDirector director) throws Exception {
         initTeamList(director);
         initUserList(director);
+//        initTeamOwners
     }
 
     private void initTeamList(EntityDirector director) throws FileNotFoundException {

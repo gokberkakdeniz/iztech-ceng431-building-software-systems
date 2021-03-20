@@ -64,9 +64,8 @@ public class TeamDirector implements EntityDirector {
         Team team = new Team(this, teamId, name);
         register(team);
 
-        team.addTeamOwner(currentUser);
-
         enableUnsafeMethods();
+        team.addTeamOwner(currentUser);
         currentUser.joinTeam(teamId);
         disableUnsafeMethods();
 
@@ -182,6 +181,8 @@ public class TeamDirector implements EntityDirector {
 
     @Override
     public void addTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException {
+        if (unsafeMethodsEnabled) return;
+
         if (!isUserTeamOwnerOf(currentUser, sender))
             throw new UnauthorizedUserOperationException("Only team owners can add a team owner.");
 
