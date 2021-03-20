@@ -187,7 +187,12 @@ public class TeamDirector implements EntityDirector {
         if (!isAcademician(currentUser))
             throw new UnauthorizedUserOperationException("Only team member academicians can remove a member.");
 
+        List<User> teamOwners = sender.getTeamOwners();
+        if (teamOwners.size() == 1 && teamOwners.get(0).getId() == currentUser.getId())
+            throw new UnauthorizedUserOperationException("You are the only team owner. Try to remove team instead of deleting yourself.");
+
         enableUnsafeMethods();
+        sender.removeTeamOwner(user);
         boolean result = user.leaveTeam(sender.getId());
         disableUnsafeMethods();
 
@@ -206,6 +211,17 @@ public class TeamDirector implements EntityDirector {
 
         if (!isTeachingAssistant(user))
             throw new IllegalArgumentException("Only teaching assistants can be added as team owner.");
+    }
+
+    @Override
+    public void removeTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException {
+        if (unsafeMethodsEnabled) return;
+
+        if (!isUserTeamOwnerOf(currentUser, sender))
+            throw new UnauthorizedUserOperationException("Only team owners can remove a team owner.");
+
+        if (!isUserTeamOwnerOf(user, sender))
+            throw new IllegalStateException("The user to be removed is not team owner.");
     }
 
     @Override

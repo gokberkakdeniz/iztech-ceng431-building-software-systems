@@ -19,6 +19,8 @@ public interface EntityDirector {
 
     void addTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException;
 
+    void removeTeamOwner(Team sender, User user) throws UnauthorizedUserOperationException;
+
     void addParticipant(Channel sender, User user) throws UnauthorizedUserOperationException;
 
     void removeTeam(Team sender) throws UnauthorizedUserOperationException;
