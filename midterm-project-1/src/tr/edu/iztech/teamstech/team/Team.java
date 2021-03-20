@@ -94,4 +94,31 @@ public class Team extends Entity {
             this.teachingAssistantCount = teachingAssistantCount;
         }
     }
+
+    public String toString() {
+        List<Channel> channels = getChannels();
+        Channel defaultChannel = channels.get(0);
+        String privateChannelsColumns = String.join(
+                ",",
+                channels.stream().
+                        skip(1)
+                        .map(c -> String.format(
+                                "%s,%s,\"%s\"",
+                                c.getName(),
+                                c.getMeetingTime(),
+                                String.join(",", ((PrivateChannel) c).getParticipants().stream().map(User::getId).map(String::valueOf).toArray(String[]::new))
+                        )).toArray(String[]::new));
+        String teamOwnerColumn = String.join(",", teamOwnerIds.stream().map(String::valueOf).toArray(String[]::new));
+        if (channels.size() == 1) privateChannelsColumns += ",,";
+
+        return String.format(
+                "%s,%s,%s,%s,%s,\"%s\"",
+                name,
+                id,
+                defaultChannel.getName(),
+                defaultChannel.getMeetingTime(),
+                privateChannelsColumns,
+                teamOwnerColumn
+        );
+    }
 }

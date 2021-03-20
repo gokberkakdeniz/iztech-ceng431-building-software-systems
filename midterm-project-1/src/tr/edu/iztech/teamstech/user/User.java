@@ -5,7 +5,10 @@ import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.team.Team;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public abstract class User extends Entity {
     private final int id;
@@ -56,5 +59,18 @@ public abstract class User extends Entity {
 
     public List<Team> getParticipatedTeams() {
         return director.findTeams(team -> teamIds.contains(team.getId()));
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%s,%s,%d,%s,%s,%s",
+                this.getClass().getSimpleName(),
+                username,
+                id,
+                email,
+                password,
+                String.join(",", teamIds)
+        );
     }
 }

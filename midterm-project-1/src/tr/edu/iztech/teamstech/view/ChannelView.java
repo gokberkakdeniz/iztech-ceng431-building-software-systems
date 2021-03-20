@@ -1,6 +1,5 @@
 package tr.edu.iztech.teamstech.view;
 
-import jdk.nio.Channels;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.io.KeyboardReader;
@@ -174,7 +173,7 @@ public class ChannelView extends View {
         return true;
     }
 
-    private Predicate<Channel> getPrivateChannelsOfUsersPredicate () {
+    private Predicate<Channel> getPrivateChannelsOfUsersPredicate() {
         User user = director.getCurrentUser();
         return new Predicate<Channel>() {
             @Override

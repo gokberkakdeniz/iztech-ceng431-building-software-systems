@@ -1,6 +1,5 @@
 package tr.edu.iztech.teamstech.data;
 
-import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
 import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.io.CSVReader;
@@ -45,7 +44,7 @@ public class CsvDataInitializer extends DataInitializer {
             director.register(defaultChannel);
 
             int boundary = args.length - (args.length - 4) % 3;
-            for (int i = 4; i < boundary ; i += 3) {
+            for (int i = 4; i < boundary; i += 3) {
                 if (args[i].equals("")) break;
 
                 Integer[] participantIds = Arrays.stream(args[i + 2]
@@ -106,8 +105,8 @@ public class CsvDataInitializer extends DataInitializer {
                     .takeWhile(id -> !id.equals(""))
                     .toArray(String[]::new);
 
-             System.out.printf("%d, %s, %s, %s, %s, ", userId, username, userType, email, password);
-             System.out.println(Arrays.toString(teamIds));
+//            System.out.printf("%d, %s, %s, %s, %s, ", userId, username, userType, email, password);
+//            System.out.println(Arrays.toString(teamIds));
 
             User user;
             switch (userType) {
