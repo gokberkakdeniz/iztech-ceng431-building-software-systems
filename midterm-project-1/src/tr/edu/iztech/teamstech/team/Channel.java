@@ -44,7 +44,7 @@ public abstract class Channel extends Entity {
         director.removeChannel(this);
     }
 
-    private void checkMeetingTimeFormat(String string) {
+    private void checkMeetingTimeFormat(String meetingTime) {
         try {
             dateFormat.parse(meetingTime);
         } catch (ParseException e) {
