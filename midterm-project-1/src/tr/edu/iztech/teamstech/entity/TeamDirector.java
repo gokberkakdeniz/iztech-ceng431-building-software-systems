@@ -69,8 +69,13 @@ public class TeamDirector implements EntityDirector {
         currentUser.joinTeam(teamId);
         disableUnsafeMethods();
 
-        Channel defaultChannel = new StandardChannel(this, "Default", defaultMeetingTime, teamId);
-        register(defaultChannel);
+        try {
+            Channel defaultChannel = new StandardChannel(this, "Default", defaultMeetingTime, teamId);
+            register(defaultChannel);
+        } catch (Exception e) {
+            team.remove();
+            throw e;
+        }
 
         return team;
     }
