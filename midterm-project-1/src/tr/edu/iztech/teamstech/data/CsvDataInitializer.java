@@ -2,6 +2,7 @@ package tr.edu.iztech.teamstech.data;
 
 import tr.edu.iztech.teamstech.entity.Entity;
 import tr.edu.iztech.teamstech.entity.EntityDirector;
+import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 import tr.edu.iztech.teamstech.io.CSVReader;
 import tr.edu.iztech.teamstech.team.Channel;
 import tr.edu.iztech.teamstech.team.PrivateChannel;
@@ -27,7 +28,7 @@ public class CsvDataInitializer extends DataInitializer {
 //        initTeamOwners
     }
 
-    private void initTeamList(EntityDirector director) throws FileNotFoundException {
+    private void initTeamList(EntityDirector director) throws FileNotFoundException, UnauthorizedUserOperationException {
         CSVReader teamListReader = new CSVReader(new File("./teamList.csv"));
 
         if (teamListReader.hasData()) teamListReader.nextData();
@@ -37,17 +38,18 @@ public class CsvDataInitializer extends DataInitializer {
             String teamName = args[0];
             String teamId = args[1];
 
-            Entity team = new Team(director, teamId, teamName);
+            Team team = new Team(director, teamId, teamName);
             Channel defaultChannel = new StandardChannel(director, args[2], args[3], teamId);
 
             director.register(team);
             director.register(defaultChannel);
 
-            for (int i = 4; i < args.length; i += 3) {
+            int boundary = args.length - (args.length - 4) % 3;
+            for (int i = 4; i < boundary ; i += 3) {
                 if (args[i].equals("")) break;
 
                 Integer[] participantIds = Arrays.stream(args[i + 2]
-                        .replaceAll("([\\D])", "")
+                        .replaceAll("([^\\d,])", "")
                         .split(",", -1))
                         .map(Integer::parseInt).toArray(Integer[]::new);
 
@@ -58,6 +60,19 @@ public class CsvDataInitializer extends DataInitializer {
                         participantIds);
 
                 director.register(privateChannel);
+            }
+
+            if (boundary < args.length) { // team owners column
+                Integer[] teamOwnerIds = Arrays.stream(args[boundary]
+                        .replaceAll("([^\\d,])", "")
+                        .split(",", -1))
+                        .map(Integer::parseInt).toArray(Integer[]::new);
+
+                for (int userId : teamOwnerIds) {
+                    User user = director.findUsers(u -> u.getId() == userId).get(0);
+
+                    team.addTeamOwner(user);
+                }
             }
         }
 
@@ -91,8 +106,8 @@ public class CsvDataInitializer extends DataInitializer {
                     .takeWhile(id -> !id.equals(""))
                     .toArray(String[]::new);
 
-            System.out.printf("%d, %s, %s, %s, %s, ", userId, username, userType, email, password);
-            System.out.println(Arrays.toString(teamIds));
+            // System.out.printf("%d, %s, %s, %s, %s, ", userId, username, userType, email, password);
+            // System.out.println(Arrays.toString(teamIds));
 
             User user;
             switch (userType) {
@@ -102,6 +117,12 @@ public class CsvDataInitializer extends DataInitializer {
                 }
                 case "Instructor": {
                     user = new Instructor(director, userId, username, email, password, teamIds);
+
+                    List<Team> teams = director.findTeams(t -> Arrays.stream(teamIds).anyMatch(tId -> tId.equals(t.getId())));
+                    for (Team team : teams) {
+                        team.addTeamOwner(user);
+                    }
+
                     break;
                 }
                 case "Teaching Assistant": {

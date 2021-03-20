@@ -32,7 +32,14 @@ public class TeamDirector implements EntityDirector {
 
     public TeamDirector(DataInitializer dataInitializer) throws Exception {
         this();
-        dataInitializer.init(this);
+
+        try {
+            enableUnsafeMethods();
+            dataInitializer.init(this);
+        } finally {
+            disableUnsafeMethods();
+        }
+
     }
 
     public User getCurrentUser() {
