@@ -194,7 +194,7 @@ public class TeamDirector implements EntityDirector {
         if (!isUserMemberOf(user, sender))
             throw new IllegalStateException("Only team members can be team owner.");
 
-        if (!isInstructor(user))
+        if (!isTeachingAssistant(user))
             throw new IllegalArgumentException("Only teaching assistants can be added as team owner.");
     }
 
