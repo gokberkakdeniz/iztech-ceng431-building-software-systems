@@ -10,3 +10,9 @@ IZTECH CENG-431 [Building Software Systems](https://ceng.iyte.edu.tr/courses/cen
 
 <!-- ### Presentations -->
 
+
+## License
+**[MIT License](LICENSE)**
+
+
+Copyright  © 2021 [Gökberk AKDENİZ](https://github.com/gokberkakdeniz), [Hakan ALP](https://github.com/hakanalpp)
