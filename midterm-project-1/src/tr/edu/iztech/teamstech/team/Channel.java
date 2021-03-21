@@ -6,12 +6,13 @@ import tr.edu.iztech.teamstech.exception.UnauthorizedUserOperationException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public abstract class Channel extends Entity {
     private final String name;
     private String meetingTime;
     private final String teamId;
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE hh:mm a");
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE hh:mm a", Locale.US);
 
     public Channel(EntityDirector director, String name, String meetingTime, String teamId) {
         super(director);
