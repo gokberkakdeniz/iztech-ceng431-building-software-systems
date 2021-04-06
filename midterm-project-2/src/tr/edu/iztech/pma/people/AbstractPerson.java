@@ -1,11 +1,11 @@
 package tr.edu.iztech.pma.people;
 
-public abstract class People {
+public abstract class AbstractPerson implements IPerson {
     private final String username;
     private final String password;
     private final String type;
 
-    public People(String username, String password) {
+    public AbstractPerson(String username, String password) {
         this.username = username;
         this.password = password;
         this.type = this.getClass().getSimpleName();
