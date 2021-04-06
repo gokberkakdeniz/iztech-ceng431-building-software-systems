@@ -14,10 +14,31 @@ public class Main {
 
     public static void main(String[] args) {
         product_serde_test();
-        person_serde_test();
+//        person_serde_test();
+//        state_test();
+    }
+
+    private static void state_test() {
+        Product car = new Product(1, "car");
+        Assembly engine = new Assembly(2, "engine");
+        Part wheel = new Part(3, "wheel");
+        car.add(engine);
+        car.add(wheel);
+        Part cylinder = new Part(4, "cylinder");
+        engine.add(cylinder);
+
+        cylinder.printState();
+        cylinder.proceed();
+        cylinder.proceed();
+        wheel.proceed();
+        wheel.proceed();
+        cylinder.printState();
+        engine.printState();
+        car.printState();
     }
 
     private static void product_serde_test() {
+        // NOTE: Expose etmediğimiz her şeyi atladı.
         Product car = new Product(1, "car");
         Assembly engine = new Assembly(2, "engine");
         Part wheel = new Part(3, "wheel");
@@ -29,6 +50,7 @@ public class Main {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(IProduct.class, new ProductDeserializer())
                 .registerTypeAdapter(IProduct.class, new InterfaceSerializer<>())
+                .excludeFieldsWithoutExposeAnnotation()
                 .setPrettyPrinting()
                 .create();
 
