@@ -13,7 +13,7 @@ import tr.edu.iztech.pma.product.*;
 public class Main {
 
     public static void main(String[] args) {
-        product_serde_test();
+//        product_serde_test();
 //        person_serde_test();
 //        state_test();
     }
@@ -65,8 +65,8 @@ public class Main {
     private static void person_serde_test() {
         List<IPerson> people = Arrays.asList(new IPerson[] {
                 new Admin("usr1", "pw1"),
-                new Employee("usr2", "pw2"),
-                new Manager("usr3", "pw3")
+//                new Employee("usr2", "pw2"),
+//                new Manager("usr3", "pw3")
         });
 
         Gson gson = new GsonBuilder()
