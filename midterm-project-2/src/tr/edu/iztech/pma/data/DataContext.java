@@ -1,8 +1,7 @@
 package tr.edu.iztech.pma.data;
 
 import tr.edu.iztech.pma.people.*;
-import tr.edu.iztech.pma.product.IProduct;
-import tr.edu.iztech.pma.product.Product;
+import tr.edu.iztech.pma.product.*;
 
 import java.util.ArrayList;
 import java.util.List;
