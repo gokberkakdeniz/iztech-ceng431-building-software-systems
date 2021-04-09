@@ -3,6 +3,8 @@ package tr.edu.iztech.pma.product;
 import tr.edu.iztech.pma.product.state.IProductState;
 
 public interface IProduct {
+    int getId();
+
     void setState(IProductState state);
     void proceed();
 
