@@ -14,4 +14,5 @@ public interface IDataContext {
     List<Employee> getEmployees();
 
     IProduct getProductOf(IPersonnel personnel);
+    Manager createManagerWithProduct(String username, String password, String productTitle);
 }
