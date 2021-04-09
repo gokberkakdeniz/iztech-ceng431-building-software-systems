@@ -6,15 +6,22 @@ import com.google.gson.reflect.TypeToken;
 import java.util.Arrays;
 import java.util.List;
 
+import tr.edu.iztech.pma.data.DataContext;
 import tr.edu.iztech.pma.io.*;
 import tr.edu.iztech.pma.people.*;
 import tr.edu.iztech.pma.product.*;
 import tr.edu.iztech.pma.utils.TreeTraverser;
+import tr.edu.iztech.pma.view.MainView;
+import tr.edu.iztech.pma.view.Session;
 
 public class Main {
 
     public static void main(String[] args) {
-        tree_test();
+        DataContext context = new DataContext();
+        Session.setContext(context);
+        MainView k = new MainView();
+        k.show();
+        k.kill();
 //        product_serde_test();
 //        person_serde_test();
 //        state_test();

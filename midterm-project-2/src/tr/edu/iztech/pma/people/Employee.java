@@ -11,4 +11,9 @@ public class Employee extends AbstractPerson implements IPersonnel {
     public int getProductId() {
         return productId;
     }
+
+    @Override
+    public String toString() {
+        return super.getUsername() + "," + productId;
+    }
 }

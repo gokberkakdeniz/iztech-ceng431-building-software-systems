@@ -11,10 +11,10 @@ import java.util.function.Consumer;
 public class TreeTraverser {
 
     public static void traverse(IProduct root) {
-        levelOrderTraversal(root, p -> { System.out.printf("%s(id: %d) ", p.getTitle(), p.getId()); });
+        traverse(root, p -> { System.out.printf("%s(id: %d) ", p.getTitle(), p.getId()); });
     }
 
-    public static void levelOrderTraversal(IProduct root, Consumer<IProduct> consumer) {
+    public static void traverse(IProduct root, Consumer<IProduct> consumer) {
         Queue<IProduct> queue = new LinkedList<>();
         queue.add(root);
 

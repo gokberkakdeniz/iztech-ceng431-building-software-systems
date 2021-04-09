@@ -5,5 +5,8 @@ public class Product extends AbstractProductWithChildren {
         super(id, title);
     }
 
-
+    @Override
+    public String toString() {
+        return this.getTitle() + ", " + this.getId();
+    }
 }
