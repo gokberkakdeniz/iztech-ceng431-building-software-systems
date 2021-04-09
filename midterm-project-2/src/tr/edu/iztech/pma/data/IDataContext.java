@@ -14,5 +14,9 @@ public interface IDataContext {
     List<Employee> getEmployees();
 
     IProduct getProductOf(IPersonnel personnel);
-    Manager createManagerWithProduct(String username, String password, String productTitle);
+
+    Product createProductWithManager(String username, String password, String productTitle);
+    Part createPartWithEmployee(String username, String password, String productTitle);
+    Assembly createAssemblyWithEmployee(String username, String password, String productTitle);
+
 }

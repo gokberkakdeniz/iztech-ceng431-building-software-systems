@@ -9,13 +9,28 @@ import java.util.List;
 import tr.edu.iztech.pma.io.*;
 import tr.edu.iztech.pma.people.*;
 import tr.edu.iztech.pma.product.*;
+import tr.edu.iztech.pma.utils.TreeTraverser;
 
 public class Main {
 
     public static void main(String[] args) {
+        tree_test();
 //        product_serde_test();
 //        person_serde_test();
 //        state_test();
+    }
+
+    private static void tree_test() {
+        Product car = new Product(1, "car");
+        Assembly engine = new Assembly(2, "engine");
+        Part wheel = new Part(3, "wheel");
+        car.add(engine);
+        car.add(wheel);
+        Part cylinder = new Part(4, "cylinder");
+        engine.add(cylinder);
+
+        TreeTraverser.traverse(car);
+
     }
 
     private static void state_test() {

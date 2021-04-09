@@ -46,7 +46,7 @@ public class DataContext implements IDataContext {
         return products.stream().filter(p -> p.getId() == personnel.getProductId()).findFirst().orElse(null);
     }
 
-    public Manager createManagerWithProduct(String username, String password, String productTitle) {
+    public Product createProductWithManager(String username, String password, String productTitle) {
         int id = people.size() + 1;
 
         Product product = new Product(id, productTitle);
@@ -55,6 +55,32 @@ public class DataContext implements IDataContext {
         people.add(manager);
         products.add(product);
 
-        return manager;
+        return product;
+    }
+
+    @Override
+    public Part createPartWithEmployee(String username, String password, String productTitle) {
+        int id = people.size() + 1;
+
+        Part part = new Part(id, productTitle);
+        Employee employee = new Employee(username, password, part.getId());
+
+        people.add(employee);
+        products.add(part);
+
+        return part;
+    }
+
+    @Override
+    public Assembly createAssemblyWithEmployee(String username, String password, String productTitle) {
+        int id = people.size() + 1;
+
+        Assembly assembly = new Assembly(id, productTitle);
+        Employee employee = new Employee(username, password, assembly.getId());
+
+        people.add(employee);
+        products.add(assembly);
+
+        return assembly;
     }
 }

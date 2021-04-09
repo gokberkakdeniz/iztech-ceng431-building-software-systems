@@ -4,6 +4,7 @@ import tr.edu.iztech.pma.product.state.IProductState;
 
 public interface IProduct {
     int getId();
+    String getTitle();
 
     void setState(IProductState state);
     void proceed();
