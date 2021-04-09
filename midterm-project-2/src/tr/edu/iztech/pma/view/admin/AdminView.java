@@ -50,17 +50,16 @@ public class AdminView extends View {
         }
     }
 
-    private boolean createManagerWithProduct() {
+    private void createManagerWithProduct() {
         String username = keyboardReader.promptString("Enter username");
         String password = keyboardReader.promptString("Enter password");
         String productTitle = keyboardReader.promptString("Enter product title");
 
         Product product = context.createProductWithManager(username, password, productTitle);
         System.out.printf("%s is added.\n\n", product);
-        return true;
     }
 
-    private boolean seeManagers() {
+    private void seeManagers() {
         List<Manager> managers = context.getManagers();
         System.out.println("[#] List of managers:");
         int i = 1;
@@ -69,15 +68,15 @@ public class AdminView extends View {
             i++;
         }
         int choice = keyboardReader.promptInteger("Enter a number to see its product, 0 to quit");
+
         if (choice == 0 || managers.size() < choice) {
             System.out.println("Wrong input provided.");
-            return false;
+            return;
         }
 
         Manager selectedManager = managers.get(choice - 1);
         IProduct product = context.getProductOf(selectedManager);
         System.out.println(product.getId());
-        return true;
     }
 
     private boolean seeEmployees() {
@@ -108,6 +107,7 @@ public class AdminView extends View {
             System.out.printf("[%d] %s\n", i, product);
             i++;
         }
+
         int choice = keyboardReader.promptInteger("Enter a number to see its product tree, 0 to quit");
         if (choice == 0 || products.size() < choice) {
             System.out.println("Wrong input provided.");

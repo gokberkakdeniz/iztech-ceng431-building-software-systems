@@ -19,9 +19,9 @@ public class Main {
     public static void main(String[] args) {
         DataContext context = new DataContext();
         Session.setContext(context);
-        MainView k = new MainView();
-        k.show();
-        k.kill();
+        MainView view = new MainView();
+        view.show();
+        view.kill();
 //        product_serde_test();
 //        person_serde_test();
 //        state_test();
