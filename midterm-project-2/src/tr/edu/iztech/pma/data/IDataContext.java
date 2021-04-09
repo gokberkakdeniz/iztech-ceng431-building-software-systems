@@ -12,6 +12,7 @@ public interface IDataContext {
     List<Admin> getAdmins();
     List<Manager> getManagers();
     List<Employee> getEmployees();
+    List<Product> getProducts();
 
     IProduct getProductOf(IPersonnel personnel);
 

@@ -46,6 +46,11 @@ public class DataContext implements IDataContext {
         return products.stream().filter(p -> p.getId() == personnel.getProductId()).findFirst().orElse(null);
     }
 
+    @Override
+    public List<Product> getProducts() {
+        return people.stream().filter(u -> u instanceof Product).map(u -> (Product) u).collect(Collectors.toList());
+    }
+
     public Product createProductWithManager(String username, String password, String productTitle) {
         int id = people.size() + 1;
 
