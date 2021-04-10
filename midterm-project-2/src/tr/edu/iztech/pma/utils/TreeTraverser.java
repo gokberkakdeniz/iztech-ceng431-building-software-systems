@@ -28,8 +28,7 @@ public class TreeTraverser {
             {
                 // Dequeue an item from queue
                 // and print it
-                IProduct p = queue.peek();
-                queue.remove();
+                IProduct p = queue.poll();
 
                 if (first) {
                     if (p.hasParent()) System.out.print(p.getParent().getId() + ": ");

@@ -4,7 +4,9 @@ import tr.edu.iztech.pma.people.*;
 import tr.edu.iztech.pma.product.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class DataContext implements IDataContext {
@@ -20,11 +22,6 @@ public class DataContext implements IDataContext {
     public IPerson getPerson(String username, String password) {
         return new Admin(username, password);
 //        return people.stream().filter(u -> u.getUsername().equals(username) && u.login(password)).findFirst().orElse(null);
-    }
-
-    @Override
-    public List<IPerson> getPeople() {
-        return new ArrayList<>(people);
     }
 
     @Override
@@ -44,14 +41,27 @@ public class DataContext implements IDataContext {
 
     @Override
     public List<Employee> getEmployees(Manager manager) {
-        Product product = (Product) getProductOf(manager);
+        Product product = (Product) manager.getProduct();
 
-        return null;
-    }
+        List<IProduct> flatProducts = new LinkedList<>();
+        Queue<IProduct> queue = new LinkedList<>();
+        queue.add(product);
 
-    @Override
-    public Product getProductOf(Manager personnel) {
-        return products.stream().filter(p -> p.getId() == personnel.getProductId()).findFirst().orElse(null);
+        while (!queue.isEmpty()) {
+            IProduct current = queue.poll();
+
+            if (current instanceof AbstractProductWithChildren) {
+                flatProducts.addAll(((AbstractProductWithChildren) current).getChildren());
+                queue.addAll(((AbstractProductWithChildren) current).getChildren());
+            } else {
+                flatProducts.add(current);
+            }
+        }
+
+        return people.stream()
+            .filter(p -> p instanceof Employee && flatProducts.contains(((Employee) p).getProduct()))
+            .map(p -> (Employee) p)
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -63,7 +73,7 @@ public class DataContext implements IDataContext {
         int id = people.size() + 1;
 
         Product product = new Product(id, productTitle);
-        Manager manager = new Manager(username, password, product.getId());
+        Manager manager = new Manager(username, password, product);
 
         people.add(manager);
         products.add(product);
@@ -76,7 +86,7 @@ public class DataContext implements IDataContext {
         int id = people.size() + 1;
 
         Part part = new Part(id, productTitle);
-        Employee employee = new Employee(username, password, part.getId());
+        Employee employee = new Employee(username, password, part);
 
         root.add(part);
         people.add(employee);
@@ -89,7 +99,7 @@ public class DataContext implements IDataContext {
         int id = people.size() + 1;
 
         Assembly assembly = new Assembly(id, productTitle);
-        Employee employee = new Employee(username, password, assembly.getId());
+        Employee employee = new Employee(username, password, assembly);
 
         root.add(assembly);
         people.add(employee);

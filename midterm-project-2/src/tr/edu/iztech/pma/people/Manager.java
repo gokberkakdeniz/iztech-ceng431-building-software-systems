@@ -1,19 +1,22 @@
 package tr.edu.iztech.pma.people;
 
-public class Manager extends AbstractPerson implements IPersonnel {
-    private final int productId;
+import tr.edu.iztech.pma.product.IProduct;
+import tr.edu.iztech.pma.product.Product;
 
-    public Manager(String username, String password, int productId) {
+public class Manager extends AbstractPerson implements IPersonnel {
+    private final IProduct product;
+
+    public Manager(String username, String password, Product product) {
         super(username, password);
-        this.productId = productId;
+        this.product = product;
     }
 
-    public int getProductId() {
-        return productId;
+    public IProduct getProduct() {
+        return product;
     }
 
     @Override
     public String toString() {
-        return super.getUsername() + ", " + productId;
+        return super.getUsername() + ", " + product.getId();
     }
 }

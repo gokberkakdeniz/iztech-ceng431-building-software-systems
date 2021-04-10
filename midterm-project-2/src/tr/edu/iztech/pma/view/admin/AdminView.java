@@ -79,20 +79,20 @@ public class AdminView extends View {
     }
 
     private boolean seeEmployees() {
-        List<Employee> employees = context.getEmployees();
-
-        KeyboardReader.Options options = new KeyboardReader.Options("List of employees:", employees.toArray());
-        options.printOptions();
-
-        int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its part or" +
-                " assembly, 0 to quit", employees.size()), options.getPredicate());
-        if (choice == 0) {
-            return false;
-        }
-
-        Employee selectedEmployee = employees.get(choice - 1);
-        IProduct product = context.getProductOf(selectedEmployee);
-        System.out.println(product.getId());
+//        List<Employee> employees = context.getEmployees();
+//
+//        KeyboardReader.Options options = new KeyboardReader.Options("List of employees:", employees.toArray());
+//        options.printOptions();
+//
+//        int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its part or" +
+//                " assembly, 0 to quit", employees.size()), options.getPredicate());
+//        if (choice == 0) {
+//            return false;
+//        }
+//
+//        Employee selectedEmployee = employees.get(choice - 1);
+//        IProduct product = context.getProductOf(selectedEmployee);
+//        System.out.println(product.getId());
         return true;
     }
 
