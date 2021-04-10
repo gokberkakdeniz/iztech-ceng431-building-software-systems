@@ -33,16 +33,16 @@ public class ManagerView extends View {
                     case 0:
                         return false;
                     case 1:
-                        createPartWithEmployee();
+                        createEmployeeWithPart();
                         break;
                     case 2:
-                        createAssemblyWithEmployee();
+                        createEmployeeWithAssembly();
                         break;
                     case 3:
-                        seeProductTree();
+//                        seeProductTree();
                         break;
                     case 4:
-                        seeEmployees();
+//                        seeEmployees();
                         break;
                 }
             } catch (Exception e) {
@@ -51,9 +51,22 @@ public class ManagerView extends View {
         }
     }
 
-    private boolean createPartWithEmployee() { // TO DO
-//        AbstractProductWithChildren product = (AbstractProductWithChildren) user.getProduct();
-//        List<IProduct> children = product.getChildren(); BURDA KALDIN AMK KELİ
+    private boolean createEmployeeWithPart() { // TO DO
+        List<IProduct> children = ((AbstractProductWithChildren) user.getProduct()).getChildren();
+
+        int choice = 99;
+        while(choice != 0) {
+            KeyboardReader.Options options = new KeyboardReader.Options("List of parts and assemblies", children.toArray());
+            options.printOptions();
+            choice = keyboardReader.promptInteger(String.format("Please enter a number between 0-%s to see its " +
+                    "product, 0 to here", children.size()), options.getPredicate());
+            if(choice != 0) {
+                //iF PART İSE ONU SEÇİYORSUN, ASSEMBLY İSE DEVAM EDEBİLİYOR SADECE
+                children = ((AbstractProductWithChildren) children.get(choice-1)).getChildren();
+            } else {
+//                selected = children.get(0);
+            }
+        }
 
         String username = keyboardReader.promptString("Enter username");
         String password = keyboardReader.promptString("Enter password");
@@ -64,7 +77,7 @@ public class ManagerView extends View {
         return true;
     }
 
-    private boolean createAssemblyWithEmployee() { // TO DO
+    private boolean createEmployeeWithAssembly() { // TO DO
         String username = keyboardReader.promptString("Enter username");
         String password = keyboardReader.promptString("Enter password");
         String productTitle = keyboardReader.promptString("Enter product title");
