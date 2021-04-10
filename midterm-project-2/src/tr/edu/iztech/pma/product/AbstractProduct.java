@@ -74,6 +74,7 @@ public abstract class AbstractProduct implements IProduct {
 
     @Override
     public void printState() {
+        // TODO: delete
         System.out.printf("%s - %s\n", getTitle(), state.getClass().getSimpleName());
     }
 }

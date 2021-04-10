@@ -2,7 +2,7 @@ package tr.edu.iztech.pma.view;
 
 import tr.edu.iztech.pma.io.KeyboardReader;
 
-    public abstract class View {
+public abstract class View {
     protected KeyboardReader keyboardReader;
     
     public View() {}

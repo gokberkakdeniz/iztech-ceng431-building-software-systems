@@ -12,12 +12,12 @@ public interface IDataContext {
     List<Admin> getAdmins();
     List<Manager> getManagers();
     List<Employee> getEmployees();
+    List<Employee> getEmployees(Manager manager);
     List<Product> getProducts();
 
-    IProduct getProductOf(IPersonnel personnel);
+    Product getProductOf(Manager personnel);
 
     Product createProductWithManager(String username, String password, String productTitle);
-    Part createPartWithEmployee(String username, String password, String productTitle);
-    Assembly createAssemblyWithEmployee(String username, String password, String productTitle);
-
+    Part createPartWithEmployee(AbstractProductWithChildren root, String username, String password, String productTitle);
+    Assembly createAssemblyWithEmployee(AbstractProductWithChildren root, String username, String password, String productTitle);
 }

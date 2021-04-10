@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class DataContext implements IDataContext {
     private final List<IPerson> people;
-    private final List<IProduct> products;
+    private final List<Product> products;
 
     public DataContext() {
         this.people = new ArrayList<>();
@@ -43,7 +43,14 @@ public class DataContext implements IDataContext {
     }
 
     @Override
-    public IProduct getProductOf(IPersonnel personnel) {
+    public List<Employee> getEmployees(Manager manager) {
+        Product product = (Product) getProductOf(manager);
+
+        return null;
+    }
+
+    @Override
+    public Product getProductOf(Manager personnel) {
         return products.stream().filter(p -> p.getId() == personnel.getProductId()).findFirst().orElse(null);
     }
 
@@ -65,27 +72,27 @@ public class DataContext implements IDataContext {
     }
 
     @Override
-    public Part createPartWithEmployee(String username, String password, String productTitle) {
+    public Part createPartWithEmployee(AbstractProductWithChildren root, String username, String password, String productTitle) {
         int id = people.size() + 1;
 
         Part part = new Part(id, productTitle);
         Employee employee = new Employee(username, password, part.getId());
 
+        root.add(part);
         people.add(employee);
-        products.add(part);
 
         return part;
     }
 
     @Override
-    public Assembly createAssemblyWithEmployee(String username, String password, String productTitle) {
+    public Assembly createAssemblyWithEmployee(AbstractProductWithChildren root, String username, String password, String productTitle) {
         int id = people.size() + 1;
 
         Assembly assembly = new Assembly(id, productTitle);
         Employee employee = new Employee(username, password, assembly.getId());
 
+        root.add(assembly);
         people.add(employee);
-        products.add(assembly);
 
         return assembly;
     }
