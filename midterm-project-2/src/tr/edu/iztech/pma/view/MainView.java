@@ -5,7 +5,6 @@ import tr.edu.iztech.pma.view.admin.AdminView;
 
 public class MainView extends View{
     public MainView() {
-        super();
         this.keyboardReader = new KeyboardReader();
     }
 

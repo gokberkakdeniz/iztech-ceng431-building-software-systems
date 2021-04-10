@@ -66,10 +66,10 @@ public class DataContext implements IDataContext {
 
     @Override
     public List<Product> getProducts() {
-        return people.stream().filter(u -> u instanceof Product).map(u -> (Product) u).collect(Collectors.toList());
+        return products.stream().filter(u -> u instanceof Product).map(u -> (Product) u).collect(Collectors.toList());
     }
 
-    public Product createProductWithManager(String username, String password, String productTitle) {
+    public Manager createManagerWithProduct(String username, String password, String productTitle) {
         int id = people.size() + 1;
 
         Product product = new Product(id, productTitle);
@@ -78,11 +78,11 @@ public class DataContext implements IDataContext {
         people.add(manager);
         products.add(product);
 
-        return product;
+        return manager;
     }
 
     @Override
-    public Part createPartWithEmployee(AbstractProductWithChildren root, String username, String password, String productTitle) {
+    public Employee createEmployeeWithPart(AbstractProductWithChildren root, String username, String password, String productTitle) {
         int id = people.size() + 1;
 
         Part part = new Part(id, productTitle);
@@ -91,11 +91,11 @@ public class DataContext implements IDataContext {
         root.add(part);
         people.add(employee);
 
-        return part;
+        return employee;
     }
 
     @Override
-    public Assembly createAssemblyWithEmployee(AbstractProductWithChildren root, String username, String password, String productTitle) {
+    public Employee createEmployeeWithAssembly(AbstractProductWithChildren root, String username, String password, String productTitle) {
         int id = people.size() + 1;
 
         Assembly assembly = new Assembly(id, productTitle);
@@ -104,6 +104,6 @@ public class DataContext implements IDataContext {
         root.add(assembly);
         people.add(employee);
 
-        return assembly;
+        return employee;
     }
 }

@@ -17,6 +17,7 @@ import tr.edu.iztech.pma.view.Session;
 public class Main {
 
     public static void main(String[] args) {
+//        manager_test();
         DataContext context = new DataContext();
         Session.setContext(context);
         MainView view = new MainView();
@@ -25,6 +26,18 @@ public class Main {
 //        product_serde_test();
 //        person_serde_test();
 //        state_test();
+    }
+    private static void manager_test() {
+//        DataContext context = new DataContext();
+//        Manager managerA = context.createProductWithManager("managerA", "123456", "car");
+//        Employee employeeA = context.createAssemblyWithEmployee((Product) managerA.getProduct(), "employeeA", "123456", "assemblyA");
+//        Employee employeeB = context.createAssemblyWithEmployee((Product) managerA.getProduct(), "employeeB", "123456", "assemblyB");
+//        Employee employeeAA = context.createPartWithEmployee((Product) employeeAA.getProduct(), "employeeAA", "", "partAA");
+//        Assembly assemblyAA = context.createAssemblyWithEmployee(assemblyA, "employeeAA", "", "assemblyAA");
+//        Part partAAA = context.createPartWithEmployee(assemblyAA, "employeeAAA", "", "partAAA");
+//        Part partAAB = context.createPartWithEmployee(assemblyAA, "employeeAAB", "", "partAAB");
+//        context.getEmployees(managerA);
+
     }
 
     private static void tree_test() {

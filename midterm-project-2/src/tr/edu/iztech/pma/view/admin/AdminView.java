@@ -21,7 +21,7 @@ public class AdminView extends View {
     public boolean show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
-                    "Create Manager and Product", "See all managers", "See all employees", "See all products"
+                    "Create Product and Manager", "See all managers", "See all employees", "See all products"
             });
             options.printOptions();
             int choice = keyboardReader.promptInteger("Please enter a number between 0-4", options.getPredicate());
@@ -30,18 +30,16 @@ public class AdminView extends View {
                     case 0:
                         return false;
                     case 1:
-                        createManagerWithProduct();
+                        createProductWithManager();
                         break;
                     case 2:
                         seeManagers();
                         break;
                     case 3:
-                        if (seeEmployees())
-                            return true;
+                        seeEmployees();
                         break;
                     case 4:
-                        if (seeProducts())
-                            return true;
+                        seeProducts();
                         break;
                 }
             } catch (Exception e) {
@@ -50,13 +48,13 @@ public class AdminView extends View {
         }
     }
 
-    private boolean createManagerWithProduct() {
+    private boolean createProductWithManager() {
         String username = keyboardReader.promptString("Enter username");
         String password = keyboardReader.promptString("Enter password");
         String productTitle = keyboardReader.promptString("Enter product title");
 
-        Product product = context.createProductWithManager(username, password, productTitle);
-        System.out.printf("%s is added.\n\n", product);
+        Manager manager = context.createManagerWithProduct(username, password, productTitle);
+        System.out.printf("%s is added.\n\n", manager.getProduct());
         return true;
     }
 
@@ -73,33 +71,32 @@ public class AdminView extends View {
         }
 
         Manager selectedManager = managers.get(choice - 1);
-        IProduct product = context.getProductOf(selectedManager);
-        System.out.println(product.getId()); //TO DO
+        TreeTraverser.traverse(selectedManager.getProduct());
         return true;
     }
 
     private boolean seeEmployees() {
-//        List<Employee> employees = context.getEmployees();
-//
-//        KeyboardReader.Options options = new KeyboardReader.Options("List of employees:", employees.toArray());
-//        options.printOptions();
-//
-//        int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its part or" +
-//                " assembly, 0 to quit", employees.size()), options.getPredicate());
-//        if (choice == 0) {
-//            return false;
-//        }
-//
-//        Employee selectedEmployee = employees.get(choice - 1);
-//        IProduct product = context.getProductOf(selectedEmployee);
-//        System.out.println(product.getId());
+        List<Employee> employees = context.getEmployees();
+
+        KeyboardReader.Options options = new KeyboardReader.Options("List of employees", employees.toArray());
+        options.printOptions();
+
+        int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its part or" +
+                " assembly, 0 to quit", employees.size()), options.getPredicate());
+        if (choice == 0) {
+            return false;
+        }
+
+        Employee selectedEmployee = employees.get(choice - 1);
+        Product product = (Product) selectedEmployee.getProduct();
+        System.out.println(product);
         return true;
     }
 
     private boolean seeProducts() {
         List<Product> products = context.getProducts();
 
-        KeyboardReader.Options options = new KeyboardReader.Options("List of products:", products.toArray());
+        KeyboardReader.Options options = new KeyboardReader.Options("List of products", products.toArray());
         options.printOptions();
 
         int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its product tree," +

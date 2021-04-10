@@ -4,9 +4,6 @@ import tr.edu.iztech.pma.data.IDataContext;
 import tr.edu.iztech.pma.people.IPerson;
 
 public class AuthorizationView extends View {
-    public AuthorizationView() {
-        super();
-    }
 
     @Override
     public boolean show() {
