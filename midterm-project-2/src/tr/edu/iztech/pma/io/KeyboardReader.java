@@ -134,7 +134,7 @@ public class KeyboardReader {
      * Helper class for printing options
      */
     public static class Options {
-        private final String[] options;
+        private final Object[] options;
         private final String header;
         private final boolean noBack;
 
@@ -142,7 +142,7 @@ public class KeyboardReader {
          * @param header  option title
          * @param options options
          */
-        public Options(String header, String[] options) {
+        public Options(String header, Object[] options) {
             this(header, options, false);
         }
 
@@ -151,7 +151,7 @@ public class KeyboardReader {
          * @param options options
          * @param noBack  add zero numbered options to go back or no
          */
-        public Options(String header, String[] options, boolean noBack) {
+        public Options(String header, Object[] options, boolean noBack) {
             this.options = options;
             this.header = header;
             this.noBack = noBack;

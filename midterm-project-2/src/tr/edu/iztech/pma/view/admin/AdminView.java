@@ -62,35 +62,31 @@ public class AdminView extends View {
 
     private boolean seeManagers() {
         List<Manager> managers = context.getManagers();
-        System.out.println("[#] List of managers:");
-        int i = 1;
-        for (Manager manager : managers) {
-            System.out.printf("[%d] %s\n", i, manager);
-            i++;
-        }
-        int choice = keyboardReader.promptInteger("Enter a number to see its product, 0 to quit");
-        if (choice == 0 || managers.size() < choice) {
-            System.out.println("Wrong input provided.");
+
+        KeyboardReader.Options options = new KeyboardReader.Options("List of managers", managers.toArray());
+        options.printOptions();
+
+        int choice = keyboardReader.promptInteger(String.format("Please enter a number between 0-%s to see its " +
+                "product, 0 to quit", managers.size()), options.getPredicate());
+        if (choice == 0) {
             return false;
         }
 
         Manager selectedManager = managers.get(choice - 1);
         IProduct product = context.getProductOf(selectedManager);
-        System.out.println(product.getId());
+        System.out.println(product.getId()); //TO DO
         return true;
     }
 
     private boolean seeEmployees() {
         List<Employee> employees = context.getEmployees();
-        System.out.println("[#] List of employees:");
-        int i = 1;
-        for (Employee employee: employees) {
-            System.out.printf("[%d] %s\n", i, employee);
-            i++;
-        }
-        int choice = keyboardReader.promptInteger("Enter a number to see its part or assembly, 0 to quit");
-        if (choice == 0 || employees.size() < choice) {
-            System.out.println("Wrong input provided.");
+
+        KeyboardReader.Options options = new KeyboardReader.Options("List of employees:", employees.toArray());
+        options.printOptions();
+
+        int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its part or" +
+                " assembly, 0 to quit", employees.size()), options.getPredicate());
+        if (choice == 0) {
             return false;
         }
 
@@ -102,15 +98,13 @@ public class AdminView extends View {
 
     private boolean seeProducts() {
         List<Product> products = context.getProducts();
-        System.out.println("[#] List of products:");
-        int i = 1;
-        for (Product product: products) {
-            System.out.printf("[%d] %s\n", i, product);
-            i++;
-        }
-        int choice = keyboardReader.promptInteger("Enter a number to see its product tree, 0 to quit");
-        if (choice == 0 || products.size() < choice) {
-            System.out.println("Wrong input provided.");
+
+        KeyboardReader.Options options = new KeyboardReader.Options("List of products:", products.toArray());
+        options.printOptions();
+
+        int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its product tree," +
+                " 0 to quit", products.size()), options.getPredicate());
+        if (choice == 0) {
             return false;
         }
 
