@@ -16,6 +16,4 @@ public interface IProduct {
     IProduct getParent();
     void setParent(IProduct parent);
     boolean hasParent();
-
-    void printState();
 }

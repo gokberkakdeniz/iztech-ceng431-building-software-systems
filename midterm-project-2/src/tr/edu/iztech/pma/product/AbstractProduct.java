@@ -18,9 +18,7 @@ public abstract class AbstractProduct implements IProduct {
     private final String type;
     @Expose()
     protected IProductState state;
-    @Expose()
-    @SerializedName("parentId")
-    @JsonAdapter(ProductAsIdSerializer.class)
+
     private IProduct parent;
 
     public AbstractProduct(int id, String title) {
@@ -79,8 +77,7 @@ public abstract class AbstractProduct implements IProduct {
     }
 
     @Override
-    public void printState() {
-        // TODO: delete
-        System.out.printf("%s - %s\n", getTitle(), state.getClass().getSimpleName());
+    public String toString() {
+        return String.format("%s(%s, #%d, %s)", type, getTitle(), getId(), state);
     }
 }

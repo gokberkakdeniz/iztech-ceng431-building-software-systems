@@ -12,6 +12,6 @@ public abstract class AbstractProductState implements IProductState{
 
     @Override
     public String toString() {
-        return type;
+        return type.replace("State", "");
     }
 }

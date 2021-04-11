@@ -4,9 +4,4 @@ public class Product extends AbstractProductWithChildren {
     public Product(int id, String title) {
         super(id, title);
     }
-
-    @Override
-    public String toString() {
-        return this.getTitle() + ", id:" + this.getId() + ", state: " + state.toString();
-    }
 }
