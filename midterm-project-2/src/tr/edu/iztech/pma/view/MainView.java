@@ -11,7 +11,7 @@ public class MainView extends View{
         this.keyboardReader = new KeyboardReader();
     }
 
-    public boolean show() {
+    public void show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options(
                     "Available options",
@@ -28,7 +28,7 @@ public class MainView extends View{
                     break;
                 case 2:
                     System.out.println("görüşmek üzere");
-                    return true;
+                    return;
                 default:
                     break;
             }

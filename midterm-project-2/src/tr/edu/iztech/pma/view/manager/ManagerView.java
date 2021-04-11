@@ -22,7 +22,7 @@ public class ManagerView extends View {
     }
 
     @Override
-    public boolean show() {
+    public void show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
                     "Create part and employee", "Create assembly and employee", "See product tree", "See employees"
@@ -32,7 +32,7 @@ public class ManagerView extends View {
             try {
                 switch (choice) {
                     case 0:
-                        return false;
+                        return;
                     case 1:
                         createEmployeeWithPart();
                         break;
@@ -91,26 +91,22 @@ public class ManagerView extends View {
         System.out.printf("%s is assigned to %s.\n", employee.getProduct().getTitle(), employee.getUsername());
     }
 
-    private boolean createEmployeeWithPart() {
+    private void createEmployeeWithPart() {
         createProduct("Part");
-        return true;
     }
 
-    private boolean createEmployeeWithAssembly() {
+    private void createEmployeeWithAssembly() {
         createProduct("Assembly");
-        return true;
     }
 
-    private boolean seeProductTree() {
+    private void seeProductTree() {
         TreeTraverser.traverse(user.getProduct());
-        return true;
     }
 
-    private boolean seeEmployees() {
+    private void seeEmployees() {
         List<Employee> employees = context.getEmployees(user);
         for(Employee employee: employees) {
             System.out.println(employee);
         }
-        return true;
     }
 }

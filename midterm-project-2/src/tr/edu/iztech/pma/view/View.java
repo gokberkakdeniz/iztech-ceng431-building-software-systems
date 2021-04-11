@@ -13,6 +13,6 @@ public abstract class View {
         this.keyboardReader = keyboardReader;
     }
 
-    public abstract boolean show();
+    public abstract void show();
 
 }

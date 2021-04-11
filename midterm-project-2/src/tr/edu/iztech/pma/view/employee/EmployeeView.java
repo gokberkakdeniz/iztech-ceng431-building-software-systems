@@ -17,11 +17,11 @@ public class EmployeeView extends View {
     }
 
     @Override
-    public boolean show() {
+    public void show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?",
             new String[] {
-                "See state of your assembly/part", "Update state of your assembly/part"
+                "See state of your assembly / part", "Update state of your assembly / part"
             });
 
             options.printOptions();
@@ -30,7 +30,7 @@ public class EmployeeView extends View {
             try {
                 switch (choice) {
                     case 0:
-                        return false;
+                        return;
                     case 1:
                         seeStateOfProduct();
                         break;

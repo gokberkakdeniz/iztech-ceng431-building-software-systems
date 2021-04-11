@@ -4,6 +4,7 @@ import tr.edu.iztech.pma.data.IDataContext;
 import tr.edu.iztech.pma.io.KeyboardReader;
 import tr.edu.iztech.pma.people.Employee;
 import tr.edu.iztech.pma.people.Manager;
+import tr.edu.iztech.pma.product.IProduct;
 import tr.edu.iztech.pma.product.Product;
 import tr.edu.iztech.pma.utils.TreeTraverser;
 import tr.edu.iztech.pma.view.Session;
@@ -19,7 +20,7 @@ public class AdminView extends View {
     }
 
     @Override
-    public boolean show() {
+    public void show() {
         while (true) {
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
                     "Create Product and Manager", "See all managers", "See all employees", "See all products"
@@ -29,7 +30,7 @@ public class AdminView extends View {
             try {
                 switch (choice) {
                     case 0:
-                        return false;
+                        return;
                     case 1:
                         createProductWithManager();
                         break;
@@ -50,17 +51,16 @@ public class AdminView extends View {
         }
     }
 
-    private boolean createProductWithManager() {
+    private void createProductWithManager() {
         String username = keyboardReader.promptString("Enter username");
         String password = keyboardReader.promptString("Enter password");
         String productTitle = keyboardReader.promptString("Enter product title");
 
         Manager manager = context.createManagerWithProduct(username, password, productTitle);
         System.out.printf("%s is added.\n\n", manager.getProduct());
-        return true;
     }
 
-    private boolean seeManagers() {
+    private void seeManagers() {
         List<Manager> managers = context.getManagers();
 
         KeyboardReader.Options options = new KeyboardReader.Options("List of managers", managers.toArray());
@@ -69,15 +69,14 @@ public class AdminView extends View {
         int choice = keyboardReader.promptInteger(String.format("Please enter a number between 0-%s to see its " +
                 "product, 0 to quit", managers.size()), options.getPredicate());
         if (choice == 0) {
-            return false;
+            return;
         }
 
         Manager selectedManager = managers.get(choice - 1);
         TreeTraverser.traverse(selectedManager.getProduct());
-        return true;
     }
 
-    private boolean seeEmployees() {
+    private void seeEmployees() {
         List<Employee> employees = context.getEmployees();
 
         KeyboardReader.Options options = new KeyboardReader.Options("List of employees", employees.toArray());
@@ -86,16 +85,15 @@ public class AdminView extends View {
         int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its part or" +
                 " assembly, 0 to quit", employees.size()), options.getPredicate());
         if (choice == 0) {
-            return false;
+            return;
         }
 
         Employee selectedEmployee = employees.get(choice - 1);
-        Product product = (Product) selectedEmployee.getProduct();
+        IProduct product = selectedEmployee.getProduct();
         System.out.println(product);
-        return true;
     }
 
-    private boolean seeProducts() {
+    private void seeProducts() {
         List<Product> products = context.getProducts();
 
         KeyboardReader.Options options = new KeyboardReader.Options("List of products", products.toArray());
@@ -104,11 +102,10 @@ public class AdminView extends View {
         int choice = keyboardReader.promptInteger(String.format("Enter a number between 0-%s to see its product tree," +
                 " 0 to quit", products.size()), options.getPredicate());
         if (choice == 0) {
-            return false;
+            return;
         }
 
         Product selectedProduct = products.get(choice - 1);
         TreeTraverser.traverse(selectedProduct);
-        return true;
     }
 }

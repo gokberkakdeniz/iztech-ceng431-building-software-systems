@@ -109,5 +109,16 @@
     "username": "employeeAAB",
     "password": "",
     "type": "Employee"
+  },
+  {
+    "product": {
+      "children": [],
+      "id": 10,
+      "title": "gaf",
+      "type": "Product"
+    },
+    "username": "asd",
+    "password": "asd",
+    "type": "Manager"
   }
 ]
