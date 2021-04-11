@@ -1,43 +1,37 @@
 package tr.edu.iztech.pma;
 
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.Arrays;
-import java.util.List;
-
 import tr.edu.iztech.pma.data.DataContext;
-import tr.edu.iztech.pma.io.*;
-import tr.edu.iztech.pma.people.*;
-import tr.edu.iztech.pma.product.*;
+import tr.edu.iztech.pma.data.DataLoader;
+import tr.edu.iztech.pma.data.DataSaver;
+import tr.edu.iztech.pma.people.Manager;
+import tr.edu.iztech.pma.product.Assembly;
+import tr.edu.iztech.pma.product.Part;
+import tr.edu.iztech.pma.product.Product;
 import tr.edu.iztech.pma.utils.TreeTraverser;
-import tr.edu.iztech.pma.view.MainView;
-import tr.edu.iztech.pma.view.Session;
+
 
 public class Main {
 
     public static void main(String[] args) {
-//        manager_test();
-        DataContext context = new DataContext();
-        Session.setContext(context);
-        MainView view = new MainView();
-        view.show();
-        view.kill();
-//        product_serde_test();
-//        person_serde_test();
-//        state_test();
+//        DataContext context = new DataContext(new DataLoader(), new DataSaver());
+//        Session.setContext(context);
+//        MainView view = new MainView();
+//        view.show();
+//        view.kill();
+        serde_test();
     }
-    private static void manager_test() {
-//        DataContext context = new DataContext();
-//        Manager managerA = context.createProductWithManager("managerA", "123456", "car");
-//        Employee employeeA = context.createAssemblyWithEmployee((Product) managerA.getProduct(), "employeeA", "123456", "assemblyA");
-//        Employee employeeB = context.createAssemblyWithEmployee((Product) managerA.getProduct(), "employeeB", "123456", "assemblyB");
-//        Employee employeeAA = context.createPartWithEmployee((Product) employeeAA.getProduct(), "employeeAA", "", "partAA");
-//        Assembly assemblyAA = context.createAssemblyWithEmployee(assemblyA, "employeeAA", "", "assemblyAA");
-//        Part partAAA = context.createPartWithEmployee(assemblyAA, "employeeAAA", "", "partAAA");
-//        Part partAAB = context.createPartWithEmployee(assemblyAA, "employeeAAB", "", "partAAB");
-//        context.getEmployees(managerA);
 
+    private static void serde_test() {
+        DataContext context = new DataContext(new DataLoader(), new DataSaver());
+//        Manager managerA = context.createManagerWithProduct("managerA", "123456", "car");
+//        Employee employeeA = context.createEmployeeWithAssembly((AbstractProductWithChildren) managerA.getProduct(), "employeeA", "123456", "assemblyA");
+//        Employee employeeB = context.createEmployeeWithAssembly((AbstractProductWithChildren) managerA.getProduct(), "employeeB", "123456", "assemblyB");
+//        Employee employeeAA = context.createEmployeeWithAssembly((AbstractProductWithChildren) employeeA.getProduct(), "employeeAA", "", "partAA");
+//        Employee assemblyAA = context.createEmployeeWithAssembly((AbstractProductWithChildren) employeeA.getProduct(), "employeeAA", "", "assemblyAA");
+//        Employee partAAA = context.createEmployeeWithPart((AbstractProductWithChildren) employeeAA.getProduct(), "employeeAAA", "", "partAAA");
+//        Employee partAAB = context.createEmployeeWithPart((AbstractProductWithChildren) employeeAA.getProduct(), "employeeAAB", "", "partAAB");
+//        context.getEmployees(context.getManagers().get(0)).forEach(System.out::println);
+        context.save();
     }
 
     private static void tree_test() {
@@ -70,50 +64,5 @@ public class Main {
         cylinder.printState();
         engine.printState();
         car.printState();
-    }
-
-    private static void product_serde_test() {
-        // NOTE: Expose etmediğimiz her şeyi atladı.
-        Product car = new Product(1, "car");
-        Assembly engine = new Assembly(2, "engine");
-        Part wheel = new Part(3, "wheel");
-        car.add(engine);
-        car.add(wheel);
-        Part cylinder = new Part(4, "cylinder");
-        engine.add(cylinder);
-
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(IProduct.class, new ProductDeserializer())
-                .registerTypeAdapter(IProduct.class, new InterfaceSerializer<>())
-                .excludeFieldsWithoutExposeAnnotation()
-                .setPrettyPrinting()
-                .create();
-
-        String inputString = gson.toJson(car);
-
-        System.out.println(inputString);
-
-        Product outCar = gson.fromJson(inputString, new TypeToken<IProduct>(){}.getType());
-        System.out.println(outCar.getTitle());
-    }
-
-    private static void person_serde_test() {
-        List<IPerson> people = Arrays.asList(new IPerson[] {
-                new Admin("usr1", "pw1"),
-//                new Employee("usr2", "pw2"),
-//                new Manager("usr3", "pw3")
-        });
-
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(IPerson.class, new PersonDeserializer())
-                .setPrettyPrinting()
-                .create();
-
-        String inputString = gson.toJson(people);
-
-        List<IPerson> outList = gson.fromJson(inputString, new TypeToken<List<IPerson>>(){}.getType());
-        for (IPerson person : outList) {
-            System.out.printf("%s - %s\n", person.getUsername(), person.getClass().getSimpleName());
-        }
     }
 }

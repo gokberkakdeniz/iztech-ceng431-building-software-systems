@@ -2,13 +2,10 @@ package tr.edu.iztech.pma.view.manager;
 
 import tr.edu.iztech.pma.data.IDataContext;
 import tr.edu.iztech.pma.io.KeyboardReader;
-import tr.edu.iztech.pma.people.*;
-import tr.edu.iztech.pma.product.*;
+import tr.edu.iztech.pma.people.Manager;
 import tr.edu.iztech.pma.utils.TreeTraverser;
 import tr.edu.iztech.pma.view.Session;
 import tr.edu.iztech.pma.view.View;
-
-import java.util.List;
 
 public class ManagerView extends View {
     private IDataContext context;
@@ -39,10 +36,10 @@ public class ManagerView extends View {
                         createAssemblyWithEmployee();
                         break;
                     case 3:
-                        seeProductTree();
+//                        seeProductTree();
                         break;
                     case 4:
-                        seeEmployees();
+//                        seeEmployees();
                         break;
                 }
             } catch (Exception e) {

@@ -1,9 +1,12 @@
 package tr.edu.iztech.pma.product;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AbstractProductWithChildren extends AbstractProduct {
+    @Expose()
     private final List<IProduct> children;
 
     public AbstractProductWithChildren(int id, String title) {
@@ -24,6 +27,6 @@ public class AbstractProductWithChildren extends AbstractProduct {
     }
 
     public List<IProduct> getChildren() {
-        return this.children; // FIX: it may be cloned.
+        return new ArrayList<>(children);
     }
 }

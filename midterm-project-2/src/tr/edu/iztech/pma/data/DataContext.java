@@ -1,6 +1,9 @@
 package tr.edu.iztech.pma.data;
 
-import tr.edu.iztech.pma.people.*;
+import tr.edu.iztech.pma.people.Admin;
+import tr.edu.iztech.pma.people.Employee;
+import tr.edu.iztech.pma.people.IPerson;
+import tr.edu.iztech.pma.people.Manager;
 import tr.edu.iztech.pma.product.*;
 
 import java.util.ArrayList;
@@ -11,11 +14,18 @@ import java.util.stream.Collectors;
 
 public class DataContext implements IDataContext {
     private final List<IPerson> people;
-    private final List<Product> products;
+    private final IDataSaver saver;
 
-    public DataContext() {
+    public DataContext(IDataLoader loader, IDataSaver saver) {
         this.people = new ArrayList<>();
-        this.products = new ArrayList<>();
+        this.saver = saver;
+
+        this.people.addAll(loader.load());
+    }
+
+    @Override
+    public void save() {
+        saver.save(people);
     }
 
     @Override
@@ -66,7 +76,10 @@ public class DataContext implements IDataContext {
 
     @Override
     public List<Product> getProducts() {
-        return products.stream().filter(u -> u instanceof Product).map(u -> (Product) u).collect(Collectors.toList());
+        return people.stream()
+            .filter(p -> p instanceof Manager)
+            .map(p -> (Product)((Manager) p).getProduct())
+            .collect(Collectors.toList());
     }
 
     public Manager createManagerWithProduct(String username, String password, String productTitle) {
@@ -76,7 +89,6 @@ public class DataContext implements IDataContext {
         Manager manager = new Manager(username, password, product);
 
         people.add(manager);
-        products.add(product);
 
         return manager;
     }

@@ -2,8 +2,9 @@ package tr.edu.iztech.pma.view.admin;
 
 import tr.edu.iztech.pma.data.IDataContext;
 import tr.edu.iztech.pma.io.KeyboardReader;
-import tr.edu.iztech.pma.people.*;
-import tr.edu.iztech.pma.product.*;
+import tr.edu.iztech.pma.people.Employee;
+import tr.edu.iztech.pma.people.Manager;
+import tr.edu.iztech.pma.product.Product;
 import tr.edu.iztech.pma.utils.TreeTraverser;
 import tr.edu.iztech.pma.view.Session;
 import tr.edu.iztech.pma.view.View;

@@ -1,6 +1,8 @@
-package tr.edu.iztech.pma.io;
+package tr.edu.iztech.pma.data.json;
 
-import com.google.gson.*;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 import java.lang.reflect.Type;
 
