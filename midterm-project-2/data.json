@@ -6,13 +6,99 @@
   },
   {
     "product": {
-      "children": [],
+      "children": [
+        {
+          "id": 3,
+          "title": "z",
+          "type": "Part"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "id": 8,
+                  "title": "k",
+                  "type": "Assembly"
+                },
+                {
+                  "children": [],
+                  "id": 9,
+                  "title": "l",
+                  "type": "Assembly"
+                }
+              ],
+              "id": 6,
+              "title": "l",
+              "type": "Assembly"
+            },
+            {
+              "children": [],
+              "id": 7,
+              "title": "f",
+              "type": "Assembly"
+            }
+          ],
+          "id": 4,
+          "title": "x",
+          "type": "Assembly"
+        },
+        {
+          "children": [],
+          "id": 5,
+          "title": "c",
+          "type": "Assembly"
+        }
+      ],
       "id": 2,
-      "title": "yarrak",
+      "title": "e",
       "type": "Product"
     },
     "username": "e",
     "password": "e",
     "type": "Manager"
+  },
+  {
+    "productId": 3,
+    "username": "z",
+    "password": "z",
+    "type": "Employee"
+  },
+  {
+    "productId": 4,
+    "username": "x",
+    "password": "x",
+    "type": "Employee"
+  },
+  {
+    "productId": 5,
+    "username": "c",
+    "password": "c",
+    "type": "Employee"
+  },
+  {
+    "productId": 6,
+    "username": "l",
+    "password": "l",
+    "type": "Employee"
+  },
+  {
+    "productId": 7,
+    "username": "f",
+    "password": "f",
+    "type": "Employee"
+  },
+  {
+    "productId": 8,
+    "username": "k",
+    "password": "k",
+    "type": "Employee"
+  },
+  {
+    "productId": 9,
+    "username": "l",
+    "password": "l",
+    "type": "Employee"
   }
 ]

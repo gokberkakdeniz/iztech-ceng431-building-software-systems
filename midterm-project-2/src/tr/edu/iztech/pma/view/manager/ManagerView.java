@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 public class ManagerView extends View {
     private IDataContext context;
     private Manager user;
-    private TreeTraverser treeTraverser;
 
     public ManagerView() {
         this.context = Session.getContext();
@@ -65,29 +64,31 @@ public class ManagerView extends View {
         int i = 1;
         int choice = 99;
         while(choice != 1) {
+            i = 1;
             System.out.println("[#] List of assemblies:");
             System.out.println("[1] Create Here");
             for (IProduct assembly : assemblies) {
-                System.out.printf("[%d] %s", ++i, assembly);
+                System.out.printf("[%d] %s\n", ++i, assembly);
             }
+            choice = keyboardReader.promptInteger("Please enter a number");
 
             if (choice != 1) {
                 selectedProduct = (Assembly) assemblies.get(choice - 2);
                 assemblies = filterProduct(selectedProduct.getChildren(), p -> p instanceof Assembly);
             }
-
-            String username = keyboardReader.promptString("Enter username");
-            String password = keyboardReader.promptString("Enter password");
-            String productTitle = keyboardReader.promptString("Enter product title");
-
-            Employee employee;
-            if (type.equals("Part")) {
-                employee = context.createEmployeeWithPart(selectedProduct, username, password, productTitle);
-            } else {
-                employee = context.createEmployeeWithAssembly(selectedProduct, username, password, productTitle);
-            }
-            System.out.printf("%s is assigned to %s.", employee.getProduct().getTitle(), employee.getUsername());
         }
+
+        String username = keyboardReader.promptString("Enter username");
+        String password = keyboardReader.promptString("Enter password");
+        String productTitle = keyboardReader.promptString("Enter product title");
+
+        Employee employee;
+        if (type.equals("Part")) {
+            employee = context.createEmployeeWithPart(selectedProduct, username, password, productTitle);
+        } else {
+            employee = context.createEmployeeWithAssembly(selectedProduct, username, password, productTitle);
+        }
+        System.out.printf("%s is assigned to %s.\n", employee.getProduct().getTitle(), employee.getUsername());
     }
 
     private boolean createEmployeeWithPart() {
@@ -101,10 +102,15 @@ public class ManagerView extends View {
     }
 
     private boolean seeProductTree() {
+        TreeTraverser.traverse(user.getProduct());
         return true;
     }
 
     private boolean seeEmployees() {
-        return true;// TO DO
+        List<Employee> employees = context.getEmployees(user);
+        for(Employee employee: employees) {
+            System.out.println(employee);
+        }
+        return true;
     }
 }
