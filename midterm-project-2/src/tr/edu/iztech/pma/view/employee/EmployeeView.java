@@ -41,6 +41,7 @@ public class EmployeeView extends View {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            context.save();
         }
     }
 

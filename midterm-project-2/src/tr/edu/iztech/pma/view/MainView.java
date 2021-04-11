@@ -1,11 +1,10 @@
 package tr.edu.iztech.pma.view;
 
 import tr.edu.iztech.pma.io.KeyboardReader;
-import tr.edu.iztech.pma.people.Admin;
-import tr.edu.iztech.pma.people.Employee;
-import tr.edu.iztech.pma.people.IPerson;
-import tr.edu.iztech.pma.people.Manager;
 import tr.edu.iztech.pma.view.admin.AdminView;
+import tr.edu.iztech.pma.people.*;
+import tr.edu.iztech.pma.view.employee.EmployeeView;
+import tr.edu.iztech.pma.view.manager.ManagerView;
 
 public class MainView extends View{
     public MainView() {
@@ -53,8 +52,14 @@ public class MainView extends View{
             view.show();
         } else if (user instanceof Employee) {
             System.out.println("You are logged in as Employee!");
+            EmployeeView view = new EmployeeView();
+            view.bindKeyboardReader(keyboardReader);
+            view.show();
         } else if (user instanceof Manager) {
             System.out.println("You are logged in as Manager!");
+            ManagerView view = new ManagerView();
+            view.bindKeyboardReader(keyboardReader);
+            view.show();
         }
 
         Session.setUser(null);

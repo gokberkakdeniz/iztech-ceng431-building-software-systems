@@ -3,22 +3,24 @@ package tr.edu.iztech.pma;
 import tr.edu.iztech.pma.data.DataContext;
 import tr.edu.iztech.pma.data.DataLoader;
 import tr.edu.iztech.pma.data.DataSaver;
-import tr.edu.iztech.pma.people.Manager;
 import tr.edu.iztech.pma.product.Assembly;
 import tr.edu.iztech.pma.product.Part;
 import tr.edu.iztech.pma.product.Product;
 import tr.edu.iztech.pma.utils.TreeTraverser;
+import tr.edu.iztech.pma.view.MainView;
+import tr.edu.iztech.pma.view.Session;
 
 
 public class Main {
 
     public static void main(String[] args) {
-//        DataContext context = new DataContext(new DataLoader(), new DataSaver());
-//        Session.setContext(context);
-//        MainView view = new MainView();
-//        view.show();
-//        view.kill();
-        serde_test();
+        DataContext context = new DataContext(new DataLoader(), new DataSaver());
+        Session.setContext(context);
+        MainView view = new MainView();
+        view.show();
+        view.kill();
+        context.save();
+//        serde_test();
     }
 
     private static void serde_test() {

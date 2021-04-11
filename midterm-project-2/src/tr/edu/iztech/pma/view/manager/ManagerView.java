@@ -2,10 +2,15 @@ package tr.edu.iztech.pma.view.manager;
 
 import tr.edu.iztech.pma.data.IDataContext;
 import tr.edu.iztech.pma.io.KeyboardReader;
-import tr.edu.iztech.pma.people.Manager;
+import tr.edu.iztech.pma.people.*;
+import tr.edu.iztech.pma.product.*;
 import tr.edu.iztech.pma.utils.TreeTraverser;
 import tr.edu.iztech.pma.view.Session;
 import tr.edu.iztech.pma.view.View;
+
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ManagerView extends View {
     private IDataContext context;
@@ -36,61 +41,70 @@ public class ManagerView extends View {
                         createEmployeeWithAssembly();
                         break;
                     case 3:
-//                        seeProductTree();
+                        seeProductTree();
                         break;
                     case 4:
-//                        seeEmployees();
+                        seeEmployees();
                         break;
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            context.save();
         }
     }
 
-    private boolean createEmployeeWithPart() { // TO DO
-        List<IProduct> children = ((AbstractProductWithChildren) user.getProduct()).getChildren();
+    private List<IProduct> filterProduct(List<IProduct> products, Predicate<IProduct> predicate) {
+        return products.stream().filter(predicate).collect(Collectors.toList());
+    }
 
+    private void createProduct(String type) {
+        AbstractProductWithChildren selectedProduct = (AbstractProductWithChildren) user.getProduct();
+        List<IProduct> assemblies = filterProduct(selectedProduct.getChildren(), p->p instanceof Assembly);
+
+        int i = 1;
         int choice = 99;
-        while(choice != 0) {
-            KeyboardReader.Options options = new KeyboardReader.Options("List of parts and assemblies", children.toArray());
-            options.printOptions();
-            choice = keyboardReader.promptInteger(String.format("Please enter a number between 0-%s to see its " +
-                    "product, 0 to here", children.size()), options.getPredicate());
-            if(choice != 0) {
-                //iF PART İSE ONU SEÇİYORSUN, ASSEMBLY İSE DEVAM EDEBİLİYOR SADECE
-                children = ((AbstractProductWithChildren) children.get(choice-1)).getChildren();
-            } else {
-//                selected = children.get(0);
+        while(choice != 1) {
+            System.out.println("[#] List of assemblies:");
+            System.out.println("[1] Create Here");
+            for (IProduct assembly : assemblies) {
+                System.out.printf("[%d] %s", ++i, assembly);
             }
+
+            if (choice != 1) {
+                selectedProduct = (Assembly) assemblies.get(choice - 2);
+                assemblies = filterProduct(selectedProduct.getChildren(), p -> p instanceof Assembly);
+            }
+
+            String username = keyboardReader.promptString("Enter username");
+            String password = keyboardReader.promptString("Enter password");
+            String productTitle = keyboardReader.promptString("Enter product title");
+
+            Employee employee;
+            if (type.equals("Part")) {
+                employee = context.createEmployeeWithPart(selectedProduct, username, password, productTitle);
+            } else {
+                employee = context.createEmployeeWithAssembly(selectedProduct, username, password, productTitle);
+            }
+            System.out.printf("%s is assigned to %s.", employee.getProduct().getTitle(), employee.getUsername());
         }
+    }
 
-        String username = keyboardReader.promptString("Enter username");
-        String password = keyboardReader.promptString("Enter password");
-        String productTitle = keyboardReader.promptString("Enter product title");
-
-//        Part part = context.createEmployeeWithPart(username, password, productTitle); // TO DO
-//        System.out.printf("%s is added.\n\n", part);
+    private boolean createEmployeeWithPart() {
+        createProduct("Part");
         return true;
     }
 
-    private boolean createEmployeeWithAssembly() { // TO DO
-        String username = keyboardReader.promptString("Enter username");
-        String password = keyboardReader.promptString("Enter password");
-        String productTitle = keyboardReader.promptString("Enter product title");
-
-//        Assembly assembly = context.createAssemblyWithEmployee(username, password, productTitle); // TO DO
-//        System.out.printf("%s is added.\n\n", assembly);
+    private boolean createEmployeeWithAssembly() {
+        createProduct("Assembly");
         return true;
     }
 
-//    private boolean seeProductTree() {
-//        user.getProduct()
-////        treeTraverser.traverse(context.getProductOf(manager));
-//        return true;
-//    }
-//
-//    private boolean seeEmployees() {
-//        return true;// TO DO
-//    }
+    private boolean seeProductTree() {
+        return true;
+    }
+
+    private boolean seeEmployees() {
+        return true;// TO DO
+    }
 }

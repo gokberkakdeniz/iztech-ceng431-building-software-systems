@@ -1,91 +1,18 @@
 [
   {
-    "username": "admin",
-    "password": "admin",
+    "username": "q",
+    "password": "q",
     "type": "Admin"
   },
   {
     "product": {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "id": 6,
-                  "title": "partAAA",
-                  "type": "Part"
-                },
-                {
-                  "id": 7,
-                  "title": "partAAB",
-                  "type": "Part"
-                }
-              ],
-              "id": 4,
-              "title": "partAA",
-              "type": "Assembly"
-            },
-            {
-              "children": [],
-              "id": 5,
-              "title": "assemblyAA",
-              "type": "Assembly"
-            }
-          ],
-          "id": 2,
-          "title": "assemblyA",
-          "type": "Assembly"
-        },
-        {
-          "children": [],
-          "id": 3,
-          "title": "assemblyB",
-          "type": "Assembly"
-        }
-      ],
-      "id": 1,
-      "title": "car",
+      "children": [],
+      "id": 2,
+      "title": "yarrak",
       "type": "Product"
     },
-    "username": "managerA",
-    "password": "123456",
+    "username": "e",
+    "password": "e",
     "type": "Manager"
-  },
-  {
-    "productId": 2,
-    "username": "employeeA",
-    "password": "123456",
-    "type": "Employee"
-  },
-  {
-    "productId": 3,
-    "username": "employeeB",
-    "password": "123456",
-    "type": "Employee"
-  },
-  {
-    "productId": 4,
-    "username": "employeeAA",
-    "password": "",
-    "type": "Employee"
-  },
-  {
-    "productId": 5,
-    "username": "employeeAA",
-    "password": "",
-    "type": "Employee"
-  },
-  {
-    "productId": 6,
-    "username": "employeeAAA",
-    "password": "",
-    "type": "Employee"
-  },
-  {
-    "productId": 7,
-    "username": "employeeAAB",
-    "password": "",
-    "type": "Employee"
   }
 ]

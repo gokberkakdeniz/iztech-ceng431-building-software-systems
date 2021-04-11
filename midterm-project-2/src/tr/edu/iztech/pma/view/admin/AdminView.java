@@ -46,6 +46,7 @@ public class AdminView extends View {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            context.save();
         }
     }
 

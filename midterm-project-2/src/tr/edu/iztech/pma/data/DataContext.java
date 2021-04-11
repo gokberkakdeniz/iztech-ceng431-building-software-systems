@@ -1,9 +1,6 @@
 package tr.edu.iztech.pma.data;
 
-import tr.edu.iztech.pma.people.Admin;
-import tr.edu.iztech.pma.people.Employee;
-import tr.edu.iztech.pma.people.IPerson;
-import tr.edu.iztech.pma.people.Manager;
+import tr.edu.iztech.pma.people.*;
 import tr.edu.iztech.pma.product.*;
 
 import java.util.ArrayList;
@@ -30,8 +27,7 @@ public class DataContext implements IDataContext {
 
     @Override
     public IPerson getPerson(String username, String password) {
-        return new Admin(username, password);
-//        return people.stream().filter(u -> u.getUsername().equals(username) && u.login(password)).findFirst().orElse(null);
+        return people.stream().filter(u -> u.getUsername().equals(username) && u.login(password)).findFirst().orElse(null);
     }
 
     @Override
