@@ -3,10 +3,7 @@ package tr.edu.iztech.pma.data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import tr.edu.iztech.pma.data.json.ISerializationRepository;
-import tr.edu.iztech.pma.data.json.PersonDeserializer;
-import tr.edu.iztech.pma.data.json.ProductDeserializer;
-import tr.edu.iztech.pma.data.json.ProductSerializationRepository;
+import tr.edu.iztech.pma.data.json.*;
 import tr.edu.iztech.pma.people.IPerson;
 import tr.edu.iztech.pma.product.IProduct;
 
@@ -28,7 +25,7 @@ public class DataLoader implements IDataLoader {
             String serialized = Files.readString(Path.of("./data.json"));
             return  gson.fromJson(serialized, new TypeToken<List<IPerson>>(){}.getType());
         } catch (Exception exception) {
-            throw new LoadFailedException(exception.getMessage());
+            throw new LoadFailedException(exception);
         }
 
     }

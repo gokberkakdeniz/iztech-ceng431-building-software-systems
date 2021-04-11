@@ -1,104 +1,113 @@
 [
   {
-    "username": "q",
-    "password": "q",
-    "type": "Admin"
-  },
-  {
     "product": {
       "children": [
-        {
-          "id": 3,
-          "title": "z",
-          "type": "Part"
-        },
         {
           "children": [
             {
               "children": [
                 {
-                  "children": [],
-                  "id": 8,
-                  "title": "k",
-                  "type": "Assembly"
+                  "id": 6,
+                  "title": "partAAA",
+                  "type": "Part",
+                  "state": {
+                    "type": "NotStartedState"
+                  },
+                  "parentId": 4
                 },
                 {
-                  "children": [],
-                  "id": 9,
-                  "title": "l",
-                  "type": "Assembly"
+                  "id": 7,
+                  "title": "partAAB",
+                  "type": "Part",
+                  "state": {
+                    "type": "NotStartedState"
+                  },
+                  "parentId": 4
                 }
               ],
-              "id": 6,
-              "title": "l",
-              "type": "Assembly"
+              "id": 4,
+              "title": "partAA",
+              "type": "Assembly",
+              "state": {
+                "type": "NotStartedState"
+              },
+              "parentId": 2
             },
             {
               "children": [],
-              "id": 7,
-              "title": "f",
-              "type": "Assembly"
+              "id": 5,
+              "title": "assemblyAA",
+              "type": "Assembly",
+              "state": {
+                "type": "NotStartedState"
+              },
+              "parentId": 2
             }
           ],
-          "id": 4,
-          "title": "x",
-          "type": "Assembly"
+          "id": 2,
+          "title": "assemblyA",
+          "type": "Assembly",
+          "state": {
+            "type": "NotStartedState"
+          },
+          "parentId": 1
         },
         {
           "children": [],
-          "id": 5,
-          "title": "c",
-          "type": "Assembly"
+          "id": 3,
+          "title": "assemblyB",
+          "type": "Assembly",
+          "state": {
+            "type": "NotStartedState"
+          },
+          "parentId": 1
         }
       ],
-      "id": 2,
-      "title": "e",
-      "type": "Product"
+      "id": 1,
+      "title": "car",
+      "type": "Product",
+      "state": {
+        "type": "NotStartedState"
+      }
     },
-    "username": "e",
-    "password": "e",
+    "username": "managerA",
+    "password": "123456",
     "type": "Manager"
   },
   {
+    "productId": 2,
+    "username": "employeeA",
+    "password": "123456",
+    "type": "Employee"
+  },
+  {
     "productId": 3,
-    "username": "z",
-    "password": "z",
+    "username": "employeeB",
+    "password": "123456",
     "type": "Employee"
   },
   {
     "productId": 4,
-    "username": "x",
-    "password": "x",
+    "username": "employeeAA",
+    "password": "",
     "type": "Employee"
   },
   {
     "productId": 5,
-    "username": "c",
-    "password": "c",
+    "username": "employeeAA",
+    "password": "",
     "type": "Employee"
   },
   {
     "productId": 6,
-    "username": "l",
-    "password": "l",
+    "username": "employeeAAA",
+    "password": "",
     "type": "Employee"
   },
   {
     "productId": 7,
-    "username": "f",
-    "password": "f",
-    "type": "Employee"
-  },
-  {
-    "productId": 8,
-    "username": "k",
-    "password": "k",
-    "type": "Employee"
-  },
-  {
-    "productId": 9,
-    "username": "l",
-    "password": "l",
+    "username": "employeeAAB",
+    "password": "",
     "type": "Employee"
   }
 ]

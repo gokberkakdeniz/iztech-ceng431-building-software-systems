@@ -3,7 +3,7 @@ package tr.edu.iztech.pma.product.state;
 import tr.edu.iztech.pma.product.AbstractProductWithChildren;
 import tr.edu.iztech.pma.product.IProduct;
 
-public class InProgressState implements IProductState {
+public class InProgressState extends AbstractProductState {
     @Override
     public void proceed(IProduct context) {
         context.setState(new CompleteState());

@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 public class TreeTraverser {
 
     public static void traverse(IProduct root) {
-        traverse(root, p -> { System.out.printf("%s(id: %d) ", p.getTitle(), p.getId()); });
+        traverse(root, p -> { System.out.printf("%s ", p.toString()); });
     }
 
     public static void traverse(IProduct root, Consumer<IProduct> consumer) {

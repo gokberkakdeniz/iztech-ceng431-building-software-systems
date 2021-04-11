@@ -1,0 +1,33 @@
+package tr.edu.iztech.pma.data.json;
+
+import com.google.gson.*;
+import tr.edu.iztech.pma.product.state.*;
+
+import java.lang.reflect.Type;
+
+
+public class ProductStateDeserializer implements JsonDeserializer<IProductState> {
+    private final String typeElementName;
+    private final Gson gson;
+
+    public ProductStateDeserializer(String typeElementName) {
+        this.typeElementName = typeElementName;
+        this.gson = new Gson();
+    }
+
+    public ProductStateDeserializer() {
+        this("type");
+    }
+
+    @Override
+    public IProductState deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        JsonObject object = jsonElement.getAsJsonObject();
+        String className = object.get(typeElementName).getAsString();
+
+        try {
+            return gson.fromJson(jsonElement, (Type) Class.forName("tr.edu.iztech.pma.product.state." + className));
+        } catch (ClassNotFoundException e) {
+            return null;
+        }
+    }
+}
