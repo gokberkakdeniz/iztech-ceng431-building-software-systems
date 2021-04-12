@@ -9,10 +9,13 @@ import tr.edu.iztech.pma.product.state.NotStartedState;
 public abstract class AbstractProduct implements IProduct {
     @Expose()
     private final int id;
+
     @Expose()
     private final String title;
+
     @Expose()
-    private final String type;
+    private final String type; // class name for serialization
+
     @Expose()
     protected IProductState state;
 

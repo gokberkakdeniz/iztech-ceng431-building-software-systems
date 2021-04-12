@@ -5,6 +5,9 @@ import com.google.gson.annotations.Expose;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Shared and abstract class for Product and Assembly
+ */
 public class AbstractProductWithChildren extends AbstractProduct {
     @Expose()
     private final List<IProduct> children;
