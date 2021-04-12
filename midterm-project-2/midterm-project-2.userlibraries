@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="gson-2.8.6">
+    <archive path="/home/gokberk/Projects/iztech-ceng431/midterm-project-2/lib/gson-2.8.6.jar" />
+  </library>
+</eclipse-userlibraries>
+

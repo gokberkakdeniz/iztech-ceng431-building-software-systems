@@ -31,11 +31,6 @@ public class DataContext implements IDataContext {
     }
 
     @Override
-    public List<Admin> getAdmins() {
-        return people.stream().filter(u -> u instanceof Admin).map(u -> (Admin) u).collect(Collectors.toList());
-    }
-
-    @Override
     public List<Manager> getManagers() {
         return people.stream().filter(u -> u instanceof Manager).map(u -> (Manager) u).collect(Collectors.toList());
     }

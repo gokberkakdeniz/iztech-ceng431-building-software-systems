@@ -18,12 +18,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * Loads data from 'data.json' file
+ */
 public class DataLoader implements IDataLoader {
-    private final ISerializationRepository<Integer, IProduct> productRepo;
     private final Gson gson;
+    private final Path path;
 
-    public DataLoader() {
-        productRepo = new ProductSerializationRepository();
+    public DataLoader(Path path) {
+        ISerializationRepository<Integer, IProduct> productRepo = new ProductSerializationRepository();
+
+        this.path = path;
         gson = new GsonBuilder()
                 .registerTypeAdapter(IProduct.class, new ProductDeserializer(productRepo))
                 .registerTypeAdapter(IPerson.class, new PersonDeserializer(productRepo))
@@ -33,7 +38,7 @@ public class DataLoader implements IDataLoader {
     @Override
     public List<IPerson> load() {
         try {
-            String serialized = Files.readString(Path.of("./data.json"));
+            String serialized = Files.readString(path);
             List<IPerson> deserialized = gson.fromJson(serialized, new TypeToken<List<IPerson>>(){}.getType());
             fillNullFields(deserialized);
             return deserialized;
@@ -42,6 +47,11 @@ public class DataLoader implements IDataLoader {
         }
     }
 
+    /**
+     * Normalizes deserialized data
+     *
+     * @param list deserialized data
+     */
     private void fillNullFields(List<IPerson> list) {
         for (IPerson person: list) {
             if (person instanceof Manager) {
@@ -50,6 +60,11 @@ public class DataLoader implements IDataLoader {
         }
     }
 
+    /**
+     * Updates all null 'parent' fields of product tree
+     *
+     * @param root root of product tree
+     */
     private void fillParentsOfProducts(Product root) {
         Queue<IProduct> queue = new LinkedList<>();
         queue.add(root);
@@ -65,13 +80,19 @@ public class DataLoader implements IDataLoader {
         }
     }
 
+    /**
+     * Sets parents private field 'parent' using reflection
+     *
+     * @param src source object whose parent will be changed
+     * @param parent a value
+     */
     private void setParentOf(IProduct src, IProduct parent) {
         try {
             Field parentField = AbstractProduct.class.getDeclaredField("parent");
             parentField.setAccessible(true);
             parentField.set(src, parent);
-        } catch (Exception ignored) {
-            System.out.println(ignored.getMessage());
+        } catch (Exception exception) {
+            throw new LoadFailedException(exception);
         }
     }
 }

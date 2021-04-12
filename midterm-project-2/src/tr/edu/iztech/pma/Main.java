@@ -13,10 +13,13 @@ import tr.edu.iztech.pma.utils.TreeTraverser;
 import tr.edu.iztech.pma.view.MainView;
 import tr.edu.iztech.pma.view.Session;
 
+import java.nio.file.Path;
+
 
 public class Main {
     public static void main(String[] args) {
-        DataContext context = new DataContext(new DataLoader(), new DataSaver());
+        Path path = Path.of("./data.json");
+        DataContext context = new DataContext(new DataLoader(path), new DataSaver(path));
         Session.setContext(context);
         MainView view = new MainView();
         view.show();
@@ -26,7 +29,8 @@ public class Main {
     }
 
     private static void serde_test() {
-        DataContext context = new DataContext(new DataLoader(), new DataSaver());
+        Path path = Path.of("./data.json");
+        DataContext context = new DataContext(new DataLoader(path), new DataSaver(path));
         TreeTraverser.traverse(context.getManagers().get(0).getProduct());
 //        Manager managerA = context.createManagerWithProduct("managerA", "123456", "car");
 //        Employee employeeA = context.createEmployeeWithAssembly((AbstractProductWithChildren) managerA.getProduct(), "employeeA", "123456", "assemblyA");

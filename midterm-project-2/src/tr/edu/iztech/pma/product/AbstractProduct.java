@@ -1,9 +1,6 @@
 package tr.edu.iztech.pma.product;
 
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import tr.edu.iztech.pma.data.json.ProductAsIdSerializer;
 import tr.edu.iztech.pma.product.state.CompleteState;
 import tr.edu.iztech.pma.product.state.IProductState;
 import tr.edu.iztech.pma.product.state.InProgressState;

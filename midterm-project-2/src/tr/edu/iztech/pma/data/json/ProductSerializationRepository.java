@@ -5,6 +5,9 @@ import tr.edu.iztech.pma.product.IProduct;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * IProduct repository to fulfill Employee's product during serialization
+ */
 public class ProductSerializationRepository implements ISerializationRepository<Integer, IProduct> {
     private final Map<Integer, IProduct> products;
 

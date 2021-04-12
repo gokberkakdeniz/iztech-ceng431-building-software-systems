@@ -7,6 +7,9 @@ import tr.edu.iztech.pma.product.IProduct;
 
 import java.lang.reflect.Type;
 
+/**
+ * Gson library extension for deserialize IPerson
+ */
 public class PersonDeserializer implements JsonDeserializer<IPerson> {
     private final String typeElementName;
     private final Gson gson;
@@ -29,6 +32,7 @@ public class PersonDeserializer implements JsonDeserializer<IPerson> {
         JsonObject object = jsonElement.getAsJsonObject();
         String className = object.get(typeElementName).getAsString();
 
+        // Employee has IProduct which is deserialized before. We need to find it to keep references same.
         if (className.equals("Employee")) {
             String username = object.get("username").getAsString();
             String password = object.get("password").getAsString();
