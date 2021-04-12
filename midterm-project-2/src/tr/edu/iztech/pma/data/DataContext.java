@@ -2,6 +2,7 @@ package tr.edu.iztech.pma.data;
 
 import tr.edu.iztech.pma.people.*;
 import tr.edu.iztech.pma.product.*;
+import tr.edu.iztech.pma.view.ViewException;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -73,7 +74,14 @@ public class DataContext implements IDataContext {
             .collect(Collectors.toList());
     }
 
+    private boolean checkUsernameExist(String username) {
+        return people.stream().anyMatch(u -> u.getUsername().equals(username));
+    }
+
     public Manager createManagerWithProduct(String username, String password, String productTitle) {
+        if(checkUsernameExist(username)) {
+            throw new ViewException("There is a user with this name.");
+        }
         int id = people.size() + 1;
 
         Product product = new Product(id, productTitle);
@@ -86,6 +94,9 @@ public class DataContext implements IDataContext {
 
     @Override
     public Employee createEmployeeWithPart(AbstractProductWithChildren root, String username, String password, String productTitle) {
+        if(checkUsernameExist(username)) {
+            throw new ViewException("There is a user with this name.");
+        }
         int id = people.size() + 1;
 
         Part part = new Part(id, productTitle);
@@ -99,6 +110,9 @@ public class DataContext implements IDataContext {
 
     @Override
     public Employee createEmployeeWithAssembly(AbstractProductWithChildren root, String username, String password, String productTitle) {
+        if(checkUsernameExist(username)) {
+            throw new ViewException("There is a user with this name.");
+        }
         int id = people.size() + 1;
 
         Assembly assembly = new Assembly(id, productTitle);

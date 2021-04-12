@@ -8,12 +8,15 @@ import java.util.List;
 import java.util.Queue;
 import java.util.function.Consumer;
 
-public class TreeTraverser {
+public class ProductTraverser {
 
     public static void traverse(IProduct root) {
         traverse(root, p -> { System.out.printf("%s\t", p.toString()); });
     }
 
+    /**
+     * traverses the product tree.
+     */
     public static void traverse(IProduct root, Consumer<IProduct> consumer) {
         Queue<IProduct> queue = new LinkedList<>();
         queue.add(root);
@@ -23,11 +26,8 @@ public class TreeTraverser {
             int n = queue.size();
             boolean first = true;
 
-            // If this node has children
             while (n > 0)
             {
-                // Dequeue an item from queue
-                // and print it
                 IProduct p = queue.poll();
 
                 if (first) {
@@ -38,8 +38,6 @@ public class TreeTraverser {
 
                 consumer.accept(p);
 
-                // Enqueue all children of
-                // the dequeued item
                 if (p instanceof AbstractProductWithChildren) {
                     List<IProduct> children = ((AbstractProductWithChildren)p).getChildren();
                     queue.addAll(children);

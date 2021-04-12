@@ -78,6 +78,6 @@ public abstract class AbstractProduct implements IProduct {
 
     @Override
     public String toString() {
-        return String.format("%s(%s, #%d, %s)", type, getTitle(), getId(), state);
+        return String.format("#%d(%s, %s, %s)", getId(), getTitle(), type, state);
     }
 }

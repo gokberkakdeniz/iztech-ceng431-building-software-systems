@@ -3,13 +3,7 @@ package tr.edu.iztech.pma;
 import tr.edu.iztech.pma.data.DataContext;
 import tr.edu.iztech.pma.data.DataLoader;
 import tr.edu.iztech.pma.data.DataSaver;
-import tr.edu.iztech.pma.people.Employee;
-import tr.edu.iztech.pma.people.Manager;
-import tr.edu.iztech.pma.product.AbstractProductWithChildren;
-import tr.edu.iztech.pma.product.Assembly;
-import tr.edu.iztech.pma.product.Part;
-import tr.edu.iztech.pma.product.Product;
-import tr.edu.iztech.pma.utils.TreeTraverser;
+import tr.edu.iztech.pma.utils.ProductTraverser;
 import tr.edu.iztech.pma.view.MainView;
 import tr.edu.iztech.pma.view.Session;
 
@@ -31,7 +25,7 @@ public class Main {
     private static void serde_test() {
         Path path = Path.of("./data.json");
         DataContext context = new DataContext(new DataLoader(path), new DataSaver(path));
-        TreeTraverser.traverse(context.getManagers().get(0).getProduct());
+        ProductTraverser.traverse(context.getManagers().get(0).getProduct());
 //        Manager managerA = context.createManagerWithProduct("managerA", "123456", "car");
 //        Employee employeeA = context.createEmployeeWithAssembly((AbstractProductWithChildren) managerA.getProduct(), "employeeA", "123456", "assemblyA");
 //        Employee employeeB = context.createEmployeeWithAssembly((AbstractProductWithChildren) managerA.getProduct(), "employeeB", "123456", "assemblyB");

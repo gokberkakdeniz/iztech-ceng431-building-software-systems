@@ -19,15 +19,17 @@ public class EmployeeView extends View {
     @Override
     public void show() {
         while (true) {
+            System.out.println();
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?",
             new String[] {
-                "See state of your assembly / part", "Update state of your assembly / part"
+                "See your assembly / part", "Proceed state of your assembly / part"
             });
 
             options.printOptions();
 
             int choice = keyboardReader.promptInteger("Please enter a number between 0-2", options.getPredicate());
             try {
+                System.out.println();
                 switch (choice) {
                     case 0:
                         return;

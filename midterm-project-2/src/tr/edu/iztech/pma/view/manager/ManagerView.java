@@ -4,7 +4,7 @@ import tr.edu.iztech.pma.data.IDataContext;
 import tr.edu.iztech.pma.io.KeyboardReader;
 import tr.edu.iztech.pma.people.*;
 import tr.edu.iztech.pma.product.*;
-import tr.edu.iztech.pma.utils.TreeTraverser;
+import tr.edu.iztech.pma.utils.ProductTraverser;
 import tr.edu.iztech.pma.view.Session;
 import tr.edu.iztech.pma.view.View;
 
@@ -24,12 +24,14 @@ public class ManagerView extends View {
     @Override
     public void show() {
         while (true) {
+            System.out.println();
             KeyboardReader.Options options = new KeyboardReader.Options("What would you like to do?", new String[]{
                     "Create part and employee", "Create assembly and employee", "See product tree", "See employees"
             });
             options.printOptions();
             int choice = keyboardReader.promptInteger("Please enter a number between 0-4", options.getPredicate());
             try {
+                System.out.println();
                 switch (choice) {
                     case 0:
                         return;
@@ -61,8 +63,8 @@ public class ManagerView extends View {
         AbstractProductWithChildren selectedProduct = (AbstractProductWithChildren) user.getProduct();
         List<IProduct> assemblies = filterProduct(selectedProduct.getChildren(), p->p instanceof Assembly);
 
-        int i = 1;
-        int choice = 99;
+        int i;
+        int choice = -1;
         while(choice != 1) {
             i = 1;
             System.out.println("[#] List of assemblies:");
@@ -70,12 +72,17 @@ public class ManagerView extends View {
             for (IProduct assembly : assemblies) {
                 System.out.printf("[%d] %s\n", ++i, assembly);
             }
-            choice = keyboardReader.promptInteger("Please enter a number");
-
+            while (true) {
+                choice = keyboardReader.promptInteger(String.format("Please enter a number between 1-%s", assemblies.size()+1));
+                if(choice >= 1 && choice <= assemblies.size()+1) {
+                    break;
+                }
+            }
             if (choice != 1) {
                 selectedProduct = (Assembly) assemblies.get(choice - 2);
                 assemblies = filterProduct(selectedProduct.getChildren(), p -> p instanceof Assembly);
             }
+            System.out.println();
         }
 
         String username = keyboardReader.promptString("Enter username");
@@ -100,7 +107,7 @@ public class ManagerView extends View {
     }
 
     private void seeProductTree() {
-        TreeTraverser.traverse(user.getProduct());
+        ProductTraverser.traverse(user.getProduct());
     }
 
     private void seeEmployees() {

@@ -23,6 +23,7 @@ public class Employee extends AbstractPerson implements IPersonnel {
 
     @Override
     public String toString() {
-        return super.getUsername() + "," + product.getId();
+        return String.format("%s: %s", this.getUsername() , product);
     }
+
 }

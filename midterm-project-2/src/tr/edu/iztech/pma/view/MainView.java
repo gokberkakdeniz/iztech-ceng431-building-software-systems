@@ -22,15 +22,19 @@ public class MainView extends View{
                     true);
             options.printOptions();
             int option = keyboardReader.promptInteger("Please select operation", options.getPredicate());
-            switch (option) {
-                case 1:
-                    login();
-                    break;
-                case 2:
-                    System.out.println("görüşmek üzere");
-                    return;
-                default:
-                    break;
+            try {
+                switch (option) {
+                    case 1:
+                        login();
+                        break;
+                    case 2:
+                        System.out.println("See you soon!");
+                        return;
+                    default:
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
     }
