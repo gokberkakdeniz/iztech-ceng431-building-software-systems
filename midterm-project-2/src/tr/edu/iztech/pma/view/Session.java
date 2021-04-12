@@ -3,6 +3,9 @@ package tr.edu.iztech.pma.view;
 import tr.edu.iztech.pma.data.IDataContext;
 import tr.edu.iztech.pma.people.IPerson;
 
+/**
+ * Container for current user
+ */
 public class Session {
     private static IPerson user;
     private static IDataContext context;

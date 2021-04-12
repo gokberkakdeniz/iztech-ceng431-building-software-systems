@@ -1,8 +1,11 @@
 package tr.edu.iztech.pma.view;
 
 import tr.edu.iztech.pma.io.KeyboardReader;
+import tr.edu.iztech.pma.people.Admin;
+import tr.edu.iztech.pma.people.Employee;
+import tr.edu.iztech.pma.people.IPerson;
+import tr.edu.iztech.pma.people.Manager;
 import tr.edu.iztech.pma.view.admin.AdminView;
-import tr.edu.iztech.pma.people.*;
 import tr.edu.iztech.pma.view.employee.EmployeeView;
 import tr.edu.iztech.pma.view.manager.ManagerView;
 

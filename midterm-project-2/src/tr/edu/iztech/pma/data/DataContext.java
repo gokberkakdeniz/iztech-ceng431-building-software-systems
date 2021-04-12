@@ -1,6 +1,8 @@
 package tr.edu.iztech.pma.data;
 
-import tr.edu.iztech.pma.people.*;
+import tr.edu.iztech.pma.people.Employee;
+import tr.edu.iztech.pma.people.IPerson;
+import tr.edu.iztech.pma.people.Manager;
 import tr.edu.iztech.pma.product.*;
 import tr.edu.iztech.pma.view.ViewException;
 

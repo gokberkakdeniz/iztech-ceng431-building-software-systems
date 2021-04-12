@@ -1,7 +1,7 @@
 package tr.edu.iztech.pma.data.json;
 
 import com.google.gson.*;
-import tr.edu.iztech.pma.product.state.*;
+import tr.edu.iztech.pma.product.state.IProductState;
 
 import java.lang.reflect.Type;
 
