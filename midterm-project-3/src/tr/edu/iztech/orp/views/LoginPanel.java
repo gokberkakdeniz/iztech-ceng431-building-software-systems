@@ -46,7 +46,7 @@ public class LoginPanel extends JPanel {
 				String username = usernameInput.getText();
 				String password = String.valueOf(passwordInput.getPassword());
 				
-				if (username.equals("a") && password.equals("a")) {
+				if (username.equals("") && password.equals("")) {
 					loginButtonListener.actionPerformed(e);
 				} else {
 					showError();
