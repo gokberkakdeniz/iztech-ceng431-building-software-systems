@@ -26,7 +26,7 @@ public class HeaderPanel extends JPanel {
 				}
 			}
 		});
-		viewCombo.setModel(new DefaultComboBoxModel<>(MenuModel.values()));
+		viewCombo.setModel(new DefaultComboBoxModel<>(MenuModel.publicValues()));
 		add(viewCombo);
 		
 		JButton logoutButton = new JButton("Logout");

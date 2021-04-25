@@ -17,6 +17,9 @@ public class MainWindow extends JFrame {
 	private static final long serialVersionUID = -1913034844784098376L;
 	private static final String title = "IZTECH Outfit Rating Platform [Group 6]";
 	private JPanel contentPanel;
+	private JPanel headerPanel;
+	private JPanel loginPanel;
+	
 	private boolean isLoggedIn = false;
 
 	public MainWindow() {
@@ -42,20 +45,23 @@ public class MainWindow extends JFrame {
 		};
 		ActionListener logoutHandler = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("close");
+				isLoggedIn = false;
+				headerPanel.setVisible(isLoggedIn);
+				changeContent(MenuModel.LOGIN);
+				
 			}
 		};
 		
-		JPanel headerPanel = new HeaderPanel(navigationHandler, logoutHandler);
+		headerPanel = new HeaderPanel(navigationHandler, logoutHandler);
 		contentPane.add(headerPanel, BorderLayout.NORTH);
 		contentPane.add(contentPanel, BorderLayout.CENTER);
 		headerPanel.setVisible(isLoggedIn);
 		
-		LoginPanel loginPanel = new LoginPanel(new ActionListener() {
+		loginPanel = new LoginPanel(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				isLoggedIn = true;
 				headerPanel.setVisible(isLoggedIn);
-				changeContent(MenuModel.getDefault());
+				changeContent(MenuModel.getDefault());		
 			}
 		});
 		contentPanel.add(loginPanel);
@@ -64,12 +70,19 @@ public class MainWindow extends JFrame {
 	private void changeContent(MenuModel model) {
 		contentPanel.removeAll();
 		
-		Component component; 
-		if (model == MenuModel.HOME) {
-			component = new HomePanel();
-		} else {
-			component = new JLabel(model.toString());
+		Component component;
+		switch (model) {
+			case LOGIN: 
+				component = loginPanel;
+				break;
+			case HOME: 
+				component = new HomePanel();
+				break;
+			default:
+				component = new JLabel(model.toString());
+				break;
 		}
+	
 		contentPanel.add(component);
 		
 		contentPanel.repaint();
