@@ -36,6 +36,7 @@ public class MainWindow extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		contentPanel = new JPanel();
+		contentPanel.setLayout(new BorderLayout());
 		
 		ItemListener navigationHandler = new ItemListener() {
 			@Override
@@ -83,7 +84,7 @@ public class MainWindow extends JFrame {
 				break;
 		}
 	
-		contentPanel.add(component);
+		contentPanel.add(component, BorderLayout.SOUTH);
 		
 		contentPanel.repaint();
 		contentPanel.revalidate();

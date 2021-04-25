@@ -6,19 +6,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JLayeredPane;
-
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import javax.swing.JSplitPane;
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.border.TitledBorder;
 
 public class HomePanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
