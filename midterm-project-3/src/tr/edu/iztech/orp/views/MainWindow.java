@@ -11,6 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import javax.swing.JPanel;
+import javax.swing.Box;
 
 
 public class MainWindow extends JFrame {
@@ -65,7 +66,8 @@ public class MainWindow extends JFrame {
 				changeContent(MenuModel.getDefault());		
 			}
 		});
-		contentPanel.add(loginPanel);
+		
+		changeContent(MenuModel.LOGIN);
 	}
 	
 	private void changeContent(MenuModel model) {
@@ -84,7 +86,7 @@ public class MainWindow extends JFrame {
 				break;
 		}
 	
-		contentPanel.add(component, BorderLayout.SOUTH);
+		contentPanel.add(component, BorderLayout.NORTH);
 		
 		contentPanel.repaint();
 		contentPanel.revalidate();

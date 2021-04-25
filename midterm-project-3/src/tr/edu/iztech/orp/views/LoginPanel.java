@@ -10,12 +10,15 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class LoginPanel extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private JTextField usernameInput;
 	private JPasswordField passwordInput;
 	private JLabel messageLabel;
+	private Component verticalStrut;
 
 	public LoginPanel(ActionListener loginButtonListener) {
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -56,6 +59,9 @@ public class LoginPanel extends JPanel {
 			}
 		});
 		add(loginButton);
+		
+		verticalStrut = Box.createVerticalStrut(20);
+		add(verticalStrut);
 	}
 	
 	public void showError() {
