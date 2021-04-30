@@ -35,23 +35,33 @@ public class User extends AbstractObservable<User, UserEvent> {
 	}
 	
 	public boolean unfollow(User user) {
-		return followedUsers.remove(user);
+		boolean result = followedUsers.remove(user);
+		notifySubscribers(UserEvent.UNFOLLOW);
+		return result;
 	}
 	
 	public boolean followedBy(User user) {
-		return followerUsers.add(user);
+		boolean result = followerUsers.add(user);
+		notifySubscribers(UserEvent.FOLLOWED);
+		return result;
 	}
 	
 	public boolean unfollowedBy(User user) {
-		return followerUsers.remove(user);
+		boolean result = followerUsers.remove(user);
+		notifySubscribers(UserEvent.UNFOLLOWED);
+		return result;
 	}
 	
 	public boolean addCollection(OutfitCollection collection) {
-		return collections.add(collection);
+		boolean result = collections.add(collection);
+		notifySubscribers(UserEvent.ADD_COLLECTION);
+		return result;
 	}
 	
 	public boolean removeCollection(OutfitCollection collection) {
-		return collections.remove(collection);
+		boolean result = collections.remove(collection);
+		notifySubscribers(UserEvent.REMOVE_COLLECTION);
+		return result;
 	}
 
 }

@@ -30,21 +30,24 @@ public class MainWindow extends JFrame {
 	private void initialize() {
 		Container contentPane = getContentPane();
 		
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
 
 		setBounds(100, 100, 960, 720);
 		setTitle(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
+		setVisible(true);
 		
 		contentPanel = new JPanel();
-		contentPanel.setLayout(new BorderLayout());
+		contentPanel.setLayout(null);
+		contentPanel.setBounds(0, 35, 960, 720);
 		
 		headerPanel = new HeaderPanel(navigationHandler, logoutHandler);
-		contentPane.add(headerPanel, BorderLayout.NORTH);
-		contentPane.add(contentPanel, BorderLayout.CENTER);
+		contentPane.add(headerPanel);
+		contentPane.add(contentPanel);
 		headerPanel.setVisible(isLoggedIn);
-		
+		headerPanel.setBounds(0, 0, 955, 35);
+
 		loginPanel = new LoginPanel(loginButtonListener);
 		
 		changeContent(MenuModel.LOGIN);
@@ -66,9 +69,9 @@ public class MainWindow extends JFrame {
 				break;
 			default:
 				component = new JLabel(model.toString());
+				component.setBounds(0, 35, 960, 720);
 				break;
 		}
-	
 		contentPanel.add(component, BorderLayout.NORTH);
 		
 		contentPanel.repaint();
