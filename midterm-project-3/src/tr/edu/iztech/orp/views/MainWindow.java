@@ -61,6 +61,9 @@ public class MainWindow extends JFrame {
 			case HOME: 
 				component = new HomePanel();
 				break;
+			case COLLECTIONS: 
+				component = new CollectionsPanel();
+				break;
 			default:
 				component = new JLabel(model.toString());
 				break;
