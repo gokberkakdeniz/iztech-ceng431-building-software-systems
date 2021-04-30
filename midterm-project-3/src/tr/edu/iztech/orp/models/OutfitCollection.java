@@ -3,9 +3,12 @@ package tr.edu.iztech.orp.models;
 import java.util.HashSet;
 import java.util.Set;
 
-public class OutfitCollection {
+import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
+import tr.edu.iztech.orp.utils.AbstractObservable;
+
+public class OutfitCollection extends AbstractObservable<OutfitCollection, OutfitCollectionEvent>  {
 	private String name;
-	private Set<Integer> productIds;
+	private Set<Outfit> productIds;
 	
 	public OutfitCollection(String name) {
 		this.name = name;
@@ -21,10 +24,14 @@ public class OutfitCollection {
 	}
 	
 	public boolean addOutfit(Outfit outfit) {
-		return productIds.add(outfit.getId());
+		boolean result = productIds.add(outfit);
+		if (result) notifySubscribers(OutfitCollectionEvent.ADD_OUTFIT);
+		return result;
 	}
 	
 	public boolean removeOutfit(Outfit outfit) {
-		return productIds.remove(outfit.getId());
+		boolean result = productIds.remove(outfit);
+		if (result) notifySubscribers(OutfitCollectionEvent.REMOVE_OUTFIT);
+		return result;
 	}
 }

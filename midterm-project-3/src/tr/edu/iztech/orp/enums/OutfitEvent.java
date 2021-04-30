@@ -7,5 +7,7 @@ public enum OutfitEvent implements IEvent<Outfit> {
 	LIKE,
 	REMOVE_LIKE,
 	DISLIKE,
-	REMOVE_DISLIKE;
+	REMOVE_DISLIKE,
+	ADD_COMMENT,
+	REMOVE_COMMENT;
 }

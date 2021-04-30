@@ -1,15 +1,18 @@
 package tr.edu.iztech.orp.models;
 
 import tr.edu.iztech.orp.enums.OutfitType;
+import tr.edu.iztech.orp.enums.UserEvent;
+import tr.edu.iztech.orp.utils.AbstractObservable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tr.edu.iztech.orp.enums.OutfitColor;
+import tr.edu.iztech.orp.enums.OutfitEvent;
 import tr.edu.iztech.orp.enums.OutfitGender;
 import tr.edu.iztech.orp.enums.OutfitSize;
 
-public class Outfit {
+public class Outfit extends AbstractObservable<Outfit, OutfitEvent> {
 	private final int id;
 	private final String name;
 	private final String brandName;
@@ -75,26 +78,38 @@ public class Outfit {
 	}
 	
 	public boolean addComment(Comment comment) {
-		return comments.add(comment);
+		boolean result = comments.add(comment);
+		if (result) notifySubscribers(OutfitEvent.ADD_COMMENT);
+		return result;
 	}
 	
 	public boolean removeComment(Comment comment) {
-		return comments.remove(comment);
+		boolean result = comments.remove(comment);
+		if (result) notifySubscribers(OutfitEvent.REMOVE_COMMENT);
+		return result;
 	}
 	
 	public boolean addDislike(User user) {
-		return dislikedUsers.add(user);
+		boolean result = dislikedUsers.add(user);
+		if (result) notifySubscribers(OutfitEvent.DISLIKE);
+		return result;
 	}
 	
 	public boolean removeDislike(User user) {
-		return dislikedUsers.remove(user);
+		boolean result = dislikedUsers.remove(user);
+		if (result) notifySubscribers(OutfitEvent.REMOVE_DISLIKE);
+		return result;
 	}
 	
 	public boolean addLike(User user) {
-		return likedUsers.add(user);
+		boolean result = likedUsers.add(user);
+		if (result) notifySubscribers(OutfitEvent.LIKE);
+		return result;
 	}
 	
 	public boolean removeLike(User user) {
-		return likedUsers.remove(user);
+		boolean result = likedUsers.remove(user);
+		if (result) notifySubscribers(OutfitEvent.REMOVE_LIKE);
+		return result;
 	}
 }

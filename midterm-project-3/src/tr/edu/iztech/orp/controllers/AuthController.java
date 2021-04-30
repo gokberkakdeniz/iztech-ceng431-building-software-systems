@@ -1,6 +1,7 @@
 package tr.edu.iztech.orp.controllers;
 
 import tr.edu.iztech.orp.data.IRepository;
+import tr.edu.iztech.orp.exceptions.LoginFailedException;
 import tr.edu.iztech.orp.models.User;
 
 public class AuthController {
@@ -10,7 +11,10 @@ public class AuthController {
 		this.userRepository = userRepository;
 	}
 	
-	public boolean login(String username, String password) {
-		return false;
+	public User login(String username, String password) {
+		return userRepository
+				.get(u -> u.getUsername().equals(username) 
+						&& u.checkPassword(password))
+				.orElseThrow(LoginFailedException::new);
 	}
 }
