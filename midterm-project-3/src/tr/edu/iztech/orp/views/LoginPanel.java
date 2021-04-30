@@ -37,7 +37,7 @@ public class LoginPanel extends JPanel {
 		add(passwordLabel);
 		
 		passwordInput = new JPasswordField();
-		passwordInput.setBounds(372, 156, 208, 19);
+		passwordInput.setBounds(371, 156, 212, 19);
 		add(passwordInput);
 		passwordInput.setColumns(10);
 		

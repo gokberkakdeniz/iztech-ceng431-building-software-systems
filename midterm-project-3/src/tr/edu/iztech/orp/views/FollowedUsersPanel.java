@@ -19,11 +19,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-public class CollectionsPanel extends JPanel {
+public class FollowedUsersPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
-	private JTextField txtXvbgdvc;
 
-	public CollectionsPanel() {
+	public FollowedUsersPanel() {
         setSize(960, 685);
         setLayout(null);
         setVisible(true);
@@ -31,7 +30,7 @@ public class CollectionsPanel extends JPanel {
         String[] data = {"a", "b", "c", "d", "e", "f", "g"};
         
         JScrollPane listScroller = new JScrollPane();
-        listScroller.setBounds(20, 50, 300, 500);
+        listScroller.setBounds(20, 50, 200, 500);
         add(listScroller);
         listScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         listScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -41,10 +40,9 @@ public class CollectionsPanel extends JPanel {
         list.setVisibleRowCount(-1);
         
         String[] data_2 = {"<html> ASDFASF: alksfjafsdgLKXSDC <br/> sşfdlkgasdgf", "SLKAJFAS: sgşlkjasfg", "DSLFKGDAGF: şlkdfgşlasdkgf", "ADŞGMFA: aşdflgag", "DFGADFG: asfgklasjg", "KLJDSGFHDS: kalfdjhafdg", "JASKLFGJASG: kdjfgsagf"};
-        
-        
+            
         JScrollPane listScroller2 = new JScrollPane();
-        listScroller2.setBounds(480, 50, 420, 500);
+        listScroller2.setBounds(260, 50, 240, 500);
         add(listScroller2);
         listScroller2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         listScroller2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -54,26 +52,34 @@ public class CollectionsPanel extends JPanel {
         list2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         list2.setVisibleRowCount(-1);
         
-        txtXvbgdvc = new JTextField();
-        txtXvbgdvc.setBounds(20, 568, 183, 19);
-        add(txtXvbgdvc);
-        txtXvbgdvc.setColumns(10);
-        
-        JButton btnNewButton_1 = new JButton("Create");
-        btnNewButton_1.setBounds(215, 562, 107, 25);
+        JButton btnNewButton_1 = new JButton("Unfollow");
+        btnNewButton_1.setBounds(20, 562, 200, 25);
         add(btnNewButton_1);
         
-        JButton btnNewButton = new JButton("Remove Item From Collection");
-        btnNewButton.setBounds(480, 565, 420, 25);
-        add(btnNewButton);
+        String[] data_3 = {"<html> ASDFASF: alksfjafsdgLKXSDC <br/> sşfdlkgasdgf", "SLKAJFAS: sgşlkjasfg", "DSLFKGDAGF: şlkdfgşlasdkgf", "ADŞGMFA: aşdflgag", "DFGADFG: asfgklasjg", "KLJDSGFHDS: kalfdjhafdg", "JASKLFGJASG: kdjfgsagf"};
+        
+        JScrollPane listScroller3 = new JScrollPane();
+        listScroller3.setBounds(540, 50, 350, 500);
+        add(listScroller3);
+        listScroller3.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        listScroller3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        JList<Object> list3 = new JList<Object>(data_3);
+        list3.setFixedCellHeight(40);
+        listScroller3.setViewportView(list3);
+        list3.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        list3.setVisibleRowCount(-1);
         
         JLabel lblUserListesi = new JLabel("USER LİSTESİ");
-        lblUserListesi.setBounds(75, 23, 140, 15);
+        lblUserListesi.setBounds(32, 26, 140, 15);
         add(lblUserListesi);
         
         JLabel lblCollectionListesi = new JLabel("COLLECTION LİSTESİ");
-        lblCollectionListesi.setBounds(615, 23, 140, 15);
+        lblCollectionListesi.setBounds(304, 26, 140, 15);
         add(lblCollectionListesi);
+        
+        JLabel lblOutfitListesi = new JLabel("OUTFIT LİSTESİ");
+        lblOutfitListesi.setBounds(620, 23, 140, 15);
+        add(lblOutfitListesi);
 
 	}
 }
