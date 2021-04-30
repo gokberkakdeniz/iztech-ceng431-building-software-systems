@@ -1,11 +1,13 @@
 package tr.edu.iztech.orp.data;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 public interface IRepository<T, K> {
-	T get(K id);
-	T get(Predicate<T> predicate);
+	Optional<T> get(K id);
+	Optional<T> get(Predicate<T> predicate);
 	
-	T getAll();
-	T getAll(Predicate<T> predicate);
+	List<T> getAll();
+	List<T> getAll(Predicate<T> predicate);
 }

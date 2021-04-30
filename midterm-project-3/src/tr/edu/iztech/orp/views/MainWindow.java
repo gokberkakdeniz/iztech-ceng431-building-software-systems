@@ -30,42 +30,22 @@ public class MainWindow extends JFrame {
 	private void initialize() {
 		Container contentPane = getContentPane();
 		
+		contentPane.setLayout(new BorderLayout(0, 0));
+
 		setBounds(100, 100, 960, 720);
 		setTitle(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
-		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		contentPanel = new JPanel();
 		contentPanel.setLayout(new BorderLayout());
-		
-		ItemListener navigationHandler = new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				changeContent((MenuModel) e.getItem());
-			}
-		};
-		ActionListener logoutHandler = new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				isLoggedIn = false;
-				headerPanel.setVisible(isLoggedIn);
-				changeContent(MenuModel.LOGIN);
-				
-			}
-		};
 		
 		headerPanel = new HeaderPanel(navigationHandler, logoutHandler);
 		contentPane.add(headerPanel, BorderLayout.NORTH);
 		contentPane.add(contentPanel, BorderLayout.CENTER);
 		headerPanel.setVisible(isLoggedIn);
 		
-		loginPanel = new LoginPanel(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				isLoggedIn = true;
-				headerPanel.setVisible(isLoggedIn);
-				changeContent(MenuModel.getDefault());		
-			}
-		});
+		loginPanel = new LoginPanel(loginButtonListener);
 		
 		changeContent(MenuModel.LOGIN);
 	}
@@ -91,4 +71,28 @@ public class MainWindow extends JFrame {
 		contentPanel.repaint();
 		contentPanel.revalidate();
 	}
+	
+	private ActionListener loginButtonListener = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			isLoggedIn = true;
+			headerPanel.setVisible(isLoggedIn);
+			changeContent(MenuModel.getDefault());		
+		}
+	};
+	
+	private ItemListener navigationHandler = new ItemListener() {
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			changeContent((MenuModel) e.getItem());
+		}
+	};
+	
+	private ActionListener logoutHandler = new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			isLoggedIn = false;
+			headerPanel.setVisible(isLoggedIn);
+			changeContent(MenuModel.LOGIN);
+			
+		}
+	};
 }

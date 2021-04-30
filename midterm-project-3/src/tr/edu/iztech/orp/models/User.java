@@ -3,7 +3,10 @@ package tr.edu.iztech.orp.models;
 import java.util.HashSet;
 import java.util.Set;
 
-public class User {
+import tr.edu.iztech.orp.enums.UserEvent;
+import tr.edu.iztech.orp.utils.AbstractObservable;
+
+public class User extends AbstractObservable<User, UserEvent> {
 	private String username;
 	private String password;
 	private Set<User> followedUsers;
@@ -26,7 +29,9 @@ public class User {
 	}
 	
 	public boolean follow(User user) {
-		return followedUsers.add(user);
+		boolean result = followedUsers.add(user);
+		notifySubscribers(UserEvent.FOLLOW);
+		return result;
 	}
 	
 	public boolean unfollow(User user) {
@@ -48,4 +53,5 @@ public class User {
 	public boolean removeCollection(OutfitCollection collection) {
 		return collections.remove(collection);
 	}
+
 }
