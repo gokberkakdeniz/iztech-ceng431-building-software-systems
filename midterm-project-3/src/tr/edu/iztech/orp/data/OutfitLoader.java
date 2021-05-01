@@ -25,7 +25,9 @@ public class OutfitLoader implements IDataLoader<Outfit> {
 	public List<Outfit> load() {
 		List<Outfit> outfits = new ArrayList<>();
 		
-		outfits.add(new Outfit(1, "Tshirt", "DeFacto", OutfitGender.MAN, OutfitType.SPORTY, OutfitColor.BLACK, new OutfitSize[] { OutfitSize.XXXXXL, OutfitSize.M }));
+		int i = 0;
+		outfits.add(new Outfit(++i, "Tshirt", "DeFacto", OutfitGender.MAN, OutfitType.SPORTY, OutfitColor.BLACK, new OutfitSize[] { OutfitSize.XXXXXL, OutfitSize.M }));
+		outfits.add(new Outfit(++i, "Tshirt", "Koton", OutfitGender.UNISEX, OutfitType.CASUAL, OutfitColor.YELLOW, new OutfitSize[] { OutfitSize.S, OutfitSize.M }));
 		
 		return outfits;
 	}

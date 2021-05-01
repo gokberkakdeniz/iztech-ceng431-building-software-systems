@@ -9,10 +9,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+import tr.edu.iztech.orp.models.User;
+
+import javax.swing.JLabel;
+
 public class HeaderPanel extends JPanel {
 	private static final long serialVersionUID = -3203330751289409445L;
 	
-	public HeaderPanel(IScreenManager screenManager) {		
+	public HeaderPanel(IScreenManager screenManager, User user) {		
 		setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
 		JComboBox<MenuModel> viewCombo = new JComboBox<MenuModel>();
@@ -23,6 +27,9 @@ public class HeaderPanel extends JPanel {
 				}
 			}
 		});
+		
+		JLabel usernameLabel = new JLabel("Welcome, " + user.getUsername() + "!");
+		add(usernameLabel);
 		viewCombo.setModel(new DefaultComboBoxModel<>(MenuModel.publicValues()));
 		add(viewCombo);
 		

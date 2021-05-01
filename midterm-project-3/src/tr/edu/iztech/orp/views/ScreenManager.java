@@ -21,7 +21,7 @@ public class ScreenManager implements IScreenManager {
 	
 	public void onLoginSuccess(User user) {
 		this.user = user;
-		window.setHeader(new HeaderPanel(this));
+		window.setHeader(new HeaderPanel(this, user));
 		showHomeScreen();
 	}
 	
