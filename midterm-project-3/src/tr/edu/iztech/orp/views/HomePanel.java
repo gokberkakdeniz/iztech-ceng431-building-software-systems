@@ -5,14 +5,19 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.Font;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class HomePanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
-
+	private JScrollPane outfitsScroller;
+	private JList<Object> outfits;
+	
 	public HomePanel() {
         setSize(960, 685);
         setLayout(null);
@@ -20,15 +25,19 @@ public class HomePanel extends JPanel {
         
         String[] outfitArr = {"Outfit a", "Outfit sfaglk", "Outfit sgdlasf", "Outfit lkajsgfadfg", "Outfit klfsghnad", "Outfit sdklfgasgf"};
         
-        JScrollPane outfitsScroller = new JScrollPane();
+        outfitsScroller = new JScrollPane();
         outfitsScroller.setBounds(20, 70, 300, 520);
-        add(outfitsScroller);
         outfitsScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         outfitsScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        JList<Object> outfits = new JList<Object>(outfitArr);
-        outfitsScroller.setViewportView(outfits);
-        outfits.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        add(outfitsScroller);
+
+        outfits = new JList<Object>(outfitArr);
+        outfits.setSelectedIndex(0);
+        outfits.addListSelectionListener(collectionChangeListener);
+        outfits.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         outfits.setVisibleRowCount(-1);
+        
+        outfitsScroller.setViewportView(outfits);
         
         String[] commentArr = {"User a: alksfjafsdgLKXSDC", "User b: sgşlkjasfg", "User c: şlkdfgşlasdkgf", 
         		"User d: aşdflgag", "User e: asfgklasjg", "User f: kalfdjhafdg", "User g: kdjfgsagf"};
@@ -82,11 +91,12 @@ public class HomePanel extends JPanel {
         add(dislikeCountLabel);
         
         JButton sendButton = new JButton("Send");
-        sendButton.setBounds(830, 550, 110, 25);
+        sendButton.setBounds(830, 602, 110, 25);
         add(sendButton);
         
         JTextArea commentField = new JTextArea();
-        commentField.setBounds(520, 550, 290, 25);
+        commentField.setBounds(520, 550, 420, 40);
+        commentField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         add(commentField);
         
         JButton likeButton = new JButton("Like");
@@ -106,4 +116,12 @@ public class HomePanel extends JPanel {
         outfitsTitle.setBounds(20, 41, 137, 15);
         add(outfitsTitle);
 	}
+	
+	private ListSelectionListener collectionChangeListener = new ListSelectionListener() {
+    	public void valueChanged(ListSelectionEvent event) {
+    		if (!event.getValueIsAdjusting()) {
+    			System.out.println(outfits.getSelectedValue());
+    		}
+    	}
+    };
 }

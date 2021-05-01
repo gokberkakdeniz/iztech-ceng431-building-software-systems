@@ -8,21 +8,18 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import java.awt.event.ActionListener;
 
 public class HeaderPanel extends JPanel {
 	private static final long serialVersionUID = -3203330751289409445L;
 	
-	public HeaderPanel(ItemListener navigationListener, ActionListener logoutHandler) {		
+	public HeaderPanel(IScreenManager screenManager) {		
 		setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
 		JComboBox<MenuModel> viewCombo = new JComboBox<MenuModel>();
 		viewCombo.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent event) {
-				if (event.getStateChange() == ItemEvent.SELECTED) {
-					System.out.println(event);
-					
-					navigationListener.itemStateChanged(event);
+				if (event.getStateChange() == ItemEvent.SELECTED) {		
+					screenManager.onPageChanged((MenuModel)event.getItem());
 				}
 			}
 		});
@@ -30,7 +27,7 @@ public class HeaderPanel extends JPanel {
 		add(viewCombo);
 		
 		JButton logoutButton = new JButton("Logout");
-		logoutButton.addActionListener(logoutHandler);
+		logoutButton.addActionListener(e -> screenManager.onLogout());
 		add(logoutButton);
 	}
 }

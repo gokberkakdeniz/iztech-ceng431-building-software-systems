@@ -1,22 +1,12 @@
 package tr.edu.iztech.orp.views;
 
-import java.awt.Dimension;
-
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
 public class CollectionsPanel extends JPanel {

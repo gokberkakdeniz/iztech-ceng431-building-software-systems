@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 
 import tr.edu.iztech.orp.models.User;
 
-public class UserRepository implements IRepository<User, String> {
+public class UserRepository implements IRepository<User> {
 	private List<User> users;
 	
-	public UserRepository() {
-		this.users = new LinkedList<>();
+	public UserRepository(IDataLoader<User> dataLoader) {
+		this.users = new LinkedList<>(dataLoader.load());
 	}
 	
 	@Override
-	public Optional<User> get(String username) {
+	public Optional<User> get(Object username) {
 		return users.stream().filter(u -> u.getUsername().equals(username)).findFirst();
 	}
 

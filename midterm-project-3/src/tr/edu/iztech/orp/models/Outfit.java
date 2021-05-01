@@ -1,7 +1,6 @@
 package tr.edu.iztech.orp.models;
 
 import tr.edu.iztech.orp.enums.OutfitType;
-import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.utils.AbstractObservable;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> {
 		this.dislikedUsers = new ArrayList<>();
 	}
 	
-	int getId() {
+	public int getId() {
 		return id;
 	}
 	

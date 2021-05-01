@@ -1,6 +1,8 @@
 package tr.edu.iztech.orp.models;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import tr.edu.iztech.orp.enums.UserEvent;
@@ -26,6 +28,18 @@ public class User extends AbstractObservable<User, UserEvent> {
 	
 	public boolean checkPassword(String password) {
 		return this.password.equals(password);
+	}
+	
+	public List<OutfitCollection> getCollections() {
+		return new ArrayList<>(collections);
+	}
+	
+	public List<User> getFollowedUsers() {
+		return new ArrayList<>(followedUsers);
+	}
+	
+	public List<User> getFollowerUsers() {
+		return new ArrayList<>(followerUsers);
 	}
 	
 	public boolean follow(User user) {
