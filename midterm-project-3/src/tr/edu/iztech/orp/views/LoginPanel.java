@@ -54,7 +54,6 @@ public class LoginPanel extends JPanel {
 		messageLabel.setForeground(Color.RED);
 		messageLabel.setBounds(334, 268, 317, 15);
 		add(messageLabel);
-		
 	}
 	
 	public void showError() {

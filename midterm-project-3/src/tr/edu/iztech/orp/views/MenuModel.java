@@ -6,7 +6,9 @@ public enum MenuModel {
 	LOGIN("private_Login"),
 	HOME("Home"),
 	COLLECTIONS("Collections"),
-	FOLLOWED_USERS("Followed Users");
+	FOLLOWED_USERS("Followed Users"),
+	STATISTICS("Statistics");
+
 	
     private final String text;
 

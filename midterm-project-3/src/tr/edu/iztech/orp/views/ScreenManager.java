@@ -42,6 +42,9 @@ public class ScreenManager implements IScreenManager {
 			case FOLLOWED_USERS:
 				showFollowedUsersScreen();
 				break;
+			case STATISTICS:
+				showStatisticsScreen();
+				break;
 			default:
 				break;
 		}
@@ -61,5 +64,9 @@ public class ScreenManager implements IScreenManager {
 	
 	private void showFollowedUsersScreen() {
 		window.setContent(new FollowedUsersPanel());
+	}
+	
+	private void showStatisticsScreen() {
+		window.setContent(new StatisticsPanel());
 	}
 }
