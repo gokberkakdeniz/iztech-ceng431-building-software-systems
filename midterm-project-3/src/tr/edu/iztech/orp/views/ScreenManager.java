@@ -84,7 +84,7 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	private void showFollowedUsersScreen() {
-		window.setContent(new FollowedUsersPanel());
+		window.setContent(new FollowedUsersPanel(Session.getUser()));
 	}
 	
 	private void showStatisticsScreen() {

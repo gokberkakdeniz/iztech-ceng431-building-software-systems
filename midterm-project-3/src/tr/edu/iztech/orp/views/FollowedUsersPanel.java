@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.views.components.CollectionListPanel;
 import tr.edu.iztech.orp.views.components.OutfitListPanel;
 import tr.edu.iztech.orp.views.components.UserListPanel;
@@ -16,33 +17,35 @@ import java.awt.event.ActionEvent;
 
 public class FollowedUsersPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
+	private User model;
 
-	public FollowedUsersPanel() {
+	public FollowedUsersPanel(User model) {
+		this.model = model;
+		
         setSize(960, 685);
         setLayout(null);
         setVisible(true);
         
-        JPanel userList = new UserListPanel();
+        JPanel userList = new UserListPanel(model);
         userList.setBounds(10, 20, 300, 540);
         add(userList);
         
-        JPanel collectionList = new CollectionListPanel(null);
-        collectionList.setBounds(330, 20, 300, 540);
-        add(collectionList);
+//        JPanel collectionList = new CollectionListPanel(null);
+//        collectionList.setBounds(330, 20, 300, 540);
+//        add(collectionList);
         
-        OutfitListPanel outfitList = new OutfitListPanel();
-        outfitList.addListSelectionListener(collectionChangeListener);
-        outfitList.setBounds(650, 20, 300, 540);
-		add(outfitList);
+//        OutfitListPanel outfitList = new OutfitListPanel<>();
+//        outfitList.addListSelectionListener(collectionChangeListener);
+//        outfitList.setBounds(650, 20, 300, 540);
+//		add(outfitList);
 		
-		final JPanel thisPanel = this;
 		
         JButton followButton = new JButton("Follow New");
         followButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		Object[] possibilities = {"User Aasgf", "User lasdfg", "User Cafgas", "User Eadfgadfg"};
         		JOptionPane.showInputDialog(
-    				thisPanel,
+    				FollowedUsersPanel.this,
                     "Please choose user to follow",
                     "Follow new User",
                     JOptionPane.PLAIN_MESSAGE,

@@ -26,10 +26,6 @@ public class OutfitListPanel<T, K extends IEvent<T>> extends JPanel implements I
 	private JList<Object> outfits;
 	private AbstractOutfitContainer<?, ?> model;
 	
-	public OutfitListPanel() {
-		this(null);
-	}
-	
 	public OutfitListPanel(AbstractOutfitContainer<T, K> model) {
 		this.model = model;
 		

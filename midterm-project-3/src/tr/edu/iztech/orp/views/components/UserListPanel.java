@@ -9,27 +9,29 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.event.ListSelectionListener;
 
+import tr.edu.iztech.orp.models.User;
+
 import javax.swing.event.ListSelectionEvent;
 
 public class UserListPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	private JScrollPane usersScroller;
 	private JList<Object> users;
+	private User model;
 	
-	public UserListPanel() {
+	public UserListPanel(User model) {
+		this.model = model;
         setSize(300, 540);
         setLayout(null);
         setVisible(true);
-        
-        String[] userArr = {"User a", "User sfaglk", "User sgdlasf", "User lkajsgfadfg", "User klfsghnad", "User sdklfgasgf"};
-        
+              
         usersScroller = new JScrollPane();
         usersScroller.setBounds(0, 30, 300, 510);
         usersScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         usersScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(usersScroller);
 
-        users = new JList<Object>(userArr);
+        users = new JList<Object>(model.getFollowedUsers().toArray());
         users.setSelectedIndex(0);
         users.addListSelectionListener(collectionChangeListener);
         users.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
