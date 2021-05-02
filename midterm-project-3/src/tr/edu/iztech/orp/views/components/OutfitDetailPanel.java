@@ -8,21 +8,48 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
+import tr.edu.iztech.orp.enums.OutfitEvent;
+import tr.edu.iztech.orp.enums.OutfitSize;
+import tr.edu.iztech.orp.models.Outfit;
+import tr.edu.iztech.orp.utils.IObserver;
 import tr.edu.iztech.orp.views.HomePanel;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import java.awt.event.ActionEvent;
 
-public class OutfitDetailPanel extends JPanel {
+public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, OutfitEvent> {
 	private static final long serialVersionUID = -669290185768399715L;
+	private Outfit model;
+	private JLabel idLabel;
+	private JLabel nameLabel;
+	private JLabel brandLabel;
+	private JLabel clothingTypeLabel;
+	private JLabel occassionLabel;
+	private JLabel likeCountLabel;
+	private JLabel genderLabel;
+	private JLabel sizeLabel;
+	private JLabel colorLabel;
+	private JLabel dislikeCountLabel;
+	private JButton sendButton;
+	private JTextArea commentField;
+	private JButton likeButton; 
+	private JButton addCollectionButton;
+	private JButton dislikeButton;
 	
-	public OutfitDetailPanel(JPanel homePanel) {
+	public OutfitDetailPanel(JPanel parent, Outfit model) {
+		this.model = model;
         setSize(420, 685);
         setLayout(null);
         setVisible(true);
+        
+        if (model == null) return;
                 
         String[] commentArr = {"User a: alksfjafsdgLKXSDC", "User b: sgşlkjasfg", "User c: şlkdfgşlasdkgf", 
         		"User d: aşdflgag", "User e: asfgklasjg", "User f: kalfdjhafdg", "User g: kdjfgsagf"};
@@ -38,77 +65,106 @@ public class OutfitDetailPanel extends JPanel {
         comments.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         comments.setVisibleRowCount(-1);
         
-        JLabel idLabel = new JLabel("Id: 3526");
-        idLabel.setBounds(0, 30, 129, 15);
+        idLabel = new JLabel("Id: " + model.getId());
+        idLabel.setBounds(0, 0, 129, 15);
         add(idLabel);
         
-        JLabel brandLabel = new JLabel("Brand: LC Waisiki");
+        nameLabel = new JLabel("Name: " + model.getName());
+        nameLabel.setBounds(0, 30, 129, 15);
+        add(nameLabel);
+        
+        brandLabel = new JLabel("Brand: " + model.getBrandName());
         brandLabel.setBounds(160, 30, 129, 15);
         add(brandLabel);
         
-        JLabel clothingTypeLabel = new JLabel("Type: Tshirt");
+        clothingTypeLabel = new JLabel("Type: " + model.getType());
         clothingTypeLabel.setBounds(300, 60, 129, 15);
         add(clothingTypeLabel);
         
-        JLabel occassionLabel = new JLabel("Ocassion: Party, Elegant");
+        occassionLabel = new JLabel("Ocassion: " + model.getOccasion());
         occassionLabel.setBounds(0, 60, 129, 15);
         add(occassionLabel);
         
-        JLabel genderLabel = new JLabel("Gender: Female");
+        genderLabel = new JLabel("Gender: " + model.getGender());
         genderLabel.setBounds(160, 60, 129, 15);
         add(genderLabel);
         
-        JLabel sizeLabel = new JLabel("Sizes: XL, XXL");
-        sizeLabel.setBounds(0, 90, 129, 15);
+        sizeLabel = new JLabel("Sizes: " + Stream.of(model.getSizes()).map(OutfitSize::toString).collect(Collectors.joining(", ")));
+        sizeLabel.setBounds(0, 90, 276, 15);
         add(sizeLabel);
         
-        JLabel colorLabel = new JLabel("Colors: Red, White");
-        colorLabel.setBounds(160, 90, 180, 15);
+        colorLabel = new JLabel("Colors: " + model.getColor());
+        colorLabel.setBounds(300, 90, 117, 15);
         add(colorLabel);
         
-        JLabel likeCountLabel = new JLabel("Likes: 169");
+        likeCountLabel = new JLabel("Likes: " + model.getLikeCount());
         likeCountLabel.setBounds(0, 125, 129, 15);
         add(likeCountLabel);
         
-        JLabel dislikeCountLabel = new JLabel("Dislikes: 31");
-        dislikeCountLabel.setBounds(100, 125, 129, 15);
+        dislikeCountLabel = new JLabel("Dislikes: " + model.getDislikeCount());
+        dislikeCountLabel.setBounds(160, 123, 129, 15);
         add(dislikeCountLabel);
         
-        JButton sendButton = new JButton("Send");
+        sendButton = new JButton("Send");
         sendButton.setBounds(310, 602, 110, 25);
         add(sendButton);
         
-        JTextArea commentField = new JTextArea();
+        commentField = new JTextArea();
         commentField.setBounds(0, 550, 420, 40);
         commentField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         add(commentField);
         
-        JButton likeButton = new JButton("Like");
+        likeButton = new JButton("Like");
         likeButton.setBounds(0, 510, 110, 25);
         add(likeButton);
                 
-        JButton addCollectionButton = new JButton("Add Collection");
+        addCollectionButton = new JButton("Add Collection");
         addCollectionButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		Object[] possibilities = {"Collection A", "Collection B", "Collection C", "Collection E"};
         		JOptionPane.showInputDialog(
-                    homePanel,
+                    parent,
                     "Please Choose collection to add",
                     "Add to Collection",
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     possibilities,
-                    null);
+                    null
+        		);
         	}
         });
         
         addCollectionButton.setBounds(270, 510, 150, 25);
         add(addCollectionButton);
         
-        JButton dislikeButton = new JButton("Dislike");
+        dislikeButton = new JButton("Dislike");
         dislikeButton.setBounds(135, 510, 110, 25);
         add(dislikeButton);
         
 	}
+	
+	public void addLikeButtonListener(ActionListener listener) {
+		likeButton.addActionListener(listener);
+	}
+	
+	public void addDislikeButtonListener(ActionListener listener) {
+		dislikeButton.addActionListener(listener);
+	}
 
+	@Override
+	public void update(OutfitEvent event) {
+		switch (event) {
+			case DISLIKE:
+			case REMOVE_DISLIKE:
+				dislikeCountLabel.setText("Dislikes: " + model.getDislikeCount());
+				break;
+			case LIKE:
+			case REMOVE_LIKE:
+				likeCountLabel.setText("Likes: " + model.getLikeCount());
+				break;
+			default:
+				break;
+		}
+		
+	}
 }

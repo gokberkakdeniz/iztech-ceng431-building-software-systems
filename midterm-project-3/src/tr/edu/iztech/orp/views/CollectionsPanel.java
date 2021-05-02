@@ -1,6 +1,8 @@
 package tr.edu.iztech.orp.views;
 
 import javax.swing.JPanel;
+
+import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.views.components.*;
 
 import javax.swing.JButton;
@@ -28,7 +30,7 @@ public class CollectionsPanel extends JPanel {
         createUserButton.setBounds(215, 610, 105, 25);
         add(createUserButton);
         
-        JPanel outfitList = new OutfitListPanel();
+        JPanel outfitList = new OutfitListPanel(null);
         outfitList.setBounds(560, 20, 300, 540);
 		add(outfitList);
         

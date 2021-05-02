@@ -1,6 +1,8 @@
 package tr.edu.iztech.orp.views;
 
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import tr.edu.iztech.orp.views.components.CollectionListPanel;
 import tr.edu.iztech.orp.views.components.OutfitListPanel;
@@ -28,7 +30,8 @@ public class FollowedUsersPanel extends JPanel {
         collectionList.setBounds(330, 20, 300, 540);
         add(collectionList);
         
-        JPanel outfitList = new OutfitListPanel();
+        OutfitListPanel outfitList = new OutfitListPanel();
+        outfitList.addListSelectionListener(collectionChangeListener);
         outfitList.setBounds(650, 20, 300, 540);
 		add(outfitList);
 		
@@ -56,4 +59,12 @@ public class FollowedUsersPanel extends JPanel {
         add(unfollowButton);
 
 	}
+	
+	private ListSelectionListener collectionChangeListener = new ListSelectionListener() {
+    	public void valueChanged(ListSelectionEvent event) {
+    		if (!event.getValueIsAdjusting()) {
+    			System.out.println(event.getSource());
+    		}
+    	}
+    };
 }

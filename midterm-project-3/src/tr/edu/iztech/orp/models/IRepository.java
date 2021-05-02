@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.data;
+package tr.edu.iztech.orp.models;
 
 import java.util.List;
 import java.util.Optional;

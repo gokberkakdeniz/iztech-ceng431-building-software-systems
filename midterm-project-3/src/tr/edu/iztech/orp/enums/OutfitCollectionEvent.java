@@ -6,4 +6,5 @@ import tr.edu.iztech.orp.utils.IEvent;
 public enum OutfitCollectionEvent implements IEvent<OutfitCollection> {
 	ADD_OUTFIT,
 	REMOVE_OUTFIT,
+	RENAME;
 }

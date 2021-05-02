@@ -1,17 +1,28 @@
 package tr.edu.iztech.orp.views;
 
+import javax.swing.JPanel;
+
+import tr.edu.iztech.orp.app.Session;
+import tr.edu.iztech.orp.controllers.HomeController;
+import tr.edu.iztech.orp.controllers.IController;
 import tr.edu.iztech.orp.controllers.LoginController;
-import tr.edu.iztech.orp.data.IRepository;
+import tr.edu.iztech.orp.models.IRepository;
+import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.models.User;
+import tr.edu.iztech.orp.models.UserRepository;
 
 public class ScreenManager implements IScreenManager {
 	private final MainWindow window;
-	private IRepository<User> userRepo;
-	private User user;
+	private JPanel view;
+	private IController controller;
+	
+	private UserRepository userRepo;
+	private OutfitRepository outfitRepo;
 
-	public ScreenManager(MainWindow window, IRepository<User> userRepo) {
+	public ScreenManager(MainWindow window, UserRepository userRepo, OutfitRepository outfitRepo) {
 		this.window = window;
 		this.userRepo = userRepo;
+		this.outfitRepo = outfitRepo;
 	}
 	
 	public void run() {
@@ -20,18 +31,20 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	public void onLoginSuccess(User user) {
-		this.user = user;
+		Session.setUser(user);
 		window.setHeader(new HeaderPanel(this, user));
 		showHomeScreen();
 	}
 	
 	public void onLogout() {
-		this.user = null;
+		Session.setUser(null);
 		window.setHeader(null);
 		showLoginScreen();
 	}
 	
 	public void onPageChanged(MenuModel model) {
+		controller.destroy();
+		
 		switch (model) {
 			case HOME:
 				showHomeScreen();
@@ -55,7 +68,10 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	private void showHomeScreen() {
-		window.setContent(new HomePanel());
+		this.view = new HomePanel(outfitRepo);
+		this.controller = new HomeController((HomePanel) view, outfitRepo);
+		
+		window.setContent(view);
 	}
 	
 	private void showCollectionsScreen() {

@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.data;
+package tr.edu.iztech.orp.models;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,9 +7,11 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import tr.edu.iztech.orp.models.User;
+import tr.edu.iztech.orp.data.IDataLoader;
+import tr.edu.iztech.orp.enums.UserRepositoryEvent;
+import tr.edu.iztech.orp.utils.AbstractObservable;
 
-public class UserRepository implements IRepository<User> {
+public class UserRepository extends AbstractObservable<UserRepository, UserRepositoryEvent> implements IRepository<User> {
 	private List<User> users;
 	
 	public UserRepository(IDataLoader<User> dataLoader) {

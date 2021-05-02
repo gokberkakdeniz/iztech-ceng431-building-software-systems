@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.data;
+package tr.edu.iztech.orp.models;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,13 +7,17 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import tr.edu.iztech.orp.models.Outfit;
+import tr.edu.iztech.orp.data.IDataLoader;
 
-public class OutfitRepository implements IRepository<Outfit> {
-	private List<Outfit> outfits;
+public class OutfitContainer implements IRepository<Outfit> {
+	private final List<Outfit> outfits;
 	
-	public OutfitRepository(IDataLoader<Outfit> dataLoader) {
+	public OutfitContainer(IDataLoader<Outfit> dataLoader) {
 		this.outfits = new LinkedList<>(dataLoader.load());
+	}
+	
+	public OutfitContainer() {
+		this.outfits = new LinkedList<>();
 	}
 
 	@Override
@@ -36,5 +40,11 @@ public class OutfitRepository implements IRepository<Outfit> {
 		return outfits.stream().filter(predicate).collect(Collectors.toList());
 	}
 	
-
+	public boolean add(Outfit outfit) {
+		return outfits.add(outfit);
+	}
+	
+	public boolean remove(Outfit outfit) {
+		return outfits.remove(outfit);
+	}
 }

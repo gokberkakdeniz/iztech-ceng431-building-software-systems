@@ -1,11 +1,11 @@
 package tr.edu.iztech.orp.controllers;
 
-import tr.edu.iztech.orp.data.IRepository;
 import tr.edu.iztech.orp.exceptions.LoginFailedException;
+import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.views.IScreenManager;
 
-public class LoginController implements ILoginController {
+public class LoginController implements IController {
 	private IRepository<User> userRepository;
 	private IScreenManager screenManager;
 	
@@ -22,4 +22,7 @@ public class LoginController implements ILoginController {
 		
 		screenManager.onLoginSuccess(user);
 	}
+
+	@Override
+	public void destroy() {}
 }

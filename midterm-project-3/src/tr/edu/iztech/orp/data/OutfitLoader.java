@@ -6,6 +6,7 @@ import java.util.List;
 
 import tr.edu.iztech.orp.enums.OutfitColor;
 import tr.edu.iztech.orp.enums.OutfitGender;
+import tr.edu.iztech.orp.enums.OutfitOccasion;
 import tr.edu.iztech.orp.enums.OutfitSize;
 import tr.edu.iztech.orp.enums.OutfitType;
 import tr.edu.iztech.orp.models.Outfit;
@@ -26,8 +27,8 @@ public class OutfitLoader implements IDataLoader<Outfit> {
 		List<Outfit> outfits = new ArrayList<>();
 		
 		int i = 0;
-		outfits.add(new Outfit(++i, "Tshirt", "DeFacto", OutfitGender.MAN, OutfitType.SPORTY, OutfitColor.BLACK, new OutfitSize[] { OutfitSize.XXXXXL, OutfitSize.M }));
-		outfits.add(new Outfit(++i, "Tshirt", "Koton", OutfitGender.UNISEX, OutfitType.CASUAL, OutfitColor.YELLOW, new OutfitSize[] { OutfitSize.S, OutfitSize.M }));
+		outfits.add(new Outfit(++i, "Tshirt", "DeFacto", OutfitGender.MAN, OutfitType.TSHIRT, OutfitOccasion.SPORTY, OutfitColor.BLACK, new OutfitSize[] { OutfitSize.XXXXXL, OutfitSize.M }));
+		outfits.add(new Outfit(++i, "Tshirt", "Koton", OutfitGender.UNISEX, OutfitType.TSHIRT, OutfitOccasion.CASUAL, OutfitColor.YELLOW, new OutfitSize[] { OutfitSize.S, OutfitSize.M }));
 		
 		return outfits;
 	}

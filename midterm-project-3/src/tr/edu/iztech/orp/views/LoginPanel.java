@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-import tr.edu.iztech.orp.controllers.ILoginController;
+import tr.edu.iztech.orp.controllers.LoginController;
 import tr.edu.iztech.orp.exceptions.LoginFailedException;
 
 public class LoginPanel extends JPanel {
@@ -19,9 +19,9 @@ public class LoginPanel extends JPanel {
 	private final JPasswordField passwordInput;
 	private final JTextField usernameInput;
 	private final JLabel messageLabel;
-	private final ILoginController userController;
+	private final LoginController userController;
 
-	public LoginPanel(ILoginController userController) {
+	public LoginPanel(LoginController userController) {
 		this.userController = userController;
 		
 		setLayout(null);
