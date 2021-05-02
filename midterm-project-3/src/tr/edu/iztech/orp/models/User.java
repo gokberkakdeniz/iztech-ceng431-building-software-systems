@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.utils.AbstractObservable;
 
+
 public class User extends AbstractObservable<User, UserEvent> {
 	private String username;
 	private String password;
