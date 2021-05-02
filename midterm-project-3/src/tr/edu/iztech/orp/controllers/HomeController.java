@@ -7,8 +7,8 @@ import javax.swing.event.ListSelectionListener;
 import tr.edu.iztech.orp.enums.OutfitRepositoryEvent;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.models.OutfitRepository;
-import tr.edu.iztech.orp.views.HomePanel;
 import tr.edu.iztech.orp.views.components.OutfitDetailPanel;
+import tr.edu.iztech.orp.views.screens.HomePanel;
 
 public class HomeController implements IController {
 	private final HomePanel view;

@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.views;
+package tr.edu.iztech.orp.views.screens;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
@@ -18,7 +18,11 @@ import java.awt.event.ActionEvent;
 public class FollowedUsersPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	private User model;
-
+	private UserListPanel userList;
+	private JButton followButton;
+	private CollectionListPanel collectionList;
+	private OutfitListPanel<?,?> outfitList;
+	
 	public FollowedUsersPanel(User model) {
 		this.model = model;
 		
@@ -26,34 +30,18 @@ public class FollowedUsersPanel extends JPanel {
         setLayout(null);
         setVisible(true);
         
-        JPanel userList = new UserListPanel(model);
+        userList = new UserListPanel(model);
         userList.setBounds(10, 20, 300, 540);
         add(userList);
         
-//        JPanel collectionList = new CollectionListPanel(null);
-//        collectionList.setBounds(330, 20, 300, 540);
-//        add(collectionList);
-        
+
 //        OutfitListPanel outfitList = new OutfitListPanel<>();
 //        outfitList.addListSelectionListener(collectionChangeListener);
 //        outfitList.setBounds(650, 20, 300, 540);
 //		add(outfitList);
 		
 		
-        JButton followButton = new JButton("Follow New");
-        followButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
-        		Object[] possibilities = {"User Aasgf", "User lasdfg", "User Cafgas", "User Eadfgadfg"};
-        		JOptionPane.showInputDialog(
-    				FollowedUsersPanel.this,
-                    "Please choose user to follow",
-                    "Follow new User",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    possibilities,
-                    null);
-        	}
-        });
+        followButton = new JButton("Follow New");
         followButton.setBounds(10, 570, 140, 30);
         add(followButton);
 		
@@ -63,11 +51,24 @@ public class FollowedUsersPanel extends JPanel {
 
 	}
 	
-	private ListSelectionListener collectionChangeListener = new ListSelectionListener() {
-    	public void valueChanged(ListSelectionEvent event) {
-    		if (!event.getValueIsAdjusting()) {
-    			System.out.println(event.getSource());
-    		}
-    	}
-    };
+	public void addUserListSelectionListener(ListSelectionListener collectionChangeListener) {
+        userList.addListSelectionListener(collectionChangeListener);
+	}
+	
+	public void addFollowButtonListener(ActionListener followButtonActionListener) {
+		followButton.addActionListener(followButtonActionListener);
+	}
+
+	public void setCollectionListPanel(CollectionListPanel collectionList) {
+		if (this.collectionList != null) remove(this.collectionList);
+		
+		if (collectionList != null) {
+			this.collectionList = collectionList;
+			this.collectionList.setBounds(330, 20, 300, 540);;
+	        add(this.collectionList);
+		}
+
+		repaint();
+		revalidate();		
+	}
 }

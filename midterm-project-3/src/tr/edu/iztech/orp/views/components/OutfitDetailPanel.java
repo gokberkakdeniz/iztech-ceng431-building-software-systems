@@ -13,7 +13,7 @@ import tr.edu.iztech.orp.enums.OutfitSize;
 import tr.edu.iztech.orp.models.Comment;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.utils.IObserver;
-import tr.edu.iztech.orp.views.HomePanel;
+import tr.edu.iztech.orp.views.screens.HomePanel;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;

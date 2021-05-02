@@ -15,10 +15,10 @@ import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.utils.IObserver;
-import tr.edu.iztech.orp.views.CollectionsPanel;
 import tr.edu.iztech.orp.views.components.CollectionListPanel;
 import tr.edu.iztech.orp.views.components.OutfitDetailPanel;
 import tr.edu.iztech.orp.views.components.OutfitListPanel;
+import tr.edu.iztech.orp.views.screens.CollectionsPanel;
 
 public class CollectionsController implements IController {
 	private CollectionsPanel view;

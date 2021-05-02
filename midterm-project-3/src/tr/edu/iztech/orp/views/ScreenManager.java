@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import tr.edu.iztech.orp.app.Session;
 import tr.edu.iztech.orp.controllers.CollectionsController;
+import tr.edu.iztech.orp.controllers.FollowedUsersController;
 import tr.edu.iztech.orp.controllers.HomeController;
 import tr.edu.iztech.orp.controllers.IController;
 import tr.edu.iztech.orp.controllers.LoginController;
@@ -11,6 +12,12 @@ import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.models.UserRepository;
+import tr.edu.iztech.orp.views.components.HeaderPanel;
+import tr.edu.iztech.orp.views.screens.CollectionsPanel;
+import tr.edu.iztech.orp.views.screens.FollowedUsersPanel;
+import tr.edu.iztech.orp.views.screens.HomePanel;
+import tr.edu.iztech.orp.views.screens.LoginPanel;
+import tr.edu.iztech.orp.views.screens.StatisticsPanel;
 
 public class ScreenManager implements IScreenManager {
 	private final MainWindow window;
@@ -84,7 +91,10 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	private void showFollowedUsersScreen() {
-		window.setContent(new FollowedUsersPanel(Session.getUser()));
+		User model = Session.getUser();
+		FollowedUsersPanel view = new FollowedUsersPanel(model);
+		controller = new FollowedUsersController(view, model);
+		window.setContent(view);
 	}
 	
 	private void showStatisticsScreen() {

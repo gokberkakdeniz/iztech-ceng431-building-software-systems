@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.views;
+package tr.edu.iztech.orp.views.screens;
 
 import java.awt.event.ActionListener;
 

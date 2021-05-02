@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.views;
+package tr.edu.iztech.orp.views.screens;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;

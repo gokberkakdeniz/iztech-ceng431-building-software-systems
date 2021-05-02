@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.views;
+package tr.edu.iztech.orp.views.components;
 
 import java.awt.FlowLayout;
 import java.awt.event.ItemEvent;
@@ -10,6 +10,8 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import tr.edu.iztech.orp.models.User;
+import tr.edu.iztech.orp.views.IScreenManager;
+import tr.edu.iztech.orp.views.MenuModel;
 
 import javax.swing.JLabel;
 

@@ -81,4 +81,8 @@ public class User extends AbstractObservable<User, UserEvent> {
 		return result;
 	}
 
+	@Override
+	public String toString() {
+		return username;
+	}
 }

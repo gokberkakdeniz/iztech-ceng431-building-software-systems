@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.views;
+package tr.edu.iztech.orp.views.screens;
 
 import javax.swing.JPanel;
 
@@ -16,7 +16,7 @@ public class CollectionsPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	private JTextField collectionNameField;
 	private CollectionListPanel collectionsList;
-	private OutfitListPanel outfitList;
+	private OutfitListPanel<?, ?> outfitList;
 	private JButton createCollectionButton;
 	private JButton removeItemButton;
 
@@ -46,16 +46,12 @@ public class CollectionsPanel extends JPanel {
 	public CollectionListPanel getCollectionListPanel() {
 		return collectionsList;
 	}
-
-	public OutfitListPanel getOutfitListPanel() {
-		return outfitList;
-	}
 	
 	public String getNewOutfitCollectionName() {
 		return collectionNameField.getText();
 	}
 
-	public void setOutfitListPanel(OutfitListPanel outfitDetail) {
+	public void setOutfitListPanel(OutfitListPanel<?,?> outfitDetail) {
 		if (this.outfitList != null) remove(this.outfitList);
 
 		if (outfitDetail != null){

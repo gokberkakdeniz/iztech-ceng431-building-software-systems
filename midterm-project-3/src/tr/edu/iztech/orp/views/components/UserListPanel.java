@@ -32,8 +32,6 @@ public class UserListPanel extends JPanel {
         add(usersScroller);
 
         users = new JList<Object>(model.getFollowedUsers().toArray());
-        users.setSelectedIndex(0);
-        users.addListSelectionListener(collectionChangeListener);
         users.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         users.setVisibleRowCount(-1);
         
@@ -46,11 +44,8 @@ public class UserListPanel extends JPanel {
 
 	}
 	
-	private ListSelectionListener collectionChangeListener = new ListSelectionListener() {
-    	public void valueChanged(ListSelectionEvent event) {
-    		if (!event.getValueIsAdjusting()) {
-    			System.out.println(users.getSelectedValue());
-    		}
-    	}
-    };
+	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
+        users.addListSelectionListener(collectionChangeListener);
+        users.setSelectedIndex(0);
+	}
 }
