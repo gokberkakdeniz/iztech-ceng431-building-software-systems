@@ -7,16 +7,9 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import tr.edu.iztech.orp.app.Session;
 import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
-import tr.edu.iztech.orp.enums.OutfitRepositoryEvent;
-import tr.edu.iztech.orp.enums.UserEvent;
-import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
-import tr.edu.iztech.orp.utils.IObserver;
-import tr.edu.iztech.orp.views.components.CollectionListPanel;
-import tr.edu.iztech.orp.views.components.OutfitDetailPanel;
 import tr.edu.iztech.orp.views.components.OutfitListPanel;
 import tr.edu.iztech.orp.views.screens.CollectionsPanel;
 

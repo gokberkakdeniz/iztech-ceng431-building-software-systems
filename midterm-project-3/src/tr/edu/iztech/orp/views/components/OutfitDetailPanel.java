@@ -10,18 +10,13 @@ import javax.swing.UIManager;
 
 import tr.edu.iztech.orp.enums.OutfitEvent;
 import tr.edu.iztech.orp.enums.OutfitSize;
-import tr.edu.iztech.orp.models.Comment;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.utils.IObserver;
-import tr.edu.iztech.orp.views.screens.HomePanel;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.awt.event.ActionEvent;
 import java.awt.Font;

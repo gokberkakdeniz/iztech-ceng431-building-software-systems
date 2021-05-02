@@ -10,7 +10,6 @@ import javax.swing.event.ListSelectionListener;
 
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.views.components.CollectionListPanel;
-import tr.edu.iztech.orp.views.components.OutfitDetailPanel;
 import tr.edu.iztech.orp.views.screens.FollowedUsersPanel;
 
 public class FollowedUsersController implements IController {

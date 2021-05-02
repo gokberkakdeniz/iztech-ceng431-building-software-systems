@@ -11,8 +11,6 @@ import javax.swing.event.ListSelectionListener;
 
 import tr.edu.iztech.orp.models.User;
 
-import javax.swing.event.ListSelectionEvent;
-
 public class UserListPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	private JScrollPane usersScroller;

@@ -1,7 +1,6 @@
 package tr.edu.iztech.orp.views.screens;
 
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import tr.edu.iztech.orp.models.User;
@@ -10,10 +9,7 @@ import tr.edu.iztech.orp.views.components.OutfitListPanel;
 import tr.edu.iztech.orp.views.components.UserListPanel;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class FollowedUsersPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;

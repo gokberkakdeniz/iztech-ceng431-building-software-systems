@@ -2,7 +2,6 @@ package tr.edu.iztech.orp.views.screens;
 
 import javax.swing.JPanel;
 
-import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.views.components.*;
 

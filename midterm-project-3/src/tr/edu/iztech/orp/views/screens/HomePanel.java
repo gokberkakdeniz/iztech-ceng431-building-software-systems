@@ -2,16 +2,10 @@ package tr.edu.iztech.orp.views.screens;
 
 import java.awt.event.ActionListener;
 
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
 import tr.edu.iztech.orp.enums.OutfitRepositoryEvent;
-import tr.edu.iztech.orp.models.Outfit;
-import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.utils.IObserver;
 import tr.edu.iztech.orp.views.components.*;

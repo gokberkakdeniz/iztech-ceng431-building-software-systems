@@ -1,16 +1,8 @@
 package tr.edu.iztech.orp.data;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
-import tr.edu.iztech.orp.enums.OutfitColor;
-import tr.edu.iztech.orp.enums.OutfitGender;
-import tr.edu.iztech.orp.enums.OutfitOccasion;
-import tr.edu.iztech.orp.enums.OutfitSize;
-import tr.edu.iztech.orp.enums.OutfitType;
-import tr.edu.iztech.orp.models.Outfit;
-import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
@@ -21,8 +13,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import java.io.*;
 
 public class UserSaver implements IDataSaver<User> {
 	private final DocumentBuilderFactory factory;

@@ -8,7 +8,6 @@ import tr.edu.iztech.orp.controllers.FollowedUsersController;
 import tr.edu.iztech.orp.controllers.HomeController;
 import tr.edu.iztech.orp.controllers.IController;
 import tr.edu.iztech.orp.controllers.LoginController;
-import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.models.UserRepository;

@@ -1,7 +1,6 @@
 package tr.edu.iztech.orp.views.screens;
 
 import javax.swing.JPanel;
-import tr.edu.iztech.orp.views.components.*;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;

@@ -10,11 +10,8 @@ import java.awt.Font;
 import javax.swing.event.ListSelectionListener;
 
 import tr.edu.iztech.orp.enums.UserEvent;
-import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.utils.IObserver;
-
-import javax.swing.event.ListSelectionEvent;
 
 public class CollectionListPanel extends JPanel implements IObserver<User, UserEvent> {
 	private static final long serialVersionUID = -669293105768399715L;

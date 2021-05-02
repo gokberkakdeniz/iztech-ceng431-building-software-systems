@@ -10,15 +10,10 @@ import java.awt.Font;
 import javax.swing.event.ListSelectionListener;
 
 import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
-import tr.edu.iztech.orp.enums.OutfitRepositoryEvent;
 import tr.edu.iztech.orp.models.AbstractOutfitContainer;
 import tr.edu.iztech.orp.models.Outfit;
-import tr.edu.iztech.orp.models.OutfitCollection;
-import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.utils.IEvent;
 import tr.edu.iztech.orp.utils.IObserver;
-
-import javax.swing.event.ListSelectionEvent;
 
 public class OutfitListPanel<T, K extends IEvent<T>> extends JPanel implements IObserver<T, K> {
 	private static final long serialVersionUID = -669290185768399715L;
