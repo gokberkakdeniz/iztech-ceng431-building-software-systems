@@ -59,7 +59,6 @@ public class UserSaver implements IDataSaver<User> {
 	        transformer.transform(source, myFile);
 
 		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

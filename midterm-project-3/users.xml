@@ -2,8 +2,37 @@
 <users xmlns="iztech:group6">
   <user>
     <username/>
+    <password/>
+    <followedUsers>
+      <user>a</user>
+    </followedUsers>
+    <followerUsers/>
+    <collections>
+      <collection>
+        <collectionName>col1</collectionName>
+        <outfits>
+          <outfitId>1</outfitId>
+          <outfitId>2</outfitId>
+        </outfits>
+      </collection>
+      <collection>
+        <collectionName>col2</collectionName>
+        <outfits/>
+      </collection>
+    </collections>
   </user>
   <user>
     <username>a</username>
+    <password>a</password>
+    <followedUsers/>
+    <followerUsers>
+      <user/>
+    </followerUsers>
+    <collections>
+      <collection>
+        <collectionName>col3</collectionName>
+        <outfits/>
+      </collection>
+    </collections>
   </user>
 </users>

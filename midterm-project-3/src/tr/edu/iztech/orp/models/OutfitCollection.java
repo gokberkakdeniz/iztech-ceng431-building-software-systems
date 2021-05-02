@@ -4,7 +4,7 @@ import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
 
 public class OutfitCollection extends AbstractOutfitContainer<OutfitCollection, OutfitCollectionEvent> implements Comparable<OutfitCollection> {
 	private String name;
-	
+
 	public OutfitCollection(String name) {
 		super();
 		this.name = name;

@@ -11,6 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
 import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.utils.AbstractObservable;
 
@@ -97,7 +98,47 @@ public class User extends AbstractObservable<User, UserEvent> {
 		Node usernameField = document.createElement("username");
 		usernameField.appendChild(document.createTextNode(username));
 		
+		Node passwordField = document.createElement("password");
+		passwordField.appendChild(document.createTextNode(password));
+		
+		Node followedUsersField = document.createElement("followedUsers");
+		Node followedUser;
+		for(User user: followedUsers) {
+			followedUser = document.createElement("user");
+			followedUser.appendChild(document.createTextNode(user.getUsername()));
+			followedUsersField.appendChild(followedUser);
+		}
+
+		Node followerUsersField = document.createElement("followerUsers");
+		Node followerUser;
+		for(User user: followerUsers) {
+			followerUser = document.createElement("user");
+			followerUser.appendChild(document.createTextNode(user.getUsername()));
+			followerUsersField.appendChild(followerUser);
+		}
+		
+		Node collectionsField = document.createElement("collections");
+		Node tempCollection, collectionName, outfits, outfitId;
+		for(OutfitCollection collection: collections) {
+			tempCollection = document.createElement("collection");
+			collectionName = document.createElement("collectionName");
+			collectionName.appendChild(document.createTextNode(collection.getName()));
+			outfits = document.createElement("outfits");
+			for(Outfit outfit: collection.getAll()) {
+				outfitId = document.createElement("outfitId");
+				outfitId.appendChild(document.createTextNode(String.valueOf(outfit.getId())));
+				outfits.appendChild(outfitId);
+			}
+			tempCollection.appendChild(collectionName);
+			tempCollection.appendChild(outfits);
+			collectionsField.appendChild(tempCollection);
+		}
+		
 		result.appendChild(usernameField);
+		result.appendChild(passwordField);
+		result.appendChild(followedUsersField);
+		result.appendChild(followerUsersField);
+		result.appendChild(collectionsField);
 
 		return result;
 	}
