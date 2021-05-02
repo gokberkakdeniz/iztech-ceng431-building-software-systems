@@ -53,12 +53,12 @@ public class CollectionListPanel extends JPanel implements IObserver<User, UserE
 	@Override
 	public void update(UserEvent event) {
 		switch (event) {
-		case ADD_COLLECTION:
-		case REMOVE_COLLECTION:
-			collections.removeAll();
-			collections.setListData(model.getCollections().toArray());
-		default:
-			break;
-	}		
+			case ADD_COLLECTION:
+			case REMOVE_COLLECTION:
+				collections.removeAll();
+				collections.setListData(model.getCollections().toArray());
+			default:
+				break;
+		}		
 	}
 }

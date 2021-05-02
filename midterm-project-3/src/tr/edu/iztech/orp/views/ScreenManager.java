@@ -92,7 +92,7 @@ public class ScreenManager implements IScreenManager {
 	private void showFollowedUsersScreen() {
 		User model = Session.getUser();
 		FollowedUsersPanel view = new FollowedUsersPanel(model);
-		controller = new FollowedUsersController(view, model);
+		controller = new FollowedUsersController(view, model, userRepo);
 		window.setContent(view);
 	}
 	

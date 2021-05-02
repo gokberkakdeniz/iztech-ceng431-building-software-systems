@@ -30,12 +30,16 @@ public class UserLoader implements IDataLoader<User> {
 		
 		users.add(new User("",""));
 		users.add(new User("a","a"));
+		users.add(new User("b","b"));
 		OutfitCollection col1 = new OutfitCollection("col1");
 		OutfitCollection col2 = new OutfitCollection("col2");
 		OutfitCollection col3 = new OutfitCollection("col3");
 
 		col1.add(new Outfit(1, "Tshirt", "DeFacto", OutfitGender.MAN, OutfitType.TSHIRT, OutfitOccasion.SPORTY, OutfitColor.BLACK, new OutfitSize[] { OutfitSize.XXXXXL, OutfitSize.M }));
 		col1.add(new Outfit(2, "Tshirt", "Koton", OutfitGender.UNISEX, OutfitType.TSHIRT, OutfitOccasion.CASUAL, OutfitColor.YELLOW, new OutfitSize[] { OutfitSize.S, OutfitSize.M }));
+		
+		col3.add(new Outfit(1, "Tshirt", "DeFacto", OutfitGender.MAN, OutfitType.TSHIRT, OutfitOccasion.SPORTY, OutfitColor.BLACK, new OutfitSize[] { OutfitSize.XXXXXL, OutfitSize.M }));
+		col3.add(new Outfit(2, "Tshirt", "Koton", OutfitGender.UNISEX, OutfitType.TSHIRT, OutfitOccasion.CASUAL, OutfitColor.YELLOW, new OutfitSize[] { OutfitSize.S, OutfitSize.M }));
 		
 		users.get(0).addCollection(col1);
 		users.get(0).addCollection(col2);

@@ -11,7 +11,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
 import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.utils.AbstractObservable;
 
@@ -121,11 +120,11 @@ public class User extends AbstractObservable<User, UserEvent> {
 		Node tempCollection, collectionName, outfits, outfitId;
 		for(OutfitCollection collection: collections) {
 			tempCollection = document.createElement("collection");
-			collectionName = document.createElement("collectionName");
+			collectionName = document.createElement("name");
 			collectionName.appendChild(document.createTextNode(collection.getName()));
 			outfits = document.createElement("outfits");
 			for(Outfit outfit: collection.getAll()) {
-				outfitId = document.createElement("outfitId");
+				outfitId = document.createElement("id");
 				outfitId.appendChild(document.createTextNode(String.valueOf(outfit.getId())));
 				outfits.appendChild(outfitId);
 			}

@@ -51,13 +51,10 @@ public class UserSaver implements IDataSaver<User> {
         
         DOMSource source = new DOMSource(doc);
         
-        StreamResult console = new StreamResult(System.out);
         StreamResult myFile = new StreamResult(file);
 
         try {
-			transformer.transform(source, console);
 	        transformer.transform(source, myFile);
-
 		} catch (TransformerException e) {
 			e.printStackTrace();
 		}

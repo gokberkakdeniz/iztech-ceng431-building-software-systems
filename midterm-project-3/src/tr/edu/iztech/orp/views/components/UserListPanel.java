@@ -9,9 +9,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.event.ListSelectionListener;
 
+import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.models.User;
+import tr.edu.iztech.orp.utils.IObserver;
 
-public class UserListPanel extends JPanel {
+public class UserListPanel extends JPanel implements IObserver<User, UserEvent> {
 	private static final long serialVersionUID = -669290185768399715L;
 	private JScrollPane usersScroller;
 	private JList<Object> users;
@@ -45,5 +47,21 @@ public class UserListPanel extends JPanel {
 	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
         users.addListSelectionListener(collectionChangeListener);
         users.setSelectedIndex(0);
+	}
+
+	public User getSelectedValue() {
+		return (User)users.getSelectedValue();
+	}
+
+	@Override
+	public void update(UserEvent event) {
+		switch (event) {
+			case UNFOLLOW:
+			case FOLLOW:
+				users.removeAll();
+				users.setListData(model.getFollowedUsers().toArray());
+			default:
+				break;
+		}		
 	}
 }

@@ -9,14 +9,14 @@
     <followerUsers/>
     <collections>
       <collection>
-        <collectionName>col1</collectionName>
+        <name>col1</name>
         <outfits>
-          <outfitId>1</outfitId>
-          <outfitId>2</outfitId>
+          <id>1</id>
+          <id>2</id>
         </outfits>
       </collection>
       <collection>
-        <collectionName>col2</collectionName>
+        <name>col2</name>
         <outfits/>
       </collection>
     </collections>
@@ -30,9 +30,19 @@
     </followerUsers>
     <collections>
       <collection>
-        <collectionName>col3</collectionName>
-        <outfits/>
+        <name>col3</name>
+        <outfits>
+          <id>1</id>
+          <id>2</id>
+        </outfits>
       </collection>
     </collections>
+  </user>
+  <user>
+    <username>b</username>
+    <password>b</password>
+    <followedUsers/>
+    <followerUsers/>
+    <collections/>
   </user>
 </users>
