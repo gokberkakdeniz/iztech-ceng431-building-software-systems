@@ -7,6 +7,10 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.utils.AbstractObservable;
 
@@ -85,5 +89,16 @@ public class User extends AbstractObservable<User, UserEvent> {
 	@Override
 	public String toString() {
 		return username;
+	}
+	
+	public Node serialize(Document document) {
+		Element result = document.createElement("user");
+		
+		Node usernameField = document.createElement("username");
+		usernameField.appendChild(document.createTextNode(username));
+		
+		result.appendChild(usernameField);
+
+		return result;
 	}
 }

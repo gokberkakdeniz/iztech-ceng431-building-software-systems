@@ -17,8 +17,8 @@ import javax.xml.transform.stream.StreamResult;
 public class UserSaver implements IDataSaver<User> {
 	private final DocumentBuilderFactory factory;
 	private final DocumentBuilder builder;
-    static Document doc; 
-    File file;
+    private final Document doc; 
+    private File file;
     
 	public UserSaver(String pathname) throws ParserConfigurationException {
 		super();
@@ -26,29 +26,28 @@ public class UserSaver implements IDataSaver<User> {
 		factory = DocumentBuilderFactory.newInstance();
         builder = factory.newDocumentBuilder();
         doc = builder.newDocument();
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public void save(List<User> data) {
-		Element root = doc.createElementNS("BLABLA", "users");
+		Element root = doc.createElementNS("iztech:group6", "users");
         doc.appendChild(root);
         
         for(User user: data) {
-//            root.appendChild((Node) user);
+            root.appendChild(user.serialize(doc));
         }
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transf = null;
+        Transformer transformer = null;
+        
 		try {
-			transf = transformerFactory.newTransformer();
+			transformer = transformerFactory.newTransformer();
 		} catch (TransformerConfigurationException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         
-        transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-        transf.setOutputProperty(OutputKeys.INDENT, "yes");
-        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         
         DOMSource source = new DOMSource(doc);
         
@@ -56,8 +55,8 @@ public class UserSaver implements IDataSaver<User> {
         StreamResult myFile = new StreamResult(file);
 
         try {
-			transf.transform(source, console);
-	        transf.transform(source, myFile);
+			transformer.transform(source, console);
+	        transformer.transform(source, myFile);
 
 		} catch (TransformerException e) {
 			// TODO Auto-generated catch block

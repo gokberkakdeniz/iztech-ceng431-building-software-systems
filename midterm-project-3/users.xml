@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<users xmlns="BLABLA"/>
+<users xmlns="iztech:group6">
+  <user>
+    <username/>
+  </user>
+  <user>
+    <username>a</username>
+  </user>
+</users>
