@@ -16,4 +16,9 @@ public class Comment {
 	public String getAuthor() {
 		return authorId;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("<html><b>%s</b>: %s</html>", authorId, text);
+	}
 }

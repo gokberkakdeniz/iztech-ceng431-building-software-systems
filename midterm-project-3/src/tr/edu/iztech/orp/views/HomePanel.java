@@ -8,15 +8,17 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
 import tr.edu.iztech.orp.enums.OutfitRepositoryEvent;
 import tr.edu.iztech.orp.models.Outfit;
+import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.utils.IObserver;
 import tr.edu.iztech.orp.views.components.*;
 
 public class HomePanel extends JPanel implements IObserver<OutfitRepository, OutfitRepositoryEvent> {
 	private static final long serialVersionUID = -669290185768399715L;
-	private OutfitListPanel outfitList;
+	private OutfitListPanel<OutfitRepository, OutfitRepositoryEvent> outfitList;
 	private OutfitDetailPanel outfitDetail;
 	
 	public HomePanel(OutfitRepository model) {
@@ -24,16 +26,20 @@ public class HomePanel extends JPanel implements IObserver<OutfitRepository, Out
         setLayout(null);
         setVisible(true);
         
-		outfitList = new OutfitListPanel(model);
+		outfitList = new OutfitListPanel<>(model);
         outfitList.setBounds(5, 20, 340, 665);
         add(outfitList);
     }
 	
 	public void setOutfitDetailPanel(OutfitDetailPanel outfitDetail) {
 		if (this.outfitDetail != null) remove(this.outfitDetail);
-		this.outfitDetail = outfitDetail;
-		this.outfitDetail.setBounds(520, 0, 440, 685);
-        add(this.outfitDetail);
+		
+		if (outfitDetail != null) {
+			this.outfitDetail = outfitDetail;
+			this.outfitDetail.setBounds(520, 0, 440, 685);
+	        add(this.outfitDetail);
+		}
+
 		repaint();
 		revalidate();
 	}

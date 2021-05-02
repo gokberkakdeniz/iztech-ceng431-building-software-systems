@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.utils.AbstractObservable;
@@ -13,13 +15,14 @@ public class User extends AbstractObservable<User, UserEvent> {
 	private String password;
 	private Set<User> followedUsers;
 	private Set<User> followerUsers;
-	private Set<OutfitCollection> collections;
+	private SortedSet<OutfitCollection> collections;
 	
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 		this.followedUsers = new HashSet<>();
 		this.followerUsers = new HashSet<>();
+		this.collections = new TreeSet<>();
 	}
 	
 	public String getUsername() {

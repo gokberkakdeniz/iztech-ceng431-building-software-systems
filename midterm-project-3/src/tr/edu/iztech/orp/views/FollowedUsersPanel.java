@@ -26,7 +26,7 @@ public class FollowedUsersPanel extends JPanel {
         userList.setBounds(10, 20, 300, 540);
         add(userList);
         
-        JPanel collectionList = new CollectionListPanel();
+        JPanel collectionList = new CollectionListPanel(null);
         collectionList.setBounds(330, 20, 300, 540);
         add(collectionList);
         

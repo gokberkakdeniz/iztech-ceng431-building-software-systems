@@ -3,6 +3,7 @@ package tr.edu.iztech.orp.views;
 import javax.swing.JPanel;
 
 import tr.edu.iztech.orp.app.Session;
+import tr.edu.iztech.orp.controllers.CollectionsController;
 import tr.edu.iztech.orp.controllers.HomeController;
 import tr.edu.iztech.orp.controllers.IController;
 import tr.edu.iztech.orp.controllers.LoginController;
@@ -75,7 +76,11 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	private void showCollectionsScreen() {
-		window.setContent(new CollectionsPanel());
+		User model = Session.getUser();
+		this.view = new CollectionsPanel(model);
+		this.controller = new CollectionsController((CollectionsPanel) view, model);
+		
+		window.setContent(view);
 	}
 	
 	private void showFollowedUsersScreen() {

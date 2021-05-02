@@ -10,6 +10,7 @@ import javax.swing.UIManager;
 
 import tr.edu.iztech.orp.enums.OutfitEvent;
 import tr.edu.iztech.orp.enums.OutfitSize;
+import tr.edu.iztech.orp.models.Comment;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.utils.IObserver;
 import tr.edu.iztech.orp.views.HomePanel;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, OutfitEvent> {
 	private static final long serialVersionUID = -669290185768399715L;
@@ -42,24 +44,21 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
 	private JButton likeButton; 
 	private JButton addCollectionButton;
 	private JButton dislikeButton;
+	private JList<Object> comments;
 	
 	public OutfitDetailPanel(JPanel parent, Outfit model) {
 		this.model = model;
         setSize(420, 685);
         setLayout(null);
         setVisible(true);
-        
-        if (model == null) return;
-                
-        String[] commentArr = {"User a: alksfjafsdgLKXSDC", "User b: sgşlkjasfg", "User c: şlkdfgşlasdkgf", 
-        		"User d: aşdflgag", "User e: asfgklasjg", "User f: kalfdjhafdg", "User g: kdjfgsagf"};
-        
+                        
         JScrollPane commentsScroller = new JScrollPane();
         commentsScroller.setBounds(0, 150, 420, 350);
         add(commentsScroller);
         commentsScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         commentsScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        JList<Object> comments = new JList<Object>(commentArr);
+        comments = new JList<Object>(model.getComments().toArray());
+        comments.setFont(new Font("Dialog", Font.PLAIN, 12));
         comments.setFixedCellHeight(20);
         commentsScroller.setViewportView(comments);
         comments.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -110,6 +109,7 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
         add(sendButton);
         
         commentField = new JTextArea();
+        commentField.setText("");
         commentField.setBounds(0, 550, 420, 40);
         commentField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         add(commentField);
@@ -150,6 +150,14 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
 	public void addDislikeButtonListener(ActionListener listener) {
 		dislikeButton.addActionListener(listener);
 	}
+	
+	public void addSendButtonListener(ActionListener listener) {
+		sendButton.addActionListener(listener);
+	}
+	
+	public String getCommentText() {
+		return commentField.getText();
+	}
 
 	@Override
 	public void update(OutfitEvent event) {
@@ -162,9 +170,12 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
 			case REMOVE_LIKE:
 				likeCountLabel.setText("Likes: " + model.getLikeCount());
 				break;
+			case ADD_COMMENT:
+			case REMOVE_COMMENT:
+				comments.removeAll();
+				comments.setListData(model.getComments().toArray());
 			default:
 				break;
 		}
-		
 	}
 }
