@@ -92,7 +92,6 @@ public class FollowedUsersPanel extends JPanel implements IObserver<User, UserEv
 
 	@Override
 	public void update(UserEvent event) {
-		// TODO Auto-generated method stub
-		
+		// do nothing
 	}
 }

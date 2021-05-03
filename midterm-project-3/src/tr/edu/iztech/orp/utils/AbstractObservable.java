@@ -3,6 +3,13 @@ package tr.edu.iztech.orp.utils;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Abstract implementation of Observer pattern.
+ * Supports subscription by event to improve performance.
+ *
+ * @param <T> observer class
+ * @param <K> event class
+ */
 public abstract class AbstractObservable<T, K extends IEvent<T>> implements IObservable<T,K> {
 	private final List<Subscriber> subscribers = new LinkedList<>();
 	

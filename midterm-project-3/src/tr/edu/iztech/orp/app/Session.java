@@ -3,6 +3,9 @@ package tr.edu.iztech.orp.app;
 import tr.edu.iztech.orp.data.IStatistics;
 import tr.edu.iztech.orp.models.User;
 
+/**
+ * Session container
+ */
 public class Session {
 	private static User user;
 	private static IStatistics statistics;

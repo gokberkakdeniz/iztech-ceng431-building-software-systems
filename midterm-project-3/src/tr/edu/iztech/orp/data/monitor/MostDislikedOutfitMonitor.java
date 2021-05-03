@@ -6,6 +6,10 @@ import tr.edu.iztech.orp.enums.OutfitEvent;
 import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.Outfit;
 
+
+/**
+ * Monitors all outfits to find most disliked outfit
+ */
 public class MostDislikedOutfitMonitor implements IMonitor<Outfit, OutfitEvent> {
 	private Outfit mostDisliked;
 	

@@ -52,6 +52,6 @@ public class HomePanel extends JPanel implements IObserver<OutfitRepository, Out
 
 	@Override
 	public void update(OutfitRepositoryEvent event) {
-
+		// do nothing
 	}
 }

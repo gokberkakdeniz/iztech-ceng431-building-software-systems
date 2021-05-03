@@ -6,6 +6,9 @@ import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.User;
 
+/**
+ * Monitors all users to find most followed user
+ */
 public class MostFollowedUserMonitor implements IMonitor<User, UserEvent> {
 	private User mostFollowed;
 	
