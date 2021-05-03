@@ -5,7 +5,6 @@
     <password/>
     <followedUsers/>
     <followerUsers>
-      <id>b</id>
       <id>a</id>
     </followerUsers>
     <collections>
@@ -26,9 +25,12 @@
     <username>a</username>
     <password>a</password>
     <followedUsers>
+      <id>b</id>
       <id/>
     </followedUsers>
-    <followerUsers/>
+    <followerUsers>
+      <id>b</id>
+    </followerUsers>
     <collections>
       <collection>
         <name/>
@@ -53,9 +55,11 @@
     <username>b</username>
     <password>b</password>
     <followedUsers>
-      <id/>
+      <id>a</id>
     </followedUsers>
-    <followerUsers/>
+    <followerUsers>
+      <id>a</id>
+    </followerUsers>
     <collections>
       <collection>
         <name/>

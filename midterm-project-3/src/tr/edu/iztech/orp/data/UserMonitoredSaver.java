@@ -23,7 +23,13 @@ public class UserMonitoredSaver implements IDataMonitoredSaver<User, UserEvent> 
 
 	@Override
 	public void update(UserEvent event) {
-		userRepo.save();
+		switch (event) {
+			case ADD_COLLECTION:
+				event.getSubject().getCollections().forEach(this::subscribeToAllEvents);
+			default:
+				userRepo.save();
+				break;
+		}
 	}
 
 	private void subscribeToAllEvents(User user) {

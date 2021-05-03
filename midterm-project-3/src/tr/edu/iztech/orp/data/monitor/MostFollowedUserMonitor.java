@@ -17,13 +17,14 @@ public class MostFollowedUserMonitor implements IMonitor<User, UserEvent> {
 		
 		outfits.forEach(o -> {
 			subscribeTo(o);
-			if (hasMoreLike(o)) mostFollowed = o;
+			if (hasMoreFollower(o)) mostFollowed = o;
 		});
 	}
 
 	@Override
 	public void update(UserEvent event) {
-		if (hasMoreLike(event.getSubject())) mostFollowed = event.getSubject();
+		User user = event.getSubject();
+		if (hasMoreFollower(user)) mostFollowed = user;
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class MostFollowedUserMonitor implements IMonitor<User, UserEvent> {
 		user.subscribe(UserEvent.UNFOLLOW, this);
 	}
 	
-	private boolean hasMoreLike(User user) {
+	private boolean hasMoreFollower(User user) {
 		return mostFollowed == null || user.getFollowerCount() > mostFollowed.getFollowerCount();
 	}
 }

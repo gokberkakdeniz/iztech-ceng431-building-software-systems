@@ -1,7 +1,9 @@
 package tr.edu.iztech.orp.utils;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Abstract implementation of Observer pattern.
@@ -11,7 +13,7 @@ import java.util.List;
  * @param <K> event class
  */
 public abstract class AbstractObservable<T, K extends IEvent<T>> implements IObservable<T,K> {
-	private final List<Subscriber> subscribers = new LinkedList<>();
+	private final Set<Subscriber> subscribers = new HashSet<>();
 	
 	@Override
 	public void subscribe(K event, IObserver<T, K> subscriber) {
@@ -52,6 +54,19 @@ public abstract class AbstractObservable<T, K extends IEvent<T>> implements IObs
 		
 		public void updateIf(K event) {
 			if (this.event == event) observer.update(event);
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (!(o instanceof AbstractObservable<?,?>.Subscriber)) return false;
+			
+			AbstractObservable<?,?>.Subscriber casted = (AbstractObservable<?,?>.Subscriber) o;
+			return observer == casted.observer && event.equals(casted.event);
+		}
+		
+		@Override
+		public int hashCode() {
+			return event.hashCode()/2 + observer.hashCode()/2;
 		}
 	}
 }
