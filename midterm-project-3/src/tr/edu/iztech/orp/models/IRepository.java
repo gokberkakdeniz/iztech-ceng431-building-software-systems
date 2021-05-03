@@ -40,4 +40,9 @@ public interface IRepository<T> {
 	 * @return models
 	 */
 	List<T> getAll(Predicate<T> predicate);
+	
+	/**
+	 * Save data
+	 */
+	void save();
 }

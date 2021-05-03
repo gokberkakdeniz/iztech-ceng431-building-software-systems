@@ -51,6 +51,8 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	public void onPageChanged(MenuModel model) {
+		userRepo.save();
+		outfitRepo.save();
 		controller.destroy();
 		
 		switch (model) {

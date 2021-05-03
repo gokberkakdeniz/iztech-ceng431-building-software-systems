@@ -77,7 +77,7 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 		return new ArrayList<>(comments);
 	}
 	
-	public List<String> getLikedUsers() {
+	public List<String> getLikedUserIds() {
 		return new ArrayList<>(likedUserIds);
 	}
 	
@@ -85,7 +85,7 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 		return likedUserIds.size();
 	}
 	
-	public List<String> getDislikedUsers() {
+	public List<String> getDislikedUserIds() {
 		return new ArrayList<>(dislikedUserIds);
 	}
 	
@@ -105,13 +105,17 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 		return result;
 	}
 	
-	public boolean addDislike(User user) {
-		boolean result = likedUserIds.remove(user.getUsername());
+	public boolean addDislike(String userId) {
+		boolean result = likedUserIds.remove(userId);
 		if (result) notifySubscribers(OutfitEvent.LIKE.withSubject(this));
 		
-		result = dislikedUserIds.add(user.getUsername());
+		result = dislikedUserIds.add(userId);
 		if (result) notifySubscribers(OutfitEvent.DISLIKE.withSubject(this));
 		return result;
+	}
+	
+	public boolean addDislike(User user) {
+		return addDislike(user.getUsername());
 	}
 	
 	public boolean removeDislike(User user) {
@@ -120,14 +124,18 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 		return result;
 	}
 	
-	public boolean addLike(User user) {
-		boolean result = dislikedUserIds.remove(user.getUsername());
+	public boolean addLike(String userId) {
+		boolean result = dislikedUserIds.remove(userId);
 		if (result) notifySubscribers(OutfitEvent.DISLIKE.withSubject(this));
 
-		result = likedUserIds.add(user.getUsername());
+		result = likedUserIds.add(userId);
 		if (result) notifySubscribers(OutfitEvent.LIKE.withSubject(this));
 		
 		return result;
+	}
+	
+	public boolean addLike(User user) {
+		return addLike(user.getUsername());
 	}
 	
 	public boolean removeLike(User user) {

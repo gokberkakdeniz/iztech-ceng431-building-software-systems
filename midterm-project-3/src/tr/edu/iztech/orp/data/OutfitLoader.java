@@ -1,6 +1,5 @@
 package tr.edu.iztech.orp.data;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -60,19 +59,21 @@ public class OutfitLoader implements IDataLoader<Outfit> {
 			JSONArray commentJsonArray = jsonField.getJSONArray("comments");
 			for(Object commentObject: commentJsonArray) {
 				JSONObject comment = (JSONObject) commentObject;
-				String authorId = comment.getString("author_id");
-				String message = comment.getString("message");
+				String authorId = comment.getString("author");
+				String message = comment.getString("text");
 				outfit.addComment(new Comment(authorId, message));
 			}
 			
-//			JSONArray commentJsonArray = jsonField.getJSONArray("comments");
-//			for(Object commentObject: commentJsonArray) {
-//				JSONObject comment = (JSONObject) commentObject;
-//				String authorId = comment.getString("author_id");
-//				String message = comment.getString("message");
-//				outfit.addComment(new Comment(authorId, message));
-//			}
-//			
+			JSONArray likedJsonArray = jsonField.getJSONArray("liked_users");
+			for(Object user: likedJsonArray) {
+				outfit.addLike(user.toString());
+			}
+			
+			JSONArray dislikedJsonArray = jsonField.getJSONArray("disliked_users");
+			for(Object user: dislikedJsonArray) {
+				outfit.addDislike(user.toString());
+			}
+
 			outfits.add(outfit);
 		}
 		

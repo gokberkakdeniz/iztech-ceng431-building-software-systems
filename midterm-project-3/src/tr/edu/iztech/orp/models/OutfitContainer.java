@@ -47,4 +47,9 @@ public class OutfitContainer implements IRepository<Outfit> {
 	public boolean remove(Outfit outfit) {
 		return outfits.remove(outfit);
 	}
+
+	@Override
+	public void save() {
+		// Do nothing.
+	}
 }

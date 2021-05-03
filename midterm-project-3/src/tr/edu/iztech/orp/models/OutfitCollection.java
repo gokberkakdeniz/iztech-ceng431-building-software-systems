@@ -40,4 +40,9 @@ public class OutfitCollection extends AbstractOutfitContainer<OutfitCollection, 
 	public int compareTo(OutfitCollection arg0) {
 		return getName().compareTo(arg0.getName());
 	}
+
+	@Override
+	public void save() {
+		// Do nothing.
+	}
 }

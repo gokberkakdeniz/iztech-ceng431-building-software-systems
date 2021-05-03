@@ -33,8 +33,8 @@ public class OutfitSaver implements IDataSaver<Outfit> {
 			outfitJson.put("available_sizes", outfit.getSizes());
 			outfitJson.put("occasion", outfit.getOccasion());
 			outfitJson.put("comments", outfit.getComments());
-			outfitJson.put("liked_users", outfit.getLikedUsers());
-			outfitJson.put("disliked_users", outfit.getDislikedUsers());
+			outfitJson.put("liked_users", outfit.getLikedUserIds());
+			outfitJson.put("disliked_users", outfit.getDislikedUserIds());
 			
 			list.put(outfitJson);
 		}

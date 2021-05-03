@@ -8,6 +8,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
+import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.views.components.OutfitListPanel;
@@ -42,7 +43,10 @@ public class CollectionsController implements IController {
 	private ActionListener removeItemButtonListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			selectedCollection.remove(outfitListPanel.getSelection());
+			Outfit selected = outfitListPanel.getSelection();
+			if (selected != null) {
+				selectedCollection.remove(selected);
+			}
 		}
 	};
 	

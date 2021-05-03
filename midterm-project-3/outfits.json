@@ -2,7 +2,36 @@
   {
     "occasion": "SPORTY",
     "outfit_id": 1,
-    "comments": [],
+    "comments": [
+      {
+        "author": "",
+        "text": "FAFGASGAS"
+      },
+      {
+        "author": "",
+        "text": "FAFGASGAS"
+      },
+      {
+        "author": "",
+        "text": "FAFGASGASAS"
+      },
+      {
+        "author": "",
+        "text": "FAFGASGASASGAS"
+      },
+      {
+        "author": "a",
+        "text": "dfgadfgadf"
+      },
+      {
+        "author": "a",
+        "text": "dfgadfgadfasfgasdfg"
+      },
+      {
+        "author": "a",
+        "text": "dfgadfgadfasfgasdfggag"
+      }
+    ],
     "disliked_users": [],
     "gender": "MAN",
     "color": "BLACK",
@@ -12,14 +41,45 @@
     ],
     "name": "Tshirt",
     "brand_name": "DeFacto",
-    "liked_users": [],
+    "liked_users": [
+      "",
+      "a"
+    ],
     "type": "TSHIRT"
   },
   {
     "occasion": "CASUAL",
     "outfit_id": 2,
-    "comments": [],
-    "disliked_users": [],
+    "comments": [
+      {
+        "author": "",
+        "text": "ASFGASF"
+      },
+      {
+        "author": "",
+        "text": "ASFGASFASG"
+      },
+      {
+        "author": "",
+        "text": "ASFGASFASGGASGASGSAGASSA"
+      },
+      {
+        "author": "a",
+        "text": "12431234"
+      },
+      {
+        "author": "a",
+        "text": "12431234"
+      },
+      {
+        "author": "a",
+        "text": "124312343424"
+      }
+    ],
+    "disliked_users": [
+      "",
+      "a"
+    ],
     "gender": "UNISEX",
     "color": "YELLOW",
     "available_sizes": [
