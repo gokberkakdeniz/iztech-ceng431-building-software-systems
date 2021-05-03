@@ -87,44 +87,44 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 	
 	public boolean addComment(Comment comment) {
 		boolean result = comments.add(comment);
-		if (result) notifySubscribers(OutfitEvent.ADD_COMMENT);
+		if (result) notifySubscribers(OutfitEvent.ADD_COMMENT.withSubject(this));
 		return result;
 	}
 	
 	public boolean removeComment(Comment comment) {
 		boolean result = comments.remove(comment);
-		if (result) notifySubscribers(OutfitEvent.REMOVE_COMMENT);
+		if (result) notifySubscribers(OutfitEvent.REMOVE_COMMENT.withSubject(this));
 		return result;
 	}
 	
 	public boolean addDislike(User user) {
 		boolean result = likedUsers.remove(user);
-		if (result) notifySubscribers(OutfitEvent.LIKE);
+		if (result) notifySubscribers(OutfitEvent.LIKE.withSubject(this));
 		
 		result = dislikedUsers.add(user);
-		if (result) notifySubscribers(OutfitEvent.DISLIKE);
+		if (result) notifySubscribers(OutfitEvent.DISLIKE.withSubject(this));
 		return result;
 	}
 	
 	public boolean removeDislike(User user) {
 		boolean result = dislikedUsers.remove(user);
-		if (result) notifySubscribers(OutfitEvent.REMOVE_DISLIKE);
+		if (result) notifySubscribers(OutfitEvent.REMOVE_DISLIKE.withSubject(this));
 		return result;
 	}
 	
 	public boolean addLike(User user) {
 		boolean result = dislikedUsers.remove(user);
-		if (result) notifySubscribers(OutfitEvent.DISLIKE);
+		if (result) notifySubscribers(OutfitEvent.DISLIKE.withSubject(this));
 
 		result = likedUsers.add(user);
-		if (result) notifySubscribers(OutfitEvent.LIKE);
+		if (result) notifySubscribers(OutfitEvent.LIKE.withSubject(this));
 		
 		return result;
 	}
 	
 	public boolean removeLike(User user) {
 		boolean result = likedUsers.remove(user);
-		if (result) notifySubscribers(OutfitEvent.REMOVE_LIKE);
+		if (result) notifySubscribers(OutfitEvent.REMOVE_LIKE.withSubject(this));
 		return result;
 	}
 	

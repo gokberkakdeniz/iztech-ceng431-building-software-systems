@@ -16,18 +16,18 @@ public class OutfitCollection extends AbstractOutfitContainer<OutfitCollection, 
 	
 	public void setName(String name) {
 		this.name = name;
-		notifySubscribers(OutfitCollectionEvent.RENAME);
+		notifySubscribers(OutfitCollectionEvent.RENAME.withSubject(this));
 	}
 	
 	public boolean add(Outfit outfit) {
 		boolean result = super.add(outfit);
-		if (result) notifySubscribers(OutfitCollectionEvent.ADD_OUTFIT);
+		if (result) notifySubscribers(OutfitCollectionEvent.ADD_OUTFIT.withSubject(this));
 		return result;
 	}
 	
 	public boolean remove(Outfit outfit) {
 		boolean result = super.remove(outfit);
-		if (result) notifySubscribers(OutfitCollectionEvent.REMOVE_OUTFIT);
+		if (result) notifySubscribers(OutfitCollectionEvent.REMOVE_OUTFIT.withSubject(this));
 		return result;
 	}
 	

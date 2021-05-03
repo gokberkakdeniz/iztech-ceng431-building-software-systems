@@ -10,4 +10,19 @@ public enum OutfitEvent implements IEvent<Outfit> {
 	REMOVE_DISLIKE,
 	ADD_COMMENT,
 	REMOVE_COMMENT;
+	
+	private Outfit subject;
+	
+	public OutfitEvent withSubject(Outfit subject) {
+		this.subject = subject;
+		return this;
+	}
+	
+	public boolean hasSubject() {
+		return subject != null;
+	}
+	
+	public Outfit getSubject() {
+		return subject;
+	}
 }

@@ -52,37 +52,37 @@ public class User extends AbstractObservable<User, UserEvent> {
 	
 	public boolean follow(User user) {
 		boolean result = followedUsers.add(user);
-		if (result) notifySubscribers(UserEvent.FOLLOW);
+		if (result) notifySubscribers(UserEvent.FOLLOW.withSubject(this));
 		return result;
 	}
 	
 	public boolean unfollow(User user) {
 		boolean result = followedUsers.remove(user);
-		if (result) notifySubscribers(UserEvent.UNFOLLOW);
+		if (result) notifySubscribers(UserEvent.UNFOLLOW.withSubject(this));
 		return result;
 	}
 	
 	public boolean followedBy(User user) {
 		boolean result = followerUsers.add(user);
-		if (result) notifySubscribers(UserEvent.FOLLOWED);
+		if (result) notifySubscribers(UserEvent.FOLLOWED.withSubject(this));
 		return result;
 	}
 	
 	public boolean unfollowedBy(User user) {
 		boolean result = followerUsers.remove(user);
-		if (result) notifySubscribers(UserEvent.UNFOLLOWED);
+		if (result) notifySubscribers(UserEvent.UNFOLLOWED.withSubject(this));
 		return result;
 	}
 	
 	public boolean addCollection(OutfitCollection collection) {
 		boolean result = collections.add(collection);
-		if (result) notifySubscribers(UserEvent.ADD_COLLECTION);
+		if (result) notifySubscribers(UserEvent.ADD_COLLECTION.withSubject(this));
 		return result;
 	}
 	
 	public boolean removeCollection(OutfitCollection collection) {
 		boolean result = collections.remove(collection);
-		if (result) notifySubscribers(UserEvent.REMOVE_COLLECTION);
+		if (result) notifySubscribers(UserEvent.REMOVE_COLLECTION.withSubject(this));
 		return result;
 	}
 

@@ -59,7 +59,7 @@ public class FollowedUsersController implements IController {
 
         			view.setCollectionListPanel(collectionList);
         			
-        			// fix
+        			// controller or not controller?
         			view.addCollectionsListSelectionListener(collectionChangeListener);
     			} else {
         			view.setCollectionListPanel(null);
