@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.data;
+package tr.edu.iztech.orp.data.monitor;
 
 import java.util.List;
 

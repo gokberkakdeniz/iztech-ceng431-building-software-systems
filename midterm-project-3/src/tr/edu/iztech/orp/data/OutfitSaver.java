@@ -1,7 +1,6 @@
 package tr.edu.iztech.orp.data;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.util.List;
 
 import tr.edu.iztech.orp.models.Outfit;

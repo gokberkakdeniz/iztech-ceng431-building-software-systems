@@ -46,8 +46,16 @@ public class User extends AbstractObservable<User, UserEvent> {
 		return new ArrayList<>(followedUsers);
 	}
 	
+	public int getFollowedCount() {
+		return followedUsers.size();
+	}
+	
 	public List<User> getFollowerUsers() {
 		return new ArrayList<>(followerUsers);
+	}
+	
+	public int getFollowerCount() {
+		return followerUsers.size();
 	}
 	
 	public boolean follow(User user) {

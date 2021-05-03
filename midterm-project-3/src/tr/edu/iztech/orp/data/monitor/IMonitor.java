@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.data;
+package tr.edu.iztech.orp.data.monitor;
 
 import tr.edu.iztech.orp.utils.IEvent;
 import tr.edu.iztech.orp.utils.IObserver;
