@@ -55,6 +55,8 @@ public class FollowedUsersController implements IController {
     			
     			User model = ((JList<User>)event.getSource()).getSelectedValue();
     			
+    			view.setOutfitListPanel(null);
+
     			if (model != null) {
     				CollectionListPanel collectionList = new CollectionListPanel(model);
     				collectionListController = new CollectionListController(collectionList, model);
@@ -63,7 +65,6 @@ public class FollowedUsersController implements IController {
         			view.addCollectionsListSelectionListener(collectionChangeListener);
     			} else {
         			view.setCollectionListPanel(null);
-        			view.setOutfitListPanel(null);
     			}
     		}
     	}
