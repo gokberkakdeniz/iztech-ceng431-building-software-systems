@@ -68,7 +68,7 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
         add(idLabel);
         
         nameLabel = new JLabel("Name: " + model.getName());
-        nameLabel.setBounds(0, 30, 129, 15);
+        nameLabel.setBounds(0, 30, 157, 15);
         add(nameLabel);
         
         brandLabel = new JLabel("Brand: " + model.getBrandName());
@@ -76,15 +76,15 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
         add(brandLabel);
         
         clothingTypeLabel = new JLabel("Type: " + model.getType());
-        clothingTypeLabel.setBounds(300, 60, 129, 15);
+        clothingTypeLabel.setBounds(160, 57, 164, 15);
         add(clothingTypeLabel);
         
         occassionLabel = new JLabel("Ocassion: " + model.getOccasion());
-        occassionLabel.setBounds(0, 60, 129, 15);
+        occassionLabel.setBounds(0, 60, 157, 15);
         add(occassionLabel);
         
         genderLabel = new JLabel("Gender: " + model.getGender());
-        genderLabel.setBounds(160, 60, 129, 15);
+        genderLabel.setBounds(160, 90, 129, 15);
         add(genderLabel);
         
         sizeLabel = new JLabel("Sizes: " + Stream.of(model.getSizes()).map(OutfitSize::toString).collect(Collectors.joining(", ")));

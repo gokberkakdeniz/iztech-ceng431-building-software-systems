@@ -34,7 +34,6 @@ public class OutfitLoader implements IDataLoader<Outfit> {
 		JSONTokener tokener = new JSONTokener(is);
         JSONArray object = new JSONArray(tokener);
         
-        int i = 0;
 		List<Outfit> outfits = new ArrayList<>();
 
 		for(Object obj: object) {
@@ -76,11 +75,7 @@ public class OutfitLoader implements IDataLoader<Outfit> {
 
 			outfits.add(outfit);
 		}
-		
-//		i = 0;
-//		outfits.add(new Outfit(++i, "Tshirt", "DeFacto", OutfitGender.MAN, OutfitType.TSHIRT, OutfitOccasion.SPORTY, OutfitColor.BLACK, new OutfitSize[] { OutfitSize.XXXXXL, OutfitSize.M }));
-//		outfits.add(new Outfit(++i, "Tshirt", "Koton", OutfitGender.UNISEX, OutfitType.TSHIRT, OutfitOccasion.CASUAL, OutfitColor.YELLOW, new OutfitSize[] { OutfitSize.S, OutfitSize.M }));
-	
+
 		return outfits;
 	}
 }

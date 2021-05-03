@@ -1,123 +1,548 @@
 [
   {
-    "occasion": "SPORTY",
+    "occasion": "PARTY",
     "outfit_id": 1,
     "comments": [
       {
-        "author": "",
-        "text": "FAFGASGAS"
+        "author": "alp",
+        "text": "Nice"
       },
       {
-        "author": "",
-        "text": "FAFGASGAS"
+        "author": "alp",
+        "text": "adgfhadghad"
       },
       {
-        "author": "",
-        "text": "FAFGASGASAS"
+        "author": "alp",
+        "text": "adgfhaas"
       },
       {
-        "author": "",
-        "text": "FAFGASGASASGAS"
+        "author": "alp",
+        "text": "sghshgs"
       },
       {
-        "author": "a",
-        "text": "dfgadfgadf"
+        "author": "akdeniz",
+        "text": "dsfgsdfg"
       },
       {
-        "author": "a",
-        "text": "dfgadfgadfasfgasdfg"
+        "author": "akdeniz",
+        "text": "24532gsefg"
       },
       {
-        "author": "a",
-        "text": "dfgadfgadfasfgasdfggag"
+        "author": "akdeniz",
+        "text": "24532gsefgasg"
       },
       {
-        "author": "b",
-        "text": " "
+        "author": "alp",
+        "text": "asfgafsd"
       },
       {
-        "author": "b",
-        "text": " "
+        "author": "alp",
+        "text": "asfgafsd"
       },
       {
-        "author": "b",
-        "text": " "
+        "author": "akdeniz",
+        "text": "asdfas"
       },
       {
-        "author": "b",
-        "text": "  "
+        "author": "johannes",
+        "text": "adfgag"
       },
       {
-        "author": "b",
-        "text": "  "
+        "author": "johannes",
+        "text": "adfgagasgfasf"
       },
       {
-        "author": "b",
-        "text": "  "
+        "author": "johannes",
+        "text": "adfgagasgfasfcasc"
       },
       {
-        "author": "b",
-        "text": "  "
+        "author": "johannes",
+        "text": "12345566"
       },
       {
-        "author": "",
-        "text": "sikişelim delice"
+        "author": "tennant",
+        "text": "zsfbzvb"
       },
       {
-        "author": "a",
-        "text": "asfgadfgadf"
+        "author": "tennant",
+        "text": "zsfbzvbzvx<z"
+      },
+      {
+        "author": "tennant",
+        "text": "zsfbzvbzvx<zv"
+      },
+      {
+        "author": "alp",
+        "text": "afgadfg"
+      },
+      {
+        "author": "alp",
+        "text": "afgadfgfgasg"
+      },
+      {
+        "author": "huseyin",
+        "text": "asgfasf"
       }
     ],
-    "disliked_users": [""],
+    "disliked_users": [],
     "gender": "MAN",
-    "color": "BLACK",
+    "color": "RED",
+    "available_sizes": ["XXXL"],
+    "name": "Hat",
+    "brand_name": "DeFacto",
+    "liked_users": [
+      "alp",
+      "akdeniz",
+      "tennant",
+      "huseyin",
+      "johannes"
+    ],
+    "type": "HAT"
+  },
+  {
+    "occasion": "SPORTY",
+    "outfit_id": 2,
+    "comments": [
+      {
+        "author": "alp",
+        "text": "adgfadfgadfg"
+      },
+      {
+        "author": "alp",
+        "text": "adgfadfgadfgaa"
+      },
+      {
+        "author": "alp",
+        "text": "adgfa"
+      },
+      {
+        "author": "akdeniz",
+        "text": "sadgasdgasdg"
+      },
+      {
+        "author": "akdeniz",
+        "text": "sadgasdgasdg"
+      },
+      {
+        "author": "akdeniz",
+        "text": "sadgasdgasdg"
+      },
+      {
+        "author": "akdeniz",
+        "text": "sadgasdgasdg"
+      },
+      {
+        "author": "akdeniz",
+        "text": "sadgasdgasdg"
+      },
+      {
+        "author": "akdeniz",
+        "text": "324frgfgfwdf"
+      },
+      {
+        "author": "akdeniz",
+        "text": "425213f"
+      },
+      {
+        "author": "johannes",
+        "text": "asfgasgfa"
+      },
+      {
+        "author": "johannes",
+        "text": "asfgasgfaasgas"
+      },
+      {
+        "author": "huseyin",
+        "text": "asgfasfg"
+      }
+    ],
+    "disliked_users": [
+      "alp",
+      "tennant",
+      "huseyin"
+    ],
+    "gender": "MAN",
+    "color": "YELLOW",
     "available_sizes": [
-      "XXXXXL",
+      "XL",
       "M"
     ],
-    "name": "Tshirt",
+    "name": "Sweat",
     "brand_name": "DeFacto",
-    "liked_users": ["a"],
+    "liked_users": [
+      "akdeniz",
+      "johannes"
+    ],
     "type": "TSHIRT"
   },
   {
     "occasion": "CASUAL",
-    "outfit_id": 2,
+    "outfit_id": 3,
     "comments": [
       {
-        "author": "",
-        "text": "ASFGASF"
+        "author": "alp",
+        "text": "asfgasg"
       },
       {
-        "author": "",
-        "text": "ASFGASFASG"
+        "author": "alp",
+        "text": "afhadfhad"
       },
       {
-        "author": "",
-        "text": "ASFGASFASGGASGASGSAGASSA"
+        "author": "alp",
+        "text": "14251234"
       },
       {
-        "author": "a",
-        "text": "12431234"
+        "author": "alp",
+        "text": "asdfas"
       },
       {
-        "author": "a",
-        "text": "12431234"
+        "author": "akdeniz",
+        "text": "dgasdg"
       },
       {
-        "author": "a",
-        "text": "124312343424"
+        "author": "johannes",
+        "text": "sgfas"
+      },
+      {
+        "author": "johannes",
+        "text": "sgfasasfg"
+      },
+      {
+        "author": "johannes",
+        "text": "234tr3g13rg"
+      },
+      {
+        "author": "johannes",
+        "text": "234tr3g13rgasd"
+      },
+      {
+        "author": "huseyin",
+        "text": "agfafgas"
       }
     ],
-    "disliked_users": [""],
+    "disliked_users": [
+      "akdeniz",
+      "tennant",
+      "huseyin",
+      "johannes"
+    ],
+    "gender": "WOMAN",
+    "color": "GREEN",
+    "available_sizes": [
+      "L",
+      "S"
+    ],
+    "name": "Tshirt",
+    "brand_name": "DeFacto",
+    "liked_users": ["alp"],
+    "type": "TSHIRT"
+  },
+  {
+    "occasion": "CASUAL",
+    "outfit_id": 4,
+    "comments": [
+      {
+        "author": "akdeniz",
+        "text": "asgasfgas"
+      },
+      {
+        "author": "huseyin",
+        "text": "afgafs"
+      }
+    ],
+    "disliked_users": [
+      "alp",
+      "akdeniz",
+      "huseyin",
+      "johannes"
+    ],
+    "gender": "WOMAN",
+    "color": "RED",
+    "available_sizes": [
+      "XXXL",
+      "M"
+    ],
+    "name": "Polar",
+    "brand_name": "DeFacto",
+    "liked_users": ["tennant"],
+    "type": "TSHIRT"
+  },
+  {
+    "occasion": "CASUAL",
+    "outfit_id": 5,
+    "comments": [{
+      "author": "alp",
+      "text": "dfgadf"
+    }],
+    "disliked_users": [],
+    "gender": "MAN",
+    "color": "BLACK",
+    "available_sizes": [
+      "XS",
+      "M"
+    ],
+    "name": "Suit",
+    "brand_name": "Koton",
+    "liked_users": [
+      "alp",
+      "akdeniz"
+    ],
+    "type": "DRESS"
+  },
+  {
+    "occasion": "CASUAL",
+    "outfit_id": 6,
+    "comments": [{
+      "author": "alp",
+      "text": "Awesome"
+    }],
+    "disliked_users": [],
     "gender": "UNISEX",
     "color": "YELLOW",
+    "available_sizes": [
+      "L",
+      "M"
+    ],
+    "name": "Underwear",
+    "brand_name": "Koton",
+    "liked_users": [
+      "alp",
+      "tennant"
+    ],
+    "type": "UNDERWEAR"
+  },
+  {
+    "occasion": "CASUAL",
+    "outfit_id": 7,
+    "comments": [
+      {
+        "author": "tennant",
+        "text": "gfjhrghj"
+      },
+      {
+        "author": "tennant",
+        "text": "hsgdfhs"
+      }
+    ],
+    "disliked_users": ["alp"],
+    "gender": "MAN",
+    "color": "YELLOW",
+    "available_sizes": [
+      "XL",
+      "XXXL"
+    ],
+    "name": "Shoe",
+    "brand_name": "Koton",
+    "liked_users": ["tennant"],
+    "type": "SHOE"
+  },
+  {
+    "occasion": "ELEGANT",
+    "outfit_id": 8,
+    "comments": [
+      {
+        "author": "tennant",
+        "text": "adfhgadghf"
+      },
+      {
+        "author": "tennant",
+        "text": "adfhgadghffgadfg"
+      }
+    ],
+    "disliked_users": [],
+    "gender": "WOMAN",
+    "color": "WHITE",
+    "available_sizes": [
+      "S",
+      "XS"
+    ],
+    "name": "Wedding dress",
+    "brand_name": "Koton",
+    "liked_users": [
+      "alp",
+      "johannes"
+    ],
+    "type": "DRESS"
+  },
+  {
+    "occasion": "CASUAL",
+    "outfit_id": 9,
+    "comments": [],
+    "disliked_users": [],
+    "gender": "WOMAN",
+    "color": "YELLOW",
+    "available_sizes": [
+      "L",
+      "XL"
+    ],
+    "name": "Bride Crown",
+    "brand_name": "LC Waikiki",
+    "liked_users": ["tennant"],
+    "type": "DRESS"
+  },
+  {
+    "occasion": "ELEGANT",
+    "outfit_id": 10,
+    "comments": [
+      {
+        "author": "tennant",
+        "text": "afgasdf"
+      },
+      {
+        "author": "tennant",
+        "text": "afgasdfagafg"
+      }
+    ],
+    "disliked_users": ["tennant"],
+    "gender": "UNISEX",
+    "color": "RED",
+    "available_sizes": [
+      "XS",
+      "S"
+    ],
+    "name": "Pants",
+    "brand_name": "LC Waikiki",
+    "liked_users": [],
+    "type": "PANTS"
+  },
+  {
+    "occasion": "ELEGANT",
+    "outfit_id": 11,
+    "comments": [{
+      "author": "alp",
+      "text": "safgasdfg"
+    }],
+    "disliked_users": ["alp"],
+    "gender": "UNISEX",
+    "color": "BLACK",
+    "available_sizes": [
+      "XXL",
+      "XXXXXL"
+    ],
+    "name": "Wedding shoe",
+    "brand_name": "LC Waikiki",
+    "liked_users": ["tennant"],
+    "type": "SHOE"
+  },
+  {
+    "occasion": "ELEGANT",
+    "outfit_id": 12,
+    "comments": [
+      {
+        "author": "tennant",
+        "text": "afgasdfgadgadga"
+      },
+      {
+        "author": "tennant",
+        "text": "afgasdfgadgadgaadfgad"
+      }
+    ],
+    "disliked_users": ["tennant"],
+    "gender": "UNISEX",
+    "color": "WHITE",
     "available_sizes": [
       "S",
       "M"
     ],
+    "name": "Wedding dress",
+    "brand_name": "LC Waikiki",
+    "liked_users": [],
+    "type": "DRESS"
+  },
+  {
+    "occasion": "PARTY",
+    "outfit_id": 13,
+    "comments": [
+      {
+        "author": "tennant",
+        "text": "134134"
+      },
+      {
+        "author": "tennant",
+        "text": "134134sfgas"
+      }
+    ],
+    "disliked_users": [],
+    "gender": "MAN",
+    "color": "BLUE",
+    "available_sizes": [
+      "S",
+      "M"
+    ],
+    "name": "Hat",
+    "brand_name": "LC Waikiki",
+    "liked_users": ["tennant"],
+    "type": "HAT"
+  },
+  {
+    "occasion": "SPORTY",
+    "outfit_id": 14,
+    "comments": [{
+      "author": "tennant",
+      "text": "gadfgadfgadgf"
+    }],
+    "disliked_users": [],
+    "gender": "MAN",
+    "color": "YELLOW",
+    "available_sizes": [
+      "XXXXXL",
+      "M"
+    ],
+    "name": "Sport Shoe",
+    "brand_name": "Polo",
+    "liked_users": ["tennant"],
+    "type": "SHOE"
+  },
+  {
+    "occasion": "SPORTY",
+    "outfit_id": 15,
+    "comments": [],
+    "disliked_users": ["johannes"],
+    "gender": "WOMAN",
+    "color": "GREEN",
+    "available_sizes": [
+      "XXL",
+      "XS"
+    ],
+    "name": "Sport Tshirt",
+    "brand_name": "Polo",
+    "liked_users": ["alp"],
+    "type": "TSHIRT"
+  },
+  {
+    "occasion": "PARTY",
+    "outfit_id": 16,
+    "comments": [
+      {
+        "author": "tennant",
+        "text": "adfhadfhad"
+      },
+      {
+        "author": "tennant",
+        "text": "adfhadfhad"
+      },
+      {
+        "author": "tennant",
+        "text": "adfhadfhad"
+      },
+      {
+        "author": "tennant",
+        "text": "adfhadfhadafgad"
+      },
+      {
+        "author": "tennant",
+        "text": "123412352145"
+      }
+    ],
+    "disliked_users": ["tennant"],
+    "gender": "UNISEX",
+    "color": "PURPLE",
+    "available_sizes": [
+      "XS",
+      "M"
+    ],
     "name": "Tshirt",
-    "brand_name": "Koton",
+    "brand_name": "Polo",
     "liked_users": [],
     "type": "TSHIRT"
   }

@@ -1,114 +1,197 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <users xmlns="iztech:group6">
   <user>
-    <username/>
-    <password/>
-    <followedUsers/>
-    <followerUsers>
-      <id>a</id>
-    </followerUsers>
-    <collections>
-      <collection>
-        <name>col1</name>
-        <outfits>
-          <id>1</id>
-          <id>2</id>
-        </outfits>
-      </collection>
-      <collection>
-        <name>col2</name>
-        <outfits/>
-      </collection>
-    </collections>
-  </user>
-  <user>
-    <username>a</username>
-    <password>a</password>
+    <username>alp</username>
+    <password>123456</password>
     <followedUsers>
-      <id>b</id>
-      <id/>
+      <id>akdeniz</id>
+      <id>johannes</id>
+      <id>huseyin</id>
     </followedUsers>
     <followerUsers>
-      <id>b</id>
+      <id>akdeniz</id>
+      <id>tennant</id>
+      <id>johannes</id>
+      <id>huseyin</id>
     </followerUsers>
     <collections>
       <collection>
-        <name/>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>afgadfg</name>
+        <name>My suit</name>
         <outfits>
           <id>1</id>
+          <id>5</id>
+          <id>6</id>
+          <id>7</id>
+          <id>16</id>
         </outfits>
       </collection>
       <collection>
-        <name>col3</name>
+        <name>asdfasfga</name>
         <outfits>
-          <id>1</id>
           <id>2</id>
+          <id>13</id>
+          <id>14</id>
         </outfits>
       </collection>
     </collections>
   </user>
   <user>
-    <username>b</username>
-    <password>b</password>
+    <username>akdeniz</username>
+    <password>123456</password>
     <followedUsers>
-      <id>a</id>
+      <id>alp</id>
+      <id>tennant</id>
+      <id>huseyin</id>
     </followedUsers>
     <followerUsers>
-      <id>a</id>
+      <id>alp</id>
+      <id>tennant</id>
+      <id>johannes</id>
+      <id>huseyin</id>
     </followerUsers>
     <collections>
       <collection>
-        <name/>
+        <name>adfgadfg</name>
+        <outfits>
+          <id>1</id>
+          <id>3</id>
+          <id>7</id>
+          <id>11</id>
+        </outfits>
+      </collection>
+      <collection>
+        <name>bnadgfba</name>
+        <outfits>
+          <id>7</id>
+          <id>11</id>
+          <id>16</id>
+        </outfits>
+      </collection>
+    </collections>
+  </user>
+  <user>
+    <username>johannes</username>
+    <password>123456</password>
+    <followedUsers>
+      <id>alp</id>
+      <id>tennant</id>
+      <id>akdeniz</id>
+      <id>huseyin</id>
+    </followedUsers>
+    <followerUsers>
+      <id>alp</id>
+      <id>tennant</id>
+    </followerUsers>
+    <collections>
+      <collection>
+        <name>afgadf</name>
+        <outfits>
+          <id>7</id>
+          <id>8</id>
+          <id>11</id>
+          <id>15</id>
+        </outfits>
+      </collection>
+      <collection>
+        <name>afgadfadfga</name>
+        <outfits>
+          <id>2</id>
+          <id>12</id>
+          <id>15</id>
+        </outfits>
+      </collection>
+    </collections>
+  </user>
+  <user>
+    <username>huseyin</username>
+    <password>123456</password>
+    <followedUsers>
+      <id>alp</id>
+      <id>tennant</id>
+      <id>akdeniz</id>
+    </followedUsers>
+    <followerUsers>
+      <id>alp</id>
+      <id>akdeniz</id>
+      <id>tennant</id>
+      <id>johannes</id>
+    </followerUsers>
+    <collections>
+      <collection>
+        <name>asgfafsdg</name>
+        <outfits>
+          <id>1</id>
+          <id>5</id>
+          <id>10</id>
+          <id>14</id>
+        </outfits>
+      </collection>
+      <collection>
+        <name>sdfgsdfg</name>
+        <outfits>
+          <id>4</id>
+          <id>9</id>
+          <id>12</id>
+        </outfits>
+      </collection>
+    </collections>
+  </user>
+  <user>
+    <username>tennant</username>
+    <password>123456</password>
+    <followedUsers>
+      <id>alp</id>
+      <id>akdeniz</id>
+      <id>johannes</id>
+      <id>huseyin</id>
+    </followedUsers>
+    <followerUsers>
+      <id>akdeniz</id>
+      <id>johannes</id>
+      <id>huseyin</id>
+    </followerUsers>
+    <collections>
+      <collection>
+        <name>aaaaaa111</name>
         <outfits>
           <id>1</id>
           <id>2</id>
+          <id>3</id>
+          <id>4</id>
+          <id>5</id>
+          <id>6</id>
+          <id>7</id>
+          <id>8</id>
+          <id>9</id>
+          <id>10</id>
+          <id>11</id>
+          <id>12</id>
+          <id>13</id>
+          <id>14</id>
+          <id>15</id>
+          <id>16</id>
         </outfits>
       </collection>
       <collection>
-        <name>  </name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>          </name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>                        </name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>                                                    </name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>                                                                         a</name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>                                                       a</name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>                                                a</name>
+        <name>asfgadfsg</name>
         <outfits>
           <id>1</id>
+          <id>3</id>
+          <id>8</id>
+          <id>9</id>
+          <id>14</id>
+          <id>15</id>
         </outfits>
       </collection>
       <collection>
-        <name>                                 a</name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>      a</name>
-        <outfits/>
-      </collection>
-      <collection>
-        <name>sdgh</name>
-        <outfits/>
+        <name>asfgadfsgsgas</name>
+        <outfits>
+          <id>3</id>
+          <id>8</id>
+          <id>12</id>
+          <id>14</id>
+          <id>16</id>
+        </outfits>
       </collection>
     </collections>
   </user>

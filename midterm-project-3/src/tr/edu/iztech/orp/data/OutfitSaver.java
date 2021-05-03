@@ -44,7 +44,6 @@ public class OutfitSaver implements IDataSaver<Outfit> {
 			myFile.write(list.toString(2));
 			myFile.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
