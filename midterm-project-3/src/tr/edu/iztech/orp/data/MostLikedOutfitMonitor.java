@@ -6,10 +6,10 @@ import tr.edu.iztech.orp.enums.OutfitEvent;
 import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.Outfit;
 
-public class MostLikedOutfit implements IMonitor<Outfit, OutfitEvent> {
+public class MostLikedOutfitMonitor implements IMonitor<Outfit, OutfitEvent> {
 	private Outfit mostLiked;
 	
-	public MostLikedOutfit(IRepository<Outfit> outfitRepo) {
+	public MostLikedOutfitMonitor(IRepository<Outfit> outfitRepo) {
 		List<Outfit> outfits = outfitRepo.getAll();
 		
 		outfits.forEach(o -> {
