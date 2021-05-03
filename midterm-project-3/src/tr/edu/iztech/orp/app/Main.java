@@ -25,16 +25,16 @@ import tr.edu.iztech.orp.views.ScreenManager;
 
 public class Main {
 	public static void main(String[] args) throws ParserConfigurationException {
-		IDataLoader<User> userLoader = new UserLoader("./users.xml");
-		UserSaver userSaver = new UserSaver("./users.xml");
-		UserRepository userRepo = new UserRepository(userLoader, userSaver);
-		IDataMonitoredSaver<User, UserEvent> userMonitoredSaver = new UserMonitoredSaver(userRepo);
-		
 		IDataLoader<Outfit> outfitLoader = new OutfitLoader("./outfits.json");
 		OutfitSaver outfitSaver = new OutfitSaver("./outfits.json");
 		OutfitRepository outfitRepo = new OutfitRepository(outfitLoader, outfitSaver);
 		IDataMonitoredSaver<Outfit, OutfitEvent> outfitMonitoredSaver = new OutfitMonitoredSaver(outfitRepo);
 				
+		IDataLoader<User> userLoader = new UserLoader("./users.xml", outfitRepo);
+		UserSaver userSaver = new UserSaver("./users.xml");
+		UserRepository userRepo = new UserRepository(userLoader, userSaver);
+		IDataMonitoredSaver<User, UserEvent> userMonitoredSaver = new UserMonitoredSaver(userRepo);
+
 		Session.setStatistics(new Statistics(userRepo, outfitRepo));
 		
 		EventQueue.invokeLater(new Runnable() {

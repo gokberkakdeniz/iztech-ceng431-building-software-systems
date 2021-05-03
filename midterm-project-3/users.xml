@@ -3,10 +3,11 @@
   <user>
     <username/>
     <password/>
-    <followedUsers>
-      <user>a</user>
-    </followedUsers>
-    <followerUsers/>
+    <followedUsers/>
+    <followerUsers>
+      <id>b</id>
+      <id>a</id>
+    </followerUsers>
     <collections>
       <collection>
         <name>col1</name>
@@ -24,11 +25,21 @@
   <user>
     <username>a</username>
     <password>a</password>
-    <followedUsers/>
-    <followerUsers>
-      <user/>
-    </followerUsers>
+    <followedUsers>
+      <id/>
+    </followedUsers>
+    <followerUsers/>
     <collections>
+      <collection>
+        <name/>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>afgadfg</name>
+        <outfits>
+          <id>1</id>
+        </outfits>
+      </collection>
       <collection>
         <name>col3</name>
         <outfits>
@@ -41,8 +52,60 @@
   <user>
     <username>b</username>
     <password>b</password>
-    <followedUsers/>
+    <followedUsers>
+      <id/>
+    </followedUsers>
     <followerUsers/>
-    <collections/>
+    <collections>
+      <collection>
+        <name/>
+        <outfits>
+          <id>1</id>
+          <id>2</id>
+        </outfits>
+      </collection>
+      <collection>
+        <name>  </name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>          </name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>                        </name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>                                                    </name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>                                                                         a</name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>                                                       a</name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>                                                a</name>
+        <outfits>
+          <id>1</id>
+        </outfits>
+      </collection>
+      <collection>
+        <name>                                 a</name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>      a</name>
+        <outfits/>
+      </collection>
+      <collection>
+        <name>sdgh</name>
+        <outfits/>
+      </collection>
+    </collections>
   </user>
 </users>

@@ -121,7 +121,7 @@ public class User extends AbstractObservable<User, UserEvent> {
 		Node followedUsersField = document.createElement("followedUsers");
 		Node followedUser;
 		for(User user: followedUsers) {
-			followedUser = document.createElement("user");
+			followedUser = document.createElement("id");
 			followedUser.appendChild(document.createTextNode(user.getUsername()));
 			followedUsersField.appendChild(followedUser);
 		}
@@ -129,7 +129,7 @@ public class User extends AbstractObservable<User, UserEvent> {
 		Node followerUsersField = document.createElement("followerUsers");
 		Node followerUser;
 		for(User user: followerUsers) {
-			followerUser = document.createElement("user");
+			followerUser = document.createElement("id");
 			followerUser.appendChild(document.createTextNode(user.getUsername()));
 			followerUsersField.appendChild(followerUser);
 		}

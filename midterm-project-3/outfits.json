@@ -30,9 +30,45 @@
       {
         "author": "a",
         "text": "dfgadfgadfasfgasdfggag"
+      },
+      {
+        "author": "b",
+        "text": " "
+      },
+      {
+        "author": "b",
+        "text": " "
+      },
+      {
+        "author": "b",
+        "text": " "
+      },
+      {
+        "author": "b",
+        "text": "  "
+      },
+      {
+        "author": "b",
+        "text": "  "
+      },
+      {
+        "author": "b",
+        "text": "  "
+      },
+      {
+        "author": "b",
+        "text": "  "
+      },
+      {
+        "author": "",
+        "text": "sikişelim delice"
+      },
+      {
+        "author": "a",
+        "text": "asfgadfgadf"
       }
     ],
-    "disliked_users": [],
+    "disliked_users": [""],
     "gender": "MAN",
     "color": "BLACK",
     "available_sizes": [
@@ -41,10 +77,7 @@
     ],
     "name": "Tshirt",
     "brand_name": "DeFacto",
-    "liked_users": [
-      "",
-      "a"
-    ],
+    "liked_users": ["a"],
     "type": "TSHIRT"
   },
   {
@@ -76,10 +109,7 @@
         "text": "124312343424"
       }
     ],
-    "disliked_users": [
-      "",
-      "a"
-    ],
+    "disliked_users": [""],
     "gender": "UNISEX",
     "color": "YELLOW",
     "available_sizes": [
