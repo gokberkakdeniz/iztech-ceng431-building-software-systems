@@ -100,7 +100,7 @@ public class FollowedUsersController implements IController {
     		List<User> possibilities = userRepo.getAll(u -> !followedUsers.contains(u));
     		possibilities.remove(model);
     		
-    		JOptionPane.showInputDialog(
+    		User result = (User) JOptionPane.showInputDialog(
     			view,
                 "Please choose user to follow",
                 "Follow new User",
@@ -108,6 +108,12 @@ public class FollowedUsersController implements IController {
                 null,
                 possibilities.toArray(),
                 null);
+    		
+    		if (result != null) {
+    			// TODO: user1.(un)follow(user2) may call user2.(un)followedBy(user1).
+    			model.follow(result);
+    			result.followedBy(model);
+    		}
     	}
     };
     
