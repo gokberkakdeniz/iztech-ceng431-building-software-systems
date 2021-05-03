@@ -1,8 +1,7 @@
 package tr.edu.iztech.orp.utils;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -66,7 +65,7 @@ public abstract class AbstractObservable<T, K extends IEvent<T>> implements IObs
 		
 		@Override
 		public int hashCode() {
-			return event.hashCode()/2 + observer.hashCode()/2;
+			return Objects.hash(event, observer);
 		}
 	}
 }
