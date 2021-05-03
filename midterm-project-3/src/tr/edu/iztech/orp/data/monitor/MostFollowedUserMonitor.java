@@ -33,8 +33,8 @@ public class MostFollowedUserMonitor implements IMonitor<User, UserEvent> {
 	}
 
 	private void subscribeTo(User user) {
-		user.subscribe(UserEvent.FOLLOW, this);
-		user.subscribe(UserEvent.UNFOLLOW, this);
+		user.subscribe(UserEvent.UNFOLLOWED, this);
+		user.subscribe(UserEvent.FOLLOWED, this);
 	}
 	
 	private boolean hasMoreFollower(User user) {
