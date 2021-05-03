@@ -8,6 +8,7 @@ import tr.edu.iztech.orp.controllers.FollowedUsersController;
 import tr.edu.iztech.orp.controllers.HomeController;
 import tr.edu.iztech.orp.controllers.IController;
 import tr.edu.iztech.orp.controllers.LoginController;
+import tr.edu.iztech.orp.data.IStatistics;
 import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.models.UserRepository;
@@ -97,6 +98,7 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	private void showStatisticsScreen() {
-		window.setContent(new StatisticsPanel());
+		IStatistics statistics = Session.getStatistics();
+		window.setContent(new StatisticsPanel(statistics));
 	}
 }

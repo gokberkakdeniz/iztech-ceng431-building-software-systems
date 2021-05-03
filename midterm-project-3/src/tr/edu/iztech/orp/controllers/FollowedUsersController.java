@@ -23,6 +23,8 @@ public class FollowedUsersController implements IController {
 	private User model;
 	private CollectionListController collectionListController;
 	private final IRepository<User> userRepo;
+	private OutfitCollection selectedCollection;
+	private OutfitListPanel<OutfitCollection, OutfitCollectionEvent> outfitListPanel;
 	
 	public FollowedUsersController(FollowedUsersPanel view, User model, IRepository<User> userRepo) {
 		this.model = model;
@@ -58,8 +60,6 @@ public class FollowedUsersController implements IController {
     				collectionListController = new CollectionListController(collectionList, model);
 
         			view.setCollectionListPanel(collectionList);
-        			
-        			// controller or not controller?
         			view.addCollectionsListSelectionListener(collectionChangeListener);
     			} else {
         			view.setCollectionListPanel(null);
@@ -73,12 +73,15 @@ public class FollowedUsersController implements IController {
 		@SuppressWarnings("unchecked")
     	public void valueChanged(ListSelectionEvent event) {
     		if (!event.getValueIsAdjusting()) {
-    			// TODO: Make controller and implement destroy;
-    			
+    			if (selectedCollection != null) {
+        			selectedCollection.subscribe(OutfitCollectionEvent.ADD_OUTFIT, outfitListPanel);
+        			selectedCollection.subscribe(OutfitCollectionEvent.REMOVE_OUTFIT, outfitListPanel);
+    			}
+
 				OutfitCollection model = ((JList<OutfitCollection>)event.getSource()).getSelectedValue();    		
 				
     			if (model != null) {
-    				OutfitListPanel<OutfitCollection, OutfitCollectionEvent> outfitListPanel = new OutfitListPanel<>(model);
+    				outfitListPanel = new OutfitListPanel<>(model);
     				
     				model.subscribe(OutfitCollectionEvent.ADD_OUTFIT, outfitListPanel);
     				model.subscribe(OutfitCollectionEvent.REMOVE_OUTFIT, outfitListPanel);
@@ -88,7 +91,7 @@ public class FollowedUsersController implements IController {
     				view.setOutfitListPanel(null);
     			}
 				
-//				selectedCollection = model;
+				selectedCollection = model;
 			}
     	}
     };
@@ -110,9 +113,7 @@ public class FollowedUsersController implements IController {
                 null);
     		
     		if (result != null) {
-    			// TODO: user1.(un)follow(user2) may call user2.(un)followedBy(user1).
     			model.follow(result);
-    			result.followedBy(model);
     		}
     	}
     };
@@ -121,7 +122,6 @@ public class FollowedUsersController implements IController {
     	public void actionPerformed(ActionEvent arg0) {
     		User subject = view.getUserListPanel().getSelectedValue();
     		model.unfollow(subject);
-    		subject.unfollowedBy(model);
     	}
     };
 }

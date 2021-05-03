@@ -50,8 +50,11 @@ public class CollectionsController implements IController {
 		@SuppressWarnings("unchecked")
     	public void valueChanged(ListSelectionEvent event) {
     		if (!event.getValueIsAdjusting()) {
-    			// TODO: Make controller and implement destroy;
-    			
+    			if (selectedCollection != null) {
+        			selectedCollection.unsubscribe(OutfitCollectionEvent.ADD_OUTFIT, outfitListPanel);
+        			selectedCollection.unsubscribe(OutfitCollectionEvent.REMOVE_OUTFIT, outfitListPanel);	
+    			}
+
 				OutfitCollection model = ((JList<OutfitCollection>)event.getSource()).getSelectedValue();    		
 				
     			if (model != null) {

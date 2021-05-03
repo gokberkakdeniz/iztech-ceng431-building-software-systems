@@ -7,6 +7,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import tr.edu.iztech.orp.data.IDataLoader;
 import tr.edu.iztech.orp.data.OutfitLoader;
 import tr.edu.iztech.orp.data.OutfitSaver;
+import tr.edu.iztech.orp.data.Statistics;
 import tr.edu.iztech.orp.data.UserLoader;
 import tr.edu.iztech.orp.data.UserSaver;
 import tr.edu.iztech.orp.models.Outfit;
@@ -27,6 +28,8 @@ public class Main {
 		OutfitSaver outfitSaver = new OutfitSaver("./outfits.json");
 		OutfitRepository outfitRepo = new OutfitRepository(outfitLoader, outfitSaver);
 	
+		Session.setStatistics(new Statistics(userRepo, outfitRepo));
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

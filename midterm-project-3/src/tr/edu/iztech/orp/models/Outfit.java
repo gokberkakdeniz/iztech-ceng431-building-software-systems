@@ -24,8 +24,8 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 	private final OutfitSize[] sizes;
 	private final OutfitOccasion occasion;
 	private final List<Comment> comments;
-	private final Set<User> likedUsers;
-	private final Set<User> dislikedUsers;
+	private final Set<String> likedUserIds;
+	private final Set<String> dislikedUserIds;
 	
 	public Outfit(int id, String name, String brandName, OutfitGender gender, OutfitType type, OutfitOccasion occasion, OutfitColor color, OutfitSize[] sizes) {
 		this.id = id;
@@ -37,8 +37,8 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 		this.color = color;
 		this.sizes = sizes.clone();
 		this.comments = new ArrayList<>();
-		this.likedUsers = new HashSet<>();
-		this.dislikedUsers = new HashSet<>();
+		this.likedUserIds = new HashSet<>();
+		this.dislikedUserIds = new HashSet<>();
 	}
 	
 	public int getId() {
@@ -77,12 +77,20 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 		return new ArrayList<>(comments);
 	}
 	
+	public List<String> getLikedUsers() {
+		return new ArrayList<>(likedUserIds);
+	}
+	
 	public int getLikeCount() {
-		return likedUsers.size();
+		return likedUserIds.size();
+	}
+	
+	public List<String> getDislikedUsers() {
+		return new ArrayList<>(dislikedUserIds);
 	}
 	
 	public int getDislikeCount() {
-		return dislikedUsers.size();
+		return dislikedUserIds.size();
 	}
 
 	public boolean addComment(Comment comment) {
@@ -98,32 +106,32 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 	}
 	
 	public boolean addDislike(User user) {
-		boolean result = likedUsers.remove(user);
+		boolean result = likedUserIds.remove(user.getUsername());
 		if (result) notifySubscribers(OutfitEvent.LIKE.withSubject(this));
 		
-		result = dislikedUsers.add(user);
+		result = dislikedUserIds.add(user.getUsername());
 		if (result) notifySubscribers(OutfitEvent.DISLIKE.withSubject(this));
 		return result;
 	}
 	
 	public boolean removeDislike(User user) {
-		boolean result = dislikedUsers.remove(user);
+		boolean result = dislikedUserIds.remove(user.getUsername());
 		if (result) notifySubscribers(OutfitEvent.REMOVE_DISLIKE.withSubject(this));
 		return result;
 	}
 	
 	public boolean addLike(User user) {
-		boolean result = dislikedUsers.remove(user);
+		boolean result = dislikedUserIds.remove(user.getUsername());
 		if (result) notifySubscribers(OutfitEvent.DISLIKE.withSubject(this));
 
-		result = likedUsers.add(user);
+		result = likedUserIds.add(user.getUsername());
 		if (result) notifySubscribers(OutfitEvent.LIKE.withSubject(this));
 		
 		return result;
 	}
 	
 	public boolean removeLike(User user) {
-		boolean result = likedUsers.remove(user);
+		boolean result = likedUserIds.remove(user.getUsername());
 		if (result) notifySubscribers(OutfitEvent.REMOVE_LIKE.withSubject(this));
 		return result;
 	}

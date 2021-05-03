@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.data;
+package tr.edu.iztech.orp.data.monitor;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import tr.edu.iztech.orp.enums.OutfitEvent;
 import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.Outfit;
 
+/**
+ * Monitors all outfits to find most liked outfit
+ */
 public class MostLikedOutfitMonitor implements IMonitor<Outfit, OutfitEvent> {
 	private Outfit mostLiked;
 	

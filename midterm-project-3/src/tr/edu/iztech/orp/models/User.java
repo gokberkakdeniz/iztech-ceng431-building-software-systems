@@ -46,19 +46,37 @@ public class User extends AbstractObservable<User, UserEvent> {
 		return new ArrayList<>(followedUsers);
 	}
 	
+	public int getFollowedCount() {
+		return followedUsers.size();
+	}
+	
 	public List<User> getFollowerUsers() {
 		return new ArrayList<>(followerUsers);
 	}
 	
+	public int getFollowerCount() {
+		return followerUsers.size();
+	}
+	
 	public boolean follow(User user) {
 		boolean result = followedUsers.add(user);
-		if (result) notifySubscribers(UserEvent.FOLLOW.withSubject(this));
+		
+		if (result) {
+			user.followedBy(this);
+			notifySubscribers(UserEvent.FOLLOW.withSubject(this));
+		}
+		
 		return result;
 	}
 	
 	public boolean unfollow(User user) {
 		boolean result = followedUsers.remove(user);
-		if (result) notifySubscribers(UserEvent.UNFOLLOW.withSubject(this));
+		
+		if (result) {
+			user.unfollowedBy(this);
+			notifySubscribers(UserEvent.UNFOLLOW.withSubject(this));
+		}
+		
 		return result;
 	}
 	
