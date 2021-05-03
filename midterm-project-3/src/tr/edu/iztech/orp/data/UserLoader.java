@@ -89,7 +89,6 @@ public class UserLoader implements IDataLoader<User> {
     				User followedUser = users.stream().filter(u -> userId.equals(u.getUsername())).findFirst().get();
     				users.get(i).follow(followedUser);
     			}
-
 			}
 				
 			} catch (Exception e) {

@@ -13,6 +13,7 @@ import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.views.components.OutfitCollectionListPanel;
 import tr.edu.iztech.orp.views.screens.CollectionsPanel;
+import tr.edu.iztech.orp.utils.StringUtils;
 
 public class CollectionsController implements IController {
 	private CollectionsPanel view;
@@ -36,7 +37,8 @@ public class CollectionsController implements IController {
 	private ActionListener createButtonListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			model.addCollection(new OutfitCollection(view.getNewOutfitCollectionName()));
+			String name = view.getNewOutfitCollectionName();
+			if (StringUtils.isValid(name)) model.addCollection(new OutfitCollection(name));
 		}
 	};
 	

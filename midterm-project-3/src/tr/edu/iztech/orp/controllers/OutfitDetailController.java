@@ -11,6 +11,7 @@ import tr.edu.iztech.orp.models.Comment;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
+import tr.edu.iztech.orp.utils.StringUtils;
 import tr.edu.iztech.orp.views.components.OutfitDetailPanel;
 
 public class OutfitDetailController implements IController {
@@ -48,8 +49,7 @@ public class OutfitDetailController implements IController {
 	private ActionListener sendButtonListener = new ActionListener() {
     	public void actionPerformed(ActionEvent event) {
     		String text = view.getCommentText();
-    		if (text.length() == 0) return;
-    		model.addComment(new Comment(Session.getUser(), text));
+    		if (StringUtils.isValid(text)) model.addComment(new Comment(Session.getUser(), text));
     	}
     };
     
