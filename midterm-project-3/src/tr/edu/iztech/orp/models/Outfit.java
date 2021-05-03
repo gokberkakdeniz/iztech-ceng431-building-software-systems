@@ -84,7 +84,7 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements C
 	public int getDislikeCount() {
 		return dislikedUsers.size();
 	}
-	
+
 	public boolean addComment(Comment comment) {
 		boolean result = comments.add(comment);
 		if (result) notifySubscribers(OutfitEvent.ADD_COMMENT.withSubject(this));

@@ -1,4 +1,34 @@
 [
-  {},
-  {}
+  {
+    "occasion": "SPORTY",
+    "outfit_id": 1,
+    "comments": [],
+    "disliked_users": [],
+    "gender": "MAN",
+    "color": "BLACK",
+    "available_sizes": [
+      "XXXXXL",
+      "M"
+    ],
+    "name": "Tshirt",
+    "brand_name": "DeFacto",
+    "liked_users": [],
+    "type": "TSHIRT"
+  },
+  {
+    "occasion": "CASUAL",
+    "outfit_id": 2,
+    "comments": [],
+    "disliked_users": [],
+    "gender": "UNISEX",
+    "color": "YELLOW",
+    "available_sizes": [
+      "S",
+      "M"
+    ],
+    "name": "Tshirt",
+    "brand_name": "Koton",
+    "liked_users": [],
+    "type": "TSHIRT"
+  }
 ]

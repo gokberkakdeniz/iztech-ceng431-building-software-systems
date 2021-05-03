@@ -9,6 +9,11 @@ public class Comment {
 		this.text = text;
 	}
 	
+	public Comment(String authorId, String text) {
+		this.authorId = authorId;
+		this.text = text;
+	}
+	
 	public String getText() {
 		return text;
 	}

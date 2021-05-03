@@ -8,6 +8,6 @@ public class OutfitRepository extends AbstractOutfitContainer<OutfitRepository, 
 	public OutfitRepository(IDataLoader<Outfit> dataLoader, OutfitSaver outfitSaver) {
 		super();
 		dataLoader.load().forEach(this::add);
-		outfitSaver.save(getAll());
+//		outfitSaver.save(getAll());
 	}
 }
