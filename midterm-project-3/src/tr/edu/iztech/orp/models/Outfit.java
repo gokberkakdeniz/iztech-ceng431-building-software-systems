@@ -14,7 +14,7 @@ import tr.edu.iztech.orp.enums.OutfitGender;
 import tr.edu.iztech.orp.enums.OutfitOccasion;
 import tr.edu.iztech.orp.enums.OutfitSize;
 
-public class Outfit extends AbstractObservable<Outfit, OutfitEvent> {
+public class Outfit extends AbstractObservable<Outfit, OutfitEvent> implements Comparable<Outfit> {
 	private final int id;
 	private final String name;
 	private final String brandName;
@@ -131,5 +131,10 @@ public class Outfit extends AbstractObservable<Outfit, OutfitEvent> {
 	@Override
 	public String toString() {
 		return String.format("<html>%s by <i>%s</i> (#%d)</html>", name, brandName, id);
+	}
+
+	@Override
+	public int compareTo(Outfit o) {
+		return getId() - o.getId();
 	}
 }

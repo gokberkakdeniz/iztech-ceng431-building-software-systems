@@ -1,7 +1,6 @@
 package tr.edu.iztech.orp.views.components;
 
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -18,7 +17,6 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, OutfitEvent> {
@@ -113,22 +111,7 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
         likeButton.setBounds(0, 510, 110, 25);
         add(likeButton);
                 
-        addCollectionButton = new JButton("Add Collection");
-        addCollectionButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
-        		Object[] possibilities = {"Collection A", "Collection B", "Collection C", "Collection E"};
-        		JOptionPane.showInputDialog(
-                    parent,
-                    "Please Choose collection to add",
-                    "Add to Collection",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    possibilities,
-                    null
-        		);
-        	}
-        });
-        
+        addCollectionButton = new JButton("Add Collection");        
         addCollectionButton.setBounds(270, 510, 150, 25);
         add(addCollectionButton);
         
@@ -136,6 +119,10 @@ public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, Outfi
         dislikeButton.setBounds(135, 510, 110, 25);
         add(dislikeButton);
         
+	}
+	
+	public void addAddToCollectionButtonListener(ActionListener listener) {
+		addCollectionButton.addActionListener(listener);
 	}
 	
 	public void addLikeButtonListener(ActionListener listener) {

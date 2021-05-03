@@ -1,9 +1,10 @@
 package tr.edu.iztech.orp.models;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -14,10 +15,10 @@ public abstract class AbstractOutfitContainer<T, K extends IEvent<T>>
 	extends AbstractObservable<T, K> 
 	implements IRepository<Outfit> 
 {
-	private final List<Outfit> outfits;
+	private final SortedSet<Outfit> outfits;
 	
 	public AbstractOutfitContainer() {
-		this.outfits = new LinkedList<>();
+		this.outfits = new TreeSet<>();
 	}
 
 	@Override
