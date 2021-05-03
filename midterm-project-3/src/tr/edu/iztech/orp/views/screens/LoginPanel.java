@@ -12,7 +12,6 @@ import javax.swing.SwingConstants;
 
 import tr.edu.iztech.orp.controllers.LoginController;
 import tr.edu.iztech.orp.exceptions.LoginFailedException;
-import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
