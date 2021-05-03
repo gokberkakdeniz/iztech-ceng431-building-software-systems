@@ -10,6 +10,12 @@ import tr.edu.iztech.orp.models.User;
 
 import java.awt.Font;
 
+/**
+ * Shows statistics:
+ * - Most liked outfit,
+ * - Most disliked outfit,
+ * - Most followed user.
+ */
 public class StatisticsPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	

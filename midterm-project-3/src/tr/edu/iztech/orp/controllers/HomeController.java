@@ -4,7 +4,6 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import tr.edu.iztech.orp.enums.OutfitRepositoryEvent;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.models.OutfitRepository;
 import tr.edu.iztech.orp.views.components.OutfitDetailPanel;
@@ -12,11 +11,9 @@ import tr.edu.iztech.orp.views.screens.HomePanel;
 
 public class HomeController implements IController {
 	private final HomePanel view;
-	private final OutfitRepository model;
 	private OutfitDetailController outfitDetailController;
 	
 	public HomeController(HomePanel view, OutfitRepository model) {
-		this.model = model;
 		this.view = view;
 		
 		this.view.addListSelectionListener(collectionChangeListener);
@@ -45,7 +42,6 @@ public class HomeController implements IController {
 	@Override
 	public void destroy() {
 		if (outfitDetailController != null) outfitDetailController.destroy();
-		model.unsubscribe(OutfitRepositoryEvent.ADD_OUTFIT, view);
 	}
 
 }

@@ -12,7 +12,9 @@ import javax.swing.event.ListSelectionListener;
 import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.utils.IObserver;
-
+/**
+ * Shoes all collections of user.
+ */
 public class CollectionListPanel extends JPanel implements IObserver<User, UserEvent> {
 	private static final long serialVersionUID = -669293105768399715L;
 	private JScrollPane usersScroller;

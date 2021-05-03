@@ -15,6 +15,9 @@ import tr.edu.iztech.orp.views.MenuModel;
 
 import javax.swing.JLabel;
 
+/**
+ * Component that shows elements for navigation menu, logout button, username etc.
+ */
 public class HeaderPanel extends JPanel {
 	private static final long serialVersionUID = -3203330751289409445L;
 	

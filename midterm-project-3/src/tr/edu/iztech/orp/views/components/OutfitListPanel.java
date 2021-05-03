@@ -9,17 +9,23 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.event.ListSelectionListener;
 
-import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
 import tr.edu.iztech.orp.models.AbstractOutfitContainer;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.utils.IEvent;
 import tr.edu.iztech.orp.utils.IObserver;
 
-public class OutfitListPanel<T, K extends IEvent<T>> extends JPanel implements IObserver<T, K> {
+/**
+ * Generic outfit list panel for both outfit collection and outfit repository.
+ *
+ * @param <T> model
+ * @param <K> model event
+ */
+public abstract class OutfitListPanel<T, K extends IEvent<T>> extends JPanel implements IObserver<T, K> {
 	private static final long serialVersionUID = -669290185768399715L;
-	private JScrollPane outfitsScroller;
-	private JList<Object> outfits;
-	private AbstractOutfitContainer<?, ?> model;
+	
+	protected JScrollPane outfitsScroller;
+	protected JList<Object> outfits;
+	protected AbstractOutfitContainer<T, K> model;
 	
 	public OutfitListPanel(AbstractOutfitContainer<T, K> model) {
 		this.model = model;
@@ -53,20 +59,5 @@ public class OutfitListPanel<T, K extends IEvent<T>> extends JPanel implements I
 	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
         outfits.addListSelectionListener(collectionChangeListener);
         outfits.setSelectedIndex(0);
-	}
-
-	@Override
-	public void update(K event) {
-		if (event instanceof OutfitCollectionEvent) {
-			switch((OutfitCollectionEvent) event) {
-				case ADD_OUTFIT:
-				case REMOVE_OUTFIT:
-					outfits.removeAll();
-					outfits.setListData(model.getAll().toArray());
-			default:
-				break;
-			}
-		}
-		
 	}
 }

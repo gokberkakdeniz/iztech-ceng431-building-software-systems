@@ -15,7 +15,7 @@ import tr.edu.iztech.orp.models.IRepository;
 import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.views.components.CollectionListPanel;
-import tr.edu.iztech.orp.views.components.OutfitListPanel;
+import tr.edu.iztech.orp.views.components.OutfitCollectionListPanel;
 import tr.edu.iztech.orp.views.screens.FollowedUsersPanel;
 
 public class FollowedUsersController implements IController {
@@ -24,7 +24,7 @@ public class FollowedUsersController implements IController {
 	private CollectionListController collectionListController;
 	private final IRepository<User> userRepo;
 	private OutfitCollection selectedCollection;
-	private OutfitListPanel<OutfitCollection, OutfitCollectionEvent> outfitListPanel;
+	private OutfitCollectionListPanel outfitListPanel;
 	
 	public FollowedUsersController(FollowedUsersPanel view, User model, IRepository<User> userRepo) {
 		this.model = model;
@@ -81,7 +81,7 @@ public class FollowedUsersController implements IController {
 				OutfitCollection model = ((JList<OutfitCollection>)event.getSource()).getSelectedValue();    		
 				
     			if (model != null) {
-    				outfitListPanel = new OutfitListPanel<>(model);
+    				outfitListPanel = new OutfitCollectionListPanel(model);
     				
     				model.subscribe(OutfitCollectionEvent.ADD_OUTFIT, outfitListPanel);
     				model.subscribe(OutfitCollectionEvent.REMOVE_OUTFIT, outfitListPanel);

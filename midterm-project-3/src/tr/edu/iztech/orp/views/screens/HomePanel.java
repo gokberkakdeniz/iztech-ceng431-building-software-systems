@@ -5,14 +5,23 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionListener;
 
-import tr.edu.iztech.orp.enums.OutfitRepositoryEvent;
 import tr.edu.iztech.orp.models.OutfitRepository;
-import tr.edu.iztech.orp.utils.IObserver;
 import tr.edu.iztech.orp.views.components.*;
 
-public class HomePanel extends JPanel implements IObserver<OutfitRepository, OutfitRepositoryEvent> {
+/**
+ * This view shows outfit list at the left, outfit details at the right.
+ * 
+ * Behavior:
+ * - When user selected outfit from the list, outfit details will show up on the right.
+ *   User can like/dislike, remove like/dislike, comment.
+ * 
+ * Children:
+ * 	- OutfitRepositoryListPanel
+ *	- OutfitDetailPanel
+ */
+public class HomePanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
-	private OutfitListPanel<OutfitRepository, OutfitRepositoryEvent> outfitList;
+	private OutfitRepositoryListPanel outfitList;
 	private OutfitDetailPanel outfitDetail;
 	
 	public HomePanel(OutfitRepository model) {
@@ -20,7 +29,7 @@ public class HomePanel extends JPanel implements IObserver<OutfitRepository, Out
         setLayout(null);
         setVisible(true);
         
-		outfitList = new OutfitListPanel<>(model);
+		outfitList = new OutfitRepositoryListPanel(model);
         outfitList.setBounds(5, 20, 340, 665);
         add(outfitList);
     }
@@ -48,10 +57,5 @@ public class HomePanel extends JPanel implements IObserver<OutfitRepository, Out
 	
 	public void addDislikeButtonListener(ActionListener listener) {
 		outfitDetail.addDislikeButtonListener(listener);
-	}
-
-	@Override
-	public void update(OutfitRepositoryEvent event) {
-		// do nothing
 	}
 }

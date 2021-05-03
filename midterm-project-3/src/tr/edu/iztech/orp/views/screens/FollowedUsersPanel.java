@@ -2,35 +2,44 @@ package tr.edu.iztech.orp.views.screens;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionListener;
-
-import tr.edu.iztech.orp.enums.UserEvent;
-import tr.edu.iztech.orp.models.User;
-import tr.edu.iztech.orp.utils.IObserver;
-import tr.edu.iztech.orp.views.components.CollectionListPanel;
-import tr.edu.iztech.orp.views.components.OutfitListPanel;
-import tr.edu.iztech.orp.views.components.UserListPanel;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 
-public class FollowedUsersPanel extends JPanel implements IObserver<User, UserEvent> {
+import tr.edu.iztech.orp.models.User;
+import tr.edu.iztech.orp.views.components.CollectionListPanel;
+import tr.edu.iztech.orp.views.components.OutfitListPanel;
+import tr.edu.iztech.orp.views.components.FollowedUsersListPanel;
+
+/**
+ * Shows user's followed users, their collections and items in these collections.
+ * 
+ * Behavior:
+ * - The user select followed user.
+ * - The followed user's collections show up at center..
+ * - The user selects collection.
+ * - The outfits of selected collection show up at right..
+ * - The user follows/unfollows users from lower left.
+ * 
+ * Children:
+ * - FollowedUsersListPanel
+ * - CollectionListPanel
+ * - OutfitListPanel
+ */
+public class FollowedUsersPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	
-	private User model;
-	private UserListPanel userList;
+	private FollowedUsersListPanel userList;
 	private JButton followButton;
 	private CollectionListPanel collectionList;
 	private OutfitListPanel<?,?> outfitList;
 	private JButton unfollowButton;
 	
 	public FollowedUsersPanel(User model) {
-		this.model = model;
-		
         setSize(960, 685);
         setLayout(null);
         setVisible(true);
         
-        userList = new UserListPanel(model);
+        userList = new FollowedUsersListPanel(model);
         userList.setBounds(10, 20, 300, 540);
         add(userList);
 		
@@ -44,7 +53,7 @@ public class FollowedUsersPanel extends JPanel implements IObserver<User, UserEv
 
 	}
 	
-	public UserListPanel getUserListPanel() {
+	public FollowedUsersListPanel getUserListPanel() {
 		return userList;
 	}
 	
@@ -88,10 +97,5 @@ public class FollowedUsersPanel extends JPanel implements IObserver<User, UserEv
 
 		repaint();
 		revalidate();		
-	}
-
-	@Override
-	public void update(UserEvent event) {
-		// do nothing
 	}
 }

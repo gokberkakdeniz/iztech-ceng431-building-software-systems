@@ -11,14 +11,14 @@ import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
 import tr.edu.iztech.orp.models.Outfit;
 import tr.edu.iztech.orp.models.OutfitCollection;
 import tr.edu.iztech.orp.models.User;
-import tr.edu.iztech.orp.views.components.OutfitListPanel;
+import tr.edu.iztech.orp.views.components.OutfitCollectionListPanel;
 import tr.edu.iztech.orp.views.screens.CollectionsPanel;
 
 public class CollectionsController implements IController {
 	private CollectionsPanel view;
 	private User model;
 	private CollectionListController collectionListController;
-	private OutfitListPanel<OutfitCollection, OutfitCollectionEvent> outfitListPanel;
+	private OutfitCollectionListPanel outfitListPanel;
 	private OutfitCollection selectedCollection;
 	
 	public CollectionsController(CollectionsPanel view, User model) {
@@ -62,7 +62,7 @@ public class CollectionsController implements IController {
 				OutfitCollection model = ((JList<OutfitCollection>)event.getSource()).getSelectedValue();    		
 				
     			if (model != null) {
-    				outfitListPanel = new OutfitListPanel<>(model);
+    				outfitListPanel = new OutfitCollectionListPanel(model);
     				
     				model.subscribe(OutfitCollectionEvent.ADD_OUTFIT, outfitListPanel);
     				model.subscribe(OutfitCollectionEvent.REMOVE_OUTFIT, outfitListPanel);

@@ -19,6 +19,12 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.awt.Font;
 
+/**
+ * Shows all details of outfit. 
+ * Shows like/dislike/comment like buttons.
+ * 
+ * Subscribes its details to keep itself updated.
+ */
 public class OutfitDetailPanel extends JPanel implements IObserver<Outfit, OutfitEvent> {
 	private static final long serialVersionUID = -669290185768399715L;
 	private Outfit model;

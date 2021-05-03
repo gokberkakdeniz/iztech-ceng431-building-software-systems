@@ -11,11 +11,26 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * Shows current user's collections and its content.
+ * 
+ * Behavior:
+ * - Users selects collection from left.
+ * - Outfit list shows up at right.
+ * - User removes outfit by selecting it and clicking remove button.
+ * - User creates collection by writing its name to input in lower 
+ * 	left and clicking Create button.
+ * 
+ * Children:
+ * - CollectionListPanel
+ * - OutfitCollectionListPanel
+ */
 public class CollectionsPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
+	
 	private JTextField collectionNameField;
 	private CollectionListPanel collectionsList;
-	private OutfitListPanel<?, ?> outfitList;
+	private OutfitCollectionListPanel outfitList;
 	private JButton createCollectionButton;
 	private JButton removeItemButton;
 
@@ -50,11 +65,11 @@ public class CollectionsPanel extends JPanel {
 		return collectionNameField.getText();
 	}
 
-	public void setOutfitListPanel(OutfitListPanel<?,?> outfitDetail) {
+	public void setOutfitListPanel(OutfitCollectionListPanel outfitList) {
 		if (this.outfitList != null) remove(this.outfitList);
 
-		if (outfitDetail != null){
-			this.outfitList = outfitDetail;
+		if (outfitList != null){
+			this.outfitList = outfitList;
 			this.outfitList.setBounds(560, 20, 300, 540);
 	        add(this.outfitList);
 		}

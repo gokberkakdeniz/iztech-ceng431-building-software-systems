@@ -13,6 +13,14 @@ import javax.swing.SwingConstants;
 import tr.edu.iztech.orp.controllers.LoginController;
 import tr.edu.iztech.orp.exceptions.LoginFailedException;
 
+/**
+ * Description:
+ * 	This view shows user name and password inputs, a error label, and a button.
+ * 
+ * Behavior:
+ * - When user fills user name and password fields correctly, home page shows up.
+ * - When user fills user name and password fields incorrectly or keep them empty, the error message shows up.
+ */
 public class LoginPanel extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private final JLabel usernameLabel;

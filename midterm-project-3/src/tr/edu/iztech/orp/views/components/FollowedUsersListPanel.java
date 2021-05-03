@@ -13,13 +13,19 @@ import tr.edu.iztech.orp.enums.UserEvent;
 import tr.edu.iztech.orp.models.User;
 import tr.edu.iztech.orp.utils.IObserver;
 
-public class UserListPanel extends JPanel implements IObserver<User, UserEvent> {
+/**
+ * Shows all followed users in list.
+ * 
+ * Behavior:
+ * - Updated whenever user follows/unfollows someone.
+ */
+public class FollowedUsersListPanel extends JPanel implements IObserver<User, UserEvent> {
 	private static final long serialVersionUID = -669290185768399715L;
 	private JScrollPane usersScroller;
 	private JList<Object> users;
 	private User model;
 	
-	public UserListPanel(User model) {
+	public FollowedUsersListPanel(User model) {
 		this.model = model;
         setSize(300, 540);
         setLayout(null);
