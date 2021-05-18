@@ -9,13 +9,14 @@ public class Assasin extends AbstractHero {
 
 	@Override
 	protected IState classAttack(IState target) {
-		// TODO Auto-generated method stub
-		return null;
+		IState tempTarget = target.clone();
+		tempTarget.setDamageDealt(getState().getAttackDamage());
+		
+		return tempTarget;
 	}
 
 	@Override
 	protected IState classDefence(IState damage) {
-		// TODO Auto-generated method stub
-		return null;
+		return damage.clone();
 	}
 }
