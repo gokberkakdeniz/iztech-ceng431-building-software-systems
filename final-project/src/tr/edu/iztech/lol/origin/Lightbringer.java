@@ -2,43 +2,29 @@ package tr.edu.iztech.lol.origin;
 
 import tr.edu.iztech.lol.hero.IState;
 
-public class Lightbringer implements IOrigin {
-	private IState state;
+public class Lightbringer extends AbstractOrigin {
 
 	@Override
-	public double getHealthPointMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getAttackDamageMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getCriticalRatioMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public IState defend(IState state) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IState attack(IState state) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setState(IState state) {
-		// TODO Auto-generated method stub
+	public IState defend(IState damage) {
+		IState tempDamage = damage.clone();
 		
+		if (shouldTakeLessDamage()) {
+			int newDamage = tempDamage.getDamageDealt() / 2;
+			tempDamage.setDamageDealt(newDamage);
+		}
+		return tempDamage;
+	}
+	
+	private boolean shouldTakeLessDamage() {
+		double healthPercentage = this.state.getHealthPoint() / this.state.getInitialHealthPoint();
+		
+		return healthPercentage <= 0.3;
+	}
+
+	@Override
+	public IState attack(IState target) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

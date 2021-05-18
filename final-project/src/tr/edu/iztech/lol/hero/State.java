@@ -1,16 +1,33 @@
 package tr.edu.iztech.lol.hero;
 
-public class State implements IMutableState {
-	private final int initialHealthPoint;
+public class State implements IState {
+	private int initialHealthPoint;
 	private int healthPoint;
 	private int attackDamage;
+	private int damageDealt;
 	private double criticalRatio;
-	
+		
 	public State(int healthPoint, int attackDamage, double criticalRatio) {
 		this.initialHealthPoint = healthPoint;
 		this.healthPoint = healthPoint;
 		this.attackDamage = attackDamage;
 		this.criticalRatio = criticalRatio;
+		this.damageDealt = 0;
+	}
+	
+	private State(int initialHealthPoint, int healthPoint, int attackDamage, double criticalRatio, int damageDealt) {
+		this(healthPoint, attackDamage, criticalRatio);
+		this.initialHealthPoint = initialHealthPoint;
+		this.damageDealt = damageDealt;
+	}
+
+	
+	public int getDamageDealt() {
+		return damageDealt;
+	}
+	
+	public void setDamageDealt(int damageDealt) {
+		this.damageDealt = damageDealt;
 	}
 	
 	@Override
@@ -21,6 +38,11 @@ public class State implements IMutableState {
 	@Override
 	public double getCriticalRatio() {
 		return criticalRatio;
+	}
+	
+	@Override
+	public int getInitialHealthPoint() {
+		return initialHealthPoint;
 	}
 	
 	@Override
@@ -50,6 +72,6 @@ public class State implements IMutableState {
 	
 	@Override
 	public IState clone() {
-		return new State(healthPoint, attackDamage, criticalRatio);
+		return new State(initialHealthPoint, healthPoint, attackDamage, criticalRatio, damageDealt);
 	}
 }
