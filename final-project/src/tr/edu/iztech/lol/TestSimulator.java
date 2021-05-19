@@ -1,7 +1,10 @@
 package tr.edu.iztech.lol;
 
+import java.util.Random;
+
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.hero.IState;
+import tr.edu.iztech.lol.utils.ThreadUtils;
 
 public class TestSimulator {
 	private IHero hero1;
@@ -21,20 +24,30 @@ public class TestSimulator {
 			IHero target = getTarget();
 			
 			System.out.printf("> %s -----> %s\n", attacker.getName(), target.getName());
-			System.out.printf("  before attack => %s\n", target.getState());
+//			System.out.printf("  before attack => %s\n", target.getState());
 
 			IState damage = attacker.attack(target.getState());
 			IState defendedDamage = target.defend(damage);
 
 			target.setState(defendedDamage);
 			
-			System.out.printf("  after attack  => %s\n", damage);
-			System.out.printf("  after defence => %s\n", defendedDamage);
-			System.out.printf("  after apply => %s\n", target.getState());
-
-			
+//			System.out.printf("      after attack  => %s\n", damage);
+//			System.out.printf("      after defence => %s\n", defendedDamage);
+			System.out.printf("      after the hit => %s\n", target.getState());
+	        Random rand = new Random();
+			ThreadUtils.wait(1000 + rand.nextInt(1500));
 			next();
 		}
+		IHero winner = getWinner();
+		
+		System.out.printf("\n Winner => %s\n", winner);
+
+	}
+	
+	private IHero getWinner() {
+		if (!isFinished()) return null;
+		
+		return hero1.getHealthPoint() > 0 ? hero1 : hero2;
 	}
 	
 	private IHero getAttacker() {
@@ -54,6 +67,6 @@ public class TestSimulator {
 	}
 	
 	private boolean isFinished() {
-		return hero1.getHealthPoint() == 0 || hero2.getHealthPoint() == 0;
+		return hero1.getHealthPoint() <= 0 || hero2.getHealthPoint() <= 0;
 	}
 }

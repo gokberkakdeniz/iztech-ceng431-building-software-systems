@@ -23,8 +23,10 @@ public class Lightbringer extends AbstractOrigin {
 
 	@Override
 	public IState attack(IState target) {
-		// TODO Auto-generated method stub
-		return null;
+		IState tempTarget = target.clone();
+		tempTarget.setDamageDealt(this.state.getAttackDamage());
+		
+		return tempTarget;
 	}
 
 }

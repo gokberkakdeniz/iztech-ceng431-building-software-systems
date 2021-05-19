@@ -67,7 +67,7 @@ public class State implements IState {
 	
 	@Override
 	public String toString() {
-		return String.format("HP: %d, AD: %d, CR: %f", healthPoint, attackDamage, criticalRatio);
+		return String.format("HP: %d, AD: %d, CR: %d%%", healthPoint, attackDamage, Math.round(criticalRatio*100));
 	}
 	
 	@Override

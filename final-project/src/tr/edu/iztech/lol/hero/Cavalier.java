@@ -11,8 +11,10 @@ public class Cavalier extends AbstractHero {
 
 	@Override
 	protected IState classAttack(IState target) {
-		// TODO Auto-generated method stub
-		return null;
+		IState tempTarget = target.clone();
+		tempTarget.setDamageDealt(this.state.getAttackDamage());
+		
+		return tempTarget;
 	}
 
 	@Override

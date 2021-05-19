@@ -26,13 +26,12 @@ public class DragonSlayer implements IOrigin {
 	}
 
 	@Override
-	public IState defend(IState state) {
-		// TODO Auto-generated method stub
-		return null;
+	public IState defend(IState damage) {
+		return damage.clone();
 	}
 
 	@Override
-	public IState attack(IState state) { 
+	public IState attack(IState target) { 
 		IState tempState = state.clone();
      
 		if(shouldExecuteEnemy()) {

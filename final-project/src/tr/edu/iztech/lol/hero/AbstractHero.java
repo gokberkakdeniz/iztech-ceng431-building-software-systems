@@ -1,6 +1,7 @@
 package tr.edu.iztech.lol.hero;
 
 import tr.edu.iztech.lol.origin.IOrigin;
+import tr.edu.iztech.lol.utils.RandomUtils;
 import tr.edu.iztech.lol.utils.StringUtils;
 
 public abstract class AbstractHero implements IHero {
@@ -38,7 +39,7 @@ public abstract class AbstractHero implements IHero {
 		int nextHp = tempState.getHealthPoint() - tempState.getDamageDealt();
 		tempState.setHealthPoint(nextHp);
 
-		tempState.setAttackDamage(0);
+		tempState.setDamageDealt(0);
 		
 		this.state = tempState;
 		this.origin.setState(tempState);
@@ -57,7 +58,10 @@ public abstract class AbstractHero implements IHero {
 		IState classDamage = classAttack(tempState);
 		IState totalDamage = origin.attack(classDamage);
 		
-//		System.out.println(totalDamage.getDamageDealt());
+		if(isHitCritical()) {
+			totalDamage.setDamageDealt(totalDamage.getDamageDealt() * 2);
+		}
+
 		return totalDamage;
 	}
 	
@@ -68,10 +72,13 @@ public abstract class AbstractHero implements IHero {
 		IState classDefense = classDefence(tempDamage);
 		IState originDefense = origin.defend(classDefense);
 		
-//		System.out.println(originDefense.getDamageDealt());
 		return originDefense;
 	}
 	
 	abstract protected IState classAttack(IState target);
 	abstract protected IState classDefence(IState damage);
+	
+	private boolean isHitCritical() {
+		return state.getCriticalRatio() > RandomUtils.getDouble();
+	}
 }
