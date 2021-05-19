@@ -42,6 +42,15 @@ public interface IRepository<T> {
 	List<T> getAll(Predicate<T> predicate);
 	
 	/**
+	 * Adds new model
+	 * 
+	 * @param model a model to be added
+	 * @return success or failure situation
+	 */
+	boolean add(T model);
+	
+	
+	/**
 	 * Save data
 	 */
 	void save();
