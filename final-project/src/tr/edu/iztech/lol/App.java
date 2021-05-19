@@ -9,19 +9,12 @@ public class App {
 		// new MainWindow();
 		
 		IHeroFactory ds = new DragonSlayerFactory();
-		IHero dsas = ds.createAssasin();
-		
 		IHeroFactory lb = new LightbringerFactory();
-		IHero lbca = lb.createCavalier();
+	
+		IHero h1 = ds.createAssasin();		
+		IHero h2 = lb.createCavalier();
 		
-		System.out.println(lbca);
-
-		IState m = dsas.attack(lbca.getState());
-		IState g = lbca.defend(m);
-		g.setHealthPoint(g.getHealthPoint() - g.getDamageDealt());
-		g.setDamageDealt(0);
-		lbca.setState(g);
-				
-		System.out.println(lbca);
+		TestSimulator s = new TestSimulator(h1, h2);
+		s.run();
 	}
 }

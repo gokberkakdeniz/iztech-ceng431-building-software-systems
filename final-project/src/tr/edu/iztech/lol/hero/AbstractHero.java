@@ -35,6 +35,11 @@ public abstract class AbstractHero implements IHero {
 	public void setState(IState newState) {
 		IState tempState = newState.clone();
 		
+		int nextHp = tempState.getHealthPoint() - tempState.getDamageDealt();
+		tempState.setHealthPoint(nextHp);
+
+		tempState.setAttackDamage(0);
+		
 		this.state = tempState;
 		this.origin.setState(tempState);
 	}
