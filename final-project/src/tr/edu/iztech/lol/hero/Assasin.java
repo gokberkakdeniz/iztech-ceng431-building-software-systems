@@ -4,7 +4,7 @@ import tr.edu.iztech.lol.origin.IOrigin;
 
 public class Assasin extends AbstractHero {
 	public Assasin(IOrigin origin) {
-		super(origin, new State(1000, 100, 0.2));
+		super(origin, new State(1000, 120, 0.2));
 	}
 
 	@Override

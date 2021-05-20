@@ -3,7 +3,7 @@ package tr.edu.iztech.lol.origin;
 import tr.edu.iztech.lol.hero.IState;
 
 public abstract class AbstractOrigin implements IOrigin {
-	protected IState state;
+	private IState state;
 
 	@Override
 	public double getHealthPointMultiplier() {
@@ -26,6 +26,10 @@ public abstract class AbstractOrigin implements IOrigin {
 	@Override
 	public void setState(IState state) {
 		this.state = state;		
+	}
+	
+	protected IState getState() {
+		return state;
 	}
 
 }
