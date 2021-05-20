@@ -7,14 +7,14 @@ import tr.edu.iztech.lol.hero.GodKing;
 import tr.edu.iztech.lol.hero.Knight;
 import tr.edu.iztech.lol.hero.Ranger;
 import tr.edu.iztech.lol.hero.Sorcerer;
-import tr.edu.iztech.lol.origin.Chrono;
+import tr.edu.iztech.lol.origin.Trickster;
 import tr.edu.iztech.lol.origin.IOrigin;
 
 public class ChronoFactory implements IHeroFactory {
 
 	@Override
 	public Assasin createAssasin() {
-		IOrigin origin = new Chrono();
+		IOrigin origin = new Trickster();
 		Assasin hero = new Assasin(origin);
 
 		return hero;
@@ -22,7 +22,7 @@ public class ChronoFactory implements IHeroFactory {
 
 	@Override
 	public Cavalier createCavalier() {
-		IOrigin origin = new Chrono();
+		IOrigin origin = new Trickster();
 		Cavalier hero = new Cavalier(origin);
 
 		return hero;
@@ -30,7 +30,7 @@ public class ChronoFactory implements IHeroFactory {
 
 	@Override
 	public Demolitionist createDemolitionist() {
-		IOrigin origin = new Chrono();
+		IOrigin origin = new Trickster();
 		Demolitionist hero = new Demolitionist(origin);
 
 		return hero;
@@ -38,7 +38,7 @@ public class ChronoFactory implements IHeroFactory {
 
 	@Override
 	public GodKing createGodKing() {
-		IOrigin origin = new Chrono();
+		IOrigin origin = new Trickster();
 		GodKing hero = new GodKing(origin);
 
 		return hero;
@@ -46,7 +46,7 @@ public class ChronoFactory implements IHeroFactory {
 
 	@Override
 	public Knight createKnight() {
-		IOrigin origin = new Chrono();
+		IOrigin origin = new Trickster();
 		Knight hero = new Knight(origin);
 
 		return hero;
@@ -54,7 +54,7 @@ public class ChronoFactory implements IHeroFactory {
 
 	@Override
 	public Ranger createRanger() {
-		IOrigin origin = new Chrono();
+		IOrigin origin = new Trickster();
 		Ranger hero = new Ranger(origin);
 
 		return hero;
@@ -62,7 +62,7 @@ public class ChronoFactory implements IHeroFactory {
 
 	@Override
 	public Sorcerer createSorcerer() {
-		IOrigin origin = new Chrono();
+		IOrigin origin = new Trickster();
 		Sorcerer hero = new Sorcerer(origin);
 
 		return hero;

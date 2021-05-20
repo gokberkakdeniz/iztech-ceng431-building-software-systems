@@ -1,8 +1,6 @@
 package tr.edu.iztech.lol.controllers;
 
-import tr.edu.iztech.lol.exception.UserNotFoundException;
 import tr.edu.iztech.lol.model.Session;
-import tr.edu.iztech.lol.model.User;
 import tr.edu.iztech.lol.services.IUserService;
 import tr.edu.iztech.lol.view.IScreenManager;
 

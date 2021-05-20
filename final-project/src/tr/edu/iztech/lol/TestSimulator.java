@@ -1,10 +1,7 @@
 package tr.edu.iztech.lol;
 
-import java.util.Random;
-
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.hero.IState;
-import tr.edu.iztech.lol.utils.ThreadUtils;
 
 public class TestSimulator {
 	private IHero hero1;
@@ -34,8 +31,8 @@ public class TestSimulator {
 //			System.out.printf("      after attack  => %s\n", damage);
 //			System.out.printf("      after defence => %s\n", defendedDamage);
 			System.out.printf("      after the hit => %s\n", target.getState());
-	        Random rand = new Random();
-			ThreadUtils.wait(1000 + rand.nextInt(1500));
+//	        Random rand = new Random();
+//			ThreadUtils.wait(1000 + rand.nextInt(1500));
 			next();
 		}
 		IHero winner = getWinner();

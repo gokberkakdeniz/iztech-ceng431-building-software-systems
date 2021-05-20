@@ -2,10 +2,6 @@ package tr.edu.iztech.lol.view.screen;
 
 import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.ComponentOrientation;
-
-import javax.swing.SwingConstants;
-
 import tr.edu.iztech.lol.view.component.ChampFightComponent;
 
 import javax.swing.JSeparator;

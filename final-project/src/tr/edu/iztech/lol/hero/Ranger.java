@@ -3,21 +3,24 @@ package tr.edu.iztech.lol.hero;
 import tr.edu.iztech.lol.origin.IOrigin;
 
 public class Ranger extends AbstractHero {
-
+	private double criticalMultiplier = 1.3;
+	
 	public Ranger(IOrigin origin) {
-		super(origin, new State(1000, 100, 0.2));
+		super(origin, new State(900, 60, 0.2));
 	}
 
 	@Override
 	protected IState classAttack(IState target) {
-		// TODO Auto-generated method stub
-		return null;
+		IState tempTarget = target.clone();
+		tempTarget.setDamageDealt(state.getAttackDamage());
+		
+		multiplyCriticalRate();
+		
+		return tempTarget;
 	}
-
-	@Override
-	protected IState classDefence(IState damage) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private void multiplyCriticalRate() {
+		state.setCriticalRatio(state.getCriticalRatio()* criticalMultiplier);
 	}
 
 

@@ -10,10 +10,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import tr.edu.iztech.lol.controllers.ILoginController;
-import tr.edu.iztech.lol.exception.UserNotFoundException;
-
 import javax.swing.JSeparator;
-import javax.swing.JPasswordField;
 
 public class LoginPanel extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;

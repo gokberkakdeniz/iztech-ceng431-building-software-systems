@@ -3,22 +3,27 @@ package tr.edu.iztech.lol.hero;
 import tr.edu.iztech.lol.origin.IOrigin;
 
 public class Sorcerer extends AbstractHero {
-
+	private double attackDamageStealPercentage = 0.06;
+	
 	public Sorcerer(IOrigin origin) {
-		super(origin, new State(1000, 100, 0.2));
+		super(origin, new State(1100, 90, 0.2));
 	}
 
 	@Override
 	protected IState classAttack(IState target) {
-		// TODO Auto-generated method stub
-		return null;
+		IState tempTarget = target.clone();
+		tempTarget.setDamageDealt(state.getAttackDamage());
+		
+		stealAttackDamage(tempTarget);
+		
+		return tempTarget;
 	}
 
-	@Override
-	protected IState classDefence(IState damage) {
-		// TODO Auto-generated method stub
-		return null;
+	private void stealAttackDamage(IState target) {
+		int stealedAD = (int) Math.floor(target.getAttackDamage() * attackDamageStealPercentage);
+		
+		target.setAttackDamage(target.getAttackDamage() - stealedAD);
+		state.setAttackDamage(state.getAttackDamage() + stealedAD);
 	}
-
 
 }

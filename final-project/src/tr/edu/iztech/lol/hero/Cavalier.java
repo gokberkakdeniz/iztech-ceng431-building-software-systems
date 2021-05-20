@@ -6,15 +6,7 @@ public class Cavalier extends AbstractHero {
 	private double parryPercentage = 0.2;
 	
 	public Cavalier(IOrigin origin) {
-		super(origin, new State(1000, 100, 0.2));
-	}
-
-	@Override
-	protected IState classAttack(IState target) {
-		IState tempTarget = target.clone();
-		tempTarget.setDamageDealt(this.state.getAttackDamage());
-		
-		return tempTarget;
+		super(origin, new State(1200, 85, 0.2));
 	}
 
 	@Override

@@ -2,9 +2,6 @@ package tr.edu.iztech.lol;
 
 import java.awt.EventQueue;
 
-import tr.edu.iztech.lol.data.*;
-import tr.edu.iztech.lol.factory.*;
-import tr.edu.iztech.lol.hero.*;
 import tr.edu.iztech.lol.view.IScreenManager;
 import tr.edu.iztech.lol.view.MainWindow;
 import tr.edu.iztech.lol.view.ScreenManager;

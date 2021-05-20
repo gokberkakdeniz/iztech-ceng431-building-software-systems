@@ -7,20 +7,16 @@ public class DragonSlayer extends AbstractOrigin {
 	private double executeChance = 0.02;
 
 	@Override
-	public IState defend(IState damage) {
-		return damage.clone();
-	}
-
-	@Override
 	public IState attack(IState target) { 
 		IState tempState = target.clone();
-     
+		int damage = tempState.getDamageDealt();
+		
 		if(shouldExecuteEnemy()) {
-			tempState.setDamageDealt(Integer.MAX_VALUE);
-		} else {
-			executeChance *= 1.4;
-			tempState.setDamageDealt(getState().getAttackDamage());
-		}
+			damage = Integer.MAX_VALUE;
+		} 
+
+		tempState.setDamageDealt(damage);
+		executeChance *= 1.4;
 		
 		return tempState;
 	}

@@ -2,7 +2,6 @@ package tr.edu.iztech.lol.services;
 
 import tr.edu.iztech.lol.data.IRepository;
 import tr.edu.iztech.lol.exception.NeverOccuredException;
-import tr.edu.iztech.lol.exception.UserNotFoundException;
 import tr.edu.iztech.lol.model.Session;
 import tr.edu.iztech.lol.model.User;
 

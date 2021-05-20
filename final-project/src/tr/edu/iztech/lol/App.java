@@ -2,11 +2,10 @@ package tr.edu.iztech.lol;
 
 import tr.edu.iztech.lol.factory.*;
 import tr.edu.iztech.lol.hero.*;
-import tr.edu.iztech.lol.view.MainWindow;
 
 public class App {
 	public static void main(String[] args) {
-		// new MainWindow();
+//		 new MainWindow();
 		
 		IHeroFactory ds = new DragonSlayerFactory();
 		IHeroFactory lb = new LightbringerFactory();

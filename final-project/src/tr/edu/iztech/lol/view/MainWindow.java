@@ -1,12 +1,8 @@
 package tr.edu.iztech.lol.view;
 
-import java.awt.Component;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import tr.edu.iztech.lol.view.screen.ChampFightPanel;
-import tr.edu.iztech.lol.view.screen.LoginPanel;
 
 public class MainWindow extends JFrame {
 	private static final long serialVersionUID = 967053716712023043L;

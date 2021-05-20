@@ -1,25 +1,34 @@
 package tr.edu.iztech.lol.hero;
 
 import tr.edu.iztech.lol.origin.IOrigin;
+import tr.edu.iztech.lol.utils.RandomUtils;
 
 public class Knight extends AbstractHero {
+	private double missChance = 0.05;
 
 	public Knight(IOrigin origin) {
-		super(origin, new State(1000, 100, 0.2));
-	}
-
-	@Override
-	protected IState classAttack(IState target) {
-		// TODO Auto-generated method stub
-		return null;
+		super(origin, new State(1200, 90, 0.2));
 	}
 
 	@Override
 	protected IState classDefence(IState damage) {
-		// TODO Auto-generated method stub
-		return null;
+		IState tempDamage = damage.clone();
+
+		if (isMissed()) {
+			tempDamage.setDamageDealt(0);
+		}
+		multiplyMissChance();
+
+		return tempDamage;
 	}
 
+	private void multiplyMissChance() {
+		missChance *= 1.3;
+	}
+	
+	private boolean isMissed() {
+		return missChance >= RandomUtils.getDouble();
+	}
 
 
 }
