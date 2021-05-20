@@ -1,4 +1,4 @@
-package tr.edu.iztech.lol.view;
+package tr.edu.iztech.lol.view.component;
 
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;

@@ -1,8 +1,11 @@
-package tr.edu.iztech.lol.view;
+package tr.edu.iztech.lol.view.screen;
 
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+
+import tr.edu.iztech.lol.view.component.ChampSelectComponent;
+
 import javax.swing.JSeparator;
 
 public class ChampSelectPanel extends JPanel {

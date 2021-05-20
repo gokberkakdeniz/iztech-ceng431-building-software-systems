@@ -2,18 +2,14 @@ package tr.edu.iztech.lol.model;
 
 public class User implements IModel {
 	private String username;
-	private String password;
 	
-	public User(String username, String password) {
+	public User(String username) {
 		this.username = username;
-		this.password = password;
 	}
 	
 	public String getUsername() {
 		return username;
 	}
+
 	
-	public String getPassword() {
-		return password;
-	}
 }

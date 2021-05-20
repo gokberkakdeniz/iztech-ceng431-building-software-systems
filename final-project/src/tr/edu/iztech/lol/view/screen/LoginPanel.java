@@ -1,4 +1,4 @@
-package tr.edu.iztech.lol.view;
+package tr.edu.iztech.lol.view.screen;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -8,16 +8,24 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+
+import tr.edu.iztech.lol.controllers.ILoginController;
+import tr.edu.iztech.lol.exception.UserNotFoundException;
+
 import javax.swing.JSeparator;
+import javax.swing.JPasswordField;
 
 public class LoginPanel extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private final JLabel username1Label;
 	private final JTextField username2Input;
 	private final JTextField username1Input;
-	private final JLabel messageLabel;
-
-	public LoginPanel() {		
+	
+	private ILoginController loginController;
+	
+	public LoginPanel(ILoginController loginController) {
+		this.loginController = loginController;
+		
 		setLayout(null);
 		setBounds(0,0, 960, 720);
 		
@@ -44,12 +52,6 @@ public class LoginPanel extends JPanel {
 		loginButton.addActionListener(loginButtonListener);
 		add(loginButton);
 		
-		messageLabel = new JLabel("");
-		messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		messageLabel.setForeground(Color.RED);
-		messageLabel.setBounds(310, 380, 330, 20);
-		add(messageLabel);
-		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setForeground(Color.DARK_GRAY);
@@ -59,16 +61,10 @@ public class LoginPanel extends JPanel {
 		
 	}
 	
-	public void showError() {
-		messageLabel.setText("The username or password is invalid.");
-	}
-	
-	public void hideError() {
-		messageLabel.setText("");
-	}
-	
 	private ActionListener loginButtonListener = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+        	loginController.login(username1Input.getText(), username2Input.getText());
         }
     };
+  
 }

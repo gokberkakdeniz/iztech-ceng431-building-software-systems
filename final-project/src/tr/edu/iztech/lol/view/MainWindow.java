@@ -1,8 +1,12 @@
 package tr.edu.iztech.lol.view;
 
+import java.awt.Component;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import tr.edu.iztech.lol.view.screen.ChampFightPanel;
+import tr.edu.iztech.lol.view.screen.LoginPanel;
 
 public class MainWindow extends JFrame {
 	private static final long serialVersionUID = 967053716712023043L;
@@ -35,16 +39,16 @@ public class MainWindow extends JFrame {
 		contentPane.add(contentPanel);
 		
 //		LoginPanel loginPanel = new LoginPanel();
-//		changeContentOfPanel(loginPanel);
+//		setContent(loginPanel);
 		
 //		ChampSelectPanel champSelectPanel = new ChampSelectPanel();
-//		changeContentOfPanel(champSelectPanel);
+//		setContent(champSelectPanel);
 		
-		ChampFightPanel champFightPanel = new ChampFightPanel();
-		changeContentOfPanel(champFightPanel);
+//		ChampFightPanel champFightPanel = new ChampFightPanel();
+//		setContent(champFightPanel);
 	}
 	
-	private void changeContentOfPanel(JPanel panel) {
+	public void setContent(JPanel panel) {
 		contentPanel.removeAll();
 		contentPanel.add(panel);
 		contentPanel.repaint();
