@@ -7,11 +7,9 @@ import tr.edu.iztech.lol.model.MatchRecord;
 
 public class MatchRecordSaver implements IDataSaver<MatchRecord> {
 	private final File file;
-	private final ISerizalizer<MatchRecord> serizalizer;
 	
-	public MatchRecordSaver(File file, ISerizalizer<MatchRecord> serizalizer) {
+	public MatchRecordSaver(File file) {
 		this.file = file;
-		this.serizalizer = serizalizer;
 	}
 	
 	@Override

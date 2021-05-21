@@ -13,16 +13,12 @@ public class Database implements IDatabase {
 	private static File usersFile = new File("users.json");
 	
 	private Database() {
-		ISerizalizer<MatchRecord> matchRecordSerializer = new MatchRecordJsonSerizalizer();
-		IDeserializer<MatchRecord> matchRecordDeserializer = new MatchRecordJsonDeserizalizer();
-		IDataLoader<MatchRecord> matchRecordLoader = new MatchRecordLoader(matchRecordsFile, matchRecordDeserializer);
-		IDataSaver<MatchRecord> matchRecordSaver = new MatchRecordSaver(matchRecordsFile, matchRecordSerializer);
+		IDataLoader<MatchRecord> matchRecordLoader = new MatchRecordLoader(matchRecordsFile);
+		IDataSaver<MatchRecord> matchRecordSaver = new MatchRecordSaver(matchRecordsFile);
 		matchRecordRepository = new MatchRecordRepository(matchRecordLoader, matchRecordSaver);
 		
-		ISerizalizer<User> userSerializer = new UserJsonSerizalizer();
-		IDeserializer<User> userDeserializer = new UserJsonDeserizalizer();
-		IDataLoader<User> userLoader = new UserLoader(usersFile, userDeserializer);
-		IDataSaver<User> userSaver = new UserSaver(usersFile, userSerializer);
+		IDataLoader<User> userLoader = new UserLoader(usersFile);
+		IDataSaver<User> userSaver = new UserSaver(usersFile);
 		userRepository = new UserRepository(userLoader, userSaver);
 	}
 	

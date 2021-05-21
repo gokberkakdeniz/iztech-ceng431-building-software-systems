@@ -9,10 +9,8 @@ import tr.edu.iztech.lol.model.User;
 
 public class MatchRecordLoader implements IDataLoader<MatchRecord> {
 	private final File file;
-	private final IDeserializer<MatchRecord> deserializer;
 	
-	public MatchRecordLoader(File file, IDeserializer<MatchRecord> deserializer) {
-		this.deserializer = deserializer;
+	public MatchRecordLoader(File file) {
 		this.file = file;
 	}
 	
