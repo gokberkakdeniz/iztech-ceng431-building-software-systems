@@ -1,6 +1,6 @@
 package tr.edu.iztech.lol.view;
 
-import tr.edu.iztech.lol.model.User;
+import tr.edu.iztech.lol.model.Session;
 
 
 /**
@@ -17,17 +17,13 @@ public interface IScreenManager {
 	 * 
 	 * @param user logged in user
 	 */
-	void onLoginSuccess(User user);
+	void onLoginSuccess(Session session);
 	
 	/**
 	 * Page change handler
 	 * 
 	 * @param model new screen name
 	 */
-	void onPageChanged();
+	void onChampionSelectPanelRequested();
 	
-	/**
-	 * Logout handler
-	 */
-	void onLogout();
 }

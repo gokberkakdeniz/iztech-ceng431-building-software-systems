@@ -17,10 +17,8 @@ public class LoginController implements ILoginController {
 	public void login(String username1, String username2) {
 		var response = userService.login(username1, username2);
 		
-//		if (!response.isOK()) throw response.getException();
-		
 		Session session = response.getResult();
-		screenManager.onLoginSuccess(null);
+		screenManager.onLoginSuccess(session);
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class MainWindow extends JFrame {
 
 		contentPane.setLayout(null);
 
-		setBounds(0, 0, 960, 720);
+		setBounds(100, 0, 960, 720);
 		setTitle("LOL");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);

@@ -5,44 +5,43 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import tr.edu.iztech.lol.model.User;
+
 public class ChampSelectComponent extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 
-	public ChampSelectComponent() {		
+	public ChampSelectComponent(User user, List<String> heroNames, List<String> originNames) {
 		setLayout(null);
 		setBounds(0,0, 480, 720);
-		
-		JButton btnNewButton = new JButton("Lightbringer");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		
 		JLabel lblChooseAnOrigin = new JLabel("Choose an Origin");
 		lblChooseAnOrigin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblChooseAnOrigin.setFont(new Font("Noto Sans CJK SC Light", Font.BOLD, 20));
 		lblChooseAnOrigin.setBounds(0, 45, 480, 30);
 		add(lblChooseAnOrigin);
-		btnNewButton.setBackground(Color.RED);
-		btnNewButton.setBounds(30, 95, 130, 25);
-		add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Dragonslayer");
-		btnNewButton_1.setBounds(30, 140, 130, 25);
-		add(btnNewButton_1);
+		JButton originButton1 = new JButton(originNames.get(0));
+		originButton1.setBackground(Color.RED);
+		originButton1.setBounds(30, 95, 130, 25);
+		add(originButton1);
 		
-		JButton btnNewButton_1_1 = new JButton("Ironclad");
-		btnNewButton_1_1.setBounds(30, 185, 130, 25);
-		add(btnNewButton_1_1);
+		JButton originButton2 = new JButton(originNames.get(1));
+		originButton2.setBounds(30, 140, 130, 25);
+		add(originButton2);
 		
-		JButton btnNewButton_1_1_1 = new JButton("Chrono");
-		btnNewButton_1_1_1.setBounds(30, 230, 130, 25);
-		add(btnNewButton_1_1_1);
+		JButton originButton3 = new JButton(originNames.get(2));
+		originButton3.setBounds(30, 185, 130, 25);
+		add(originButton3);
+		
+		JButton originButton4 = new JButton(originNames.get(3));
+		originButton4.setBounds(30, 230, 130, 25);
+		add(originButton4);
 		
 		JLabel lblChooseAHero = new JLabel("Choose a Hero");
 		lblChooseAHero.setHorizontalAlignment(SwingConstants.CENTER);
@@ -50,22 +49,22 @@ public class ChampSelectComponent extends JPanel {
 		lblChooseAHero.setBounds(0, 280, 480, 30);
 		add(lblChooseAHero);
 		
-		JButton btnNewButton_1_2 = new JButton("Cavalier");
-		btnNewButton_1_2.setBounds(30, 380, 130, 25);
-		add(btnNewButton_1_2);
+		JButton heroButton1 = new JButton(heroNames.get(0));
+		heroButton1.setBounds(30, 380, 130, 25);
+		add(heroButton1);
 		
-		JButton btnNewButton_1_1_2 = new JButton("God-King");
-		btnNewButton_1_1_2.setBackground(Color.RED);
-		btnNewButton_1_1_2.setBounds(30, 425, 130, 25);
-		add(btnNewButton_1_1_2);
+		JButton heroButton2 = new JButton(heroNames.get(1));
+		heroButton2.setBackground(Color.RED);
+		heroButton2.setBounds(30, 425, 130, 25);
+		add(heroButton2);
 		
-		JButton btnNewButton_1_1_1_1 = new JButton("Demolitionist");
-		btnNewButton_1_1_1_1.setBounds(30, 470, 130, 25);
-		add(btnNewButton_1_1_1_1);
+		JButton heroButton3 = new JButton(heroNames.get(2));
+		heroButton3.setBounds(30, 470, 130, 25);
+		add(heroButton3);
 		
-		JButton btnNewButton_1_2_1 = new JButton("Cavalier");
-		btnNewButton_1_2_1.setBounds(30, 335, 130, 25);
-		add(btnNewButton_1_2_1);
+		JButton heroButton4 = new JButton(heroNames.get(3));
+		heroButton4.setBounds(30, 335, 130, 25);
+		add(heroButton4);
 		
 		JLabel lblChooseAHero_1 = new JLabel("Choose an Item");
 		lblChooseAHero_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -124,13 +123,10 @@ public class ChampSelectComponent extends JPanel {
 		btnNewButton_1_2_1_6.setBounds(325, 625, 140, 25);
 		add(btnNewButton_1_2_1_6);
 		
-        JLabel lblAnnesikici = new JLabel("Annesikici31");
-		lblAnnesikici.setBorder(new LineBorder(new Color(64, 64, 64), 2));
-		lblAnnesikici.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAnnesikici.setBounds(160, 2, 160, 30);
-		add(lblAnnesikici);
-		
-		
-		
+        JLabel usernameLabel = new JLabel(user.getUsername());
+		usernameLabel.setBorder(new LineBorder(new Color(64, 64, 64), 2));
+		usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		usernameLabel.setBounds(160, 2, 160, 30);
+		add(usernameLabel);	
 	}
 }
