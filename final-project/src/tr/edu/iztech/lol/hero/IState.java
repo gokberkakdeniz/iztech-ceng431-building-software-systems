@@ -3,7 +3,7 @@ package tr.edu.iztech.lol.hero;
 public interface IState {
 	int getAttackDamage();
 
-	double getCriticalRatio();
+	double getCriticalChance();
 
 	int getInitialHealthPoint();
 	
@@ -11,7 +11,7 @@ public interface IState {
 	
 	void setAttackDamage(int attackDamage);
 
-	void setCriticalRatio(double criticalRatio);
+	void setCriticalChance(double criticalChance);
 
 	void setHealthPoint(int healthPoint);
 	

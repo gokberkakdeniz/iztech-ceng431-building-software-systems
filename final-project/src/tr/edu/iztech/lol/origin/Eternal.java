@@ -4,7 +4,7 @@ import tr.edu.iztech.lol.hero.IState;
 
 public class Eternal extends AbstractOrigin {
 	private boolean isRevived = false;
-	private double reviveMultiplier = 0.35;
+	private double reviveMultiplier = 0.4;
 	
 	@Override
 	public IState defend(IState damage) {
@@ -22,7 +22,7 @@ public class Eternal extends AbstractOrigin {
 		damage.setDamageDealt(0);
 		
 		int newHealth = (int) Math.floor(state.getInitialHealthPoint() * reviveMultiplier);
-		state.setHealthPoint(newHealth);
+		damage.setHealthPoint(newHealth);
 	}
 	
 	private void setRevived(boolean value) {
@@ -30,7 +30,7 @@ public class Eternal extends AbstractOrigin {
 	}
 	
 	private boolean willItDie(IState damage) {
-		int remainingHealth = damage.getDamageDealt() - state.getHealthPoint();
+		int remainingHealth = state.getHealthPoint() - damage.getDamageDealt();
 		return remainingHealth <= 0;
 	}
 

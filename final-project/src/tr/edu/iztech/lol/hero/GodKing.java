@@ -6,7 +6,7 @@ public class GodKing extends AbstractHero {
 	private double executePercentage = 0.25;
 	
 	public GodKing(IOrigin origin) {
-		super(origin, new State(1000, 80, 0.2));
+		super(origin, new State(1200, 90, 0.2));
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class GodKing extends AbstractHero {
 	}
 	
 	private boolean willBeExecuted(IState target) {
-		double healthPercentage = target.getHealthPoint() / target.getInitialHealthPoint();
+		double healthPercentage = (double) target.getHealthPoint() / target.getInitialHealthPoint();
 		return healthPercentage <= executePercentage;
 	}
 

@@ -1,6 +1,6 @@
 package tr.edu.iztech.lol.factory;
 
-import tr.edu.iztech.lol.hero.Assasin;
+import tr.edu.iztech.lol.hero.Assassin;
 import tr.edu.iztech.lol.hero.Cavalier;
 import tr.edu.iztech.lol.hero.Demolitionist;
 import tr.edu.iztech.lol.hero.GodKing;
@@ -14,9 +14,9 @@ public class ForgottenFactory implements IHeroFactory {
 
 
 	@Override
-	public Assasin createAssasin() {
+	public Assassin createAssassin() {
 		IOrigin origin = new Forgotten();
-		Assasin hero = new Assasin(origin);
+		Assassin hero = new Assassin(origin);
 
 		return hero;
 	}

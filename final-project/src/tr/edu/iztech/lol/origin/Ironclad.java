@@ -15,7 +15,7 @@ public class Ironclad extends AbstractOrigin {
 			if(damageDealt > 1000) {
 				damageDealt = 100;
 			}
-			state.setHealthPoint(state.getHealthPoint() + damageDealt);
+			tempDamage.setHealthPoint(tempDamage.getHealthPoint() + damageDealt);
 			tempDamage.setDamageDealt(0);
 		}
 		return tempDamage;

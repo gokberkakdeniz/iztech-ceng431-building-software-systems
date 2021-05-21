@@ -3,7 +3,7 @@ package tr.edu.iztech.lol.origin;
 import tr.edu.iztech.lol.hero.IState;
 
 public class Nightbringer extends AbstractOrigin {
-	private double healthPercentage = 0.3;
+	private double healthPercentage = 0.35;
 	
 	@Override
 	public IState attack(IState target) {
@@ -17,7 +17,8 @@ public class Nightbringer extends AbstractOrigin {
 	}
 	
 	private boolean isBelowHealth() {
-		return state.getHealthPoint() >= healthPercentage;
+		double currentHealth = (double) state.getHealthPoint() / state.getInitialHealthPoint();
+		return currentHealth <= healthPercentage;
 	}
 
 }

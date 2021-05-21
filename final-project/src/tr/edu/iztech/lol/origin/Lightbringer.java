@@ -16,17 +16,7 @@ public class Lightbringer extends AbstractOrigin {
 	}
 	
 	private boolean shouldTakeLessDamage() {
-		double healthPercentage = state.getHealthPoint() / state.getInitialHealthPoint();
-		
-		return healthPercentage <= 0.3;
+		double healthPercentage = (double) state.getHealthPoint() / state.getInitialHealthPoint();
+		return healthPercentage <= 0.35;
 	}
-
-	@Override
-	public IState attack(IState target) {
-		IState tempTarget = target.clone();
-		tempTarget.setDamageDealt(state.getAttackDamage());
-		
-		return tempTarget;
-	}
-
 }

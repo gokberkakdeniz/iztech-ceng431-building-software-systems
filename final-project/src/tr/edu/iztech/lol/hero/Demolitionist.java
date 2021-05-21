@@ -6,7 +6,7 @@ public class Demolitionist extends AbstractHero {
 	private int attackCount = 1;
 	
 	public Demolitionist(IOrigin origin) {
-		super(origin, new State(1100, 70, 0.2));
+		super(origin, new State(1100, 65, 0.2));
 	}
 
 	@Override
@@ -15,7 +15,7 @@ public class Demolitionist extends AbstractHero {
 		int attackDamage = state.getAttackDamage();
 		
 		if(isThirdAttack()) {
-			attackDamage *= 2;
+			attackDamage *= 3;
 		}
 		
 		tempTarget.setDamageDealt(attackDamage);

@@ -3,7 +3,7 @@ package tr.edu.iztech.lol.hero;
 import tr.edu.iztech.lol.origin.IOrigin;
 
 public class Sorcerer extends AbstractHero {
-	private double attackDamageStealPercentage = 0.06;
+	private double attackDamageStealPercentage = 0.05;
 	
 	public Sorcerer(IOrigin origin) {
 		super(origin, new State(1100, 90, 0.2));

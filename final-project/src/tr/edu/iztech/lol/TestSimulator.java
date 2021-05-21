@@ -27,10 +27,9 @@ public class TestSimulator {
 			IState defendedDamage = target.defend(damage);
 
 			target.setState(defendedDamage);
-			
 //			System.out.printf("      after attack  => %s\n", damage);
 //			System.out.printf("      after defence => %s\n", defendedDamage);
-			System.out.printf("      after the hit => %s\n", target.getState());
+			System.out.printf("      %s => %s\n", defendedDamage, target.getState());
 //	        Random rand = new Random();
 //			ThreadUtils.wait(1000 + rand.nextInt(1500));
 			next();

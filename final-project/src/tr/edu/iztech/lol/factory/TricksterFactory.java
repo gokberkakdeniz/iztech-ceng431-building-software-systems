@@ -1,6 +1,6 @@
 package tr.edu.iztech.lol.factory;
 
-import tr.edu.iztech.lol.hero.Assasin;
+import tr.edu.iztech.lol.hero.Assassin;
 import tr.edu.iztech.lol.hero.Cavalier;
 import tr.edu.iztech.lol.hero.Demolitionist;
 import tr.edu.iztech.lol.hero.GodKing;
@@ -10,12 +10,12 @@ import tr.edu.iztech.lol.hero.Sorcerer;
 import tr.edu.iztech.lol.origin.Trickster;
 import tr.edu.iztech.lol.origin.IOrigin;
 
-public class ChronoFactory implements IHeroFactory {
+public class TricksterFactory implements IHeroFactory {
 
 	@Override
-	public Assasin createAssasin() {
+	public Assassin createAssassin() {
 		IOrigin origin = new Trickster();
-		Assasin hero = new Assasin(origin);
+		Assassin hero = new Assassin(origin);
 
 		return hero;
 	}

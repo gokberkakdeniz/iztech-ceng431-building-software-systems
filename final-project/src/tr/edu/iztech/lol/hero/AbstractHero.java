@@ -7,13 +7,13 @@ import tr.edu.iztech.lol.utils.StringUtils;
 public abstract class AbstractHero implements IHero {
 	protected IState state;
 	protected IOrigin origin;
-	protected int criticalMultiplier;
+	protected double criticalDamage;
 	
 	public AbstractHero(IOrigin origin, IState state) {
 		this.state = state;
 		this.origin = origin;
 		this.origin.setState(state);
-		this.criticalMultiplier = 2;
+		this.criticalDamage = 2;
 	}
 	
 	public int getHealthPoint() {
@@ -61,7 +61,8 @@ public abstract class AbstractHero implements IHero {
 		IState totalDamage = origin.attack(classDamage);
 		
 		if(isHitCritical()) {
-			totalDamage.setDamageDealt(totalDamage.getDamageDealt() * criticalMultiplier);
+			System.out.println("Crit!");
+			totalDamage.setDamageDealt((int) Math.floor(totalDamage.getDamageDealt() * criticalDamage));
 		}
 
 		return totalDamage;
@@ -89,6 +90,6 @@ public abstract class AbstractHero implements IHero {
 	}
 	
 	private boolean isHitCritical() {
-		return state.getCriticalRatio() > RandomUtils.getDouble();
+		return state.getCriticalChance() > RandomUtils.getDouble();
 	}
 }

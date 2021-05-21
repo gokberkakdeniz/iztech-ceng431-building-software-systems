@@ -3,7 +3,7 @@ package tr.edu.iztech.lol.factory;
 import tr.edu.iztech.lol.hero.*;
 
 public interface IHeroFactory {
-	Assasin createAssasin();
+	Assassin createAssassin();
 	Cavalier createCavalier();
 	Demolitionist createDemolitionist();
 	GodKing createGodKing();

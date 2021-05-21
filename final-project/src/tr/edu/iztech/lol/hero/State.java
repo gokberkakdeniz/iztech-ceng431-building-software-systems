@@ -5,18 +5,18 @@ public class State implements IState {
 	private int healthPoint;
 	private int attackDamage;
 	private int damageDealt;
-	private double criticalRatio;
+	private double criticalChance;
 		
-	public State(int healthPoint, int attackDamage, double criticalRatio) {
+	public State(int healthPoint, int attackDamage, double criticalChance) {
 		this.initialHealthPoint = healthPoint;
 		this.healthPoint = healthPoint;
 		this.attackDamage = attackDamage;
-		this.criticalRatio = criticalRatio;
+		this.criticalChance = criticalChance;
 		this.damageDealt = 0;
 	}
 	
-	private State(int initialHealthPoint, int healthPoint, int attackDamage, double criticalRatio, int damageDealt) {
-		this(healthPoint, attackDamage, criticalRatio);
+	private State(int initialHealthPoint, int healthPoint, int attackDamage, double criticalChance, int damageDealt) {
+		this(healthPoint, attackDamage, criticalChance);
 		this.initialHealthPoint = initialHealthPoint;
 		this.damageDealt = damageDealt;
 	}
@@ -36,8 +36,8 @@ public class State implements IState {
 	}
 	
 	@Override
-	public double getCriticalRatio() {
-		return criticalRatio;
+	public double getCriticalChance() {
+		return criticalChance;
 	}
 	
 	@Override
@@ -56,8 +56,8 @@ public class State implements IState {
 	}
 	
 	@Override
-	public void setCriticalRatio(double criticalRatio) {
-		this.criticalRatio = criticalRatio;
+	public void setCriticalChance(double criticalChance) {
+		this.criticalChance = criticalChance;
 	}
 	
 	@Override
@@ -67,11 +67,11 @@ public class State implements IState {
 	
 	@Override
 	public String toString() {
-		return String.format("HP: %d, AD: %d, CR: %d%%", healthPoint, attackDamage, Math.round(criticalRatio*100));
+		return String.format("HP: %d, AD: %d, CR: %d%%", healthPoint, attackDamage, Math.round(criticalChance*100));
 	}
 	
 	@Override
 	public IState clone() {
-		return new State(initialHealthPoint, healthPoint, attackDamage, criticalRatio, damageDealt);
+		return new State(initialHealthPoint, healthPoint, attackDamage, criticalChance, damageDealt);
 	}
 }
