@@ -11,7 +11,7 @@ import tr.edu.iztech.lol.origin.*;
 
 public class RandomUtils {
     private static Random rand = new Random();
-    private static List<Class<? extends IHero>> heroClasses = Arrays.asList(Assasin.class, 
+    private static List<Class<? extends IHero>> heroClasses = Arrays.asList(Assassin.class, 
 																	  		Cavalier.class, 
 																	  		Demolitionist.class, 
 																	  		GodKing.class,
