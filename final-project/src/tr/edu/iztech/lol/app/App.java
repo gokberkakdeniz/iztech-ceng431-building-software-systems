@@ -92,13 +92,13 @@ public class App {
 		}
 	}
 	
-	private void simulator() {
+	private static void simulator() {
 //		IHeroFactory ds = new DragonSlayerFactory();
 //		IHero h1 = ds.createAssassin();		
 //
 //		IHeroFactory lb = new LightbringerFactory();
 //		IHero h2 = lb.createCavalier();
-//		
+		
 //		IHeroFactory ds = new EternalFactory();
 //		IHero h1 = ds.createGodKing();		
 //
