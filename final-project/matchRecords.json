@@ -1,0 +1,74 @@
+[
+  {
+    "attackCount": 3,
+    "winner": {
+      "startStatistics": {
+        "healthPoint": 50,
+        "criticalChance": 70,
+        "initialHealth": 70,
+        "attackDamage": 60
+      },
+      "endStatistics": {
+        "healthPoint": 10,
+        "criticalChance": 30,
+        "initialHealth": 121,
+        "attackDamage": 20
+      },
+      "heroName": "mundo",
+      "username": "player1"
+    },
+    "id": 1621682297807,
+    "loser": {
+      "startStatistics": {
+        "healthPoint": 11,
+        "criticalChance": 13,
+        "initialHealth": 1231,
+        "attackDamage": 12
+      },
+      "endStatistics": {
+        "healthPoint": 9,
+        "criticalChance": 7,
+        "initialHealth": 21442,
+        "attackDamage": 8
+      },
+      "heroName": "hakahiko",
+      "username": "player2"
+    }
+  },
+  {
+    "attackCount": 31213,
+    "winner": {
+      "startStatistics": {
+        "healthPoint": 123450,
+        "criticalChance": 720,
+        "initialHealth": 1234,
+        "attackDamage": 605421
+      },
+      "endStatistics": {
+        "healthPoint": 120,
+        "criticalChance": 310,
+        "initialHealth": 1241,
+        "attackDamage": 202
+      },
+      "heroName": "asdfgasdfg",
+      "username": "player31"
+    },
+    "id": 1621682297807,
+    "loser": {
+      "startStatistics": {
+        "healthPoint": 91,
+        "criticalChance": 17,
+        "initialHealth": 21412342,
+        "attackDamage": 81
+      },
+      "endStatistics": {
+        "healthPoint": 114,
+        "criticalChance": 213,
+        "initialHealth": 12431,
+        "attackDamage": 123
+      },
+      "heroName": "adgfsadfg",
+      "username": "player43"
+    }
+  }
+]

@@ -15,7 +15,7 @@ public class State implements IState {
 		this.damageDealt = 0;
 	}
 	
-	private State(int initialHealthPoint, int healthPoint, int attackDamage, double criticalChance, int damageDealt) {
+	public State(int initialHealthPoint, int healthPoint, int attackDamage, double criticalChance, int damageDealt) {
 		this(healthPoint, attackDamage, criticalChance);
 		this.initialHealthPoint = initialHealthPoint;
 		this.damageDealt = damageDealt;
