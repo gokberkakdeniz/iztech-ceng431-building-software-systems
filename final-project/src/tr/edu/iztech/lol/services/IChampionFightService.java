@@ -7,4 +7,6 @@ import tr.edu.iztech.lol.model.User;
 public interface IChampionFightService {
 	IResponse<Match, NeverOccuredException> createMatch(User userLeft, String heroNameLeft, String originNameLeft,
 														User userRight, String heroNameRight, String originNameRight);
+	
+	void startMatch(Match match);
 }

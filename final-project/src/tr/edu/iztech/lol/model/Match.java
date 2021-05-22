@@ -6,6 +6,7 @@ import java.util.List;
 
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.utils.AbstractObservable;
+import tr.edu.iztech.lol.utils.IObserver;
 
 public class Match extends AbstractObservable<Match> implements IModel<Match> {
 	private User userLeft;
@@ -20,7 +21,6 @@ public class Match extends AbstractObservable<Match> implements IModel<Match> {
 		this.userRight = userRight;
 		this.heroRight = heroRight;
 		this.logs = new LinkedList<String>();
-		
 	}
 	
 	public User getUserLeft() {

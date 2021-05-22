@@ -46,5 +46,6 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 	@Override
 	public void update() {
 		fightLeft.update();
+		figthRight.update();
 	}
 }

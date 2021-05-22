@@ -43,7 +43,7 @@ public abstract class AbstractHero implements IHero {
 	public void setState(IState newState) {
 		IState tempState = newState.clone();
 		
-		int nextHp = tempState.getHealthPoint() - tempState.getDamageDealt();
+		int nextHp = Math.max(0, tempState.getHealthPoint() - tempState.getDamageDealt());
 		tempState.setHealthPoint(nextHp);
 
 		tempState.setDamageDealt(0);

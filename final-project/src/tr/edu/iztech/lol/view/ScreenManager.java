@@ -3,6 +3,7 @@ package tr.edu.iztech.lol.view;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import tr.edu.iztech.lol.controller.ChampionFightController;
 import tr.edu.iztech.lol.controller.ChampionSelectController;
 import tr.edu.iztech.lol.controller.IChampionSelectController;
 import tr.edu.iztech.lol.controller.IController;
@@ -86,8 +87,11 @@ public class ScreenManager implements IScreenManager {
 										  selectionRight.getUser(), selectionRight.getSelectedHero(), selectionRight.getSelectedOrigin())
 				.getResult();
 		ChampionFightPanel view = new ChampionFightPanel(model);
+		new ChampionFightController(view, model);
 		
 		window.setContent(view);
+		
+		service.startMatch(model);
 	}
 	
 	private void destroyController() {

@@ -1,5 +1,6 @@
 package tr.edu.iztech.lol.services;
 
+import tr.edu.iztech.lol.app.TestSimulator;
 import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IRepository;
 import tr.edu.iztech.lol.exception.NeverOccuredException;
@@ -22,7 +23,6 @@ public class ChampionFightService implements IChampionFightService {
 	private IRepository<MatchRecord> matchRecordRepository = Database.getInstance().getMatchRecordRepository();
 
 	public ChampionFightService() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -35,7 +35,12 @@ public class ChampionFightService implements IChampionFightService {
 		
 		return new Response<>(match);
 	}
-
+	
+	public void startMatch(Match match) {
+		TestSimulator simulator = new TestSimulator(match);
+		simulator.run();
+	}
+	
 	private IHero createHero(String originName, String heroName) {
 		IHeroFactory factory = getHeroFactory(originName);
 		IHero result;
