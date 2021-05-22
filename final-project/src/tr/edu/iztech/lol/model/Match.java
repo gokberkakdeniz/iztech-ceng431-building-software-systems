@@ -43,11 +43,8 @@ public class Match extends AbstractObservable<Match> implements IModel<Match> {
 		return new ArrayList<>(logs);
 	}
 
-	public String getLastLog() {
-		return logs.size() > 1 ? logs.get(logs.size() - 1) : null;
-	}
-	
-	public boolean addLog(String log) {
-		return this.logs.add(log);
+	public void addLog(String log) {
+		this.logs.add(log);
+		notifySubscribers();
 	}
 }

@@ -2,19 +2,23 @@ package tr.edu.iztech.lol.view.screen;
 
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Color;
 
 import tr.edu.iztech.lol.model.Match;
-import tr.edu.iztech.lol.utils.IObserver;
 import tr.edu.iztech.lol.view.component.ChampionFightComponent;
 
 import javax.swing.JSeparator;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 
 public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private Match model;
 	private ChampionFightComponent fightLeft;
 	private ChampionFightComponent figthRight;
+	private JList<String> list;
 	
 	public ChampionFightPanel(Match model) {
 		this.model = model;
@@ -36,15 +40,24 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 		figthRight.setBounds(480,0, 480, 430);
 		add(figthRight);
 		
-		String[] logs = {"şasdlfkadşflklşadfkg", "lkjsafglkajfdglakdfjg"};
-        JList<String> list = new JList<>(logs);
+//		JScrollPane listScroller = new JScrollPane();
+//		listScroller.setBounds(10, 440, 940, 230);
+//		listScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+//		listScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+        list = new JList<>();
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.setVisibleRowCount(-1);
+//		listScroller.setViewportView(list);
         list.setBackground(new Color(0, 0, 0, 0));
-        list.setBounds(10, 440, 940, 270);
-        add(list);
+        list.setBounds(10, 440, 940, 230);
+		add(list);
+
 	}
 
 	@Override
 	public void update() {
+		list.setListData(model.getLogs().toArray(String[]::new));
 		fightLeft.update();
 		figthRight.update();
 	}

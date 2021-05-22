@@ -39,28 +39,34 @@ public class ChampionFightComponent extends JPanel {
 		progressBar.setBounds(10, 50, 460, 25);
 		add(progressBar);
 		
-		progressBar.setComponentOrientation(rightToLeft ? ComponentOrientation.RIGHT_TO_LEFT : ComponentOrientation.LEFT_TO_RIGHT);
-		
-		JLabel nameLabel = new JLabel(user.getUsername());
+		JLabel nameLabel = new JLabel(String.format("%s's %s", user.getUsername(), hero.getName()));
 		nameLabel.setFont(new Font("Noto Sans CJK SC Light", Font.BOLD, 20));
-		nameLabel.setBounds(10, 10, 460, 30);
-		if(rightToLeft) {
-			nameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		}
+		nameLabel.setBounds(20, 10, 440, 30);
 		
 		add(nameLabel);
 		
 		healthLabel = new JLabel();
-		healthLabel.setBounds(20, 98, 70, 15);
+		healthLabel.setBounds(20, 100, 440, 20);
+		healthLabel.setFont(new Font("Noto Sans CJK SC Light", Font.BOLD, 16));
 		add(healthLabel);
 		
 		attackDamageLabel = new JLabel();
-		attackDamageLabel.setBounds(20, 98, 70, 15);
+		attackDamageLabel.setBounds(20, 140, 440, 20);
+		attackDamageLabel.setFont(new Font("Noto Sans CJK SC Light", Font.BOLD, 16));
 		add(attackDamageLabel);
 		
 		criticalChanceLabel = new JLabel();
-		criticalChanceLabel.setBounds(20, 98, 70, 15);
+		criticalChanceLabel.setBounds(20, 180, 440, 20);
+		criticalChanceLabel.setFont(new Font("Noto Sans CJK SC Light", Font.BOLD, 16));
 		add(criticalChanceLabel);
+		
+		if(rightToLeft) {
+			progressBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+			nameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+			healthLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+			attackDamageLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+			criticalChanceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
 		
 		update();
 	}
@@ -68,7 +74,7 @@ public class ChampionFightComponent extends JPanel {
 	public void update() {
 		progressBar.setValue(hero.getHealthPercentage());
 		healthLabel.setText(String.format("Health Point: %d", hero.getHealthPoint()));
-		healthLabel.setText(String.format("Attack Damage: %d", hero.getState().getAttackDamage()));
-		healthLabel.setText(String.format("Critical Chance: %f", hero.getState().getCriticalChance()));
+		attackDamageLabel.setText(String.format("Attack Damage: %d", hero.getState().getAttackDamage()));
+		criticalChanceLabel.setText(String.format("Critical Chance: %.2f", hero.getState().getCriticalChance()));
 	}
 }
