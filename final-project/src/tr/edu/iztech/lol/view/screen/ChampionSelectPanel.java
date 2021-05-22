@@ -22,12 +22,13 @@ public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel,
 	private static final long serialVersionUID = 5232858854896059657L;
 	private ChampionSelectComponent left;
 	private ChampionSelectComponent right;
+	private JButton startButton;
 	
 	public ChampionSelectPanel(ChampionSelectModel modelLeft, ChampionSelectModel modelRight) {
 		setLayout(null);
 		setBounds(0,0, 960, 720);
 		
-		JButton startButton = new JButton("Start");
+		startButton = new JButton("Start");
 		startButton.setBounds(331, 585, 300, 47);
 		add(startButton);
 		
@@ -65,6 +66,10 @@ public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel,
 	@Override
 	public void addRightChampionSelectPanelHeroButtonsListener(ActionListener listener) {
 		right.addHeroButtonsListener(listener);
+	}
+	
+	public void addStartButtonListener(ActionListener listener) {
+		startButton.addActionListener(listener);
 	}
 
 	@Override

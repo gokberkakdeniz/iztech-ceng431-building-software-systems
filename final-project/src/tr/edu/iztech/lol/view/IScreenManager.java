@@ -1,5 +1,6 @@
 package tr.edu.iztech.lol.view;
 
+import tr.edu.iztech.lol.model.ChampionSelectModel;
 import tr.edu.iztech.lol.model.Session;
 
 
@@ -25,5 +26,7 @@ public interface IScreenManager {
 	 * @param model new screen name
 	 */
 	void onChampionSelectPanelRequested();
+
+	void onChampionSelectDone(ChampionSelectModel modelLeft, ChampionSelectModel modelRight);
 	
 }

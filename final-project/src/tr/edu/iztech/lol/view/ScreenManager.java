@@ -19,6 +19,7 @@ import tr.edu.iztech.lol.services.IChampionSelectService;
 import tr.edu.iztech.lol.services.IUserService;
 import tr.edu.iztech.lol.services.UserService;
 import tr.edu.iztech.lol.utils.RandomUtils;
+import tr.edu.iztech.lol.view.screen.ChampionFightPanel;
 import tr.edu.iztech.lol.view.screen.ChampionSelectPanel;
 import tr.edu.iztech.lol.view.screen.IChampionSelectPanel;
 import tr.edu.iztech.lol.view.screen.LoginPanel;
@@ -65,6 +66,13 @@ public class ScreenManager implements IScreenManager {
 		ChampionSelectPanel view = new ChampionSelectPanel(modelLeft, modelRight);
 		
 		new ChampionSelectController(view, modelLeft, modelRight, this, service);
+		
+		window.setContent(view);
+	}
+
+	@Override
+	public void onChampionSelectDone(ChampionSelectModel modelLeft, ChampionSelectModel modelRight) {
+		ChampionFightPanel view = new ChampionFightPanel();
 		
 		window.setContent(view);
 	}

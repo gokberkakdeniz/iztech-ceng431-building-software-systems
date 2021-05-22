@@ -7,4 +7,5 @@ public interface IChampionSelectPanel {
 	void addLeftChampionSelectPanelHeroButtonsListener(ActionListener listener);
 	void addRightChampionSelectPanelOriginButtonsListener(ActionListener listener);
 	void addRightChampionSelectPanelHeroButtonsListener(ActionListener listener);
+	void addStartButtonListener(ActionListener listener);
 }

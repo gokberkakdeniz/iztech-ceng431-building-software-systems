@@ -2,7 +2,7 @@ package tr.edu.iztech.lol.view.screen;
 
 import javax.swing.JPanel;
 import java.awt.Color;
-import tr.edu.iztech.lol.view.component.ChampFightComponent;
+import tr.edu.iztech.lol.view.component.ChampionFightComponent;
 
 import javax.swing.JSeparator;
 
@@ -20,10 +20,10 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 		add(horizontalSeparator);
 
 		
-		ChampFightComponent user1 = new ChampFightComponent();
+		ChampionFightComponent user1 = new ChampionFightComponent();
 		user1.setBounds(0,0, 480, 430);
 		
-		ChampFightComponent user2 = new ChampFightComponent();
+		ChampionFightComponent user2 = new ChampionFightComponent(true);
 		user2.setBounds(480,0, 480, 430);
 		add(user1);
 		add(user2);

@@ -30,6 +30,7 @@ public class ChampionSelectController implements IChampionSelectController {
 		this.view.addRightChampionSelectPanelOriginButtonsListener(rightOriginButtonsListener);
 		this.view.addLeftChampionSelectPanelHeroButtonsListener(leftHeroButtonsListener);
 		this.view.addRightChampionSelectPanelHeroButtonsListener(rightHeroButtonsListener);
+		this.view.addStartButtonListener(startButtonListener);
 		
 		modelLeft.subscribe(view);
 		modelRight.subscribe(view);
@@ -64,6 +65,13 @@ public class ChampionSelectController implements IChampionSelectController {
 		public void actionPerformed(ActionEvent e) {
 			String selectedHero = e.getActionCommand();
 			modelRight.setSelectedHero(selectedHero);
+		}
+	};
+	
+	private ActionListener startButtonListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			screenManager.onChampionSelectDone(modelLeft, modelRight);
 		}
 	};
 }
