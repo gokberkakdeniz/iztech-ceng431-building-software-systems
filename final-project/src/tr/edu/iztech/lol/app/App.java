@@ -1,4 +1,4 @@
-package tr.edu.iztech.lol;
+package tr.edu.iztech.lol.app;
 
 import java.io.File;
 import java.util.Arrays;

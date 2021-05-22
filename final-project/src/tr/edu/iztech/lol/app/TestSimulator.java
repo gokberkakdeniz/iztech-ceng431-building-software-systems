@@ -1,4 +1,4 @@
-package tr.edu.iztech.lol;
+package tr.edu.iztech.lol.app;
 
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.hero.IState;
