@@ -28,20 +28,20 @@ public class DescriptionRepository implements IRepository<String> {
 	private static Map<String, String> descriptions = new HashMap<String, String>();
 
 	static {
-		descriptions.put(Assassin.class.getSimpleName(), "Assassin");
-		descriptions.put(Cavalier.class.getSimpleName(), "Cavalier");
-		descriptions.put(Demolitionist.class.getSimpleName(), "Demolitionist");
-		descriptions.put(GodKing.class.getSimpleName(), "GodKing");
-		descriptions.put(Knight.class.getSimpleName(), "Knight");
-		descriptions.put(Ranger.class.getSimpleName(), "Ranger");
-		descriptions.put(Sorcerer.class.getSimpleName(), "Sorcerer");
-		descriptions.put(DragonSlayer.class.getSimpleName(), "DragonSlayer");
-		descriptions.put(Eternal.class.getSimpleName(), "Eternal");
-		descriptions.put(Forgotten.class.getSimpleName(), "Forgotten");
-		descriptions.put(Ironclad.class.getSimpleName(), "Ironclad");
-		descriptions.put(Lightbringer.class.getSimpleName(), "Lightbringer");
-		descriptions.put(Nightbringer.class.getSimpleName(), "Nightbringer");
-		descriptions.put(Trickster.class.getSimpleName(), "Trickster");
+		descriptions.put(Assassin.class.getSimpleName(), "Assassins deal 3x instead of 2x when they hit critical damage.");
+		descriptions.put(Cavalier.class.getSimpleName(), "Cavaliers take 20% less damage.");
+		descriptions.put(Demolitionist.class.getSimpleName(), "Demolitionists deals extra damage (which is equal to 3x of their AD) every 1 of 3rd attack.");
+		descriptions.put(GodKing.class.getSimpleName(), "God-Kings executes the enemy while enemy has 25% Health Point.");
+		descriptions.put(Knight.class.getSimpleName(), "Knights parry the whole damage with 5% chance. This chance increases by 1.3x every time they attacked.");
+		descriptions.put(Ranger.class.getSimpleName(), "Rangers increases their Critical Chance by 1.4x every time they attack. If they have 100% Critical Chance, they increase their Critical Damage by 1.15x.");
+		descriptions.put(Sorcerer.class.getSimpleName(), "Sorcerers steal enemy’s Attack Damage by 5% every time they attack.");
+		descriptions.put(DragonSlayer.class.getSimpleName(), "Dragonslayers execute the enemy by 2% chance. This chance gets multiplied by 1.4x every time they attack.");
+		descriptions.put(Eternal.class.getSimpleName(), "Eternals refuse the die when they are below 0 health for the first time and revives back with 40% of his initial health.");
+		descriptions.put(Forgotten.class.getSimpleName(), "Forgottens deal %8 of their health.");
+		descriptions.put(Ironclad.class.getSimpleName(), "Ironclads ignores the damage and get healed as much as damage by 12.5% chance.");
+		descriptions.put(Lightbringer.class.getSimpleName(), "Lightbringers take 2 times less damage when they are on their 35% health.");
+		descriptions.put(Nightbringer.class.getSimpleName(), "Nightbringers deal 2 times more damage when they are on their 35% health.");
+		descriptions.put(Trickster.class.getSimpleName(), "Trickster gamble, and deal extra damage by his Attack Damage to enemy or himself with 50% chance.");
 	}
 	
 	@Override
