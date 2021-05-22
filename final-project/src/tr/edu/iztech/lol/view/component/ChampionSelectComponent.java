@@ -53,19 +53,19 @@ public class ChampionSelectComponent extends JPanel implements IObserver<Champio
 		add(lblChooseAnOrigin);
 		
 		originButton1 = new JButton(originNames.get(0));
-		originButton1.setBounds(30, 95, 130, 25);
+		originButton1.setBounds(25, 95, 140, 25);
 		add(originButton1);
 		
 		originButton2 = new JButton(originNames.get(1));
-		originButton2.setBounds(30, 140, 130, 25);
+		originButton2.setBounds(25, 140, 140, 25);
 		add(originButton2);
 		
 		originButton3 = new JButton(originNames.get(2));
-		originButton3.setBounds(30, 185, 130, 25);
+		originButton3.setBounds(25, 185, 140, 25);
 		add(originButton3);
 		
 		originButton4 = new JButton(originNames.get(3));
-		originButton4.setBounds(30, 230, 130, 25);
+		originButton4.setBounds(25, 230, 140, 25);
 		add(originButton4);
 		
 		JLabel lblChooseAHero = new JLabel("Choose a Hero");
@@ -75,19 +75,19 @@ public class ChampionSelectComponent extends JPanel implements IObserver<Champio
 		add(lblChooseAHero);
 		
 		heroButton1 = new JButton(heroNames.get(0));
-		heroButton1.setBounds(30, 335, 130, 25);
+		heroButton1.setBounds(25, 335, 140, 25);
 		add(heroButton1);
 		
 		heroButton2 = new JButton(heroNames.get(1));
-		heroButton2.setBounds(30, 380, 130, 25);
+		heroButton2.setBounds(25, 380, 140, 25);
 		add(heroButton2);
 		
 		heroButton3 = new JButton(heroNames.get(2));
-		heroButton3.setBounds(30, 425, 130, 25);
+		heroButton3.setBounds(25, 425, 140, 25);
 		add(heroButton3);
 		
 		heroButton4 = new JButton(heroNames.get(3));
-		heroButton4.setBounds(30, 470, 130, 25);
+		heroButton4.setBounds(25, 470, 140, 25);
 		add(heroButton4);
 		
 		
