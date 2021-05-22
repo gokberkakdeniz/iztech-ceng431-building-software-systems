@@ -2,32 +2,34 @@ package tr.edu.iztech.lol.view.screen;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.SwingConstants;
 
 import tr.edu.iztech.lol.controller.IChampionSelectController;
-import tr.edu.iztech.lol.model.AvailableChampionsModel;
+import tr.edu.iztech.lol.model.AvailableChampions;
+import tr.edu.iztech.lol.model.ChampionSelectModel;
 import tr.edu.iztech.lol.model.Session;
+import tr.edu.iztech.lol.utils.IObserver;
 import tr.edu.iztech.lol.view.component.ChampionSelectComponent;
 
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel {
+public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel, IObserver<ChampionSelectModel> {
 	private static final long serialVersionUID = 5232858854896059657L;
-	private IChampionSelectController controller;
-	private AvailableChampionsModel model1;
-	private AvailableChampionsModel model2;
+	private ChampionSelectComponent left;
+	private ChampionSelectComponent right;
 	
-	public ChampionSelectPanel(Session session, IChampionSelectController controller) {
-		this.controller = controller;
-		this.model1 = controller.getModel();
-		this.model2 = controller.getModel();
-		
+	public ChampionSelectPanel(ChampionSelectModel modelLeft, ChampionSelectModel modelRight) {
 		setLayout(null);
 		setBounds(0,0, 960, 720);
+		
+		JButton startButton = new JButton("Start");
+		startButton.setBounds(331, 585, 300, 47);
+		add(startButton);
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -36,16 +38,39 @@ public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel 
 		separator.setBounds(480, 0, 1, 550);
 		add(separator);
 		
-		ChampionSelectComponent user1 = new ChampionSelectComponent(session.getUser1(), model1);
-		user1.setBounds(0,0, 480, 720);
-		add(user1);
+		left = new ChampionSelectComponent(modelLeft);
+		left.setBounds(0,0, 480, 720);
+		add(left);
 		
-		ChampionSelectComponent user2 = new ChampionSelectComponent(session.getUser2(), model2);
-		user2.setBounds(480,0, 480, 720);		
-		add(user2);
-		
-		JButton loginButton = new JButton("Start");
-		loginButton.setBounds(331, 585, 300, 47);
-		add(loginButton);
+		right = new ChampionSelectComponent(modelRight);
+		right.setBounds(480,0, 480, 720);		
+		add(right);
 	}
+
+	@Override
+	public void addLeftChampionSelectPanelOriginButtonsListener(ActionListener listener) {
+		left.addOriginButtonsListener(listener);		
+	}
+
+	@Override
+	public void addLeftChampionSelectPanelHeroButtonsListener(ActionListener listener) {
+		left.addHeroButtonsListener(listener);
+	}
+
+	@Override
+	public void addRightChampionSelectPanelOriginButtonsListener(ActionListener listener) {
+		right.addOriginButtonsListener(listener);
+	}
+
+	@Override
+	public void addRightChampionSelectPanelHeroButtonsListener(ActionListener listener) {
+		right.addHeroButtonsListener(listener);
+	}
+
+	@Override
+	public void update() {
+		left.update();
+		right.update();
+	}
+	
 }

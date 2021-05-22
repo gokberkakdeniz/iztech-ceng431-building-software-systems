@@ -3,7 +3,7 @@ package tr.edu.iztech.lol.model;
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.hero.IState;
 
-public class Player  {
+public class Player {
 	private String username;
 	private String heroName;
 	private IState startStatistic;

@@ -1,6 +1,8 @@
 package tr.edu.iztech.lol.model;
 
-public class MatchRecord implements IModel {
+import tr.edu.iztech.lol.utils.AbstractObservable;
+
+public class MatchRecord extends AbstractObservable<MatchRecord> implements IModel<MatchRecord> {
 	private long id;
 	private Player winner;
 	private Player loser;

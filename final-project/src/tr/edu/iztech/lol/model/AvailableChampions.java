@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AvailableChampionsModel implements IModel {
+public class AvailableChampions {
 	private Map<String, String> availableHeros;
 	private Map<String, String> availableOrigins;
 	
-	public AvailableChampionsModel() {
+	public AvailableChampions() {
 		availableHeros = new HashMap<>();
 		availableOrigins = new HashMap<>();
 	}

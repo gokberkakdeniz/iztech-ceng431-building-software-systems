@@ -18,7 +18,9 @@ import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.hero.Knight;
 import tr.edu.iztech.lol.hero.Ranger;
 import tr.edu.iztech.lol.hero.Sorcerer;
-import tr.edu.iztech.lol.model.AvailableChampionsModel;
+import tr.edu.iztech.lol.model.AvailableChampions;
+import tr.edu.iztech.lol.model.ChampionSelectModel;
+import tr.edu.iztech.lol.model.User;
 import tr.edu.iztech.lol.origin.DragonSlayer;
 import tr.edu.iztech.lol.origin.Eternal;
 import tr.edu.iztech.lol.origin.Forgotten;
@@ -40,21 +42,22 @@ public class ChampionSelectService implements IChampionSelectService {
 		this.originClasses = Arrays.asList(DragonSlayer.class, Eternal.class, Forgotten.class, 
 										   Ironclad.class, Lightbringer.class, Nightbringer.class, 
 										   Trickster.class);
-		Collections.shuffle(heroClasses);
-		Collections.shuffle(originClasses);
 	}
 	
 	@Override
-	public IResponse<AvailableChampionsModel, NeverOccuredException> getAvailableChampions(int size) {
-		AvailableChampionsModel model = new AvailableChampionsModel();
+	public IResponse<ChampionSelectModel, NeverOccuredException> getAvailableChampions(User user) {
+		Collections.shuffle(heroClasses);
+		Collections.shuffle(originClasses);
 		
-		List<String> heros = heroClasses.subList(0, size).stream().map(Class::getSimpleName).collect(Collectors.toList());
-		List<String> origins =  originClasses.subList(0, size).stream().map(Class::getSimpleName).collect(Collectors.toList());
+		AvailableChampions options = new AvailableChampions();
 		
-		heros.forEach(name -> model.addHero(name, descriptionRepository.get(name).get()));
-		origins.forEach(name -> model.addOrigin(name, descriptionRepository.get(name).get()));
+		List<String> heros = heroClasses.subList(0, 4).stream().map(Class::getSimpleName).collect(Collectors.toList());
+		List<String> origins =  originClasses.subList(0, 4).stream().map(Class::getSimpleName).collect(Collectors.toList());
 		
-		return new Response<>(model);
+		heros.forEach(name -> options.addHero(name, descriptionRepository.get(name).get()));
+		origins.forEach(name -> options.addOrigin(name, descriptionRepository.get(name).get()));
+		
+		return new Response<>(new ChampionSelectModel(user, options));
 	}
 	
 }

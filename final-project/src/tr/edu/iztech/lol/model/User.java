@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class User implements IModel {
+import tr.edu.iztech.lol.utils.AbstractObservable;
+
+public class User extends AbstractObservable<User> implements IModel<User> {
 	private String username;
 	private List<Long> matchRecordIds;
 	
@@ -19,6 +21,7 @@ public class User implements IModel {
 	
 	public void addMatchRecord(Long id) {
 		matchRecordIds.add(id);
+		notifySubscribers();
 	}
 	
 	public void addMatchRecord(MatchRecord matchRecord) {

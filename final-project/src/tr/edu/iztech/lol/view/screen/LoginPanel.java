@@ -30,6 +30,7 @@ public class LoginPanel extends JPanel implements ILoginPanel {
 		add(username1Label);
 		
 		username1Input = new JTextField();
+		username1Input.setText("user1");
 		username1Input.setColumns(10);
 		username1Input.setBounds(140, 170, 200, 20);
 		add(username1Input);
@@ -39,6 +40,7 @@ public class LoginPanel extends JPanel implements ILoginPanel {
 		add(username2Label);
 		
 		username2Input = new JTextField();
+		username2Input.setText("user2");
 		username2Input.setColumns(10);
 		username2Input.setBounds(620, 170, 200, 20);
 		add(username2Input);

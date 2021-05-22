@@ -11,10 +11,13 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import tr.edu.iztech.lol.model.AvailableChampionsModel;
+import tr.edu.iztech.lol.model.AvailableChampions;
+import tr.edu.iztech.lol.model.ChampionSelectModel;
 import tr.edu.iztech.lol.model.User;
+import tr.edu.iztech.lol.utils.IObservable;
+import tr.edu.iztech.lol.utils.IObserver;
 
-public class ChampionSelectComponent extends JPanel {
+public class ChampionSelectComponent extends JPanel implements IObserver<ChampionSelectModel> {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private JButton originButton1;
 	private JButton originButton2;
@@ -26,17 +29,18 @@ public class ChampionSelectComponent extends JPanel {
 	private JButton heroButton4;
 	private JLabel originDescriptionLabel;
 	private JLabel heroDescriptionLabel;
-	private AvailableChampionsModel model;
+	private ChampionSelectModel model;
 	
-	public ChampionSelectComponent(User user, AvailableChampionsModel model) {
+	public ChampionSelectComponent(ChampionSelectModel model) {
 		this.model = model;
-		List<String> heroNames = model.getHeroNames();
-		List<String> originNames = model.getOriginNames();
+		AvailableChampions availableChampions = model.getAvailableChampions();
+		List<String> heroNames = availableChampions.getHeroNames();
+		List<String> originNames = availableChampions.getOriginNames();
 		
 		setLayout(null);
 		setBounds(0,0, 480, 550);
 		
-        JLabel usernameLabel = new JLabel(user.getUsername());
+        JLabel usernameLabel = new JLabel(model.getUser().getUsername());
 		usernameLabel.setBorder(new LineBorder(new Color(64, 64, 64), 2));
 		usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		usernameLabel.setBounds(160, 2, 160, 30);
@@ -49,24 +53,19 @@ public class ChampionSelectComponent extends JPanel {
 		add(lblChooseAnOrigin);
 		
 		originButton1 = new JButton(originNames.get(0));
-		originButton1.addActionListener(originButton1Listener);
-		originButton1.setBackground(Color.RED);
 		originButton1.setBounds(30, 95, 130, 25);
 		add(originButton1);
 		
 		originButton2 = new JButton(originNames.get(1));
 		originButton2.setBounds(30, 140, 130, 25);
-		originButton2.addActionListener(originButton2Listener);
 		add(originButton2);
 		
 		originButton3 = new JButton(originNames.get(2));
 		originButton3.setBounds(30, 185, 130, 25);
-		originButton3.addActionListener(originButton3Listener);
 		add(originButton3);
 		
 		originButton4 = new JButton(originNames.get(3));
 		originButton4.setBounds(30, 230, 130, 25);
-		originButton4.addActionListener(originButton4Listener);
 		add(originButton4);
 		
 		JLabel lblChooseAHero = new JLabel("Choose a Hero");
@@ -76,128 +75,93 @@ public class ChampionSelectComponent extends JPanel {
 		add(lblChooseAHero);
 		
 		heroButton1 = new JButton(heroNames.get(0));
-		heroButton1.setBounds(30, 380, 130, 25);
-		heroButton1.addActionListener(heroButton1Listener);
+		heroButton1.setBounds(30, 335, 130, 25);
 		add(heroButton1);
 		
 		heroButton2 = new JButton(heroNames.get(1));
-		heroButton2.setBackground(Color.RED);
-		heroButton2.setBounds(30, 425, 130, 25);
-		heroButton2.addActionListener(heroButton2Listener);
+		heroButton2.setBounds(30, 380, 130, 25);
 		add(heroButton2);
 		
 		heroButton3 = new JButton(heroNames.get(2));
-		heroButton3.setBounds(30, 470, 130, 25);
-		heroButton3.addActionListener(heroButton3Listener);
+		heroButton3.setBounds(30, 425, 130, 25);
 		add(heroButton3);
 		
 		heroButton4 = new JButton(heroNames.get(3));
-		heroButton4.setBounds(30, 335, 130, 25);
-		heroButton4.addActionListener(heroButton4Listener);
+		heroButton4.setBounds(30, 470, 130, 25);
 		add(heroButton4);
 		
 		
-		originDescriptionLabel = new JLabel(makeHTML(model.getOriginDescription(model.getOriginNames().get(0))));
+		originDescriptionLabel = new JLabel("");
 		originDescriptionLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		originDescriptionLabel.setVerticalAlignment(SwingConstants.TOP);
 		originDescriptionLabel.setBounds(200, 95, 240, 160);
 		add(originDescriptionLabel);
 		
-		heroDescriptionLabel = new JLabel(makeHTML(model.getHeroDescription(model.getHeroNames().get(0))));
+		heroDescriptionLabel = new JLabel("");
 		heroDescriptionLabel.setVerticalAlignment(SwingConstants.TOP);
 		heroDescriptionLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		heroDescriptionLabel.setBounds(200, 335, 240, 160);
 		add(heroDescriptionLabel);
 		
+		update();
+	}
+	
+	public void addOriginButtonsListener(ActionListener listener) {
+		originButton1.addActionListener(listener);
+		originButton2.addActionListener(listener);
+		originButton3.addActionListener(listener);
+		originButton4.addActionListener(listener);
+	}
+	
+	public void addHeroButtonsListener(ActionListener listener) {
+		heroButton1.addActionListener(listener);
+		heroButton2.addActionListener(listener);
+		heroButton3.addActionListener(listener);
+		heroButton4.addActionListener(listener);
+	}
+	
+	@Override
+	public void update() {
+		updateOriginButtons();
+		updateHeroButtons();
+		updateOriginDescription();
+		updateHeroDescription();
+		
+	}
+	
+	private void updateOriginButtons() {
+		updateOriginButtonBackground(originButton1);
+		updateOriginButtonBackground(originButton2);
+		updateOriginButtonBackground(originButton3);
+		updateOriginButtonBackground(originButton4);
+	}
+	
+	private void updateHeroButtons() {
+		updateHeroButtonBackground(heroButton1);
+		updateHeroButtonBackground(heroButton2);
+		updateHeroButtonBackground(heroButton3);
+		updateHeroButtonBackground(heroButton4);
+	}
+	
+	private void updateOriginButtonBackground(JButton button) {
+		button.setBackground(button.getText().equals(model.getSelectedOrigin()) ? Color.RED : null);
+	}
+	
+	private void updateHeroButtonBackground(JButton button) {
+		button.setBackground(button.getText().equals(model.getSelectedHero()) ? Color.RED : null);
+	}
+	
+	private void updateOriginDescription() {
+		originDescriptionLabel.setText(makeHTML(model.getAvailableChampions().getOriginDescription(model.getSelectedOrigin())));
+		
+	}
+
+	private void updateHeroDescription() {
+		heroDescriptionLabel.setText(makeHTML(model.getAvailableChampions().getHeroDescription(model.getSelectedHero())));		
 	}
 	
 	private String makeHTML(String text) {
 		return String.format("<html>%s</html>", text);
 	}
-	
-	private ActionListener originButton1Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetOriginButtons();
-			originButton1.setBackground(Color.RED);
-			originDescriptionLabel.setText(makeHTML(model.getOriginDescription(model.getOriginNames().get(0))));
-		}
-	};
-	
-	private ActionListener originButton2Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetOriginButtons();
-			originButton2.setBackground(Color.RED);
-			originDescriptionLabel.setText(makeHTML(model.getOriginDescription(model.getOriginNames().get(1))));
-		}
-	};
-	
-	private ActionListener originButton3Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetOriginButtons();
-			originButton3.setBackground(Color.RED);
-			originDescriptionLabel.setText(makeHTML(model.getOriginDescription(model.getOriginNames().get(2))));
-		}
-	};
-	
-	private ActionListener originButton4Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetOriginButtons();
-			originButton4.setBackground(Color.RED);
-			originDescriptionLabel.setText(makeHTML(model.getOriginDescription(model.getOriginNames().get(3))));
-		}
-	};
-	
-	private ActionListener heroButton1Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetHeroButtons();
-			heroButton1.setBackground(Color.RED);
-			heroDescriptionLabel.setText(makeHTML(model.getHeroDescription(model.getHeroNames().get(0))));
-		}
-	};
-	
-	private ActionListener heroButton2Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetHeroButtons();
-			heroButton2.setBackground(Color.RED);
-			heroDescriptionLabel.setText(makeHTML(model.getHeroDescription(model.getHeroNames().get(1))));
-		}
-	};
-	
-	private ActionListener heroButton3Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetHeroButtons();
-			heroButton3.setBackground(Color.RED);
-			heroDescriptionLabel.setText(makeHTML(model.getHeroDescription(model.getHeroNames().get(2))));
-		}
-	};
-	
-	private ActionListener heroButton4Listener = new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			resetHeroButtons();
-			heroButton4.setBackground(Color.RED);
-			heroDescriptionLabel.setText(makeHTML(model.getHeroDescription(model.getHeroNames().get(3))));
-		}
-	};
-	
-	private void resetOriginButtons() {
-		originButton1.setBackground(null);
-		originButton2.setBackground(null);
-		originButton3.setBackground(null);
-		originButton4.setBackground(null);
-	}
-	
-	private void resetHeroButtons() {
-		heroButton1.setBackground(null);
-		heroButton2.setBackground(null);
-		heroButton3.setBackground(null);
-		heroButton4.setBackground(null);
-	}
+
 }

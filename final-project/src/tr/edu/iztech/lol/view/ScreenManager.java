@@ -11,7 +11,9 @@ import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IDatabase;
 import tr.edu.iztech.lol.data.ISessionContainer;
 import tr.edu.iztech.lol.data.SessionContainer;
+import tr.edu.iztech.lol.model.ChampionSelectModel;
 import tr.edu.iztech.lol.model.Session;
+import tr.edu.iztech.lol.model.User;
 import tr.edu.iztech.lol.services.ChampionSelectService;
 import tr.edu.iztech.lol.services.IChampionSelectService;
 import tr.edu.iztech.lol.services.IUserService;
@@ -52,9 +54,17 @@ public class ScreenManager implements IScreenManager {
 
 	@Override
 	public void onChampionSelectPanelRequested() {
+		User user1 = sessionContainer.getSession().getUser1();
+		User user2 = sessionContainer.getSession().getUser2();
+		
 		IChampionSelectService service = new ChampionSelectService();
-		IChampionSelectController controller = new ChampionSelectController(this, service);
-		ChampionSelectPanel view = new ChampionSelectPanel(sessionContainer.getSession(), controller);
+		
+		ChampionSelectModel modelLeft = service.getAvailableChampions(user1).getResult();
+		ChampionSelectModel modelRight = service.getAvailableChampions(user2).getResult();
+		
+		ChampionSelectPanel view = new ChampionSelectPanel(modelLeft, modelRight);
+		
+		new ChampionSelectController(view, modelLeft, modelRight, this, service);
 		
 		window.setContent(view);
 	}
