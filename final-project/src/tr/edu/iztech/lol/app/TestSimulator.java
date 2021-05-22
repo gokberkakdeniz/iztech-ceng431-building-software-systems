@@ -1,15 +1,21 @@
 package tr.edu.iztech.lol.app;
 
+import java.util.Random;
+
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.hero.IState;
 import tr.edu.iztech.lol.model.Match;
+import tr.edu.iztech.lol.model.User;
+import tr.edu.iztech.lol.utils.ThreadUtils;
 
 public class TestSimulator {
 	private int order = 0;
 	private Match match;
+	private Random random;
 	
 	public TestSimulator(Match match) {
 		this.match = match;
+		this.random = new Random();
 	}
 	
 	public void run() {
@@ -19,24 +25,27 @@ public class TestSimulator {
 			IHero attacker = getAttacker();
 			IHero target = getTarget();
 			
-			System.out.printf("> %s -----> %s\n", attacker.getName(), target.getName());
-//			System.out.printf("  before attack => %s\n", target.getState());
+			User attackerUser = getAttackerUser();
+			User targetUser = getTargetUser();
 
 			IState damage = attacker.attack(target.getState());
 			IState defendedDamage = target.defend(damage);
 
 			target.setState(defendedDamage);
-//			System.out.printf("      after attack  => %s\n", damage);
-//			System.out.printf("      after defence => %s\n", defendedDamage);
-			System.out.printf("      %s => %s\n", defendedDamage, target.getState());
-//	        Random rand = new Random();
-//			ThreadUtils.wait(1000 + rand.nextInt(1500));
+			
+			match.addLog(String.format("%s deals %d damage to %s\n", attackerUser.getUsername(), defendedDamage.getDamageDealt(), targetUser.getUsername()));
+	        
+			waitRandomly();
 			next();
 		}
 		IHero winner = getWinner();
 		
 		System.out.printf("\n Winner => %s\n", winner);
 
+	}
+	
+	private void waitRandomly() {
+		ThreadUtils.wait(1000 + random.nextInt(1500));
 	}
 	
 	private IHero getWinner() {
@@ -51,6 +60,14 @@ public class TestSimulator {
 	
 	private IHero getTarget() {
 		return order == 1 ? match.getHeroRight() : match.getHeroLeft();
+	}
+	
+	private User getAttackerUser() {
+		return order == 0 ? match.getUserLeft() : match.getUserRight();
+	}
+	
+	private User getTargetUser() {
+		return order == 1 ? match.getUserRight() : match.getUserLeft();
 	}
 	
 	private void next() {
