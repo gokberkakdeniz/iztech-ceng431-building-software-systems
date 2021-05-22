@@ -19,7 +19,7 @@ public class TestSimulator {
 	}
 	
 	public void run() {
-		reset();
+    	reset();
 		
 		while (!isFinished()) {
 			IHero attacker = getAttacker();
@@ -32,6 +32,7 @@ public class TestSimulator {
 			IState defendedDamage = target.defend(damage);
 
 			target.setState(defendedDamage);
+			match.notifySubscribers();
 			
 			match.addLog(String.format("%s deals %d damage to %s\n", attackerUser.getUsername(), defendedDamage.getDamageDealt(), targetUser.getUsername()));
 	        
@@ -41,9 +42,8 @@ public class TestSimulator {
 		IHero winner = getWinner();
 		
 		System.out.printf("\n Winner => %s\n", winner);
-
 	}
-	
+			
 	private void waitRandomly() {
 		ThreadUtils.wait(1000 + random.nextInt(1500));
 	}

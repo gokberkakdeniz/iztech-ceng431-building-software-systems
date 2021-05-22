@@ -37,8 +37,14 @@ public class ChampionFightService implements IChampionFightService {
 	}
 	
 	public void startMatch(Match match) {
-		TestSimulator simulator = new TestSimulator(match);
-		simulator.run();
+		Runnable r = new Runnable() {
+			public void run() {
+				TestSimulator simulator = new TestSimulator(match);
+				simulator.run();
+			}
+		};
+		
+		(new Thread(r)).start();
 	}
 	
 	private IHero createHero(String originName, String heroName) {
