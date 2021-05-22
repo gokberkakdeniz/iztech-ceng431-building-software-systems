@@ -18,7 +18,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel, IObserver<ChampionSelectModel> {
+public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private ChampionSelectComponent left;
 	private ChampionSelectComponent right;

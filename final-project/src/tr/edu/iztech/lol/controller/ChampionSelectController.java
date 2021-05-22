@@ -10,20 +10,19 @@ import tr.edu.iztech.lol.model.User;
 import tr.edu.iztech.lol.services.IChampionSelectService;
 import tr.edu.iztech.lol.view.IScreenManager;
 import tr.edu.iztech.lol.view.screen.ChampionSelectPanel;
+import tr.edu.iztech.lol.view.screen.IChampionSelectPanel;
 
 public class ChampionSelectController implements IChampionSelectController {
 	private IScreenManager screenManager;
-	private IChampionSelectService championSelectService;
 	private ChampionSelectModel modelLeft;
 	private ChampionSelectModel modelRight;
-	private ChampionSelectPanel view;
+	private IChampionSelectPanel view;
 
-	public ChampionSelectController(ChampionSelectPanel view, ChampionSelectModel modelLeft, ChampionSelectModel modelRight, IScreenManager screenManager, IChampionSelectService championSelectService) {
+	public ChampionSelectController(IChampionSelectPanel view, ChampionSelectModel modelLeft, ChampionSelectModel modelRight, IScreenManager screenManager) {
 		this.view = view;
 		this.modelLeft = modelLeft;
 		this.modelRight = modelRight;
 				
-		this.championSelectService = championSelectService;
 		this.screenManager = screenManager;
 		
 		this.view.addLeftChampionSelectPanelOriginButtonsListener(leftOriginButtonsListener);
@@ -74,4 +73,10 @@ public class ChampionSelectController implements IChampionSelectController {
 			screenManager.onChampionSelectDone(modelLeft, modelRight);
 		}
 	};
+
+	@Override
+	public void destroy() {
+		modelLeft.unsubscribe(view);
+		modelRight.unsubscribe(view);		
+	}
 }

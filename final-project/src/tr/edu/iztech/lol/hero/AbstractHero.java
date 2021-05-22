@@ -20,6 +20,11 @@ public abstract class AbstractHero implements IHero {
 		return state.getHealthPoint();
 	}
 	
+	@Override
+	public int getHealthPercentage() {
+		return (int) ((100.0 * state.getHealthPoint()) / state.getInitialHealthPoint());
+	}
+	
 	public void setHealtPoint(int healthPoint) {
 		this.state.setHealthPoint(healthPoint);
 	}

@@ -8,19 +8,27 @@ import java.awt.ComponentOrientation;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import tr.edu.iztech.lol.hero.IHero;
+import tr.edu.iztech.lol.model.User;
+
 public class ChampionFightComponent extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
-
-	public ChampionFightComponent() {		
-		this(false)	;
+	private JProgressBar progressBar;
+	private IHero hero;
+	private User user;
+	
+	public ChampionFightComponent(User user, IHero hero) {		
+		this(user, hero, false);
 	}
 	
-	public ChampionFightComponent(boolean rightToLeft) {		
+	public ChampionFightComponent(User user, IHero hero, boolean rightToLeft) {
+		this.user = user;
+		this.hero = hero;
+		
 		setLayout(null);
 		setBounds(0,0, 480, 430);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setValue(40);
+		progressBar = new JProgressBar();
 		progressBar.setBounds(10, 50, 458, 25);
 		add(progressBar);
 		
@@ -30,8 +38,12 @@ public class ChampionFightComponent extends JPanel {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Noto Sans CJK SC Light", Font.BOLD, 20));
 		lblNewLabel.setBounds(0, 15, 480, 25);
-		add(lblNewLabel);	
+		add(lblNewLabel);
+		
+		update();
 	}
 	
-
+	public void update() {
+		progressBar.setValue(hero.getHealthPercentage());
+	}
 }

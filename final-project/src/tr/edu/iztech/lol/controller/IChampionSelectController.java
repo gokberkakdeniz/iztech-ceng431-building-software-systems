@@ -1,4 +1,4 @@
 package tr.edu.iztech.lol.controller;
 
-public interface IChampionSelectController {
+public interface IChampionSelectController extends IController {
 }

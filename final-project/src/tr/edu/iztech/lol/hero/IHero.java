@@ -8,6 +8,7 @@ public interface IHero {
 	String getName();
 	
 	int getHealthPoint();
+	int getHealthPercentage();
 	
 	void setState(IState newState);
 	
