@@ -10,7 +10,7 @@ public class Database implements IDatabase {
 	private final IRepository<MatchRecord> matchRecordRepository;
 	private final IRepository<User> userRepository;
 	private final IRepository<String> descriptionRepository;
-	private static File matchRecordsFile = new File("match_records.json");
+	private static File matchRecordsFile = new File("matchRecords.json");
 	private static File usersFile = new File("users.json");
 	
 	private Database() {

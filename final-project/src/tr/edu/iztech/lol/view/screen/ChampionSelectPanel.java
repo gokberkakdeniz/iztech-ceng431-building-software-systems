@@ -12,6 +12,8 @@ import tr.edu.iztech.lol.model.Session;
 import tr.edu.iztech.lol.view.component.ChampionSelectComponent;
 
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
@@ -31,7 +33,7 @@ public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel 
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setForeground(Color.DARK_GRAY);
 		separator.setBackground(Color.DARK_GRAY);
-		separator.setBounds(480, 0, 1, 720);
+		separator.setBounds(480, 0, 1, 550);
 		add(separator);
 		
 		ChampionSelectComponent user1 = new ChampionSelectComponent(session.getUser1(), model1);
@@ -41,5 +43,9 @@ public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel 
 		ChampionSelectComponent user2 = new ChampionSelectComponent(session.getUser2(), model2);
 		user2.setBounds(480,0, 480, 720);		
 		add(user2);
+		
+		JButton loginButton = new JButton("Start");
+		loginButton.setBounds(331, 585, 300, 47);
+		add(loginButton);
 	}
 }

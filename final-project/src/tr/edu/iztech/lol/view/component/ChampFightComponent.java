@@ -22,7 +22,7 @@ public class ChampFightComponent extends JPanel {
 		
 		progressBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
-		JLabel lblNewLabel = new JLabel("Anne Sikici 31's Nunu");
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Noto Sans CJK SC Light", Font.BOLD, 20));
 		lblNewLabel.setBounds(0, 15, 480, 25);
