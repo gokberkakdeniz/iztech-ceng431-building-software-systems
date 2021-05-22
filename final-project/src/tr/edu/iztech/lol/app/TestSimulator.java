@@ -2,15 +2,14 @@ package tr.edu.iztech.lol.app;
 
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.hero.IState;
+import tr.edu.iztech.lol.model.Match;
 
 public class TestSimulator {
-	private IHero hero1;
-	private IHero hero2;
 	private int order = 0;
+	private Match match;
 	
-	public TestSimulator(IHero hero1, IHero hero2) {
-		this.hero1 = hero1;
-		this.hero2 = hero2;
+	public TestSimulator(Match match) {
+		this.match = match;
 	}
 	
 	public void run() {
@@ -43,15 +42,15 @@ public class TestSimulator {
 	private IHero getWinner() {
 		if (!isFinished()) return null;
 		
-		return hero1.getHealthPoint() > 0 ? hero1 : hero2;
+		return match.getHeroLeft().getHealthPoint() > 0 ? match.getHeroLeft() : match.getHeroRight();
 	}
 	
 	private IHero getAttacker() {
-		return order == 0 ? hero1 : hero2;
+		return order == 0 ? match.getHeroLeft() : match.getHeroRight();
 	}
 	
 	private IHero getTarget() {
-		return order == 1 ? hero1 : hero2;
+		return order == 1 ? match.getHeroRight() : match.getHeroLeft();
 	}
 	
 	private void next() {
@@ -63,6 +62,6 @@ public class TestSimulator {
 	}
 	
 	private boolean isFinished() {
-		return hero1.getHealthPoint() <= 0 || hero2.getHealthPoint() <= 0;
+		return match.getHeroLeft().getHealthPoint() <= 0 || match.getHeroRight().getHealthPoint() <= 0;
 	}
 }
