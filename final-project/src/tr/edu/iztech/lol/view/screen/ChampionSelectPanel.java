@@ -16,11 +16,13 @@ import javax.swing.JSeparator;
 public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private IChampionSelectController controller;
-	private AvailableChampionsModel model;
+	private AvailableChampionsModel model1;
+	private AvailableChampionsModel model2;
 	
 	public ChampionSelectPanel(Session session, IChampionSelectController controller) {
 		this.controller = controller;
-		this.model = controller.getModel();
+		this.model1 = controller.getModel();
+		this.model2 = controller.getModel();
 		
 		setLayout(null);
 		setBounds(0,0, 960, 720);
@@ -32,11 +34,11 @@ public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel 
 		separator.setBounds(480, 0, 1, 720);
 		add(separator);
 		
-		ChampionSelectComponent user1 = new ChampionSelectComponent(session.getUser1(), model);
+		ChampionSelectComponent user1 = new ChampionSelectComponent(session.getUser1(), model1);
 		user1.setBounds(0,0, 480, 720);
 		add(user1);
 		
-		ChampionSelectComponent user2 = new ChampionSelectComponent(session.getUser2(), model);
+		ChampionSelectComponent user2 = new ChampionSelectComponent(session.getUser2(), model2);
 		user2.setBounds(480,0, 480, 720);		
 		add(user2);
 	}

@@ -16,6 +16,6 @@ public class ChampionSelectController implements IChampionSelectController {
 	}
 	
 	public AvailableChampionsModel getModel() {
-		return championSelectService.getAvailableChampions(4);
+		return championSelectService.getAvailableChampions(4).getResult();
 	}
 }

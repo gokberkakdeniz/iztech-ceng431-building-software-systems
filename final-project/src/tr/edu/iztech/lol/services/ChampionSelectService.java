@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IRepository;
+import tr.edu.iztech.lol.exception.NeverOccuredException;
 import tr.edu.iztech.lol.hero.Assassin;
 import tr.edu.iztech.lol.hero.Cavalier;
 import tr.edu.iztech.lol.hero.Demolitionist;
@@ -44,7 +45,7 @@ public class ChampionSelectService implements IChampionSelectService {
 	}
 	
 	@Override
-	public AvailableChampionsModel getAvailableChampions(int size) {
+	public IResponse<AvailableChampionsModel, NeverOccuredException> getAvailableChampions(int size) {
 		AvailableChampionsModel model = new AvailableChampionsModel();
 		
 		List<String> heros = heroClasses.subList(0, size).stream().map(Class::getSimpleName).collect(Collectors.toList());
@@ -53,6 +54,7 @@ public class ChampionSelectService implements IChampionSelectService {
 		heros.forEach(name -> model.addHero(name, descriptionRepository.get(name).get()));
 		origins.forEach(name -> model.addOrigin(name, descriptionRepository.get(name).get()));
 		
-		return model;
+		return new Response<>(model);
 	}
+	
 }
