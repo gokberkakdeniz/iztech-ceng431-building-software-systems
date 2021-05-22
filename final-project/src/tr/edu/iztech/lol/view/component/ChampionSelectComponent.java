@@ -11,9 +11,10 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import tr.edu.iztech.lol.model.AvailableChampionsModel;
 import tr.edu.iztech.lol.model.User;
 
-public class ChampSelectComponent extends JPanel {
+public class ChampionSelectComponent extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private JButton originButton1;
 	private JButton originButton2;
@@ -23,8 +24,15 @@ public class ChampSelectComponent extends JPanel {
 	private JButton heroButton2;
 	private JButton heroButton3;
 	private JButton heroButton4;
+	private JLabel originDescriptionLabel;
+	private JLabel heroDescriptionLabel;
+	private AvailableChampionsModel model;
 	
-	public ChampSelectComponent(User user, List<String> heroNames, List<String> originNames) {
+	public ChampionSelectComponent(User user, AvailableChampionsModel model) {
+		this.model = model;
+		List<String> heroNames = model.getHeroNames();
+		List<String> originNames = model.getOriginNames();
+		
 		setLayout(null);
 		setBounds(0,0, 480, 720);
 		
@@ -89,14 +97,14 @@ public class ChampSelectComponent extends JPanel {
 		add(heroButton4);
 		
 		
-		JLabel originDescriptionLabel = new JLabel(String.format("<html>%s</html>"
+		originDescriptionLabel = new JLabel(String.format("<html>%s</html>"
 				,"a kaşlskg şl askgşls kfgş laskf gşlak sfşga fhşl adfmh şladfa sfgaşlfkg şladkfgşl akfgşlk adfşglka dşlkmh şladm fhşladm hşaafd hgad"));
 		originDescriptionLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		originDescriptionLabel.setVerticalAlignment(SwingConstants.TOP);
 		originDescriptionLabel.setBounds(200, 95, 240, 160);
 		add(originDescriptionLabel);
 		
-		JLabel heroDescriptionLabel = new JLabel("<html>fşdalgj kaşlskg şl askgşls kfgş laskf gşlak sfşga fhşl adfmh şladfa sfgaşlfkg şladkfgşl akfgşlk adfşglka dşlkmh şladm fhşladm hşaafd hgad</html>");
+		heroDescriptionLabel = new JLabel("<html>fşdalgj kaşlskg şl askgşls kfgş laskf gşlak sfşga fhşl adfmh şladfa sfgaşlfkg şladkfgşl akfgşlk adfşglka dşlkmh şladm fhşladm hşaafd hgad</html>");
 		heroDescriptionLabel.setVerticalAlignment(SwingConstants.TOP);
 		heroDescriptionLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		heroDescriptionLabel.setBounds(200, 335, 240, 160);
@@ -109,6 +117,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetOriginButtons();
 			originButton1.setBackground(Color.RED);
+			originDescriptionLabel.setText(model.getOriginDescription(model.getOriginNames().get(0)));
 		}
 	};
 	
@@ -117,6 +126,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetOriginButtons();
 			originButton2.setBackground(Color.RED);
+			originDescriptionLabel.setText(model.getOriginDescription(model.getOriginNames().get(1)));
 		}
 	};
 	
@@ -125,6 +135,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetOriginButtons();
 			originButton3.setBackground(Color.RED);
+			originDescriptionLabel.setText(model.getOriginDescription(model.getOriginNames().get(2)));
 		}
 	};
 	
@@ -133,6 +144,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetOriginButtons();
 			originButton4.setBackground(Color.RED);
+			originDescriptionLabel.setText(model.getOriginDescription(model.getOriginNames().get(3)));
 		}
 	};
 	
@@ -141,6 +153,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetHeroButtons();
 			heroButton1.setBackground(Color.RED);
+			heroDescriptionLabel.setText(model.getHeroDescription(model.getHeroNames().get(0)));
 		}
 	};
 	
@@ -149,6 +162,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetHeroButtons();
 			heroButton2.setBackground(Color.RED);
+			heroDescriptionLabel.setText(model.getHeroDescription(model.getHeroNames().get(1)));
 		}
 	};
 	
@@ -157,6 +171,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetHeroButtons();
 			heroButton3.setBackground(Color.RED);
+			heroDescriptionLabel.setText(model.getHeroDescription(model.getHeroNames().get(2)));
 		}
 	};
 	
@@ -165,6 +180,7 @@ public class ChampSelectComponent extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			resetHeroButtons();
 			heroButton4.setBackground(Color.RED);
+			heroDescriptionLabel.setText(model.getHeroDescription(model.getHeroNames().get(3)));
 		}
 	};
 	

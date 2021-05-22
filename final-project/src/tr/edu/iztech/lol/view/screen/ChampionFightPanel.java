@@ -6,10 +6,10 @@ import tr.edu.iztech.lol.view.component.ChampFightComponent;
 
 import javax.swing.JSeparator;
 
-public class ChampFightPanel extends JPanel {
+public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 
-	public ChampFightPanel() {		
+	public ChampionFightPanel() {		
 		setLayout(null);
 		setBounds(0,0, 960, 720);
 		

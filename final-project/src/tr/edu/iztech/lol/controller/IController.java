@@ -1,4 +1,4 @@
-package tr.edu.iztech.lol.controllers;
+package tr.edu.iztech.lol.controller;
 
 /**
  * Generic MVC Controller 

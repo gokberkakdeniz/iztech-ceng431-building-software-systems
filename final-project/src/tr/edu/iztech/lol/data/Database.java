@@ -9,6 +9,7 @@ public class Database implements IDatabase {
 	private static IDatabase instance;
 	private final IRepository<MatchRecord> matchRecordRepository;
 	private final IRepository<User> userRepository;
+	private final IRepository<String> descriptionRepository;
 	private static File matchRecordsFile = new File("match_records.json");
 	private static File usersFile = new File("users.json");
 	
@@ -20,6 +21,8 @@ public class Database implements IDatabase {
 		IDataLoader<User> userLoader = new UserLoader(usersFile);
 		IDataSaver<User> userSaver = new UserSaver(usersFile);
 		userRepository = new UserRepository(userLoader, userSaver);
+		
+		descriptionRepository = new DescriptionRepository();
 	}
 	
 	public static IDatabase getInstance() {
@@ -38,6 +41,11 @@ public class Database implements IDatabase {
 	@Override
 	public IRepository<User> getUserRepository() {
 		return this.userRepository;
+	}
+
+	@Override
+	public IRepository<String> getDescriptionRepository() {
+		return this.descriptionRepository;
 	}
 
 }

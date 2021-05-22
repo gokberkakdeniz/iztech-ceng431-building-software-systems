@@ -11,7 +11,7 @@ import tr.edu.iztech.lol.model.IModel;
  *
  * @param <T> model
  */
-public interface IRepository<T extends IModel> {
+public interface IRepository<T> {
 	/**
 	 * Get model by id
 	 * 

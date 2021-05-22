@@ -1,8 +1,6 @@
 package tr.edu.iztech.lol.services;
 
-import tr.edu.iztech.lol.exception.IServiceException;
-
-public class Response<T, E extends IServiceException> implements IResponse<T, E> {
+public class Response<T, E extends Exception> implements IResponse<T, E> {
 	private final boolean ok;
 	private final T result;
 	private final E throwable;

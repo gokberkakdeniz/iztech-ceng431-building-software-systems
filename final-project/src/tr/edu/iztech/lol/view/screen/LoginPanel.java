@@ -9,20 +9,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-import tr.edu.iztech.lol.controllers.ILoginController;
+import tr.edu.iztech.lol.controller.ILoginController;
+
 import javax.swing.JSeparator;
 
-public class LoginPanel extends JPanel {
+public class LoginPanel extends JPanel implements ILoginPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private final JLabel username1Label;
 	private final JTextField username2Input;
 	private final JTextField username1Input;
+	private final JButton loginButton;
+	private final JLabel messageLabel;
 	
-	private ILoginController loginController;
-	
-	public LoginPanel(ILoginController loginController) {
-		this.loginController = loginController;
-		
+	public LoginPanel() {
 		setLayout(null);
 		setBounds(0,0, 960, 720);
 		
@@ -44,24 +43,45 @@ public class LoginPanel extends JPanel {
 		username2Input.setBounds(620, 170, 200, 20);
 		add(username2Input);
 		
-		JButton loginButton = new JButton("Start");
-		loginButton.setBounds(330, 600, 300, 25);
-		loginButton.addActionListener(loginButtonListener);
+		loginButton = new JButton("Start");
+		loginButton.setBounds(331, 585, 300, 47);
 		add(loginButton);
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setForeground(Color.DARK_GRAY);
 		separator.setBackground(Color.DARK_GRAY);
-		separator.setBounds(480, 0, 1, 600);
+		separator.setBounds(480, 0, 1, 550);
 		add(separator);
+		
+		messageLabel = new JLabel("");
+		messageLabel.setForeground(Color.RED);
+		messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		messageLabel.setBounds(165, 558, 655, 15);
+		add(messageLabel);
 		
 	}
 	
-	private ActionListener loginButtonListener = new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-        	loginController.login(username1Input.getText(), username2Input.getText());
-        }
-    };
-  
+	@Override
+	public String getFirstUsername() {
+		return username1Input.getText();
+	}
+	
+	@Override
+	public String getSecondUsername() {
+		return username2Input.getText();
+	}
+	
+	public void showError(String message) {
+		messageLabel.setText(message);
+	}
+	
+	public void hideError() {
+		messageLabel.setText("");
+	}
+
+	@Override
+	public void addLoginButtonListener(ActionListener listener) {
+		loginButton.addActionListener(listener);
+	}
 }
