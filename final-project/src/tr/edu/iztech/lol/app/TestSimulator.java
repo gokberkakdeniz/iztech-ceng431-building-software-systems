@@ -21,7 +21,7 @@ public class TestSimulator {
 	public void run() {
     	reset();
 		
-		while (!isFinished()) {
+		while (!match.isFinished()) {
 			IHero attacker = getAttacker();
 			IHero target = getTarget();
 			
@@ -39,7 +39,7 @@ public class TestSimulator {
 			waitRandomly();
 			next();
 		}
-		IHero winner = getWinner();
+		IHero winner = match.getWinner();
 		
 		System.out.printf("\n Winner => %s\n", winner);
 	}
@@ -47,13 +47,7 @@ public class TestSimulator {
 	private void waitRandomly() {
 		ThreadUtils.wait(1000 + random.nextInt(1500));
 	}
-	
-	private IHero getWinner() {
-		if (!isFinished()) return null;
-		
-		return match.getHeroLeft().getHealthPoint() > 0 ? match.getHeroLeft() : match.getHeroRight();
-	}
-	
+
 	private IHero getAttacker() {
 		return order == 0 ? match.getHeroLeft() : match.getHeroRight();
 	}
@@ -76,9 +70,5 @@ public class TestSimulator {
 	
 	private void reset() {
 		order = 0;
-	}
-	
-	private boolean isFinished() {
-		return match.getHeroLeft().getHealthPoint() <= 0 || match.getHeroRight().getHealthPoint() <= 0;
 	}
 }

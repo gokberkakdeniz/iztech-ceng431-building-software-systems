@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.util.List;
 
 import tr.edu.iztech.lol.model.Match;
@@ -17,6 +18,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.BoxLayout;
+import javax.swing.border.LineBorder;
 
 public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
@@ -39,11 +45,11 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 
 		
 		fightLeft = new ChampionFightComponent(model.getUserLeft(), model.getHeroLeft());
-		fightLeft.setBounds(0,0, 480, 430);
+		fightLeft.setBounds(0,0, 480, 237);
 		add(fightLeft);
 		
 		figthRight = new ChampionFightComponent(model.getUserRight(), model.getHeroRight(), true);
-		figthRight.setBounds(480,0, 480, 430);
+		figthRight.setBounds(480,0, 480, 237);
 		add(figthRight);
 		
 //		JScrollPane listScroller = new JScrollPane();
@@ -79,5 +85,29 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 		
 		fightLeft.update();
 		figthRight.update();
+		
+		if (model.isFinished()) {
+			renderWinner();
+		}
 	}
+	
+	private void renderWinner() {
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(164, 267, 698, 76);
+		add(panel);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		
+		JLabel lblWinner = new JLabel("WINNER!");
+		panel.add(lblWinner);
+		lblWinner.setFont(new Font("Dialog", Font.BOLD, 34));
+		lblWinner.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		JLabel lblUsername = new JLabel(model.getWinnerUser().getUsername());
+		panel.add(lblUsername);
+		lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsername.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblUsername.setFont(new Font("Dialog", Font.BOLD, 24));
+	}
+
 }

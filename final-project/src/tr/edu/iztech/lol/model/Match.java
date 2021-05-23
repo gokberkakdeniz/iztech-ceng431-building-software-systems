@@ -47,4 +47,21 @@ public class Match extends AbstractObservable<Match> implements IModel<Match> {
 		this.logs.add(log);
 		notifySubscribers();
 	}
+	
+	public boolean isFinished() {
+		return getHeroLeft().getHealthPoint() <= 0 || getHeroRight().getHealthPoint() <= 0;
+	}
+	
+	public IHero getWinner() {
+		if (!isFinished()) return null;
+		
+		return getHeroLeft().getHealthPoint() > 0 ? getHeroLeft() : getHeroRight();
+	}
+	
+	public User getWinnerUser() {
+		if (!isFinished()) return null;
+		
+		return getHeroLeft().getHealthPoint() > 0 ? getUserLeft() : getUserRight();
+	}
+	
 }

@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 
+import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -36,6 +37,7 @@ public class ChampionFightComponent extends JPanel {
 		setBounds(0,0, 480, 430);
 		
 		progressBar = new JProgressBar();
+		progressBar.setForeground(Color.GREEN);
 		progressBar.setBounds(10, 50, 460, 25);
 		add(progressBar);
 		
@@ -72,7 +74,17 @@ public class ChampionFightComponent extends JPanel {
 	}
 	
 	public void update() {
-		progressBar.setValue(hero.getHealthPercentage());
+		int hp = hero.getHealthPercentage();
+		progressBar.setValue(hp);
+		
+		if (hp < 30) {
+			progressBar.setForeground(Color.RED);
+		} else if (hp < 50) {
+			progressBar.setForeground(Color.ORANGE);
+		} else if (hp < 70) {
+			progressBar.setForeground(Color.YELLOW);
+		} 
+		
 		healthLabel.setText(String.format("Health Point: %d", hero.getHealthPoint()));
 		attackDamageLabel.setText(String.format("Attack Damage: %d", hero.getState().getAttackDamage()));
 		criticalChanceLabel.setText(String.format("Critical Chance: %.2f", hero.getState().getCriticalChance()));
