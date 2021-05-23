@@ -37,6 +37,8 @@ public class UserService implements IUserService {
 			userRepository.add(user2);
 		}
 		
+		userRepository.save();
+		
 		return new Response<>(new Session(user1, user2));
 	}
 }

@@ -1,9 +1,12 @@
 package tr.edu.iztech.lol.services;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IRepository;
+import tr.edu.iztech.lol.exception.NeverOccuredException;
 import tr.edu.iztech.lol.model.MatchRecord;
 import tr.edu.iztech.lol.model.MatchRecordsModel;
 import tr.edu.iztech.lol.model.TopWinnersModel;
@@ -16,28 +19,32 @@ public class StatisticsService implements IStatisticsService{
 
 	public StatisticsService() {}
 	
-	public MatchRecordsModel getMatchRecordsModel() {
+	public IResponse<MatchRecordsModel, NeverOccuredException> getMatchRecordsModel() {
 		MatchRecordsModel matchRecordsModel = new MatchRecordsModel();
 		List<MatchRecord> records = matchRecordRepository.getAll();
 		
 		matchRecordsModel.setMatchRecords(records);
 		
-		return matchRecordsModel;
+		return new Response<>(matchRecordsModel);
 	}
 	
 	
-	public TopWinnersModel getTopWinnersModel() {
-		TopWinnersModel topWinnersModel = new TopWinnersModel();
-		for(User user: userRepository.getAll()) {
-			topWinnersModel.addWinner(user);
-		}
-		return topWinnersModel;
+	public IResponse<TopWinnersModel, NeverOccuredException> getTopWinnersModel() {
+		List<User> users = userRepository.getAll().stream()
+								.sorted(Comparator.comparing(User::getWinRate).reversed())
+								.collect(Collectors.toList());
+		List<User> topWinners = users.subList(0, Math.min(10, users.size()));
+		
+		return new Response<>(new TopWinnersModel(topWinners));
 	}
 	
-	public List<MatchRecord> getMatchRecords(String username) {
-		return matchRecordRepository.getAll(user -> username.equals(user.getWinner().getUsername()) ||
-													username.equals(user.getLoser().getUsername()));
-
+	public IResponse<List<MatchRecord>, NeverOccuredException>  getMatchRecords(String username) {
+		return new Response<>(matchRecordRepository
+								.getAll(user -> username.equals(user.getWinner().getUsername()) ||
+												username.equals(user.getLoser().getUsername()))
+								.stream()
+								.sorted(Comparator.comparing(MatchRecord::getId).reversed())
+								.collect(Collectors.toList()));
 	}
 	
 	

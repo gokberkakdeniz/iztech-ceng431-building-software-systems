@@ -33,6 +33,8 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 	private JButton statisticsButton;
 	private JLabel lblUsername;
 	private JPanel panel;
+	private JButton btnLoginPage;
+	private JButton btnPlayAgain;
 	
 	public ChampionFightPanel(Match model) {
 		this.model = model;
@@ -69,7 +71,7 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 		panel = new JPanel();
 		panel.setVisible(false);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(220, 270, 440, 120);
+		panel.setBounds(260, 270, 440, 120);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -91,11 +93,11 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 		statisticsButton.setBounds(300, 85, 120, 25);
 		panel.add(statisticsButton);
 		
-		JButton btnLoginPage = new JButton("Login Page");
+		btnLoginPage = new JButton("Login Page");
 		btnLoginPage.setBounds(20, 85, 120, 25);
 		panel.add(btnLoginPage);
 		
-		JButton btnPlayAgain = new JButton("Play Again");
+		btnPlayAgain = new JButton("Play Again");
 		btnPlayAgain.setBounds(160, 85, 115, 25);
 		panel.add(btnPlayAgain);
 }
@@ -119,4 +121,14 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 
 	public void addStatisticsButtonListener(ActionListener listener) {
 		statisticsButton.addActionListener(listener);
-	}}
+	}
+	
+	public void addLoginPageButtonListener(ActionListener listener) {
+		btnLoginPage.addActionListener(listener);
+	}
+	
+	public void addPlayAgainButtonListener(ActionListener listener) {
+		btnPlayAgain.addActionListener(listener);
+	}
+	
+}

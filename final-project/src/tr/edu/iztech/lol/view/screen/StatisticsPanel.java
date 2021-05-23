@@ -12,13 +12,12 @@ import tr.edu.iztech.lol.view.component.TopWinnersComponent;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class StatisticsPanel extends JPanel implements IStatisticsPanel {
 	private static final long serialVersionUID = 5232814325896059657L;
 	private TopWinnersComponent topWinners;
 	private MatchRecordsComponent matchRecords;
-	private JButton btnNewButton;
+	private JButton goLoginButton;
 
 	public StatisticsPanel(TopWinnersModel topWinnersModel, MatchRecordsModel matchRecordsModel) {
 		setLayout(null);
@@ -40,13 +39,9 @@ public class StatisticsPanel extends JPanel implements IStatisticsPanel {
 		add(topWinners);
 		add(matchRecords);		
 		
-		btnNewButton = new JButton("Go Back");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(400, 640, 160, 25);
-		add(btnNewButton);
+		goLoginButton = new JButton("Go Login");
+		goLoginButton.setBounds(400, 640, 160, 25);
+		add(goLoginButton);
 	}
 	
 	public TopWinnersComponent getTopWinnersComponent() {
@@ -55,5 +50,10 @@ public class StatisticsPanel extends JPanel implements IStatisticsPanel {
 
 	public MatchRecordsComponent getMatchRecordsComponent() {
 		return matchRecords;
+	}
+	
+	@Override
+	public void addGoLoginButtonListener(ActionListener listener) {
+		goLoginButton.addActionListener(listener);
 	}
 }

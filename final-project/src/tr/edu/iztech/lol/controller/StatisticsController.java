@@ -8,24 +8,26 @@ import tr.edu.iztech.lol.model.MatchRecord;
 import tr.edu.iztech.lol.model.MatchRecordsModel;
 import tr.edu.iztech.lol.model.TopWinnersModel;
 import tr.edu.iztech.lol.services.IStatisticsService;
+import tr.edu.iztech.lol.view.IScreenManager;
 import tr.edu.iztech.lol.view.screen.IStatisticsPanel;
 
-public class StatisticsController implements IChampionFightController {
+public class StatisticsController implements IStatisticsController {
 	private IStatisticsPanel view;
 	private TopWinnersModel topWinnersModel;
 	private MatchRecordsModel matchRecordsModel;
 	private IStatisticsService statisticsService;
+	private IScreenManager screenManager;
 	
-	/**
-	 * @wbp.parser.entryPoint
-	 */
-	public StatisticsController(IStatisticsPanel view, TopWinnersModel topWinnersModel, MatchRecordsModel matchRecordsModel, IStatisticsService statisticsService) {
+	public StatisticsController(IStatisticsPanel view, TopWinnersModel topWinnersModel, MatchRecordsModel matchRecordsModel, 
+								IStatisticsService statisticsService, IScreenManager screenManager) {
+		this.screenManager = screenManager;
 		this.topWinnersModel = topWinnersModel;
 		this.matchRecordsModel = matchRecordsModel;
 		this.statisticsService = statisticsService;
 		this.view = view;
 		
 		this.view.getMatchRecordsComponent().addSearchButtonListener(searchButtonListener);
+		this.view.addGoLoginButtonListener(goLoginButtonListener);
 		topWinnersModel.subscribe(view.getTopWinnersComponent());
 		matchRecordsModel.subscribe(view.getMatchRecordsComponent());
 	}
@@ -40,10 +42,16 @@ public class StatisticsController implements IChampionFightController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String username = view.getMatchRecordsComponent().getUsernameInput();
-			List<MatchRecord> records = statisticsService.getMatchRecords(username);
+			List<MatchRecord> records = statisticsService.getMatchRecords(username).getResult();
 			matchRecordsModel.setMatchRecords(records);
 		}
 	};
 
-	
+	private ActionListener goLoginButtonListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			screenManager.onLogoutRequested();
+		}
+	};
+
 }

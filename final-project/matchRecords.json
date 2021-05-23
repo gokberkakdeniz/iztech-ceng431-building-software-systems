@@ -1006,5 +1006,1085 @@
       "heroName": "Lightbringer Sorcerer",
       "username": "user1"
     }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 50,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    },
+    "id": 1621795575799,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "user1"
+    }
+  },
+  {
+    "attackCount": 3,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 55,
+        "criticalChance": 0.3,
+        "initialHealth": 750,
+        "attackDamage": 120
+      },
+      "heroName": "Trickster Assassin",
+      "username": "user1"
+    },
+    "id": 1621795858465,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.5488,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 17,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 489,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 34
+      },
+      "heroName": "Ironclad Demolitionist",
+      "username": "user1"
+    },
+    "id": 1621795884191,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 121
+      },
+      "heroName": "Lightbringer Sorcerer",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 9,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 44,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "user1"
+    },
+    "id": 1621795895881,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": -24,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 255,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "user1"
+    },
+    "id": 1621795898804,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 16,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    },
+    "id": 1621795906095,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 2,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 860,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Demolitionist",
+      "username": "user1"
+    },
+    "id": 1621795912458,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.3,
+        "initialHealth": 750,
+        "attackDamage": 120
+      },
+      "heroName": "Trickster Assassin",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 385,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "user1"
+    },
+    "id": 1621795919125,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Demolitionist",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 7,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 125,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    },
+    "id": 1621795923174,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 211,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    },
+    "id": 1621795930631,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 190,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "user1"
+    },
+    "id": 1621795935845,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 250,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621795971955,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 125,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621795973847,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Demolitionist",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 389,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795975107,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 7,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 320,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621795976371,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 211,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Ranger",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795977524,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 613,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795982092,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": -20,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 477,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795983148,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Demolitionist",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 55,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795984170,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 7,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 18,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621795985639,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 185,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795986709,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 190,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621795988418,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Demolitionist",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 65,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621795990186,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 282,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621795991515,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 801,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Demolitionist",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795992767,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 55,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795993884,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 1,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 685,
+        "criticalChance": 0.3,
+        "initialHealth": 750,
+        "attackDamage": 120
+      },
+      "heroName": "Trickster Assassin",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621795995235,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.27999999999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 8,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 420,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Ironclad Cavalier",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621796027177,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 4,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 528,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "HAKOOOOO"
+    },
+    "id": 1621796029471,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.3,
+        "initialHealth": 750,
+        "attackDamage": 120
+      },
+      "heroName": "Trickster Assassin",
+      "username": "HİKİİKİKİKİİK"
+    }
+  },
+  {
+    "attackCount": 7,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 55,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "HİKİİKİKİKİİK"
+    },
+    "id": 1621796030712,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "HAKOOOOO"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 166,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    },
+    "id": 1621796292445,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Ranger",
+      "username": "user1"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 747,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Ironclad Cavalier",
+      "username": "user1"
+    },
+    "id": 1621796303777,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": -40,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "user2sssssssssssssss"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 250,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "user2sssssssssssssss"
+    },
+    "id": 1621796306517,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    }
+  },
+  {
+    "attackCount": 8,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 75,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "user2sssssssssssssss"
+    },
+    "id": 1621796307807,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 55,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    },
+    "id": 1621797049871,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "user1"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 81,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Ironclad Ranger",
+      "username": "user1"
+    },
+    "id": 1621797055514,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 50,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    },
+    "id": 1621797057628,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 3,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 550,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Trickster Cavalier",
+      "username": "user1"
+    },
+    "id": 1621797832447,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.3,
+        "initialHealth": 750,
+        "attackDamage": 120
+      },
+      "heroName": "Dragon Slayer Assassin",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 445,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Dragon Slayer Ranger",
+      "username": "user1"
+    },
+    "id": 1621797834891,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 120,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "user2"
+    },
+    "id": 1621799502022,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    }
+  },
+  {
+    "attackCount": 7,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 167,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "user1"
+    },
+    "id": 1621799547010,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 10,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 4,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "user1"
+    },
+    "id": 1621799612326,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 5,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 255,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Demolitionist",
+      "username": "user1"
+    },
+    "id": 1621799788074,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 41,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Demolitionist",
+      "username": "user2"
+    },
+    "id": 1621799907021,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Trickster Ranger",
+      "username": "user1"
+    }
+  },
+  {
+    "attackCount": 7,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 186,
+        "criticalChance": 0.2,
+        "initialHealth": 1100,
+        "attackDamage": 114
+      },
+      "heroName": "Forgotten Sorcerer",
+      "username": "user2"
+    },
+    "id": 1621800207517,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 66
+      },
+      "heroName": "Forgotten God King",
+      "username": "user1"
+    }
   }
 ]

@@ -18,6 +18,8 @@ public class ChampionFightController implements IChampionFightController {
 		this.screenManager = screenManager;
 		
 		this.view.addStatisticsButtonListener(statisticsButtonListener);
+		this.view.addLoginPageButtonListener(loginButtonListener);
+		this.view.addPlayAgainButtonListener(playAgainButtonListener);
 		model.subscribe(view);
 	}
 	
@@ -30,6 +32,20 @@ public class ChampionFightController implements IChampionFightController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			screenManager.onStatisticsPanelRequested();
+		}
+	};
+	
+	private ActionListener loginButtonListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			screenManager.onLogoutRequested();
+		}
+	};
+	
+	private ActionListener playAgainButtonListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			screenManager.onChampionSelectPanelRequested();
 		}
 	};
 }

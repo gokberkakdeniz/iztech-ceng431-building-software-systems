@@ -65,7 +65,7 @@ public class ScreenManager implements IScreenManager {
 		User user1 = sessionContainer.getSession().getUser1();
 		User user2 = sessionContainer.getSession().getUser2();
 		
-		IChampionSelectService service = new ChampionSelectService();
+		IChampionSelectService service = new ChampionSelectService(db.getDescriptionRepository());
 		
 		ChampionSelectModel modelLeft = service.getAvailableChampions(user1).getResult();
 		ChampionSelectModel modelRight = service.getAvailableChampions(user2).getResult();
@@ -81,7 +81,7 @@ public class ScreenManager implements IScreenManager {
 	public void onChampionSelectDone(ChampionSelectModel selectionLeft, ChampionSelectModel selectionRight) {
 		destroyController();
 		
-		IChampionFightService service = new ChampionFightService();
+		IChampionFightService service = new ChampionFightService(db.getMatchRecordRepository());
 		Match model = service.createMatch(selectionLeft.getUser(), selectionLeft.getSelectedHero(), selectionLeft.getSelectedOrigin(), 
 										  selectionRight.getUser(), selectionRight.getSelectedHero(), selectionRight.getSelectedOrigin())
 				.getResult();
@@ -99,17 +99,24 @@ public class ScreenManager implements IScreenManager {
 		
 		IStatisticsService service = new StatisticsService();
 
-		TopWinnersModel topWinnersModel = service.getTopWinnersModel();
-		MatchRecordsModel matchRecordsModel = service.getMatchRecordsModel();
+		TopWinnersModel topWinnersModel = service.getTopWinnersModel().getResult();
+		MatchRecordsModel matchRecordsModel = service.getMatchRecordsModel().getResult();
 
 		StatisticsPanel view = new StatisticsPanel(topWinnersModel, matchRecordsModel);
 
-		controller = new StatisticsController(view, topWinnersModel, matchRecordsModel, service);
+		controller = new StatisticsController(view, topWinnersModel, matchRecordsModel, service, this);
 		
 		window.setContent(view);
 	}
 	
 	private void destroyController() {
 		if (controller != null) controller.destroy();
+	}
+
+	@Override
+	public void onLogoutRequested() {
+		sessionContainer.setSession(null);
+		showLoginScreen();
+		
 	}
 }

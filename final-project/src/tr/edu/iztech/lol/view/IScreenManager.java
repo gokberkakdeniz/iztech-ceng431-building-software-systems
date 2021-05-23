@@ -31,4 +31,5 @@ public interface IScreenManager {
 
 	void onStatisticsPanelRequested();
 	
+	void onLogoutRequested();
 }

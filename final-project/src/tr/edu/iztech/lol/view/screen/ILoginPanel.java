@@ -10,4 +10,5 @@ public interface ILoginPanel {
 	void hideError();
 
 	void addLoginButtonListener(ActionListener listener);
+	void addStatisticsButtonListener(ActionListener listener);
 }

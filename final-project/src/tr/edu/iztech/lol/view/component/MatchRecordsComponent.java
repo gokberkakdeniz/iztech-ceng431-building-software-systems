@@ -3,6 +3,7 @@ package tr.edu.iztech.lol.view.component;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
@@ -20,17 +21,19 @@ import tr.edu.iztech.lol.model.MatchRecordsModel;
 import tr.edu.iztech.lol.model.Player;
 import tr.edu.iztech.lol.utils.IObserver;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class MatchRecordsComponent extends JPanel implements IObserver<MatchRecordsModel>{
 	private static final long serialVersionUID = 5232858854896059657L;
-	private MatchRecordsModel matchRecords;
+	private MatchRecordsModel model;
 	private final JLabel usernameLabel;
 	private final JTextField usernameInput;
 	private JButton searchButton;
 	private JList<String> matchRecordsList;
 	
-	public MatchRecordsComponent(MatchRecordsModel matchRecords) {
-		this.matchRecords = matchRecords;
+	public MatchRecordsComponent(MatchRecordsModel model) {
+		this.model = model;
 		
 		setLayout(null);
 		setBounds(480,1,479,620);
@@ -62,15 +65,24 @@ public class MatchRecordsComponent extends JPanel implements IObserver<MatchReco
 		matchRecordsList = new JList<>();
 		matchRecordsList.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 		matchRecordsList.setVisibleRowCount(-1);
-		matchRecordsList.setEnabled(false);
 		matchRecordsList.setFixedCellHeight(90);
+		matchRecordsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		matchRecordsList.setSelectionBackground(getBackground());
+		matchRecordsList.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				repaint();
+			}
+		});
+		
 		listScroller.setViewportView(matchRecordsList);
 		add(listScroller);
 			
 	}
 	
 	public void update() {
-		matchRecordsList.setListData(updateMatchRecords().toArray(String[]::new));
+		matchRecordsList.setListData(getMatchRecordsListData());
 	}
 	
 	public void addSearchButtonListener(ActionListener listener) {
@@ -81,10 +93,10 @@ public class MatchRecordsComponent extends JPanel implements IObserver<MatchReco
 		return usernameInput.getText();
 	}
 	
-	public List<String> updateMatchRecords() {
+	private String[] getMatchRecordsListData() {
 		List<String> recordsString = new ArrayList<>();
-//		statistics.
-		for(MatchRecord record: matchRecords.getMatchRecords()) {
+
+		for(MatchRecord record: model.getMatchRecords()) {
 			Player winner = record.getWinner();
 			Player loser = record.getLoser();
 			
@@ -102,7 +114,7 @@ public class MatchRecordsComponent extends JPanel implements IObserver<MatchReco
 					+ "Loser stats: %s<br/>End: %s", winnerUsername, loserUsername, winnerHeroName, 
 					winnerEndStatistics, loserHeroName, loserEndStatistics));
 		}
-		return recordsString;
+		return recordsString.toArray(String[]::new);
 	}
 
 }

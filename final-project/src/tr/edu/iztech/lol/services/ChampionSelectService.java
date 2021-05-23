@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IRepository;
 import tr.edu.iztech.lol.exception.NeverOccuredException;
 import tr.edu.iztech.lol.hero.Assassin;
@@ -31,9 +30,11 @@ import tr.edu.iztech.lol.origin.Trickster;
 public class ChampionSelectService implements IChampionSelectService {
     private List<Class<? extends IHero>> heroClasses;
 	private List<Class<? extends IOrigin>> originClasses;
-	private IRepository<String> descriptionRepository = Database.getInstance().getDescriptionRepository();
+	private IRepository<String> descriptionRepository;
 	
-	public ChampionSelectService() {
+	public ChampionSelectService(IRepository<String> descriptionRepository) {
+		this.descriptionRepository = descriptionRepository;
+		
 		this.heroClasses = Arrays.asList(Assassin.class, Cavalier.class, Demolitionist.class, 
 		  		 						 GodKing.class, Knight.class, Ranger.class,
 		  		 						 Sorcerer.class);

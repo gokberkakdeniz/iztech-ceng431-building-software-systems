@@ -33,15 +33,6 @@ public class MainWindow extends JFrame {
 		contentPanel.setLayout(null);
 		contentPanel.setBounds(0, 0, 960, 720);
 		contentPane.add(contentPanel);
-		
-//		LoginPanel loginPanel = new LoginPanel();
-//		setContent(loginPanel);
-		
-//		ChampSelectPanel champSelectPanel = new ChampSelectPanel();
-//		setContent(champSelectPanel);
-		
-//		ChampFightPanel champFightPanel = new ChampFightPanel();
-//		setContent(champFightPanel);
 	}
 	
 	public void setContent(JPanel panel) {

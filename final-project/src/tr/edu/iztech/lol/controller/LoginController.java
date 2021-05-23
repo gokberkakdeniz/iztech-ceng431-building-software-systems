@@ -19,6 +19,7 @@ public class LoginController implements ILoginController {
 		this.screenManager = screenManager;
 		
 		this.view.addLoginButtonListener(loginButtonListener);
+		this.view.addStatisticsButtonListener(statsButtonListener);
 	}
 
 	@Override
@@ -41,4 +42,12 @@ public class LoginController implements ILoginController {
 		}
 	};
 	
+	private ActionListener statsButtonListener =  new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			screenManager.onStatisticsPanelRequested();
+		}
+	};
+	
+
 }

@@ -1,6 +1,5 @@
 package tr.edu.iztech.lol.services;
 
-import tr.edu.iztech.lol.app.TestSimulator;
 import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IRepository;
 import tr.edu.iztech.lol.exception.NeverOccuredException;
@@ -19,11 +18,12 @@ import tr.edu.iztech.lol.model.Player;
 import tr.edu.iztech.lol.model.User;
 
 public class ChampionFightService implements IChampionFightService {
-	private IRepository<MatchRecord> matchRecordRepository = Database.getInstance().getMatchRecordRepository();
+	private IRepository<MatchRecord> matchRecordRepository;
 
-	public ChampionFightService() {
+	public ChampionFightService(IRepository<MatchRecord> matchRecordRepository) {
+		this.matchRecordRepository = matchRecordRepository;
 	}
-
+	
 	@Override
 	public IResponse<Match, NeverOccuredException> createMatch(User userLeft, String heroNameLeft, String originNameLeft, 
 															   User userRight, String heroNameRight, String originNameRight) {
@@ -38,7 +38,7 @@ public class ChampionFightService implements IChampionFightService {
 	public void startMatch(Match match) {
 		Runnable r = new Runnable() {
 			public void run() {
-				TestSimulator simulator = new TestSimulator(match);
+				IFightSimulator simulator = new FightSimulator(match);
 				simulator.run();
 				createMatchRecord(match);
 			}

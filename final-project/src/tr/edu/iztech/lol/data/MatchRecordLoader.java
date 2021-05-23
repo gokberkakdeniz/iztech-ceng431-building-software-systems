@@ -24,7 +24,7 @@ public class MatchRecordLoader implements IDataLoader<MatchRecord> {
 	
 	@Override
 	public List<MatchRecord> load() {
-	InputStream is = null;
+		InputStream is = null;
 		
 		try {
 			is = new FileInputStream(file);
@@ -32,25 +32,23 @@ public class MatchRecordLoader implements IDataLoader<MatchRecord> {
 			e.printStackTrace();
 		}
 		JSONTokener tokener = new JSONTokener(is);
-        JSONArray object = new JSONArray(tokener);
+        JSONArray jsonArray = new JSONArray(tokener);
         
 		List<MatchRecord> matchRecords = new ArrayList<>();
 
-		for(Object obj: object) {
-			matchRecords.add(deserialize(obj));
+		for(Object obj: jsonArray) {
+			matchRecords.add(deserialize((JSONObject) obj));
 		}
 		
 		return matchRecords;
 	}
 	
-	private MatchRecord deserialize(Object matchRecord) {
-		JSONObject jsonField = (JSONObject) matchRecord;
+	private MatchRecord deserialize(JSONObject matchRecord) {		
+		long id = matchRecord.getLong("id");
+		int attackCount = matchRecord.getInt("attackCount");
 		
-		long id = jsonField.getLong("id");
-		int attackCount = jsonField.getInt("attackCount");
-		
-		JSONObject winnerField = jsonField.getJSONObject("winner");
-		JSONObject loserField = jsonField.getJSONObject("loser");
+		JSONObject winnerField = matchRecord.getJSONObject("winner");
+		JSONObject loserField = matchRecord.getJSONObject("loser");
 
 		Player winner = playerDeserializer(winnerField);
 		Player loser = playerDeserializer(loserField);

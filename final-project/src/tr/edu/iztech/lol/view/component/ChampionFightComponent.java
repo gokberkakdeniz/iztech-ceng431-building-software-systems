@@ -20,17 +20,12 @@ public class ChampionFightComponent extends JPanel {
 	private JLabel criticalChanceLabel;
 
 	private IHero hero;
-	private User user;
 	
 	public ChampionFightComponent(User user, IHero hero) {		
 		this(user, hero, false);
 	}
 	
-	/**
-	 * @wbp.parser.constructor
-	 */
 	public ChampionFightComponent(User user, IHero hero, boolean rightToLeft) {
-		this.user = user;
 		this.hero = hero;
 		
 		setLayout(null);

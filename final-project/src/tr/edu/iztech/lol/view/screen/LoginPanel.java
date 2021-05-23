@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 
 import javax.swing.JSeparator;
+import java.awt.Font;
 
 public class LoginPanel extends JPanel implements ILoginPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
@@ -17,6 +18,7 @@ public class LoginPanel extends JPanel implements ILoginPanel {
 	private final JTextField username1Input;
 	private final JButton loginButton;
 	private final JLabel messageLabel;
+	private final JButton statsButton;
 	
 	public LoginPanel() {
 		setLayout(null);
@@ -59,6 +61,11 @@ public class LoginPanel extends JPanel implements ILoginPanel {
 		messageLabel.setBounds(165, 558, 655, 15);
 		add(messageLabel);
 		
+		statsButton = new JButton("Show Statistics");
+		statsButton.setFont(new Font("Dialog", Font.PLAIN, 12));
+		statsButton.setBounds(331, 637, 300, 25);
+		add(statsButton);
+		
 	}
 	
 	@Override
@@ -82,5 +89,10 @@ public class LoginPanel extends JPanel implements ILoginPanel {
 	@Override
 	public void addLoginButtonListener(ActionListener listener) {
 		loginButton.addActionListener(listener);
+	}
+	
+	@Override
+	public void addStatisticsButtonListener(ActionListener listener) {
+		statsButton.addActionListener(listener);
 	}
 }

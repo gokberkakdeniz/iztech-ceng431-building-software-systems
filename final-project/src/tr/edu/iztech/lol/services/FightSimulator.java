@@ -1,4 +1,4 @@
-package tr.edu.iztech.lol.app;
+package tr.edu.iztech.lol.services;
 
 import java.util.Random;
 
@@ -8,16 +8,18 @@ import tr.edu.iztech.lol.model.Match;
 import tr.edu.iztech.lol.model.User;
 import tr.edu.iztech.lol.utils.ThreadUtils;
 
-public class TestSimulator {
-	private int order = 0;
+public class FightSimulator implements IFightSimulator {
+	private int order;
 	private Match match;
 	private Random random;
 	
-	public TestSimulator(Match match) {
+	public FightSimulator(Match match) {
 		this.match = match;
 		this.random = new Random();
+		this.order = 0;
 	}
 	
+	@Override
 	public void run() {
     	reset();
 		
@@ -67,6 +69,6 @@ public class TestSimulator {
 	}
 	
 	private void reset() {
-		order = 0;
+		order = random.nextInt(2);
 	}
 }

@@ -6,7 +6,7 @@ import tr.edu.iztech.lol.model.Match;
 import tr.edu.iztech.lol.utils.IObserver;
 
 public interface IChampionFightPanel extends IObserver<Match> {
-
-	void addStatisticsButtonListener(ActionListener statisticsButtonListener);
-
+	void addStatisticsButtonListener(ActionListener listener);
+	void addLoginPageButtonListener(ActionListener listener);
+	void addPlayAgainButtonListener(ActionListener listener);
 }
