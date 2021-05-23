@@ -14,7 +14,6 @@ import org.json.JSONTokener;
 import tr.edu.iztech.lol.hero.State;
 import tr.edu.iztech.lol.model.MatchRecord;
 import tr.edu.iztech.lol.model.Player;
-import tr.edu.iztech.lol.model.User;
 
 public class MatchRecordLoader implements IDataLoader<MatchRecord> {
 	private final File file;
@@ -63,13 +62,11 @@ public class MatchRecordLoader implements IDataLoader<MatchRecord> {
 		String username = playerField.getString("username");
 		String heroName = playerField.getString("heroName");
 
-		JSONObject startStatisticField = playerField.getJSONObject("startStatistics");
 		JSONObject endStatisticField = playerField.getJSONObject("endStatistics");
 		
-		State startStatistic = statisticDeserializer(startStatisticField);
 		State endStatistic = statisticDeserializer(endStatisticField);
 		
-		return new Player(username, heroName, startStatistic, endStatistic);
+		return new Player(username, heroName, endStatistic);
 	}
 
 	private State statisticDeserializer(JSONObject statisticField) {

@@ -3,19 +3,12 @@ package tr.edu.iztech.lol.view.screen;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.util.List;
-
 import javax.swing.SwingConstants;
 
-import tr.edu.iztech.lol.controller.IChampionSelectController;
-import tr.edu.iztech.lol.model.AvailableChampions;
 import tr.edu.iztech.lol.model.ChampionSelectModel;
-import tr.edu.iztech.lol.model.Session;
-import tr.edu.iztech.lol.utils.IObserver;
 import tr.edu.iztech.lol.view.component.ChampionSelectComponent;
 
 import javax.swing.JSeparator;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class ChampionSelectPanel extends JPanel implements IChampionSelectPanel {

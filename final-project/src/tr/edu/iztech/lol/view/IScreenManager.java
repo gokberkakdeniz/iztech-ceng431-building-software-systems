@@ -28,5 +28,7 @@ public interface IScreenManager {
 	void onChampionSelectPanelRequested();
 
 	void onChampionSelectDone(ChampionSelectModel modelLeft, ChampionSelectModel modelRight);
+
+	void onStatisticsPanelRequested();
 	
 }

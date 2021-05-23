@@ -2,14 +2,8 @@ package tr.edu.iztech.lol.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-
-import tr.edu.iztech.lol.model.AvailableChampions;
 import tr.edu.iztech.lol.model.ChampionSelectModel;
-import tr.edu.iztech.lol.model.User;
-import tr.edu.iztech.lol.services.IChampionSelectService;
 import tr.edu.iztech.lol.view.IScreenManager;
-import tr.edu.iztech.lol.view.screen.ChampionSelectPanel;
 import tr.edu.iztech.lol.view.screen.IChampionSelectPanel;
 
 public class ChampionSelectController implements IChampionSelectController {

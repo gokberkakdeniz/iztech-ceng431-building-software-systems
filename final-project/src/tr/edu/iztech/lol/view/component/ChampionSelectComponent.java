@@ -6,15 +6,12 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import tr.edu.iztech.lol.model.AvailableChampions;
 import tr.edu.iztech.lol.model.ChampionSelectModel;
-import tr.edu.iztech.lol.model.User;
-import tr.edu.iztech.lol.utils.IObservable;
 import tr.edu.iztech.lol.utils.IObserver;
 
 public class ChampionSelectComponent extends JPanel implements IObserver<ChampionSelectModel> {

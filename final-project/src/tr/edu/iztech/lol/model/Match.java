@@ -6,7 +6,6 @@ import java.util.List;
 
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.utils.AbstractObservable;
-import tr.edu.iztech.lol.utils.IObserver;
 
 public class Match extends AbstractObservable<Match> implements IModel<Match> {
 	private User userLeft;
@@ -60,8 +59,20 @@ public class Match extends AbstractObservable<Match> implements IModel<Match> {
 	
 	public User getWinnerUser() {
 		if (!isFinished()) return null;
-		
+
 		return getHeroLeft().getHealthPoint() > 0 ? getUserLeft() : getUserRight();
+	}
+	
+	public IHero getLoser() {
+		if (!isFinished()) return null;
+		
+		return getHeroLeft().getHealthPoint() > 0 ? getHeroRight() : getHeroLeft();
+	}
+	
+	public User getLoserUser() {
+		if (!isFinished()) return null;
+
+		return getHeroLeft().getHealthPoint() > 0 ? getUserRight() : getUserLeft();
 	}
 	
 }

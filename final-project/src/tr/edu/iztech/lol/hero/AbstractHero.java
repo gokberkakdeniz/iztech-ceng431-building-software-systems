@@ -66,7 +66,6 @@ public abstract class AbstractHero implements IHero {
 		IState totalDamage = origin.attack(classDamage);
 		
 		if(isHitCritical()) {
-			System.out.println("Crit!");
 			totalDamage.setDamageDealt((int) Math.floor(totalDamage.getDamageDealt() * criticalDamage));
 		}
 

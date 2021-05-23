@@ -7,4 +7,5 @@ public interface IDatabase {
 	IRepository<MatchRecord> getMatchRecordRepository();
 	IRepository<User> getUserRepository();
 	IRepository<String> getDescriptionRepository();
+	void save();
 }

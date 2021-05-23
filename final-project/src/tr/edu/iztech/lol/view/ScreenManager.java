@@ -1,33 +1,32 @@
 package tr.edu.iztech.lol.view;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 import tr.edu.iztech.lol.controller.ChampionFightController;
 import tr.edu.iztech.lol.controller.ChampionSelectController;
-import tr.edu.iztech.lol.controller.IChampionSelectController;
 import tr.edu.iztech.lol.controller.IController;
-import tr.edu.iztech.lol.controller.ILoginController;
 import tr.edu.iztech.lol.controller.LoginController;
+import tr.edu.iztech.lol.controller.StatisticsController;
 import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IDatabase;
 import tr.edu.iztech.lol.data.ISessionContainer;
 import tr.edu.iztech.lol.data.SessionContainer;
 import tr.edu.iztech.lol.model.ChampionSelectModel;
 import tr.edu.iztech.lol.model.Match;
+import tr.edu.iztech.lol.model.MatchRecordsModel;
 import tr.edu.iztech.lol.model.Session;
+import tr.edu.iztech.lol.model.TopWinnersModel;
 import tr.edu.iztech.lol.model.User;
 import tr.edu.iztech.lol.services.ChampionFightService;
 import tr.edu.iztech.lol.services.ChampionSelectService;
 import tr.edu.iztech.lol.services.IChampionFightService;
 import tr.edu.iztech.lol.services.IChampionSelectService;
+import tr.edu.iztech.lol.services.IStatisticsService;
 import tr.edu.iztech.lol.services.IUserService;
+import tr.edu.iztech.lol.services.StatisticsService;
 import tr.edu.iztech.lol.services.UserService;
-import tr.edu.iztech.lol.utils.RandomUtils;
 import tr.edu.iztech.lol.view.screen.ChampionFightPanel;
 import tr.edu.iztech.lol.view.screen.ChampionSelectPanel;
-import tr.edu.iztech.lol.view.screen.IChampionSelectPanel;
 import tr.edu.iztech.lol.view.screen.LoginPanel;
+import tr.edu.iztech.lol.view.screen.StatisticsPanel;
 
 public class ScreenManager implements IScreenManager {
 	private final MainWindow window;
@@ -87,11 +86,27 @@ public class ScreenManager implements IScreenManager {
 										  selectionRight.getUser(), selectionRight.getSelectedHero(), selectionRight.getSelectedOrigin())
 				.getResult();
 		ChampionFightPanel view = new ChampionFightPanel(model);
-		new ChampionFightController(view, model);
+		new ChampionFightController(view, model, this);
 		
 		window.setContent(view);
 		
 		service.startMatch(model);
+	}
+	
+	@Override
+	public void onStatisticsPanelRequested() {
+		destroyController();
+		
+		IStatisticsService service = new StatisticsService();
+
+		TopWinnersModel topWinnersModel = service.getTopWinnersModel();
+		MatchRecordsModel matchRecordsModel = service.getMatchRecordsModel();
+
+		StatisticsPanel view = new StatisticsPanel(topWinnersModel, matchRecordsModel);
+
+		controller = new StatisticsController(view, topWinnersModel, matchRecordsModel, service);
+		
+		window.setContent(view);
 	}
 	
 	private void destroyController() {

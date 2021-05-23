@@ -6,10 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
-
-import tr.edu.iztech.lol.controller.ILoginController;
 
 import javax.swing.JSeparator;
 

@@ -11,7 +11,6 @@ import org.json.JSONObject;
 import tr.edu.iztech.lol.hero.IState;
 import tr.edu.iztech.lol.model.MatchRecord;
 import tr.edu.iztech.lol.model.Player;
-import tr.edu.iztech.lol.model.User;
 
 public class MatchRecordSaver implements IDataSaver<MatchRecord> {
 	private final File file;
@@ -60,10 +59,8 @@ public class MatchRecordSaver implements IDataSaver<MatchRecord> {
 		playerObject.put("username", player.getUsername());
 		playerObject.put("heroName", player.getHeroName());
 		
-		IState startStatistics = player.getStartStatistic();
 		IState endStatistics = player.getEndStatistic();
 
-		playerObject.put("startStatistics", statisticSerializer(startStatistics));
 		playerObject.put("endStatistics", statisticSerializer(endStatistics));
 
 		return playerObject;

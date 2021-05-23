@@ -32,6 +32,7 @@ public class TestSimulator {
 			IState defendedDamage = target.defend(damage);
 
 			target.setState(defendedDamage);
+			
 			match.notifySubscribers();
 			
 			match.addLog(String.format("%s deals %d damage to %s\n", attackerUser.getUsername(), defendedDamage.getDamageDealt(), targetUser.getUsername()));
@@ -39,9 +40,6 @@ public class TestSimulator {
 			waitRandomly();
 			next();
 		}
-		IHero winner = match.getWinner();
-		
-		System.out.printf("\n Winner => %s\n", winner);
 	}
 			
 	private void waitRandomly() {
@@ -53,7 +51,7 @@ public class TestSimulator {
 	}
 	
 	private IHero getTarget() {
-		return order == 1 ? match.getHeroRight() : match.getHeroLeft();
+		return order == 0 ? match.getHeroRight() : match.getHeroLeft();
 	}
 	
 	private User getAttackerUser() {
@@ -61,7 +59,7 @@ public class TestSimulator {
 	}
 	
 	private User getTargetUser() {
-		return order == 1 ? match.getUserRight() : match.getUserLeft();
+		return order == 0 ? match.getUserRight() : match.getUserLeft();
 	}
 	
 	private void next() {

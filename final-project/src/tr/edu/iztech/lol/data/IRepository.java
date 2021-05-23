@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import tr.edu.iztech.lol.model.IModel;
-
 /**
  * Generic repository
  *

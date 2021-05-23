@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.json.*;
 
-import tr.edu.iztech.lol.model.MatchRecord;
 import tr.edu.iztech.lol.model.User;
 
 public class UserSaver implements IDataSaver<User> {
@@ -41,6 +40,9 @@ public class UserSaver implements IDataSaver<User> {
 		
 		userObject.put("matchRecords", user.getMatchRecordIds());
 		userObject.put("username", user.getUsername());
+		userObject.put("winCount", user.getWinCount());
+		userObject.put("loseCount", user.getLoseCount());
+
 
 		return userObject;
 	}

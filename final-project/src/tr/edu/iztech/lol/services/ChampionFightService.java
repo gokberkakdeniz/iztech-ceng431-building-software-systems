@@ -12,11 +12,10 @@ import tr.edu.iztech.lol.factory.IroncladFactory;
 import tr.edu.iztech.lol.factory.LightbringerFactory;
 import tr.edu.iztech.lol.factory.NightbringerFactory;
 import tr.edu.iztech.lol.factory.TricksterFactory;
-import tr.edu.iztech.lol.hero.Assassin;
-import tr.edu.iztech.lol.hero.Cavalier;
 import tr.edu.iztech.lol.hero.IHero;
 import tr.edu.iztech.lol.model.Match;
 import tr.edu.iztech.lol.model.MatchRecord;
+import tr.edu.iztech.lol.model.Player;
 import tr.edu.iztech.lol.model.User;
 
 public class ChampionFightService implements IChampionFightService {
@@ -41,11 +40,31 @@ public class ChampionFightService implements IChampionFightService {
 			public void run() {
 				TestSimulator simulator = new TestSimulator(match);
 				simulator.run();
+				createMatchRecord(match);
 			}
 		};
 		
 		(new Thread(r)).start();
 	}
+	
+	private void createMatchRecord(Match match) {
+		User winnerUser = match.getWinnerUser();
+		IHero winnerHero = match.getWinner();
+		User loserUser = match.getLoserUser();
+		IHero loserHero = match.getLoser();
+		
+		Player winner = new Player(winnerUser.getUsername(), winnerHero.getName(), winnerHero.getState());
+		Player loser = new Player(loserUser.getUsername(), loserHero.getName(), loserHero.getState());
+		
+		MatchRecord record = new MatchRecord(winner, loser, match.getLogs().size()/2);
+		matchRecordRepository.add(record);
+		winnerUser.addMatchRecord(record.getId());
+		winnerUser.increaseWinCount();
+		loserUser.addMatchRecord(record.getId());
+		loserUser.increaseLoseCount();
+		Database.getInstance().save();
+	}
+	
 	
 	private IHero createHero(String originName, String heroName) {
 		IHeroFactory factory = getHeroFactory(originName);

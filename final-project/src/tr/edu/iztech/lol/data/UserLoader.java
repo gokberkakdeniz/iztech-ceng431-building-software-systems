@@ -43,12 +43,14 @@ public class UserLoader implements IDataLoader<User> {
 		JSONObject jsonField = (JSONObject) user;
 		
 		String username = jsonField.getString("username");
+		int winCount = jsonField.getInt("winCount");
+		int loseCount = jsonField.getInt("loseCount");
 		JSONArray matchRecordsArray = jsonField.getJSONArray("matchRecords");
 		
-		User tempUser = new User(username);
-
-		for(Object size: matchRecordsArray) {
-			tempUser.addMatchRecord(Long.valueOf((int) size));
+		User tempUser = new User(username, winCount, loseCount);
+		
+		for(int i = 0; i < matchRecordsArray.length(); ++i) {
+			tempUser.addMatchRecord(matchRecordsArray.getLong(i));
 		}
 		
 		return tempUser;

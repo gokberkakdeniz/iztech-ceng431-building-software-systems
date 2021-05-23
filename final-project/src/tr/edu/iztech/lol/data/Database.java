@@ -48,4 +48,11 @@ public class Database implements IDatabase {
 		return this.descriptionRepository;
 	}
 
+	@Override
+	public void save() {
+		matchRecordRepository.save();		
+		userRepository.save();
+		descriptionRepository.save();
+	}
+
 }
