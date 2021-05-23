@@ -1,10 +1,13 @@
 package tr.edu.iztech.lol.view.screen;
 
+import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import java.awt.Color;
+import java.util.List;
 
 import tr.edu.iztech.lol.model.Match;
 import tr.edu.iztech.lol.view.component.ChampionFightComponent;
@@ -12,6 +15,8 @@ import tr.edu.iztech.lol.view.component.ChampionFightComponent;
 import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
@@ -19,6 +24,7 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 	private ChampionFightComponent fightLeft;
 	private ChampionFightComponent figthRight;
 	private JList<String> list;
+	private DefaultListModel<String> listModel;
 	
 	public ChampionFightPanel(Match model) {
 		this.model = model;
@@ -45,19 +51,32 @@ public class ChampionFightPanel extends JPanel implements IChampionFightPanel {
 //		listScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 //		listScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
-        list = new JList<>();
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listModel = new DefaultListModel<>();
+        list = new JList<>(listModel);
+        list.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
         list.setVisibleRowCount(-1);
 //		listScroller.setViewportView(list);
         list.setBackground(new Color(0, 0, 0, 0));
         list.setBounds(10, 440, 940, 230);
 		add(list);
+		
+        list.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                repaint();
+            }
+        });
 
 	}
 
 	@Override
-	public void update() {
-		list.setListData(model.getLogs().toArray(String[]::new));
+	public synchronized void update() {
+		int previousSize = listModel.getSize();
+		List<String> allLogs = model.getLogs();
+		List<String> pendingLogs = allLogs.subList(previousSize, allLogs.size());
+		listModel.addAll(pendingLogs);
+		repaint();
+		
 		fightLeft.update();
 		figthRight.update();
 	}
