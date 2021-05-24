@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import tr.edu.iztech.lol.data.Database;
 import tr.edu.iztech.lol.data.IRepository;
 import tr.edu.iztech.lol.exception.NeverOccuredException;
 import tr.edu.iztech.lol.model.MatchRecord;
@@ -13,11 +12,14 @@ import tr.edu.iztech.lol.model.TopWinnersModel;
 import tr.edu.iztech.lol.model.User;
 
 
-public class StatisticsService implements IStatisticsService{
-	private IRepository<User> userRepository = Database.getInstance().getUserRepository();
-	private IRepository<MatchRecord> matchRecordRepository = Database.getInstance().getMatchRecordRepository();
+public class StatisticsService implements IStatisticsService {
+	private IRepository<User> userRepository;
+	private IRepository<MatchRecord> matchRecordRepository;
 
-	public StatisticsService() {}
+	public StatisticsService(IRepository<User> userRepository, IRepository<MatchRecord> matchRecordRepository) {
+		this.matchRecordRepository = matchRecordRepository;
+		this.userRepository = userRepository;
+	}
 	
 	public IResponse<MatchRecordsModel, NeverOccuredException> getMatchRecordsModel() {
 		MatchRecordsModel matchRecordsModel = new MatchRecordsModel();

@@ -101,7 +101,7 @@ public class ScreenManager implements IScreenManager {
 	public void onStatisticsPanelRequested() {
 		destroyController();
 		
-		IStatisticsService service = new StatisticsService();
+		IStatisticsService service = new StatisticsService(db.getUserRepository(), db.getMatchRecordRepository());
 
 		TopWinnersModel topWinnersModel = service.getTopWinnersModel().getResult();
 		MatchRecordsModel matchRecordsModel = service.getMatchRecordsModel().getResult();
