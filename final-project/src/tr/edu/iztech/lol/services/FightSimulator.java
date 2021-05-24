@@ -46,7 +46,7 @@ public class FightSimulator implements IFightSimulator {
 	}
 			
 	private void waitRandomly() {
-		ThreadUtils.wait(1000 + random.nextInt(1500));
+		ThreadUtils.wait(1000 + random.nextInt(800));
 	}
 
 	private IHero getAttacker() {
