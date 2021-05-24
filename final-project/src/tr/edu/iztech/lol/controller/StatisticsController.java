@@ -28,6 +28,7 @@ public class StatisticsController implements IStatisticsController {
 		
 		this.view.getMatchRecordsComponent().addSearchButtonListener(searchButtonListener);
 		this.view.addGoLoginButtonListener(goLoginButtonListener);
+		
 		topWinnersModel.subscribe(view.getTopWinnersComponent());
 		matchRecordsModel.subscribe(view.getMatchRecordsComponent());
 	}

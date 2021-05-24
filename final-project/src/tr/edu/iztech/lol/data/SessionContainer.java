@@ -2,6 +2,9 @@ package tr.edu.iztech.lol.data;
 
 import tr.edu.iztech.lol.model.Session;
 
+/**
+ * SessionContainer class with Singleton design pattern
+ */
 public class SessionContainer implements ISessionContainer {
 	private static ISessionContainer instance = null;
 	private Session session = null;

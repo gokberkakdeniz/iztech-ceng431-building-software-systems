@@ -26,10 +26,22 @@ public interface IScreenManager {
 	 * @param model new screen name
 	 */
 	void onChampionSelectPanelRequested();
-
+	
+	/**
+	 * Champion selection done handler
+	 * 
+	 * @param modelLeft left user's selection
+	 * @param modelRight right user's selection
+	 */
 	void onChampionSelectDone(ChampionSelectModel modelLeft, ChampionSelectModel modelRight);
-
+	
+	/**
+	 * Statistics page open handler
+	 */
 	void onStatisticsPanelRequested();
 	
+	/**
+	 * Logout handler
+	 */
 	void onLogoutRequested();
 }

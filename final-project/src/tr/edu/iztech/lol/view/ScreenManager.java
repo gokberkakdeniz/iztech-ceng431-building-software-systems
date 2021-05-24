@@ -45,6 +45,8 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	private void showLoginScreen() {
+		destroyController();
+
 		IUserService service = new UserService(db.getUserRepository());
 		LoginPanel view = new LoginPanel();
 		controller = new LoginController(view, this, service);
@@ -53,6 +55,8 @@ public class ScreenManager implements IScreenManager {
 	
 	@Override
 	public void onLoginSuccess(Session session) {
+		destroyController();
+
 		sessionContainer.setSession(session);
 		
 		onChampionSelectPanelRequested();
@@ -117,6 +121,5 @@ public class ScreenManager implements IScreenManager {
 	public void onLogoutRequested() {
 		sessionContainer.setSession(null);
 		showLoginScreen();
-		
 	}
 }

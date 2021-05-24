@@ -2086,5 +2086,53 @@
       "heroName": "Forgotten God King",
       "username": "user1"
     }
+  },
+  {
+    "attackCount": 8,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 75,
+        "criticalChance": 0.2,
+        "initialHealth": 1200,
+        "attackDamage": 85
+      },
+      "heroName": "Nightbringer Cavalier",
+      "username": "user1"
+    },
+    "id": 1621843608695,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    }
+  },
+  {
+    "attackCount": 6,
+    "winner": {
+      "endStatistics": {
+        "healthPoint": 16,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user2"
+    },
+    "id": 1621843713157,
+    "loser": {
+      "endStatistics": {
+        "healthPoint": 0,
+        "criticalChance": 1.0756479999999997,
+        "initialHealth": 900,
+        "attackDamage": 65
+      },
+      "heroName": "Nightbringer Ranger",
+      "username": "user1"
+    }
   }
 ]

@@ -11,7 +11,4 @@ public interface IHero {
 	int getHealthPercentage();
 	
 	void setState(IState newState);
-	
-	// TODO: is it required?
-	// void setHealtPoint(int healthPoint);
 }

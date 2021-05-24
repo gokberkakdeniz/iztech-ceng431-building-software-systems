@@ -8,6 +8,7 @@ import tr.edu.iztech.lol.model.Match;
 import tr.edu.iztech.lol.model.User;
 import tr.edu.iztech.lol.utils.ThreadUtils;
 
+
 public class FightSimulator implements IFightSimulator {
 	private int order;
 	private Match match;

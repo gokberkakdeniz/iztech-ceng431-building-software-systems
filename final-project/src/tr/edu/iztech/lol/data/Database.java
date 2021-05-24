@@ -5,6 +5,9 @@ import java.io.File;
 import tr.edu.iztech.lol.model.MatchRecord;
 import tr.edu.iztech.lol.model.User;
 
+/**
+ * Database class with Singleton design pattern
+ */
 public class Database implements IDatabase {
 	private static IDatabase instance;
 	private final IRepository<MatchRecord> matchRecordRepository;

@@ -4,6 +4,12 @@ import tr.edu.iztech.lol.origin.IOrigin;
 import tr.edu.iztech.lol.utils.RandomUtils;
 import tr.edu.iztech.lol.utils.StringUtils;
 
+/**
+ * We have 7 hero classes and 7 origins. 
+ * Normally we should have 7x7=49 heros.
+ * But only difference is their attack method.
+ * So we used Strategy pattern to increase code reuse.
+ */
 public abstract class AbstractHero implements IHero {
 	protected IState state;
 	protected IOrigin origin;
