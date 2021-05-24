@@ -42,8 +42,8 @@ public class StatisticsService implements IStatisticsService {
 	
 	public IResponse<List<MatchRecord>, NeverOccuredException>  getMatchRecords(String username) {
 		return new Response<>(matchRecordRepository
-								.getAll(user -> username.equals(user.getWinner().getUsername()) ||
-												username.equals(user.getLoser().getUsername()))
+								.getAll(mr -> username.equals(mr.getWinner().getUsername()) ||
+												username.equals(mr.getLoser().getUsername()))
 								.stream()
 								.sorted(Comparator.comparing(MatchRecord::getId).reversed())
 								.collect(Collectors.toList()));
