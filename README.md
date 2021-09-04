@@ -10,8 +10,9 @@ IZTECH CENG-431 [Building Software Systems](https://ceng.iyte.edu.tr/courses/cen
 - [`PMA`](./midterm-project-2): Product Management Console Application implemented using Composite and State Pattern 
 - [`ORP`](./midterm-project-3): Java Swing Outfit Rating Application implemented using MVC and Observer Pattern
 
-<!-- ### Presentations -->
+### Final Project
 
+- [`LOL`](./final-project): Java Swing Fighting Simulator implemented using Strategy, Abstract Factory Signleton Patterns and MVC
 
 ## License
 **[MIT License](LICENSE)**
