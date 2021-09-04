@@ -12,7 +12,7 @@ IZTECH CENG-431 [Building Software Systems](https://ceng.iyte.edu.tr/courses/cen
 
 ### Final Project
 
-- [`LOL`](./final-project): Java Swing Fighting Simulator implemented using Strategy, Abstract Factory Signleton Patterns and MVC
+- [`LOL`](./final-project): Java Swing Fighting Simulator implemented using Strategy, Abstract Factory, Singleton Patterns and MVC
 
 ## License
 **[MIT License](LICENSE)**
